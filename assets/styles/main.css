@@ -1,0 +1,11 @@
+header {
+	background: lightgrey;
+	text-align: center;
+	padding: 1em;
+}
+.forms {
+	padding: 3em;
+}
+.loginWrap, .registerWrap {
+	padding: 1em;
+}
