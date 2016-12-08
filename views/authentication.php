@@ -1,7 +1,8 @@
 <?php
 require __DIR__.'/../app/auth/register.php';
 require __DIR__.'/../app/auth/login.php';
-?>
+
+require __DIR__."/partials/header.php"; ?>
 
 <div class="forms">
 
@@ -27,3 +28,6 @@ require __DIR__.'/../app/auth/login.php';
 	</div>
 
 </div>
+
+
+<?php require __DIR__."/partials/footer.php"; ?>
