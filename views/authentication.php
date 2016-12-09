@@ -2,7 +2,8 @@
 require __DIR__.'/../app/auth/register.php';
 require __DIR__.'/../app/auth/login.php';
 
-require __DIR__."/partials/header.php"; ?>
+require __DIR__."/partials/header.php";
+?>
 
 <div class="forms">
 
@@ -11,6 +12,7 @@ require __DIR__."/partials/header.php"; ?>
 			<div class="message"><?php if(isset($loginMessage)) echo $loginMessage; ?></div>
 			<input type="text" name="username" placeholder="Email or username">
 			<input type="password" name="password" placeholder="Password">
+			<input type="checkbox" name="remember" checked><label for="remember">Remember me</label>
 			<input type="submit" name="loginSubmit" value="Log in">
 		</form>
 	</div>

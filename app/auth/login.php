@@ -19,7 +19,7 @@ function validateLoginFields($user, $password) {
 }
 
 // Check if user exists in db and if password is correct
-function getUserInfo($db, $user, $password) {
+function checkUser($db, $user, $password) {
 	$getUserQuery = <<<EOT
 	SELECT * FROM users WHERE username = '{$user}' OR email = '{$user}';
 EOT;
@@ -56,16 +56,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	    $loginMessage = "Fill out password.";
 	  } else {
 	    // call function to check if user exists
-	    $userInfo = getUserInfo($db, $user, $password);
+	    $userInfo = checkUser($db, $user, $password);
 	    // output error message if user not found
 	    if ($result == USER_NOT_FOUND) {
 	      $loginMessage = "Username, email or password is incorrect.";
 	    } else {
 	      // put users info in session array and relocate to index, if log in succeeds
-	      $_SESSION["login"] = $userInfo;
-	    //  if (isset($_POST["remember"])) {
-	        // create cookie
-	      //}
+	      $_SESSION["login"]["id"] = $userInfo["id"];
+	    	if (isset($_POST["remember"])) {
+	      	createLoginCookie($db, $userInfo["id"]);
+	      }
 	      header("location:/");
 
 			}

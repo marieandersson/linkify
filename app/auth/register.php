@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	  // call function to validate input
 	  $result = validateRegistrationFields();
 
-	  //output error messages if something is wrong
+	  // output error messages if something is wrong
 	  if ($result == MISSING_INPUT) {
 	    $regMessage = "Please fill out all fields.";
 	  } else if ($result == INVALID_EMAIL) {
@@ -91,12 +91,10 @@ EOT;
 				":email" => $email,
 				":password" => $password,
 			]);
-			// temporary
-			echo ("insert complete!");
-	    // login user
-	    //redirect to home.
-	    //header("location:index.php");
-	    //exit();
+			// put user info in session to login user
+			$id = $db->lastInsertId();
+			$_SESSION["login"]["id"] = $id;
+			header("location:index.php");
 	    }
 	  }
 	}

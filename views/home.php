@@ -1,6 +1,6 @@
 <?php require __DIR__."/partials/header.php"; ?>
 
-<p>Welcome <?= $_SESSION["login"]["username"]?></p>
+<p>Welcome <?= $_SESSION["login"]["id"]?></p>
 
 <a href="app/auth/logout.php">Log out</a>
 
