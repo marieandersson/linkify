@@ -5,9 +5,13 @@ require __DIR__.'/../app/auth/login.php';
 require __DIR__."/partials/header.php";
 ?>
 
+</div> <!-- end page -->
+
+<!-- forms slide in -->
 <div class="forms">
 
 	<div class="loginWrap">
+		<h3>Log in</h3>
 		<form action="index.php" method="post" class="login">
 			<div class="message"><?php if(isset($loginMessage)) echo $loginMessage; ?></div>
 			<input type="text" name="username" placeholder="Email or username">
@@ -18,6 +22,7 @@ require __DIR__."/partials/header.php";
 	</div>
 
 	<div class="registerWrap">
+		<h3>Register</h3>
 		<form action="index.php" method="post" class="register">
 			<div class="message"><?php if(isset($regMessage)) echo $regMessage; ?></div>
 			<input type="text" name="fullName" placeholder="Full name">

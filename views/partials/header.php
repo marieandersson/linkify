@@ -12,6 +12,11 @@
 	<link rel="stylesheet" href="/assets/styles/main.css">
 </head>
 <body>
-	<header>
-		<h1>Linkify</h1>
-	</header>
+	<div class="page">
+		<header>
+			<a href="#">Menu</a>
+			<h1>Linkify</h1>
+			<div class="auth">
+				<a href="#" class="loginLink">Log in</a>
+			</div>
+		</header>
