@@ -4,14 +4,14 @@ body {
 .page {
 	width: 100%;
 	float: left;
+	transition: width 0.4s linear;
 }
-@keyframes shrinkWidth {
-  from {
-	  width: 100%;
-  }
-  to {
-    width: 75%;
-  }
+.navigationOpen .page {
+	width: 75%;
+}
+
+.content {
+	padding: 1em 2em;
 }
 
 header {
@@ -44,16 +44,15 @@ header nav a:hover {
 	height: 100vh;
 	padding: 3em;
 	width: 25%;
-	float: right;
-	display: none;
-	animation: slideIn 0.5s linear;
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	transform: translateX(100%);
+	transition: transform 0.4s linear;
 }
-@keyframes slideIn {
-  from {
-    transform: translateX(300px);
-  }
-  to {
-    transform: translateX(0);  }
+.navigationOpen .menuSlideDiv {
+	transform: translateX(0);
 }
 
 .forms input {
@@ -61,4 +60,13 @@ header nav a:hover {
 }
 .loginWrap, .registerWrap {
 	padding: 1em;
+}
+
+
+/* settings */
+.settingsForm {
+	width: 60%;
+}
+.settingsForm input, textarea {
+	border: solid 1px gray;
 }
