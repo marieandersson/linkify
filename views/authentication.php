@@ -18,8 +18,8 @@ require __DIR__."/partials/header.php";
 		<div class="loginWrap">
 			<h3>Log in</h3>
 			<form action="index.php" method="post" class="login">
-				<div class="message"><?php if(isset($loginMessage)) echo $loginMessage; ?></div>
-				<input type="text" name="username" placeholder="Email or username">
+				<div class="authMessage"><?php if(isset($loginMessage)) echo $loginMessage; ?></div>
+				<input type="text" name="username" placeholder="Email or username" value="<?=isset($_POST["username"]) ? $_POST["username"] : ''; ?>">
 				<input type="password" name="password" placeholder="Password">
 				<input type="checkbox" name="remember" checked><label for="remember">Remember me</label>
 				<input type="submit" name="loginSubmit" value="Log in">
@@ -29,10 +29,10 @@ require __DIR__."/partials/header.php";
 		<div class="registerWrap">
 			<h3>Register</h3>
 			<form action="index.php" method="post" class="register">
-				<div class="message"><?php if(isset($regMessage)) echo $regMessage; ?></div>
-				<input type="text" name="fullName" placeholder="Full name">
-	      <input type="text" name="username" placeholder="Username">
-				<input type="email" name="emailReg" placeholder="Email">
+				<div class="authMessage"><?php if(isset($regMessage)) echo $regMessage; ?></div>
+				<input type="text" name="fullName" placeholder="Full name" value="<?=isset($_POST["fullName"]) ? $_POST["fullName"] : ''; ?>">
+	      <input type="text" name="usernameReg" placeholder="Username" value="<?=isset($_POST["usernameReg"]) ? $_POST["usernameReg"] : ''; ?>">
+				<input type="email" name="emailReg" placeholder="Email" value="<?=isset($_POST["emailReg"]) ? $_POST["emailReg"] : ''; ?>">
 				<input type="password" name="passwordReg" placeholder="Password">
 				<input type="checkbox" name="terms"><label for="terms">Accept terms</label>
 				<input type="submit" name="registerSubmit" value="Register">

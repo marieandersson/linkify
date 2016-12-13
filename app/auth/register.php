@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	  } else {
 	    // prepare user info for database
 	    $fullName = $_POST["fullName"];
-	    $username = $_POST["username"];
+	    $username = $_POST["usernameReg"];
 	    $email = $_POST["emailReg"];
 			// encrypt password
 	    $password = password_hash($_POST["passwordReg"], PASSWORD_BCRYPT);
