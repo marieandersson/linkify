@@ -14,9 +14,16 @@
 <body>
 	<div class="page">
 		<header>
-			<a href="#">Menu</a>
-			<h1>Linkify</h1>
-			<div class="auth">
-				<a href="#" class="loginLink">Log in</a>
-			</div>
+			<h1><a href="index.php">Linkify</a></h1>
+
+			<?php if (!checkLogin($db)) { ?>
+				<nav class="auth">
+					<a href="#" class="loginLink">Log in</a>
+				</nav>
+			<?php } else { ?>
+				<nav class="menuNav">
+					<a href="#" class="loginLink">Menu</a>
+				</nav>
+
+			<?php }; ?>
 		</header>
