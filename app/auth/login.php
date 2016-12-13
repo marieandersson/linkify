@@ -28,12 +28,11 @@ EOT;
 	if ($getUserStatement->rowCount() == 0 ) {
      return USER_NOT_FOUND;
   }
-	foreach ($getUserStatement as $userInfo) {
-		if (!password_verify($password, $userInfo["password"])) {
-			return USER_NOT_FOUND;
-		}
-		return $userInfo;
+	$userInfo = $getUserStatement->fetch(PDO::FETCH_ASSOC);
+	if (!password_verify($password, $userInfo["password"])) {
+		return USER_NOT_FOUND;
 	}
+	return $userInfo;
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -58,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	    // call function to check if user exists
 	    $userInfo = checkUser($db, $user, $password);
 	    // output error message if user not found
-	    if ($result == USER_NOT_FOUND) {
+	    if ($userInfo == USER_NOT_FOUND) {
 	      $loginMessage = "Username, email or password is incorrect.";
 	    } else {
 	      // put users info in session array and relocate to index, if log in succeeds

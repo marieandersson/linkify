@@ -18,11 +18,11 @@
 
 			<?php if (!checkLogin($db)) { ?>
 				<nav class="auth">
-					<a href="#" class="loginLink">Log in</a>
+					<a href="#" class="menuLink">Log in</a>
 				</nav>
 			<?php } else { ?>
 				<nav class="menuNav">
-					<a href="#" class="loginLink">Menu</a>
+					<a href="#" class="menuLink">Menu</a>
 				</nav>
 
 			<?php }; ?>
