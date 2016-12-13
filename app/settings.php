@@ -54,7 +54,6 @@ EOT;
 		":id" => $userId,
 	]);
 }
-
 function updateAbout($db, $userId, $newAbout) {
 	$updateAboutInDb = <<<EOT
 	UPDATE users SET about = :newAbout WHERE id = :id;
@@ -64,6 +63,9 @@ EOT;
 		":newAbout" => $newAbout,
 		":id" => $userId,
 	]);
+}
+function updateImage($db, $userId, $nimageInfo) {
+
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -102,6 +104,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			//update about
 			if ($userInfo["about"] !== $_POST["about"]) {
 				updateAbout($db, $userInfo["id"], $_POST["editPassword"]);
+			}
+			//update avatar
+			if(!empty($_FILES)) {
+				if (!file_exists(__DIR__."/../assets/images/users/{$_SESSION["login"]["id"]}")) {
+            mkdir(__DIR__."/../assets/images/users/{$_SESSION["login"]["id"]}");
+        }
+				updateImage($db, $userInfo["id"], $_FILES["avatar"])
 			}
 		}
 	}

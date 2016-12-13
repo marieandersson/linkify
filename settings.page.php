@@ -9,7 +9,7 @@ $displayUserInfo = getUserInfo($db);
 	<div class="content">
 		<h2>Account settings</h2>
 
-		<form action="settings.page.php" method="post" class="settingsForm">
+		<form action="settings.page.php" method="post" class="settingsForm" enctype="multipart/form-data">
 			<div class="updateMessage"><?php if(isset($updateErrorMessage)) echo $updateErrorMessage; ?></div>
 			<div class="change">
 				<h3>Change username</h3>
