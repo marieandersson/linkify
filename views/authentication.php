@@ -11,7 +11,7 @@ require __DIR__."/partials/header.php";
 </div> <!-- end page -->
 
 <!-- forms slide in -->
-<div class="menuSlideDiv">
+<div class="menuSlide">
 
 	<div class="forms">
 

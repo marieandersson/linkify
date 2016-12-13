@@ -1,4 +1,4 @@
-<div class="menuSlideDiv">
+<div class="menuSlide">
 	<a href="settings.page.php">Settings</a>
 	<a href="profile.page.php">Show profile</a>
 	<a href="index.php">Home</a>

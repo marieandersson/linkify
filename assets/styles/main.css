@@ -39,7 +39,7 @@ header nav a:hover {
 	color: #000;
 }
 
-.menuSlideDiv {
+.menuSlide {
 	background: #94BBB7;
 	height: 100vh;
 	padding: 3em;
@@ -51,7 +51,7 @@ header nav a:hover {
 	transform: translateX(100%);
 	transition: transform 0.4s linear;
 }
-.navigationOpen .menuSlideDiv {
+.navigationOpen .menuSlide {
 	transform: translateX(0);
 }
 

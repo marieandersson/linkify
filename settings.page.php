@@ -3,39 +3,45 @@ require __DIR__."/autoload.php";
 require __DIR__."/app/settings.php";
 $pageTitle = "Settings";
 require __DIR__."/views/partials/header.php";
-$userInfo = getUserInfo($db);
+$displayUserInfo = getUserInfo($db);
 ?>
 
 	<div class="content">
 		<h2>Account settings</h2>
 
 		<form action="settings.page.php" method="post" class="settingsForm">
-
+			<div class="message"><?php if(isset($updateErrorMessage)) echo $updateErrorMessage; ?></div>
 			<div class="change">
 				<h3>Change username</h3>
-				<label for="editUsername">username</label>
-				<input type="text" name="editUsername" value="<?=$userInfo['username']?>">
+				<label for="editUsername">Username</label>
+				<input type="text" name="editUsername" value="<?=$displayUserInfo['username']?>">
+			</div>
+
+			<div class="change">
+				<h3>Change email</h3>
+				<label for="editEmail">Email</label>
+				<input type="text" name="editEmail" value="<?=$displayUserInfo['email']?>">
 			</div>
 
 			<div class="change">
 				<h3>Change name</h3>
 				<label for="editFullName">Name</label>
-				<input type="text" name="editFullName" value="<?=$userInfo['name']?>">
+				<input type="text" name="editFullName" value="<?=$displayUserInfo['name']?>">
 			</div>
 
 
 			<div class="change">
 				<h3>Change password</h3>
 				<label for="editPassword">New password</label>
-				<input type="text" name="editPassword">
+				<input type="password" name="editPassword">
 
-				<label for="username">Repeat password</label>
-				<input type="text" name="username">
+				<label for="repeatPassword">Repeat password</label>
+				<input type="password" name="repeatPassword">
 			</div>
 
 			<div class="change">
 				<h3>About</h3>
-					<textarea name="about"></textarea>
+					<textarea name="about"><?= $displayUserInfo["about"]?></textarea>
 			</div>
 
 			<div class="change">
