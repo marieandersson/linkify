@@ -1,12 +1,16 @@
 'use strict';
 
+// slide in auth forms
+function slideInDiv(div) {
+	let page = document.querySelector(".page");
+	page.style.width = "75%";
+	page.style.animation = "shrinkWidth 0.5s linear";
+	div.style.display = "block";
+}
+
 let loginLink = document.querySelector(".loginLink");
 
 loginLink.addEventListener("click", function(event) {
-	let forms = document.querySelector(".forms");
-	forms.style.display = "block";
-	let page = document.querySelector(".page");
-	page.style.animation = "shrinkWidth 0.5s linear";
-	page.style.width = "75%";
-
+	let div = document.querySelector(".menuSlideDiv");
+	slideInDiv(div);
 });
