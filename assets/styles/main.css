@@ -69,4 +69,5 @@ header nav a:hover {
 }
 .settingsForm input, textarea {
 	border: solid 1px gray;
+	color: gray;
 }
