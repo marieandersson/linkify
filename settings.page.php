@@ -48,8 +48,10 @@ $user = getUserInfo($db);
 				<h3>Profile picture</h3>
 				<input type="file" name="avatar" accept="image/png, image/jpeg">
 				<div class="placeholderAvatar">
-					<?php if ($user["avatar"] !== NULL || $user["avatar"] !== "") {  ?>
-						<img src="/assets/images/users/<?=$user['id']?>/<?=$user["avatar"]?>" />
+					<?php if ($user["avatar"] !== NULL) {  ?>
+						<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" />
+					<?php } else { ?>
+						<img src="/assets/images/smiley.jpg" />
 					<?php } ?>
 				</div>
 			</div>
