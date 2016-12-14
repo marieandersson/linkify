@@ -64,8 +64,9 @@ EOT;
 		":id" => $userId,
 	]);
 }
-function updateImage($db, $userId, $nimageInfo) {
-
+function updateImage($db, $userId, $imageInfo, $ext) {
+	$name = uniqid() . "." . $ext;
+	move_uploaded_file($imageInfo["tmp_name"], __DIR__."/../assets/images/users/$userId/$name");
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -107,10 +108,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			}
 			//update avatar
 			if(!empty($_FILES)) {
-				if (!file_exists(__DIR__."/../assets/images/users/{$_SESSION["login"]["id"]}")) {
-            mkdir(__DIR__."/../assets/images/users/{$_SESSION["login"]["id"]}");
-        }
-				updateImage($db, $userInfo["id"], $_FILES["avatar"])
+				$allowed = array("png", "jpg");
+				$ext = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
+				// check file type
+				if (!in_array($ext, $allowed)) {
+				$updateErrorMessage = "The file must be jpg or png format.";
+				// check file errors
+				} else if ($_FILES["avatar"]["error"] !== 0) {
+				$updateErrorMessage = "something went wrong trying upload your file.";
+				// check file size is not bigger than 2MB.
+				} else if ($_FILES["avatar"]["size"] > 2097152) {
+					$updateErrorMessage = "The file is to big.";
+				// check file type
+				// upload image
+				} else {
+					if (!file_exists(__DIR__."/../assets/images/users/{$userInfo["id"]}")) {
+            mkdir(__DIR__."/../assets/images/users/{$userInfo["id"]}");
+        	}
+					updateImage($db, $userInfo["id"], $_FILES["avatar"], $ext);
+				}
 			}
 		}
 	}
