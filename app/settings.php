@@ -3,76 +3,17 @@
 // get user data for placeholders
 function getUserInfo($db) {
 	$id = $_SESSION["login"]["id"];
-	$getUserInfoQuery = <<<EOT
-	SELECT * FROM users WHERE id = '{$id}' LIMIT 1;
-EOT;
+	$getUserInfoQuery = "SELECT * FROM users WHERE id = '{$id}' LIMIT 1";
 	$getUserInfoStatement = $db->query($getUserInfoQuery);
 	$userInfo = $getUserInfoStatement->fetch(PDO::FETCH_ASSOC);
 	return $userInfo;
 }
 
-function updateUsername($db, $userId, $newUsername) {
-	$updateUsernameInDb = <<<EOT
-	UPDATE users SET username = :newUsername WHERE id = :id;
-EOT;
+function updateUser($db, $userId, $newInput, $column) {
+	$updateUsernameInDb = sprintf("UPDATE users SET %s = :newInput WHERE id = :id", $column);
 	$updateUsernameStatement = $db->prepare($updateUsernameInDb);
 	$updateUsernameStatement->execute([
-		":newUsername" => $newUsername,
-		":id" => $userId,
-	]);
-}
-
-function updateEmail($db, $userId, $newEmail) {
-	$updateEmailInDb = <<<EOT
-	UPDATE users SET email = :newEmail WHERE id = :id;
-EOT;
-	$updateEmailStatement = $db->prepare($updateEmailInDb);
-	$updateEmailStatement->execute([
-		":newEmail" => $newEmail,
-		":id" => $userId,
-	]);
-}
-
-function updateName($db, $userId, $newName) {
-	$updateNameInDb = <<<EOT
-	UPDATE users SET name = :newName WHERE id = :id;
-EOT;
-	$updateNameStatement = $db->prepare($updateNameInDb);
-	$updateNameStatement->execute([
-		":newName" => $newName,
-		":id" => $userId,
-	]);
-}
-function updatePassword($db, $userId, $newPassword) {
-	$newPassword = password_hash($newPassword, PASSWORD_BCRYPT);
-	$updatePasswordInDb = <<<EOT
-	UPDATE users SET password = :newPassword WHERE id = :id;
-EOT;
-	$updatePasswordStatement = $db->prepare($updatePasswordInDb);
-	$updatePasswordStatement->execute([
-		":newPassword" => $newPassword,
-		":id" => $userId,
-	]);
-}
-function updateAbout($db, $userId, $newAbout) {
-	$updateAboutInDb = <<<EOT
-	UPDATE users SET about = :newAbout WHERE id = :id;
-EOT;
-	$updateAboutStatement = $db->prepare($updateAboutInDb);
-	$updateAboutStatement->execute([
-		":newAbout" => $newAbout,
-		":id" => $userId,
-	]);
-}
-function updateAvatar($db, $userId, $imageInfo, $ext) {
-	$name = uniqid() . "." . $ext;
-	move_uploaded_file($imageInfo["tmp_name"], __DIR__."/../assets/images/users/$userId/$name");
-	$updateAvatarInDb = <<<EOT
-	UPDATE users SET avatar = :newAvatar WHERE id = :id;
-EOT;
-	$updateAvatarStatement = $db->prepare($updateAvatarInDb);
-	$updateAvatarStatement->execute([
-		":newAvatar" => $name,
+		":newInput" => $newInput,
 		":id" => $userId,
 	]);
 }
@@ -88,36 +29,37 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		}  else {
 			// update username
 			if(!empty($_POST["editUsername"]) && $userInfo["username"] !== $_POST["editUsername"]) {
-				updateUsername($db, $userInfo["id"], $_POST["editUsername"]);
+				updateUser($db, $userInfo["id"], $_POST["editUsername"], "username");
 			}
 			//update email
 			if(!empty($_POST["editEmail"]) && $userInfo["email"] !== $_POST["editEmail"]) {
 				if (!filter_var($_POST["editEmail"], FILTER_VALIDATE_EMAIL)) {
 					$updateErrorMessage = "You must enter a valid email.";
 				} else {
-					updateEmail($db, $userInfo["id"], $_POST["editEmail"]);
+					updateUser($db, $userInfo["id"], $_POST["editEmail"], "email");
 				}
 			}
 			//update name
 			if (!empty($_POST["editFullName"]) && $userInfo["name"] !== $_POST["editFullName"]) {
-				updateName($db, $userInfo["id"], $_POST["editFullName"]);
+				updateUser($db, $userInfo["id"], $_POST["editFullName"], "name");
 			}
 			// update password
 			if (!empty($_POST["editPassword"])) {
 				if($_POST["editPassword"] !== $_POST["repeatPassword"]) {
 					$updateErrorMessage = "Passwords not matching.";
 				} else {
-					updatePassword($db, $userInfo["id"], $_POST["editPassword"]);
+					$newPassword = password_hash($_POST["editPassword"], PASSWORD_BCRYPT);
+					updateUser($db, $userInfo["id"], $newPassword, "password");
 				}
 			}
 			//update about
 			if ($userInfo["about"] !== $_POST["about"]) {
-				updateAbout($db, $userInfo["id"], $_POST["editPassword"]);
+				updateUser($db, $userInfo["id"], $_POST["editPassword"], "about");
 			}
 			//update avatar
-			if(!empty($_FILES)) {
+			if(!empty($_FILES["avatar"]["name"])) {
 				$allowed = array("png", "jpg");
-				$ext = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
+				$ext = strtolower(pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION));
 				// check file type
 				if (!in_array($ext, $allowed)) {
 				$updateErrorMessage = "The file must be jpg or png format.";
@@ -132,7 +74,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 					if (!file_exists(__DIR__."/../assets/images/users/{$userInfo["id"]}")) {
             mkdir(__DIR__."/../assets/images/users/{$userInfo["id"]}");
         	}
-					updateAvatar($db, $userInfo["id"], $_FILES["avatar"], $ext);
+					$name = uniqid() . "." . $ext;
+					move_uploaded_file($_FILES["avatar"]["tmp_name"], __DIR__."/../assets/images/users/{$userInfo['id']}/$name");
+					updateUser($db, $userInfo["id"], $name, "avatar");
 				}
 			}
 		}

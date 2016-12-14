@@ -28,17 +28,14 @@ function validateRegistrationFields () {
 
 // Check if email or username is already registered
 function checkEmailAndUsername($db, $email, $username) {
-	$checkEmailQuery = <<<EOT
-	SELECT email FROM users WHERE email = '{$email}';
-EOT;
+	$checkEmailQuery = "SELECT email FROM users WHERE email = '{$email}'";
 	$checkEmailStatement = $db->query($checkEmailQuery);
 	// if rows found in query
 	if ($checkEmailStatement->rowCount() > 0 ) {
      return EMAIL_ALREADY_REG;
   }
-	$checkUsernameQuery = <<<EOT
-	SELECT username FROM users WHERE username = '{$username}';
-EOT;
+	$checkUsernameQuery = "SELECT username FROM users WHERE username = '{$username}'";
+
 	$checkUsernameStatement = $db->query($checkUsernameQuery);
 	// if rows found in query
 	if ($checkUsernameStatement->rowCount() > 0 ) {
@@ -80,10 +77,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$regMessage = "Username is already taken, pick another one.";
 			} else {
 	    // store new user data in database
-			$insertUserIntoDb = <<<EOT
-			INSERT INTO users (name, username, email, password)
-			VALUES (:name, :username, :email, :password);
-EOT;
+			$insertUserIntoDb = "INSERT INTO users (name, username, email, password)
+			VALUES (:name, :username, :email, :password)";
+
 			$insertUserStatement = $db->prepare($insertUserIntoDb);
 			$insertUserStatement->execute([
 				":name" => $fullName,

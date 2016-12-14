@@ -20,9 +20,7 @@ function validateLoginFields($user, $password) {
 
 // Check if user exists in db and if password is correct
 function checkUser($db, $user, $password) {
-	$getUserQuery = <<<EOT
-	SELECT * FROM users WHERE username = '{$user}' OR email = '{$user}';
-EOT;
+	$getUserQuery = "SELECT * FROM users WHERE username = '{$user}' OR email = '{$user}'";
 	$getUserStatement = $db->query($getUserQuery);
 
 	if ($getUserStatement->rowCount() == 0 ) {
@@ -42,10 +40,8 @@ function createLoginCookie($db, $userId) {
   $timestamp = time() + 60 * 60 * 24 * 30;
   $expire = date("Y-m-d H:i:s", $timestamp);
 
-	$insertCookieIntoDb = <<<EOT
-	INSERT INTO cookies (user_id, expire, first, second)
-	VALUES (:user_id, :expire, :first, :second);
-EOT;
+	$insertCookieIntoDb = "INSERT INTO cookies (user_id, expire, first, second)
+	VALUES (:user_id, :expire, :first, :second)";
 	$insertCookieStatement = $db->prepare($insertCookieIntoDb);
 	$insertCookieStatement->execute([
 		":user_id" => $userId,
@@ -62,9 +58,8 @@ function validateCookie($db) {
 	$first = $values[0];
 	$second = $values[2];
 
-	$getCookieFromDb = <<<EOT
-	SELECT user_id FROM cookies WHERE user_id = '{$userId}' AND first = '{$first}' AND second = '{$second}' AND expire >= NOW();
-EOT;
+	$getCookieFromDb = "SELECT user_id FROM cookies
+  WHERE user_id = '{$userId}' AND first = '{$first}' AND second = '{$second}' AND expire >= NOW()";
 	$getCookieStatement = $db->query($getCookieFromDb);
 
 	if ($getCookieStatement->rowCount() > 0 ) {
