@@ -3,7 +3,7 @@ require __DIR__."/autoload.php";
 require __DIR__."/app/settings.php";
 $pageTitle = "Settings";
 require __DIR__."/views/partials/header.php";
-$displayUserInfo = getUserInfo($db);
+$user = getUserInfo($db);
 ?>
 
 	<div class="content">
@@ -14,19 +14,19 @@ $displayUserInfo = getUserInfo($db);
 			<div class="change">
 				<h3>Change username</h3>
 				<label for="editUsername">Username</label>
-				<input type="text" name="editUsername" value="<?=$displayUserInfo['username']?>">
+				<input type="text" name="editUsername" value="<?=$user['username']?>">
 			</div>
 
 			<div class="change">
 				<h3>Change email</h3>
 				<label for="editEmail">Email</label>
-				<input type="text" name="editEmail" value="<?=$displayUserInfo['email']?>">
+				<input type="text" name="editEmail" value="<?=$user['email']?>">
 			</div>
 
 			<div class="change">
 				<h3>Change name</h3>
 				<label for="editFullName">Name</label>
-				<input type="text" name="editFullName" value="<?=$displayUserInfo['name']?>">
+				<input type="text" name="editFullName" value="<?=$user['name']?>">
 			</div>
 
 
@@ -41,15 +41,15 @@ $displayUserInfo = getUserInfo($db);
 
 			<div class="change">
 				<h3>About</h3>
-					<textarea name="about"><?= $displayUserInfo["about"]?></textarea>
+					<textarea name="about"><?= $user["about"]?></textarea>
 			</div>
 
 			<div class="change">
 				<h3>Profile picture</h3>
 				<input type="file" name="avatar" accept="image/png, image/jpeg">
 				<div class="placeholderAvatar">
-					<?php if ($displayUserInfo["avatar"] !== NULL || $displayUserInfo["avatar"] !== "") {  ?>
-						<img src="/assets/images/users/<?=$displayUserInfo['id']?>/<?=$displayUserInfo["avatar"]?>" />
+					<?php if ($user["avatar"] !== NULL || $user["avatar"] !== "") {  ?>
+						<img src="/assets/images/users/<?=$user['id']?>/<?=$user["avatar"]?>" />
 					<?php } ?>
 				</div>
 			</div>

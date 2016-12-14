@@ -1,8 +1,11 @@
-<?php require __DIR__."/partials/header.php"; ?>
+<?php
+require __DIR__."/partials/header.php";
+$user = getUserInfo($db);
+?>
 
 	<div class="content">
 
-		<p>Welcome <?= $_SESSION["login"]["id"]?></p>
+		<p>Welcome <?= $user["name"]?></p>
 		<p>Start page, small profile, share links, news feed. edit links, delete links, comment on links. up and down vote links.</p>
 
 	</div>

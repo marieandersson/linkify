@@ -1,14 +1,5 @@
 <?php
 
-// get user data for placeholders
-function getUserInfo($db) {
-	$id = $_SESSION["login"]["id"];
-	$getUserInfoQuery = "SELECT * FROM users WHERE id = '{$id}' LIMIT 1";
-	$getUserInfoStatement = $db->query($getUserInfoQuery);
-	$userInfo = $getUserInfoStatement->fetch(PDO::FETCH_ASSOC);
-	return $userInfo;
-}
-
 function updateUser($db, $userId, $newInput, $column) {
 	$updateUsernameInDb = sprintf("UPDATE users SET %s = :newInput WHERE id = :id", $column);
 	$updateUsernameStatement = $db->prepare($updateUsernameInDb);

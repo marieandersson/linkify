@@ -19,3 +19,11 @@ function checkLogin($db) {
     }
   return true;
 }
+
+function getUserInfo($db) {
+	$id = $_SESSION["login"]["id"];
+	$getUserInfoQuery = "SELECT * FROM users WHERE id = '{$id}' LIMIT 1";
+	$getUserInfoStatement = $db->query($getUserInfoQuery);
+	$userInfo = $getUserInfoStatement->fetch(PDO::FETCH_ASSOC);
+	return $userInfo;
+}
