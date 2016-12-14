@@ -47,7 +47,11 @@ $displayUserInfo = getUserInfo($db);
 			<div class="change">
 				<h3>Profile picture</h3>
 				<input type="file" name="avatar" accept="image/png, image/jpeg">
-				<div class="placeholderAvatar"></div>
+				<div class="placeholderAvatar">
+					<?php if ($displayUserInfo["avatar"] !== NULL || $displayUserInfo["avatar"] !== "") {  ?>
+						<img src="/assets/images/users/<?=$displayUserInfo['id']?>/<?=$displayUserInfo["avatar"]?>" />
+					<?php } ?>
+				</div>
 			</div>
 
 			<hr/>

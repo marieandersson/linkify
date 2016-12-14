@@ -72,3 +72,14 @@ header nav a:hover {
 	border: solid 1px gray;
 	color: gray;
 }
+.placeholderAvatar {
+	width: 200px;
+	height: 200px;
+	border: gray 1px solid;
+}
+.placeholderAvatar img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+
+}

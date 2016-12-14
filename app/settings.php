@@ -64,9 +64,17 @@ EOT;
 		":id" => $userId,
 	]);
 }
-function updateImage($db, $userId, $imageInfo, $ext) {
+function updateAvatar($db, $userId, $imageInfo, $ext) {
 	$name = uniqid() . "." . $ext;
 	move_uploaded_file($imageInfo["tmp_name"], __DIR__."/../assets/images/users/$userId/$name");
+	$updateAvatarInDb = <<<EOT
+	UPDATE users SET avatar = :newAvatar WHERE id = :id;
+EOT;
+	$updateAvatarStatement = $db->prepare($updateAvatarInDb);
+	$updateAvatarStatement->execute([
+		":newAvatar" => $name,
+		":id" => $userId,
+	]);
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -116,16 +124,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 				// check file errors
 				} else if ($_FILES["avatar"]["error"] !== 0) {
 				$updateErrorMessage = "something went wrong trying upload your file.";
-				// check file size is not bigger than 2MB.
-				} else if ($_FILES["avatar"]["size"] > 2097152) {
+				// check file size is not bigger than 5MB.
+				} else if ($_FILES["avatar"]["size"] > 5242880) {
 					$updateErrorMessage = "The file is to big.";
-				// check file type
 				// upload image
 				} else {
 					if (!file_exists(__DIR__."/../assets/images/users/{$userInfo["id"]}")) {
             mkdir(__DIR__."/../assets/images/users/{$userInfo["id"]}");
         	}
-					updateImage($db, $userInfo["id"], $_FILES["avatar"], $ext);
+					updateAvatar($db, $userInfo["id"], $_FILES["avatar"], $ext);
 				}
 			}
 		}
