@@ -28,6 +28,13 @@ function getUserInfo($db) {
 	return $userInfo;
 }
 
-function displayPost($db) {
+function getPosts($db) {
+	$getPostsQuery = "SELECT * FROM posts";
+	$getPostsStatement = $db->query($getPostsQuery);
 
+	if ($getPostsStatement->rowCount() == 0 ) {
+     return false;
+  }
+	$posts = $getPostsStatement->fetchAll(PDO::FETCH_ASSOC);
+	return $posts;
 }
