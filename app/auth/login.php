@@ -52,21 +52,6 @@ function createLoginCookie($db, $userId) {
   setcookie("linkify", $cookie, $timestamp, "/", "", false, true);
 }
 
-function validateCookie($db) {
-  $values = explode("|", $_COOKIE["linkify"]);
-	$userId = $values[1];
-	$first = $values[0];
-	$second = $values[2];
-
-	$getCookieFromDb = "SELECT user_id FROM cookies
-  WHERE user_id = '{$userId}' AND first = '{$first}' AND second = '{$second}' AND expire >= NOW()";
-	$getCookieStatement = $db->query($getCookieFromDb);
-
-	if ($getCookieStatement->rowCount() > 0 ) {
-     return $userId;
-  }
-  return false;
-}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if (isset($_POST["loginSubmit"])) {

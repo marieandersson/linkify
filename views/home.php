@@ -40,6 +40,7 @@ $posts = getPosts($db);
 							foreach ($posts as $post) { ?>
 								<div class="post">
 									<h4><?=$post["subject"]?></h4>
+									<p><?=$post["username"]?></p>
 								</div>
 						<?php }} ?>
 					</div>

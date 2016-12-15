@@ -7,6 +7,22 @@ function escapeInput($data) {
   return $data;
 }
 
+function validateCookie($db) {
+  $values = explode("|", $_COOKIE["linkify"]);
+	$userId = $values[1];
+	$first = $values[0];
+	$second = $values[2];
+
+	$getCookieFromDb = "SELECT user_id FROM cookies
+  WHERE user_id = '{$userId}' AND first = '{$first}' AND second = '{$second}' AND expire >= NOW()";
+	$getCookieStatement = $db->query($getCookieFromDb);
+
+	if ($getCookieStatement->rowCount() > 0 ) {
+     return $userId;
+  }
+  return false;
+}
+
 function checkLogin($db) {
 	if (!isset($_SESSION["login"])) {
   	if (!isset($_COOKIE["linkify"])) {
@@ -29,7 +45,8 @@ function getUserInfo($db) {
 }
 
 function getPosts($db) {
-	$getPostsQuery = "SELECT * FROM posts";
+	$getPostsQuery = "SELECT posts.description, posts.subject, posts.url, posts.published, users.name,
+	users.username, users.avatar FROM posts INNER JOIN users ON posts.user_id = users.id";
 	$getPostsStatement = $db->query($getPostsQuery);
 
 	if ($getPostsStatement->rowCount() == 0 ) {
