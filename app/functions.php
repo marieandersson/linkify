@@ -27,3 +27,7 @@ function getUserInfo($db) {
 	$userInfo = $getUserInfoStatement->fetch(PDO::FETCH_ASSOC);
 	return $userInfo;
 }
+
+function displayPost($db) {
+
+}

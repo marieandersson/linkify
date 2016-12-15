@@ -1,5 +1,6 @@
 <?php
 require __DIR__."/partials/header.php";
+require __DIR__."/../app/posts/newpost.php";
 $user = getUserInfo($db);
 ?>
 
@@ -18,16 +19,20 @@ $user = getUserInfo($db);
 				<h5>@<?=$user["username"]?></h5>
 			</div>
 
-			<div class="sharelinks">
+			<div class="newPost">
 				<form action="index.php" method="post">
 					<h4>Share a link</h4>
-					<div class="shareLinksFields">
+					<div class="postMessage"><?php if(isset($postMessage)) echo $postMessage; ?></div>
+					<div class="newPostFields">
 						<input type="text" name="subject" placeholder="Subject">
 						<input type="text" name="url" placeholder="Link">
 						<input type="text" name="description" placeholder="Short description">
-						<input type="submit" name="shareLink" value="Share">
+						<input type="submit" name="postLink" value="Share">
 					</div>
 				</form>
+			</div>
+
+			<div class="displayPosts">
 			</div>
 
 		</div>

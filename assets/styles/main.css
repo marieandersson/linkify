@@ -87,22 +87,22 @@ header nav a:hover {
 	height: 100%;
 	object-fit: cover;
 }
-.sharelinks {
+.newPost {
 	width: 400px;
 	border: solid 1px gray;
 }
 
-.shareLinksFields {
+.newPostFields {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
-.shareLinksFields input {
+.newPostFields input {
 	height: 2em;
 	margin: 0.5em;
 	background: #fff;
 }
-.shareLinksFields input[type="submit"] {
+.newPostFields input[type="submit"] {
 	width: 100px;
 }
 /* settings */
