@@ -37,9 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		$result = validateNewPostFields($_POST["editUrl"]);
 
 		if ($result == MISSING_POST_INPUT) {
-			$editMessage = "You must fill out all fields";
+			$editMessage = "Your changes wasn't saved. All fields must be filled.";
 		} else if ($result == INVALID_URL) {
-			$editMessage = "Incorrect url format.";
+			$editMessage = "Your changes wasn't saved. Incorrect url format.";
 		} else {
 			editPost($db);
 		}

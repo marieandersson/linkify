@@ -2,6 +2,7 @@
 require __DIR__."/partials/header.php";
 require __DIR__."/../app/posts/newpost.php";
 require __DIR__."/../app/posts/editpost.php";
+require __DIR__."/../app/posts/comments.php";
 $user = getUserInfo($db);
 $posts = getPosts($db);
 ?>
@@ -54,6 +55,7 @@ $posts = getPosts($db);
 										<p>@<?=$post["username"]?></p>
 									</div>
 									<!-- post content -->
+									<div class="editMessage"><?php if(isset($editMessage)) echo $editMessage; ?></div>
 									<div class="postContent">
 										<a href="<?=$post["url"]?>"><?=$post["subject"]?></a>
 										<p><?=$post["description"]?></p>
@@ -62,7 +64,6 @@ $posts = getPosts($db);
 									<?php if ($post["user_id"] == $_SESSION["login"]["id"]) { ?>
 										<div class="editPostForm">
 											<form action="index.php" method="post">
-												<div class="editMessage"><?php if(isset($editMessage)) echo $editMessage; ?></div>
 												<input type="hidden" name="postIdForEdit" value="<?=$post["id"]?>">
 												<div class="editInputField">
 													<label for="editSubject">Subject:</label>
