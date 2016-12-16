@@ -4,14 +4,14 @@ define("POST_SUCCESS", "10");
 define("MISSING_POST_INPUT", "11");
 define("INVALID_URL", "12");
 
-function validateNewPostFields() {
+function validateNewPostFields($url) {
 	// check if all fields has input
 	foreach($_POST as $input=>$value) {
     if(empty($_POST[$input])) {
       return MISSING_POST_INPUT;
     }
   }
-	if (!filter_var($_POST["url"], FILTER_VALIDATE_URL)) {
+	if (!filter_var($url, FILTER_VALIDATE_URL)) {
     return INVALID_URL;
   }
 	return POST_SUCCESS;
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		foreach($_POST as $input=>$value) {
 	      escapeInput($_POST[$input]);
 	  }
-		$result = validateNewPostFields();
+		$result = validateNewPostFields($_POST["url"]);
 
 		if ($result == MISSING_POST_INPUT) {
 			$postMessage = "You must fill out all fields";
