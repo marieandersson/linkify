@@ -105,21 +105,28 @@ $posts = getPosts($db);
 											<?php foreach ($comments as $comment) { ?>
 												<div class="comment">
 													<p class="commentContent"><?=$comment["name"]?> said: <?=$comment["comment"]?></p>
-													<?php if ($comment["user_id"] == $_SESSION["login"]["id"]) { ?>
-														<!-- edit comment form shown on click -->
-														<div class="editCommentForm">
-															<form action="index.php" method="post">
-																<input type="hidden" name="postIdForEditComment" value="<?=$comment["id"]?>">
-																<input type="text" name="editComment" value="<?=$comment["comment"]?>">
-																<input type="submit" name="saveEditComment" value="Save" class="saveEdit">
-															</form>
-														</div>
+
+													<!-- edit comment form shown on click -->
+													<div class="editCommentForm">
 														<form action="index.php" method="post">
-															<input type="hidden" name="commentId" value="<?=$comment["id"]?>">
-															<button class="editCommentButton">Edit</button>
-															<input type="submit" name="deleteComment" value="Delete">
+															<input type="hidden" name="postIdForEditComment" value="<?=$comment["id"]?>">
+															<input type="text" name="editComment" value="<?=$comment["comment"]?>">
+															<input type="submit" name="saveEditComment" value="Save" class="saveEdit">
 														</form>
-													<?php } ?>
+													</div>
+
+													<form action="index.php" method="post">
+														<input type="hidden" name="commentId" value="<?=$comment["id"]?>">
+														<button class="replyButton">Reply</button>
+														<div class="replyFields">
+															<input type="text" name="reply" placeholder="Reply to this comment.">
+															<input type="submit" name="replySubmit" value="Reply">
+														</div>
+														<?php if ($comment["user_id"] == $_SESSION["login"]["id"]) { ?>
+														<button class="editCommentButton">Edit</button>
+														<input type="submit" name="deleteComment" value="Delete">
+														<?php } ?>
+													</form>
 												</div>
 											<?php } ?>
 										</div>

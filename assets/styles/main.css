@@ -147,7 +147,7 @@ header nav a:hover {
 }
 .comment {
 	margin: 1em 0;
-	background: #fff;
+	border: 1px solid gray;
 }
 
 .commentHide {
@@ -158,6 +158,12 @@ header nav a:hover {
 }
 .editCommentFormShow {
 	display: block;
+}
+.replyFields {
+	display: none;
+}
+.replyFieldsShow {
+	display: inline-block;
 }
 /* settings */
 .settingsForm {

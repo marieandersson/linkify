@@ -1,6 +1,6 @@
 <?php
 
-function saveNewComment($db) {
+function saveNewComment($db, $replyTo = NULL) {
 	$published = date("Y-m-d H:i:s");
 	$insertCommentIntoDb = "INSERT INTO comments (comment, published, user_id, post_id)
 	VALUES (:comment, :published, :user_id, :post_id)";
@@ -34,7 +34,6 @@ function editComment($db) {
 		":editDate" => $editDate,
 		":commentId" => $_POST["postIdForEditComment"],
 	]);
-
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -59,6 +58,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			return;
 		} else {
 			editComment($db);
+		}
+	}
+	if (isset($_POST["replySubmit"])) {
+		// escape input to avoid exploit attempts
+		escapeInput($_POST["reply"]);
+		// Check if comment has content
+		if (empty($_POST["reply"])) {
+			return;
+		} else {
+			$replyTo = $_POST["commentId"];
+			editComment($db, $replyTo);
 		}
 	}
 }

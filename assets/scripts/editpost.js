@@ -34,3 +34,18 @@ editCommentButtons.forEach (function(editCommentButton) {
 		}
 	});
 });
+// show reply to comment fields
+const replyToComment = document.querySelectorAll(".replyButton");
+replyToComment.forEach (function(replyButton) {
+	replyButton.addEventListener("click", function (event) {
+		event.preventDefault();
+		let form = replyButton.parentElement;
+		let replyInputFields = form.querySelector(".replyFields");
+		replyInputFields.classList.toggle("replyFieldsShow");
+		if (replyInputFields.classList.contains("replyFieldsShow")) {
+			replyButton.innerHTML = "Close";
+		} else {
+			replyButton.innerHTML = "Reply";
+		}
+	});
+});
