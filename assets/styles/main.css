@@ -165,7 +165,8 @@ header nav a:hover {
 .replyFieldsShow {
 	display: inline-block;
 }
-.childComment {
+.commentReply {
+	border: solid 1px gray;
 	margin-left: 2em;
 }
 /* settings */

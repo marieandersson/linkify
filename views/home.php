@@ -97,27 +97,13 @@ $posts = getPosts($db);
 										</form>
 									</div>
 									<!-- post comments -->
-									<?php $comments = getComments($db, $post["id"]);
-									// check if post has comments
-									if ($comments) { ?>
-										<div class="comments">
-											<p>This post has <?=count($comments)?> <?=count($comments) == 1 ? "comment" : "comments"?>.</p>
-											<?php foreach ($comments as $comment) {
-												if ($comment["reply_to"] == NULL) { ?>
-													<div class="parentComment">
-														<?php require __DIR__."/partials/comment.block.php"; ?>
-													</div>
-													<?php foreach ($comments as $childComment) {
-														if ($childComment["reply_to"] == $comment["id"]) {
-															$comment = $childComment; ?>
-															<div class="childComment">
-																<?php require __DIR__."/partials/comment.block.php"; ?>
-															</div>
-															<?php }} ?>
-												<?php }} ?>
-										</div>
-									<?php } ?>
-
+									<?php
+										$comments = getComments($db, $post["id"]);
+										// check if post has comments
+										if ($comments) {
+											require __DIR__."/partials/comment.block.php";
+										}
+									?>
 								</div>
 						<?php }} ?>
 					</div>

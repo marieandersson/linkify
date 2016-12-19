@@ -16,7 +16,7 @@ function saveNewComment($db, $replyTo = NULL) {
 }
 
 function deleteComment($db) {
-	$deleteCommentInDb = "DELETE FROM comments WHERE id = :commentId";
+	$deleteCommentInDb = "DELETE FROM comments WHERE id = :commentId OR reply_to = :commentId";
 	$deleteCommentStatement = $db->prepare($deleteCommentInDb);
 	$deleteCommentStatement->execute([
 		":commentId" => $_POST["commentId"],
