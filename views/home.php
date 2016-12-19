@@ -101,36 +101,20 @@ $posts = getPosts($db);
 									// check if post has comments
 									if ($comments) { ?>
 										<div class="comments">
-											<p>This post has <?=count($comments)?> comments.</p>
+											<p>This post has <?=count($comments)?> <?=count($comments) == 1 ? "comment" : "comments"?>.</p>
 											<?php foreach ($comments as $comment) {
 												if ($comment["reply_to"] == NULL) { ?>
-												<div class="comment">
-													<p class="commentContent"><?=$comment["name"]?> said: <?=$comment["comment"]?></p>
-
-													<!-- edit comment form shown on click -->
-													<div class="editCommentForm">
-														<form action="index.php" method="post">
-															<input type="hidden" name="postIdForEditComment" value="<?=$comment["id"]?>">
-															<input type="text" name="editComment" value="<?=$comment["comment"]?>">
-															<input type="submit" name="saveEditComment" value="Save" class="saveEdit">
-														</form>
+													<div class="parentComment">
+														<?php require __DIR__."/partials/comment.block.php"; ?>
 													</div>
-
-													<form action="index.php" method="post">
-														<input type="hidden" name="commentId" value="<?=$comment["id"]?>">
-														<input type="hidden" name="postId" value="<?=$post["id"]?>">
-														<button class="replyButton">Reply</button>
-														<div class="replyFields">
-															<input type="text" name="comment" placeholder="Reply to this comment.">
-															<input type="submit" name="replySubmit" value="Reply">
-														</div>
-														<?php if ($comment["user_id"] == $_SESSION["login"]["id"]) { ?>
-														<button class="editCommentButton">Edit</button>
-														<input type="submit" name="deleteComment" value="Delete">
-														<?php } ?>
-													</form>
-												</div>
-											<?php }} ?>
+													<?php foreach ($comments as $childComment) {
+														if ($childComment["reply_to"] == $comment["id"]) {
+															$comment = $childComment; ?>
+															<div class="childComment">
+																<?php require __DIR__."/partials/comment.block.php"; ?>
+															</div>
+															<?php }} ?>
+												<?php }} ?>
 										</div>
 									<?php } ?>
 
@@ -145,7 +129,6 @@ $posts = getPosts($db);
 		</main>
 	</div>
 
-	<p>Start page, small profile, share links, news feed. edit links, delete links, comment on links. up and down vote links.</p>
 </div> <!-- end page -->
 
 

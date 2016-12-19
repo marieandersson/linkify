@@ -165,6 +165,9 @@ header nav a:hover {
 .replyFieldsShow {
 	display: inline-block;
 }
+.childComment {
+	margin-left: 2em;
+}
 /* settings */
 .settingsForm {
 	width: 60%;
