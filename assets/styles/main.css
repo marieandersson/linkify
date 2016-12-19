@@ -140,7 +140,25 @@ header nav a:hover {
 .postContentHide  {
 	display: none;
 }
+.comments {
+	border: solid gray 1px;
+	margin: 1em;
+	font-size: small;
+}
+.comment {
+	margin: 1em 0;
+	background: #fff;
+}
 
+.commentHide {
+	display: none;
+}
+.editCommentForm {
+	display: none;
+}
+.editCommentFormShow {
+	display: block;
+}
 /* settings */
 .settingsForm {
 	width: 60%;

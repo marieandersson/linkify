@@ -14,6 +14,14 @@ function saveNewComment($db) {
 	]);
 }
 
+function deleteComment($db) {
+	$deleteCommentInDb = "DELETE FROM comments WHERE id = :commentId";
+	$deleteCommentStatement = $db->prepare($deleteCommentInDb);
+	$deleteCommentStatement->execute([
+		":commentId" => $_POST["commentId"],
+	]);
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	if (isset($_POST["commentPost"])) {
 		// escape input to avoid exploit attempts
@@ -25,4 +33,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			saveNewComment($db);
 		}
 	}
+	if (isset($_POST["deleteComment"])) {
+		deleteComment($db);
+	}
+}
+
+function getComments($db, $postId) {
+	$getCommentsQuery = "SELECT comments.id, comments.user_id, comments.comment, comments.published, users.name, users.avatar
+	FROM comments INNER JOIN users ON comments.user_id = users.id WHERE comments.post_id = '{$postId}'";
+	$getCommentsStatement = $db->query($getCommentsQuery);
+
+	if ($getCommentsStatement->rowCount() == 0 ) {
+		 return false;
+	}
+	$comments = $getCommentsStatement->fetchAll(PDO::FETCH_ASSOC);
+	return $comments;
 }

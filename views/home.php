@@ -12,6 +12,7 @@ $posts = getPosts($db);
 		<main class="homeMain">
 
 			<div class="homeTopWrap">
+				<!-- user profile -->
 				<div class="displayUser">
 					<figure>
 						<?php if ($user["avatar"] !== NULL) {  ?>
@@ -26,6 +27,7 @@ $posts = getPosts($db);
 
 				<div class="posts">
 
+					<!-- write new post -->
 					<div class="newPost">
 						<form action="index.php" method="post">
 							<h4>Share a link</h4>
@@ -81,7 +83,7 @@ $posts = getPosts($db);
 											</form>
 										</div>
 									<?php } ?>
-									<!-- edit, delete or comment -->
+									<!-- edit, delete and comment buttons-->
 									<div class="postButtons">
 										<form action="index.php" method="post">
 											<input type="hidden" name="postId" value="<?=$post["id"]?>">
@@ -94,6 +96,33 @@ $posts = getPosts($db);
 											<?php } ?>
 										</form>
 									</div>
+									<!-- post comments -->
+									<?php $comments = getComments($db, $post["id"]);
+									// check if post has comments
+									if ($comments) { ?>
+										<div class="comments">
+											<p>This post has <?=count($comments)?> comments.</p>
+											<?php foreach ($comments as $comment) { ?>
+												<div class="comment">
+													<p class="commentContent"><?=$comment["name"]?> said: <?=$comment["comment"]?></p>
+													<?php if ($comment["user_id"] == $_SESSION["login"]["id"]) { ?>
+														<!-- edit comment form shown on click -->
+														<div class="editCommentForm">
+															<input type="hidden" name="postIdForEditComment" value="<?=$comment["id"]?>">
+															<input type="text" name="editComment" value="<?=$comment["comment"]?>">
+															<input type="submit" name="saveEditComment" value="Save" class="saveEdit">
+														</div>
+														<form action="index.php" method="post">
+															<input type="hidden" name="commentId" value="<?=$comment["id"]?>">
+															<button class="editCommentButton">Edit</button>
+															<input type="submit" name="deleteComment" value="Delete">
+														</form>
+													<?php } ?>
+												</div>
+											<?php } ?>
+										</div>
+									<?php } ?>
+
 								</div>
 						<?php }} ?>
 					</div>
