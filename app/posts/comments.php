@@ -2,8 +2,8 @@
 
 function saveNewComment($db, $replyTo = NULL) {
 	$published = date("Y-m-d H:i:s");
-	$insertCommentIntoDb = "INSERT INTO comments (comment, published, user_id, post_id)
-	VALUES (:comment, :published, :user_id, :post_id)";
+	$insertCommentIntoDb = "INSERT INTO comments (comment, published, user_id, post_id, reply_to)
+	VALUES (:comment, :published, :user_id, :post_id, :reply_to)";
 
 	$insertCommentStatement = $db->prepare($insertCommentIntoDb);
 	$insertCommentStatement->execute([
@@ -11,6 +11,7 @@ function saveNewComment($db, $replyTo = NULL) {
 		":published" => $published,
 		":user_id" => $_SESSION["login"]["id"],
 		":post_id" => $_POST["postId"],
+		":reply_to" => $replyTo,
 	]);
 }
 
@@ -37,6 +38,9 @@ function editComment($db) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+	handleSubmits($db);
+}
+function handleSubmits($db) {
 	if (isset($_POST["commentPost"])) {
 		// escape input to avoid exploit attempts
 		escapeInput($_POST["comment"]);
@@ -46,9 +50,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		} else {
 			saveNewComment($db);
 		}
+		return;
 	}
 	if (isset($_POST["deleteComment"])) {
 		deleteComment($db);
+		return;
 	}
 	if (isset($_POST["saveEditComment"])) {
 		// escape input to avoid exploit attempts
@@ -59,17 +65,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		} else {
 			editComment($db);
 		}
+		return;
 	}
 	if (isset($_POST["replySubmit"])) {
 		// escape input to avoid exploit attempts
-		escapeInput($_POST["reply"]);
+		escapeInput($_POST["comment"]);
 		// Check if comment has content
-		if (empty($_POST["reply"])) {
+		if (empty($_POST["comment"])) {
 			return;
 		} else {
 			$replyTo = $_POST["commentId"];
-			editComment($db, $replyTo);
+			saveNewComment($db, $replyTo);
 		}
+		return;
 	}
 }
 

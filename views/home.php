@@ -117,9 +117,10 @@ $posts = getPosts($db);
 
 													<form action="index.php" method="post">
 														<input type="hidden" name="commentId" value="<?=$comment["id"]?>">
+														<input type="hidden" name="postId" value="<?=$post["id"]?>">
 														<button class="replyButton">Reply</button>
 														<div class="replyFields">
-															<input type="text" name="reply" placeholder="Reply to this comment.">
+															<input type="text" name="comment" placeholder="Reply to this comment.">
 															<input type="submit" name="replySubmit" value="Reply">
 														</div>
 														<?php if ($comment["user_id"] == $_SESSION["login"]["id"]) { ?>
