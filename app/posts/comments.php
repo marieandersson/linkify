@@ -22,6 +22,21 @@ function deleteComment($db) {
 	]);
 }
 
+function editComment($db) {
+	$edited = true;
+	$editDate = date("Y-m-d H:i:s");
+	$editCommentInDb = "UPDATE comments SET comment = :comment,
+	edited = :edited, edit_date = :editDate WHERE id = :commentId";
+	$editCommentStatement = $db->prepare($editCommentInDb);
+	$editCommentStatement->execute([
+		":comment" => $_POST["editComment"],
+		":edited" => $edited,
+		":editDate" => $editDate,
+		":commentId" => $_POST["postIdForEditComment"],
+	]);
+
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	if (isset($_POST["commentPost"])) {
 		// escape input to avoid exploit attempts
@@ -35,6 +50,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	}
 	if (isset($_POST["deleteComment"])) {
 		deleteComment($db);
+	}
+	if (isset($_POST["saveEditComment"])) {
+		// escape input to avoid exploit attempts
+		escapeInput($_POST["editComment"]);
+		// Check if comment has content
+		if (empty($_POST["editComment"])) {
+			return;
+		} else {
+			editComment($db);
+		}
 	}
 }
 

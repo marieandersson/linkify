@@ -17,7 +17,7 @@ editButtons.forEach (function(editButton) {
 		}
 	});
 });
-
+// repalce comment content with form
 const editCommentButtons = document.querySelectorAll(".editCommentButton");
 editCommentButtons.forEach (function(editCommentButton) {
 	editCommentButton.addEventListener("click", function (event) {

@@ -6,6 +6,12 @@ function deletePost($db) {
 	$deletePostStatement->execute([
 		":postId" => $_POST["postId"],
 	]);
+	// delete comments connected to post
+	$deletePostsCommentsInDb = "DELETE FROM comments WHERE post_id = :postId";
+	$deletePostsCommentsStatement = $db->prepare($deletePostsCommentsInDb);
+	$deletePostsCommentsStatement->execute([
+		":postId" => $_POST["postId"],
+	]);
 }
 
 function editPost($db) {

@@ -108,9 +108,11 @@ $posts = getPosts($db);
 													<?php if ($comment["user_id"] == $_SESSION["login"]["id"]) { ?>
 														<!-- edit comment form shown on click -->
 														<div class="editCommentForm">
-															<input type="hidden" name="postIdForEditComment" value="<?=$comment["id"]?>">
-															<input type="text" name="editComment" value="<?=$comment["comment"]?>">
-															<input type="submit" name="saveEditComment" value="Save" class="saveEdit">
+															<form action="index.php" method="post">
+																<input type="hidden" name="postIdForEditComment" value="<?=$comment["id"]?>">
+																<input type="text" name="editComment" value="<?=$comment["comment"]?>">
+																<input type="submit" name="saveEditComment" value="Save" class="saveEdit">
+															</form>
 														</div>
 														<form action="index.php" method="post">
 															<input type="hidden" name="commentId" value="<?=$comment["id"]?>">
