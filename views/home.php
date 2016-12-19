@@ -102,7 +102,8 @@ $posts = getPosts($db);
 									if ($comments) { ?>
 										<div class="comments">
 											<p>This post has <?=count($comments)?> comments.</p>
-											<?php foreach ($comments as $comment) { ?>
+											<?php foreach ($comments as $comment) {
+												if ($comment["reply_to"] == NULL) { ?>
 												<div class="comment">
 													<p class="commentContent"><?=$comment["name"]?> said: <?=$comment["comment"]?></p>
 
@@ -129,7 +130,7 @@ $posts = getPosts($db);
 														<?php } ?>
 													</form>
 												</div>
-											<?php } ?>
+											<?php }} ?>
 										</div>
 									<?php } ?>
 
