@@ -129,17 +129,22 @@ header nav a:hover {
 	background: #fff;
 	padding: 0.5em;
 }
-.postContent h4 {
+.postDiv {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.post h4 {
 	font-family: var(--headingFont);
 	font-size: 1.5em;
 	margin: 0.5em;
 	border-bottom: var(--mainBorder);
 }
-.postContent a, .postUser a {
+.post h4 a, .postUser a {
 	text-decoration: none;
 	color: #3D3D3D;
 }
-.postContent a:hover, .postUser a:hover {
+.post h4 a:hover, .postUser a:hover {
 	color: #94BBB7;
 }
 .postContent p {
@@ -191,11 +196,13 @@ header nav a:hover {
 	background: #f1f1f1;
 	border: var(--mainBorder);
 	padding-left: 0.5em;
+	font-size: small;
 }
 .inputComment input[type="submit"] {
 	border: var(--mainBorder);
 	height: 2em;
 	margin: 0 0.5em;
+	font-size: small;
 }
 .inputComment input[type="submit"]:hover, .editButton:hover, .deleteButton:hover {
 	background: var(--primaryColor);
