@@ -5,7 +5,7 @@ const editButtons = document.querySelectorAll(".editButton");
 editButtons.forEach (function(editButton) {
   editButton.addEventListener("click", function (event) {
 		event.preventDefault();
-		let postElement = editButton.parentElement.parentElement.parentElement;
+		let postElement = editButton.parentElement.parentElement.parentElement.parentElement;
 		let postContent = postElement.querySelector(".postContent");
 		postContent.classList.toggle("postContentHide");
 		let editForm = postElement.querySelector(".editPostForm");
@@ -13,7 +13,7 @@ editButtons.forEach (function(editButton) {
 		if (postContent.classList.contains("postContentHide")) {
 			editButton.innerHTML = "Close";
 		} else {
-			editButton.innerHTML = "Edit";
+			editButton.innerHTML = "Edit post";
 		}
 	});
 });
@@ -47,5 +47,15 @@ replyToComment.forEach (function(replyButton) {
 		} else {
 			replyButton.innerHTML = "Reply";
 		}
+	});
+});
+// show edit and delete buttons
+const showPostSettings = document.querySelectorAll(".showPostSettings");
+showPostSettings.forEach (function (showSettingsButton) {
+	showSettingsButton.addEventListener("click", function (event) {
+		event.preventDefault();
+		let postButtonsForm = showSettingsButton.parentElement;
+		let postSettingsButtons = postButtonsForm.querySelector(".postSettingsButtons");
+		postSettingsButtons.classList.toggle("postSettingsButtonsShow");
 	});
 });

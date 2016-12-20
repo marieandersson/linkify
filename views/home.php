@@ -11,7 +11,6 @@ $posts = getPosts($db);
 
 		<main class="homeMain">
 
-			<div class="homeTopWrap">
 				<!-- user profile -->
 				<div class="displayUser">
 					<figure>
@@ -41,13 +40,15 @@ $posts = getPosts($db);
 						</form>
 					</div>
 
+					<!-- display existing posts -->
 					<div class="displayPosts">
+						<!-- check if any posts exists -->
 						<?php if ($posts) {
 							foreach ($posts as $post) { ?>
 								<div class="post">
 									<?php require __DIR__."/partials/post.block.php";
-										$comments = getComments($db, $post["id"]);
 										// check if post has comments
+										$comments = getComments($db, $post["id"]);
 										if ($comments) {
 											require __DIR__."/partials/comment.block.php";
 										}
@@ -57,8 +58,6 @@ $posts = getPosts($db);
 					</div>
 
 				</div> <!-- end posts -->
-			</div> <!-- end homeTopWrap -->
-
 
 		</main>
 	</div>

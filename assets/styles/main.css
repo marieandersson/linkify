@@ -1,3 +1,12 @@
+/* typography and colors */
+:root {
+	--headingFont: "Source Sans Pro", sans-serif;
+	--bodyFont: Georgia, serif;
+	--mainBorder: solid 1px #d3d3d3;
+	--primaryColor: #94BBB7;
+}
+
+/* --- wrapping --- */
 body {
 	background: #f1f1f1;
 	overflow-x: hidden;
@@ -41,7 +50,7 @@ header nav a:hover {
 }
 
 .menuSlide {
-	background: #94BBB7;
+	background: var(--primaryColor);
 	height: 100vh;
 	padding: 3em;
 	width: 25%;
@@ -63,12 +72,14 @@ header nav a:hover {
 	padding: 1em;
 }
 
-/* home */
-.homeTopWrap {
+
+/* --- home page --- */
+.homeMain {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
 }
+/* display user info */
 .displayUser {
 	width: 200px;
 	text-align: center;
@@ -87,32 +98,8 @@ header nav a:hover {
 	height: 100%;
 	object-fit: cover;
 }
-.displayPosts {
-	width: 600px;
-}
-.postContent {
- 	margin: 1em;
-}
-/* hidden form for edit posts */
-.editPostForm {
-	display: none;
-}
-.editPostForm form {
-	margin: 1em;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-.editInputField input {
-	height: 2em;
-	width: 300px;
-	margin: 0.5em;
-	background: #fff;
-}
-.editPostFormShow {
-	display: block;
-}
 
+/* new post */
 .newPost {
 	width: 400px;
 	border: solid 1px gray;
@@ -130,26 +117,143 @@ header nav a:hover {
 .newPostFields input[type="submit"] {
 	width: 100px;
 }
+
+/* existing posts */
+.displayPosts {
+	width: 600px;
+}
 .post {
-	border: solid gray 1px;
+	border: var(--mainBorder);
+	border-radius: 5px;
 	margin: 1em 0;
+	background: #fff;
+	padding: 0.5em;
 }
-.post img {
-	width: 100px;
+.postContent h4 {
+	font-family: var(--headingFont);
+	font-size: 1.5em;
+	margin: 0.5em;
+	border-bottom: var(--mainBorder);
 }
-.postContentHide  {
+.postContent a, .postUser a {
+	text-decoration: none;
+	color: #3D3D3D;
+}
+.postContent a:hover, .postUser a:hover {
+	color: #94BBB7;
+}
+.postContent p {
+	font-family: var(--bodyFont);
+	font-size: 0.9em;
+	margin: 0 1em;
+	color: #6c6c6c;
+}
+.postContentHide {
 	display: none;
 }
+.postUser {
+	margin: 0.5em 0;
+	font-size: 0.8em;
+	font-style: italic;
+	color: #6c6c6c;
+	font-family: var(--bodyFont);
+}
+.postButtons {
+	margin: 0.5em;
+	font-family: var(--headingFont);
+	font-size: small;
+}
+.showPostSettings img {
+	width: 20px;
+	margin: 0;
+	border-radius: 50%;
+	transition: transform 0.5s linear;
+}
+.showPostSettings img:hover {
+	cursor: pointer;
+	transform: rotate(90deg);
+}
+.postSettingsButtons {
+	display: none;
+}
+.postSettingsButtonsShow {
+	display: inline-block;
+	margin: 0 0.5em;
+}
+.editButton, .deleteButton {
+	border: var(--mainBorder);
+	height: 2em;
+	margin: 0 0.5em 0 0;
+}
+.inputComment input[type="text"] {
+	height: 2em;
+	width: 80%;
+	background: #f1f1f1;
+	border: var(--mainBorder);
+	padding-left: 0.5em;
+}
+.inputComment input[type="submit"] {
+	border: var(--mainBorder);
+	height: 2em;
+	margin: 0 0.5em;
+}
+.inputComment input[type="submit"]:hover, .editButton:hover, .deleteButton:hover {
+	background: var(--primaryColor);
+	color: #fff;
+	cursor: pointer;
+}
+.inputComment {
+	margin-top: 1em;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+/* hidden form for edit posts */
+.editPostForm {
+	display: none;
+}
+.editPostFormShow {
+	display: block;
+}
+.editPostForm form {
+	font-family: var(--bodyFont);
+	font-size: small;
+	margin: 1em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.editInputField input[type="text"] {
+	height: 2em;
+	width: 80%;
+	margin: 0.5em;
+	background: #f1f1f1;
+	border: var(--mainBorder);
+	padding-left: 0.5em;
+}
+ .editPostForm input[type="submit"] {
+	 border: var(--mainBorder);
+	 height: 2em;
+	 margin: 0;
+	 width: 70px;
+ }
+ .editPostForm input[type="submit"]:hover {
+	 background: var(--primaryColor);
+	 color: #fff;
+	 cursor: pointer;
+ }
+
+/* comments */
 .comments {
-	border: solid gray 1px;
+	border: var(--mainBorder);
 	margin: 1em;
 	font-size: small;
 }
 .comment {
 	margin: 1em 0;
-	border: 1px solid gray;
+	border: var(--mainBorder);
 }
-
 .commentHide {
 	display: none;
 }
@@ -166,21 +270,23 @@ header nav a:hover {
 	display: inline-block;
 }
 .commentReply {
-	border: solid 1px gray;
+	border: var(--mainBorder);
 	margin-left: 2em;
 }
-/* settings */
+
+
+/* --- settings page --- */
 .settingsForm {
 	width: 60%;
 }
 .settingsForm input, textarea {
-	border: solid 1px gray;
+	border: var(--mainBorder);
 	color: gray;
 }
 .placeholderAvatar {
 	width: 200px;
 	height: 200px;
-	border: gray 1px solid;
+	border: var(--mainBorder);
 }
 .placeholderAvatar img {
 	width: 100%;
