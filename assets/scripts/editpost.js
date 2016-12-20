@@ -22,8 +22,8 @@ const editCommentButtons = document.querySelectorAll(".editCommentButton");
 editCommentButtons.forEach (function(editCommentButton) {
 	editCommentButton.addEventListener("click", function (event) {
 		event.preventDefault();
-		let commentElement = editCommentButton.parentElement.parentElement;
-		let commentContent = commentElement.querySelector(".commentContent");
+		let commentElement = editCommentButton.parentElement.parentElement.parentElement;
+		let commentContent = commentElement.querySelector(".commentDiv");
 		commentContent.classList.toggle("commentHide");
 		let editCommentForm = commentElement.querySelector(".editCommentForm");
 		editCommentForm.classList.toggle("editCommentFormShow");
@@ -57,5 +57,21 @@ showPostSettings.forEach (function (showSettingsButton) {
 		let postButtonsForm = showSettingsButton.parentElement;
 		let postSettingsButtons = postButtonsForm.querySelector(".postSettingsButtons");
 		postSettingsButtons.classList.toggle("postSettingsButtonsShow");
+	});
+});
+// show comments
+const showCommentsLink = document.querySelectorAll(".commentLink");
+showCommentsLink.forEach (function (showComments) {
+	showComments.addEventListener("click", function (event) {
+		event.preventDefault();
+		let commentWrap = showComments.parentElement.parentElement;
+		let comments = commentWrap.querySelector(".comments");
+		comments.classList.toggle("commentsShow");
+		let readOrClose = showComments.querySelector(".readOrClose");
+		if (comments.classList.contains("commentsShow")) {
+			readOrClose.innerHTML = "close";
+		} else {
+			readOrClose.innerHTML = "read";
+		}
 	});
 });
