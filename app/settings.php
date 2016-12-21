@@ -21,6 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			// update username
 			if(!empty($_POST["editUsername"]) && $userInfo["username"] !== $_POST["editUsername"]) {
 				updateUser($db, $userInfo["id"], $_POST["editUsername"], "username");
+				header ("Location: " . $_SERVER["REQUEST_URI"]);
+				exit();
 			}
 			//update email
 			if(!empty($_POST["editEmail"]) && $userInfo["email"] !== $_POST["editEmail"]) {
@@ -28,11 +30,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 					$updateErrorMessage = "You must enter a valid email.";
 				} else {
 					updateUser($db, $userInfo["id"], $_POST["editEmail"], "email");
+					header ("Location: " . $_SERVER["REQUEST_URI"]);
+					exit();
 				}
 			}
 			//update name
 			if (!empty($_POST["editFullName"]) && $userInfo["name"] !== $_POST["editFullName"]) {
 				updateUser($db, $userInfo["id"], $_POST["editFullName"], "name");
+				header ("Location: " . $_SERVER["REQUEST_URI"]);
+				exit();
 			}
 			// update password
 			if (!empty($_POST["editPassword"])) {
@@ -41,11 +47,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 				} else {
 					$newPassword = password_hash($_POST["editPassword"], PASSWORD_BCRYPT);
 					updateUser($db, $userInfo["id"], $newPassword, "password");
+					header ('Location: ' . $_SERVER['REQUEST_URI']);
+					exit();
 				}
 			}
 			//update about
 			if ($userInfo["about"] !== $_POST["about"]) {
-				updateUser($db, $userInfo["id"], $_POST["editPassword"], "about");
+				updateUser($db, $userInfo["id"], $_POST["about"], "about");
+				header ("Location: " . $_SERVER["REQUEST_URI"]);
+				exit();
 			}
 			//update avatar
 			if(!empty($_FILES["avatar"]["name"])) {
@@ -68,10 +78,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 					$name = uniqid() . "." . $ext;
 					move_uploaded_file($_FILES["avatar"]["tmp_name"], __DIR__."/../assets/images/users/{$userInfo['id']}/$name");
 					updateUser($db, $userInfo["id"], $name, "avatar");
+					header ("Location: " . $_SERVER["REQUEST_URI"]);
+					exit();
 				}
 			}
 		}
 	}
-	header ('Location: ' . $_SERVER['REQUEST_URI']);
-  exit();
 }

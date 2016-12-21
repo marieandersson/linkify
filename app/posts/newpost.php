@@ -47,8 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		} else {
 			// save new post in database
 			saveNewPost($db);
+			header ("Location: " . $_SERVER["REQUEST_URI"]);
+			exit();
 		}
 	}
-	header ('Location: ' . $_SERVER['REQUEST_URI']);
-  exit();
 }

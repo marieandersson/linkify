@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$_SESSION["login"]["id"] = $id;
 	    }
 	  }
-		header ('Location: ' . $_SERVER['REQUEST_URI']);
+		header ("Location: " . $_SERVER["REQUEST_URI"]);
 		exit();
 	}
 }

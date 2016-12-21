@@ -34,6 +34,8 @@ function editPost($db) {
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	if (isset($_POST["deletePost"])) {
 		deletePost($db);
+		header ("Location: " . $_SERVER["REQUEST_URI"]);
+		exit();
 	}
 	if (isset($_POST["saveEdit"])) {
 		foreach($_POST as $input=>$value) {
@@ -48,8 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			$editMessage = "Your changes wasn't saved. Incorrect url format.";
 		} else {
 			editPost($db);
+			header ("Location: " . $_SERVER["REQUEST_URI"]);
+			exit();
 		}
 	}
-	header ('Location: ' . $_SERVER['REQUEST_URI']);
-  exit();
 }

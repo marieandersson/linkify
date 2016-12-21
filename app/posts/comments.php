@@ -49,6 +49,8 @@ function handleSubmits($db) {
 			return;
 		} else {
 			saveNewComment($db);
+			header ("Location: " . $_SERVER["REQUEST_URI"]);
+			exit();
 		}
 	}
 	if (isset($_POST["deleteComment"])) {
@@ -62,6 +64,8 @@ function handleSubmits($db) {
 			return;
 		} else {
 			editComment($db);
+			header ("Location: " . $_SERVER["REQUEST_URI"]);
+			exit();
 		}
 	}
 	if (isset($_POST["replySubmit"])) {
@@ -73,8 +77,8 @@ function handleSubmits($db) {
 		} else {
 			$replyTo = $_POST["commentId"];
 			saveNewComment($db, $replyTo);
+			header ("Location: " . $_SERVER["REQUEST_URI"]);
+			exit();
 		}
 	}
-	header ('Location: ' . $_SERVER['REQUEST_URI']);
-  exit();
 }

@@ -27,18 +27,7 @@ $posts = getPosts($db);
 				<div class="posts">
 
 					<!-- write new post -->
-					<div class="newPost">
-						<form action="index.php" method="post">
-							<h4>Share a link</h4>
-							<div class="postMessage"><?php if(isset($postMessage)) echo $postMessage; ?></div>
-							<div class="newPostFields">
-								<input type="text" name="subject" placeholder="Subject">
-								<input type="text" name="url" placeholder="Link url">
-								<input type="text" name="description" placeholder="Short description" maxlength="255">
-								<input type="submit" name="postLink" value="Share">
-							</div>
-						</form>
-					</div>
+					<?php require __DIR__."/partials/newpost.block.php";	?>
 
 					<!-- display existing posts -->
 					<div class="displayPosts">
@@ -46,13 +35,7 @@ $posts = getPosts($db);
 						<?php if ($posts) {
 							foreach ($posts as $post) { ?>
 								<div class="post">
-									<?php require __DIR__."/partials/post.block.php";
-										// check if post has comments
-										$comments = getComments($db, $post["id"]);
-										if ($comments) {
-											require __DIR__."/partials/comment.block.php";
-										}
-									?>
+									<?php require __DIR__."/partials/post.block.php";	?>
 								</div>
 						<?php }} ?>
 					</div>

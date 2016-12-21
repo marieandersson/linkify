@@ -120,7 +120,48 @@ header nav a:hover {
 
 /* existing posts */
 .displayPosts {
-	width: 600px;
+	width: 700px;
+}
+.postAndVoteWrap {
+	width: 700px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+.voteWrap {
+	padding: 1em 0;
+	width: 8%;
+	border-right: var(--mainBorder);
+	text-align: center;
+}
+.postWrap {
+	width: 92%;
+	padding: 1em;
+}
+.up, .down {
+	display: block;
+	margin: auto;
+	width: 1.2em;
+	height: 1.2em;
+	border-top: gray 3px solid;
+	border-left: gray 3px solid;
+	border-radius: 3px;
+}
+.up {
+	transform: rotate(45deg);
+}
+.down {
+	transform: rotate(225deg);
+}
+.up:hover {
+	border-top: lightgreen 3px solid;
+	border-left: lightgreen 3px solid;
+	cursor: pointer;
+}
+.down:hover {
+	border-top: lightpink 3px solid;
+	border-left: lightpink 3px solid;
+	cursor: pointer;
 }
 .post {
 	border: var(--mainBorder);
@@ -337,6 +378,31 @@ header nav a:hover {
 	align-items: center;
 }
 
+/* --- profile page --- */
+.profileWrap {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+.displayUserProfile {
+	width: 200px;
+	margin: 0 2em;
+	text-align: center;
+}
+.displayUserProfile h4, h5 {
+	margin: 0;
+}
+.displayUserProfile figure {
+	border: 1px solid gray;
+	width: 200px;
+	height: 200px;
+	margin: 0 auto;
+}
+.displayUserProfile figure img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
 
 /* --- settings page --- */
 .settingsForm {

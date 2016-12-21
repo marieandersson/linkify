@@ -7,19 +7,20 @@ $posts = getPosts($db);
 ?>
 
 	<div class="content">
-		<?php if ($posts) {
-			foreach ($posts as $post) { ?>
-				<div class="post">
-					<?php require __DIR__."/partials/post.block.php";
-						// check if post has comments
-						$comments = getComments($db, $post["id"]);
-						if ($comments) {
-							require __DIR__."/partials/comment.block.php";
-						}
-					?>
-				</div>
-		<?php }} ?>
-		<p>Put top ten most voted links on start page</p>
+		<div class="displayPosts">
+			<?php if ($posts) {
+				foreach ($posts as $post) { ?>
+					<div class="post">
+						<?php require __DIR__."/partials/post.block.php";
+							// check if post has comments
+							$comments = getComments($db, $post["id"]);
+							if ($comments) {
+								require __DIR__."/partials/comment.block.php";
+							}
+						?>
+					</div>
+			<?php }} ?>
+		</div>
 	</div>
 </div> <!-- end page -->
 
