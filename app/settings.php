@@ -72,4 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			}
 		}
 	}
+	header ('Location: ' . $_SERVER['REQUEST_URI']);
+  exit();
 }

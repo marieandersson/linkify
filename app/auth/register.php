@@ -90,8 +90,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			// put user info in session to login user
 			$id = $db->lastInsertId();
 			$_SESSION["login"]["id"] = $id;
-			header("location:index.php");
 	    }
 	  }
+		header ('Location: ' . $_SERVER['REQUEST_URI']);
+		exit();
 	}
 }

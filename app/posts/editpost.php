@@ -50,4 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			editPost($db);
 		}
 	}
+	header ('Location: ' . $_SERVER['REQUEST_URI']);
+  exit();
 }

@@ -50,11 +50,9 @@ function handleSubmits($db) {
 		} else {
 			saveNewComment($db);
 		}
-		return;
 	}
 	if (isset($_POST["deleteComment"])) {
 		deleteComment($db);
-		return;
 	}
 	if (isset($_POST["saveEditComment"])) {
 		// escape input to avoid exploit attempts
@@ -65,7 +63,6 @@ function handleSubmits($db) {
 		} else {
 			editComment($db);
 		}
-		return;
 	}
 	if (isset($_POST["replySubmit"])) {
 		// escape input to avoid exploit attempts
@@ -77,8 +74,9 @@ function handleSubmits($db) {
 			$replyTo = $_POST["commentId"];
 			saveNewComment($db, $replyTo);
 		}
-		return;
 	}
+	header ('Location: ' . $_SERVER['REQUEST_URI']);
+  exit();
 }
 
 function getComments($db, $postId) {
