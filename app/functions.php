@@ -55,3 +55,15 @@ function getPosts($db) {
 	$posts = $getPostsStatement->fetchAll(PDO::FETCH_ASSOC);
 	return $posts;
 }
+
+function getComments($db, $postId) {
+	$getCommentsQuery = "SELECT comments.id, comments.user_id, comments.comment, comments.published, comments.reply_to,
+	users.name, users.avatar FROM comments INNER JOIN users ON comments.user_id = users.id WHERE comments.post_id = '{$postId}'";
+	$getCommentsStatement = $db->query($getCommentsQuery);
+
+	if ($getCommentsStatement->rowCount() == 0 ) {
+		 return false;
+	}
+	$comments = $getCommentsStatement->fetchAll(PDO::FETCH_ASSOC);
+	return $comments;
+}

@@ -17,7 +17,7 @@
 					</form>
 				</div>
 
-				<?php if ($comment["user_id"] == $_SESSION["login"]["id"]) { ?>
+				<?php if (checkLogin($db) && $comment["user_id"] == $_SESSION["login"]["id"]) { ?>
 				<form action="index.php" method="post">
 					<div class="postSettingsButtons">
 						<input type="hidden" name="commentId" value="<?=$comment["id"]?>">
@@ -44,7 +44,7 @@
 							</form>
 						</div>
 
-						<?php if ($reply["user_id"] == $_SESSION["login"]["id"]) { ?>
+						<?php if (checkLogin($db) && $reply["user_id"] == $_SESSION["login"]["id"]) { ?>
 						<form action="index.php" method="post">
 							<div class="postSettingsButtons">
 								<input type="hidden" name="commentId" value="<?=$reply["id"]?>">
@@ -55,8 +55,8 @@
 						</form>
 						<?php } ?>
 					</div>
-			<?php }} ?>
-
+			<?php }}
+			 if (checkLogin($db)) { ?>
 			<div class="ReplyForm">
 				<form action="index.php" method="post">
 					<input type="hidden" name="commentId" value="<?=$comment["id"]?>">
@@ -68,5 +68,6 @@
 					<button class="replyButton">Reply to this</button>
 				</form>
 			</div>
+			<?php } ?>
 	<?php }} ?>
 </div>

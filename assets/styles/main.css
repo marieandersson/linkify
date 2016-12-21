@@ -147,7 +147,7 @@ header nav a:hover {
 .post h4 a:hover, .postUser a:hover {
 	color: #94BBB7;
 }
-.postContent p {
+.postContent p, .loginLink {
 	font-family: var(--bodyFont);
 	font-size: 0.9em;
 	margin: 0 1em;

@@ -11,7 +11,7 @@
 	</div>
 
 	<!-- edit form shown on button click -->
-	<?php if ($post["user_id"] == $_SESSION["login"]["id"]) { ?>
+	<?php if (checkLogin($db) && $post["user_id"] == $_SESSION["login"]["id"]) { ?>
 		<div class="editPostForm">
 			<form action="index.php" method="post">
 				<input type="hidden" name="postIdForEdit" value="<?=$post["id"]?>">
@@ -34,7 +34,7 @@
 
 	<!-- edit, delete and comment -->
 	<div class="postButtons">
-		<?php if ($post["user_id"] == $_SESSION["login"]["id"]) { ?>
+		<?php if (checkLogin($db) && $post["user_id"] == $_SESSION["login"]["id"]) { ?>
 		<form action="index.php" method="post">
 			<div class="postSettingsButtons">
 				<button class="editButton">Edit post</button>
@@ -46,6 +46,7 @@
 	</div>
 </div>
 
+<?php if (checkLogin($db)) { ?>
 <form action="index.php" method="post">
 	<div class="inputComment">
 		<input type="hidden" name="postId" value="<?=$post["id"]?>">
@@ -54,3 +55,6 @@
 	</div>
 	<!-- user only able to edit or delete own posts -->
 </form>
+<?php } else { ?>
+	<p class="loginLink">Wanna discuss this? Please log in first. (Link to login)</p>
+<?php } ?>
