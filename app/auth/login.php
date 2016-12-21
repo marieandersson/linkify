@@ -68,15 +68,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	  // output error messages if  a field is empty
 	  if ($result == NO_USERNAME) {
-	    $loginMessage = "Fill out username or email.";
+	    $_SESSION["error"] = "Fill out username or email.";
 	  } else if ($result == NO_PASSWORD) {
-	    $loginMessage = "Fill out password.";
+	    $_SESSION["error"] = "Fill out password.";
 	  } else {
 	    // call function to check if user exists
 	    $userInfo = checkUser($db, $user, $password);
 	    // output error message if user not found
 	    if ($userInfo == USER_NOT_FOUND) {
-	      $loginMessage = "Username, email or password is incorrect.";
+	      $_SESSION["error"] = "Username, email or password is incorrect.";
 	    } else {
 	      // put users info in session array and relocate to index, if log in succeeds
 	      $_SESSION["login"]["id"] = $userInfo["id"];

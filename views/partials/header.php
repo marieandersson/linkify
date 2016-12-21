@@ -1,5 +1,7 @@
 <?php
 	$pageTitle = (isset($pageTitle)) ? $pageTitle:"Linkify";
+	$error = $_SESSION["error"] ?? "";
+	$message = $_SESSION["message"] ?? "";
 ?>
 
 <!DOCTYPE html>

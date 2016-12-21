@@ -67,3 +67,11 @@ function getComments($db, $postId) {
 	$comments = $getCommentsStatement->fetchAll(PDO::FETCH_ASSOC);
 	return $comments;
 }
+// sort posts and comments by date
+function sortByDate($postA, $postB) {
+	return $postB["published"] <=> $postA["published"];
+}
+
+function sortPostsByVotes() {
+
+}

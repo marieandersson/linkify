@@ -71,6 +71,7 @@
 		// check if post has comments
 		$comments = getComments($db, $post["id"]);
 		if ($comments) {
+			usort($comments, "sortByDate");
 			require __DIR__."/../partials/comment.block.php";
 		} ?>
 	</div>

@@ -35,6 +35,7 @@ $posts = getPosts($db);
 							$userPosts[] = $post;
 						}
 					}
+					usort($userPosts, "sortByDate");
 					foreach ($userPosts as $post) { ?>
 						<div class="post">
 							<?php require __DIR__."/views/partials/post.block.php";	?>

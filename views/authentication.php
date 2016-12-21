@@ -9,6 +9,7 @@ $posts = getPosts($db);
 	<div class="content">
 		<div class="displayPosts">
 			<?php if ($posts) {
+				usort($posts, "sortByDate");
 				foreach ($posts as $post) { ?>
 					<div class="post">
 						<?php require __DIR__."/partials/post.block.php";
@@ -32,7 +33,11 @@ $posts = getPosts($db);
 		<div class="loginWrap">
 			<h3>Log in</h3>
 			<form action="index.php" method="post" class="login">
-				<div class="authMessage"><?php if(isset($loginMessage)) echo $loginMessage; ?></div>
+				<?php if ($error) { ?>
+					<div class="error">
+							<?= $error; ?>
+					</div>
+				<?php unset($_SESSION["error"]); } ?>
 				<input type="text" name="username" placeholder="Email or username" value="<?=isset($_POST["username"]) ? $_POST["username"] : ''; ?>">
 				<input type="password" name="password" placeholder="Password">
 				<input type="checkbox" name="remember" checked><label for="remember">Remember me</label>
@@ -43,7 +48,11 @@ $posts = getPosts($db);
 		<div class="registerWrap">
 			<h3>Register</h3>
 			<form action="index.php" method="post" class="register">
-				<div class="authMessage"><?php if(isset($regMessage)) echo $regMessage; ?></div>
+				<?php if ($error) { ?>
+					<div class="error">
+							<?= $error; ?>
+						</div>
+				<?php unset($_SESSION["error"]); } ?>
 				<input type="text" name="fullName" placeholder="Full name" value="<?=isset($_POST["fullName"]) ? $_POST["fullName"] : ''; ?>">
 	      <input type="text" name="usernameReg" placeholder="Username" value="<?=isset($_POST["usernameReg"]) ? $_POST["usernameReg"] : ''; ?>">
 				<input type="email" name="emailReg" placeholder="Email" value="<?=isset($_POST["emailReg"]) ? $_POST["emailReg"] : ''; ?>">

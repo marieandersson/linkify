@@ -55,11 +55,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	  // output error messages if something is wrong
 	  if ($result == MISSING_INPUT) {
-	    $regMessage = "Please fill out all fields.";
+	    $_SESSION["error"] = "Please fill out all fields.";
 	  } else if ($result == INVALID_EMAIL) {
-	    $regMessage = "Incorrect email format.";
+	    $_SESSION["error"] = "Incorrect email format.";
 	  } else if ($result == TERMS_NOT_ACCEPTED){
-	    $regMessage = "You have to accept our terms.";
+	    $_SESSION["error"] = "You have to accept our terms.";
 	  } else {
 	    // prepare user info for database
 	    $fullName = $_POST["fullName"];
@@ -72,9 +72,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	    $result = checkEmailAndUsername($db, $email, $username);
 
 	    if ($result ==  EMAIL_ALREADY_REG) {
-	      $regMessage = "Email is already registered.";
+	      $_SESSION["error"] = "Email is already registered.";
 	    } else if ($result ==  USERNAME_TAKEN)  {
-				$regMessage = "Username is already taken, pick another one.";
+				$_SESSION["error"] = "Username is already taken, pick another one.";
 			} else {
 	    // store new user data in database
 			$insertUserIntoDb = "INSERT INTO users (name, username, email, password)

@@ -72,7 +72,22 @@ header nav a:hover {
 	padding: 1em;
 }
 
-
+/* Error & Message CSS */
+.error, .settingsError {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  line-height: 50px;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+.settingsError {
+	background: black; /* change color */
+}
 /* --- home page --- */
 .homeMain {
 	display: flex;

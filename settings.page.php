@@ -10,7 +10,11 @@ $user = getUserInfo($db);
 		<h2>Account settings</h2>
 
 		<form action="settings.page.php" method="post" class="settingsForm" enctype="multipart/form-data">
-			<div class="updateMessage"><?php if(isset($updateErrorMessage)) echo $updateErrorMessage; ?></div>
+			<?php if ($error) { ?>
+				<div class="settingsError">
+						<?= $error; ?>
+				</div>
+			<?php unset($_SESSION["error"]); } ?>
 			<div class="change">
 				<h3>Change username</h3>
 				<label for="editUsername">Username</label>
