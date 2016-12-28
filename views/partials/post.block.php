@@ -2,9 +2,12 @@
 <div class="postAndVoteWrap">
 
 	<div class="voteWrap">
-		<span class="up"></span>
-		<span class="votes">0</span>
-		<span class="down"></span>
+		<form action ="" method="post">
+			<input type="hidden" name="postIdForVote" value="<?=$post["id"]?>">
+			<input type="submit" class="up" name="up" value="">
+			<span class="votes">0</span>
+			<input type="submit" class="down" name="down" value="">
+		</form>
 	</div>
 
 	<div class="postWrap">

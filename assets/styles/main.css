@@ -72,7 +72,7 @@ header nav a:hover {
 	padding: 1em;
 }
 
-/* Error & Message CSS */
+/* Error messages */
 .error, .settingsError {
   width: 100%;
   height: 50px;
