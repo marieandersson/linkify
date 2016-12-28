@@ -20,7 +20,7 @@ function validateCookie($db) {
 	if ($getCookieStatement->rowCount() > 0 ) {
      return $userId;
   }
-  return false;
+  return NULL;
 }
 
 function checkLogin($db) {
@@ -50,7 +50,7 @@ function getPosts($db) {
 	$getPostsStatement = $db->query($getPostsQuery);
 
 	if ($getPostsStatement->rowCount() == 0 ) {
-     return false;
+     return NULL;
   }
 	$posts = $getPostsStatement->fetchAll(PDO::FETCH_ASSOC);
 	return $posts;
@@ -62,7 +62,7 @@ function getComments($db, $postId) {
 	$getCommentsStatement = $db->query($getCommentsQuery);
 
 	if ($getCommentsStatement->rowCount() == 0 ) {
-		 return false;
+		 return NULL;
 	}
 	$comments = $getCommentsStatement->fetchAll(PDO::FETCH_ASSOC);
 	return $comments;
