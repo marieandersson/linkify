@@ -3,6 +3,7 @@ require __DIR__."/autoload.php";
 require __DIR__."/app/posts/newpost.php";
 require __DIR__."/app/posts/editpost.php";
 require __DIR__."/app/posts/comments.php";
+require __DIR__."/app/posts/votes.php";
 require __DIR__."/views/partials/header.php";
 $user = getUserInfo($db);
 $posts = getPosts($db);
