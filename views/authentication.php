@@ -12,13 +12,7 @@ $posts = getPosts($db);
 				usort($posts, "sortByDate");
 				foreach ($posts as $post) { ?>
 					<div class="post">
-						<?php require __DIR__."/partials/post.block.php";
-							// check if post has comments
-							$comments = getComments($db, $post["id"]);
-							if ($comments) {
-								require __DIR__."/partials/comment.block.php";
-							}
-						?>
+						<?php require __DIR__."/partials/post.block.php" ?>
 					</div>
 			<?php }} ?>
 		</div>
