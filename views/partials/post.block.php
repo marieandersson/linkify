@@ -5,10 +5,9 @@
 		<?php $votes = countVotes($db, $post["id"]) ?>
 		<form action ="" method="post">
 			<input type="hidden" name="postIdForVote" value="<?=$post["id"]?>">
-			<input type="submit" class="up" name="up" value="">
-			<span class="votes">
-				<?= (!$votes["sum_votes"] == NULL) ? $votes["sum_votes"] : 0 ?></span>
-			<input type="submit" class="down" name="down" value="">
+			<input type="submit" class="up<?=(!checkLogin($db)) ? " notLoggedIn" : ""; ?>" name="up" value="">
+			<span class="votes"><?= (!$votes["sum_votes"] == NULL) ? $votes["sum_votes"] : 0 ?></span>
+			<input type="submit" class="down<?=(!checkLogin($db)) ? " notLoggedIn" : ""; ?>" name="down" value="">
 		</form>
 	</div>
 
@@ -24,7 +23,7 @@
 				</div>
 			</div>
 
-			<!-- edit form shown on button click -->
+			<!-- edit form shown on button click, only to logged in user on own posts -->
 			<?php if (checkLogin($db) && $post["user_id"] == $_SESSION["login"]["id"]) { ?>
 				<div class="editPostForm">
 					<form action="index.php" method="post">
