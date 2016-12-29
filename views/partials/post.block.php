@@ -6,7 +6,8 @@
 		<form action ="" method="post">
 			<input type="hidden" name="postIdForVote" value="<?=$post["id"]?>">
 			<input type="submit" class="up" name="up" value="">
-			<span class="votes"><?= ($votes) ? $votes["sum_votes"] : 0 ?>0</span>
+			<span class="votes">
+				<?= (!$votes["sum_votes"] == NULL) ? $votes["sum_votes"] : 0 ?></span>
 			<input type="submit" class="down" name="down" value="">
 		</form>
 	</div>

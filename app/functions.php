@@ -79,9 +79,7 @@ function sortPostsByVotes() {
 function countVotes($db, $postId) {
 	$countVotesQuery = "SELECT SUM(vote) AS sum_votes FROM votes WHERE post_id = '{$postId}'";
 	$countVotesStatement = $db->query($countVotesQuery);
-	if ($countVotesStatement->rowCount() == 0 ) {
-		return NULL;
-	}
+
 	$votes = $countVotesStatement->fetch(PDO::FETCH_ASSOC);
 	return $votes;
 }
