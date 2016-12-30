@@ -1,6 +1,5 @@
 <?php
 require __DIR__."/autoload.php";
-require __DIR__."/app/settings.php";
 $pageTitle = "Settings";
 require __DIR__."/views/partials/header.php";
 $user = getUserInfo($db);
@@ -9,7 +8,7 @@ $user = getUserInfo($db);
 	<div class="content">
 		<h2>Account settings</h2>
 
-		<form action="settings.page.php" method="post" class="settingsForm" enctype="multipart/form-data">
+		<form action="app/settings.php" method="post" class="settingsForm" enctype="multipart/form-data">
 			<?php if ($error) { ?>
 				<div class="settingsError">
 						<?= $error; ?>
