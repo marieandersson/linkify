@@ -1,5 +1,4 @@
 <?php
-require __DIR__."/../app/posts/newpost.php";
 require __DIR__."/../app/posts/editpost.php";
 require __DIR__."/../app/posts/comments.php";
 require __DIR__."/../app/posts/votes.php";

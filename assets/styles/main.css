@@ -73,11 +73,10 @@ header nav a:hover {
 }
 
 /* Error messages */
-.error, .settingsError {
+.error, .settingsError, .message {
   width: 100%;
   height: 50px;
   position: fixed;
-  top: 0;
   left: 0;
   line-height: 50px;
   color: #fff;
@@ -85,7 +84,13 @@ header nav a:hover {
   font-size: 14px;
   font-weight: bold;
 }
-.settingsError {
+/* login and reg errors */
+.error {
+	top: 0;
+}
+/* settings and post errors */
+.settingsError, .message {
+	bottom: 0;
 	background: black; /* change color */
 }
 /* --- home page --- */

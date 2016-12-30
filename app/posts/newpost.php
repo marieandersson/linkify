@@ -1,4 +1,5 @@
 <?php
+require __DIR__.'/../../autoload.php';
 
 define("POST_SUCCESS", "10");
 define("MISSING_POST_INPUT", "11");
@@ -41,13 +42,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		$result = validateNewPostFields($_POST["url"]);
 
 		if ($result == MISSING_POST_INPUT) {
-			$postMessage = "You must fill out all fields";
+			$_SESSION["message"] = "You must fill out all fields";
+			header("Location: /");
+			exit();
 		} else if ($result == INVALID_URL) {
-			$postMessage = "Incorrect url format.";
+			$_SESSION["message"] = "Incorrect url format.";
+			header("Location: /");
+			exit();
 		} else {
 			// save new post in database
 			saveNewPost($db);
-			header ("Location: " . $_SERVER["REQUEST_URI"]);
+			header("Location: /");
 			exit();
 		}
 	}

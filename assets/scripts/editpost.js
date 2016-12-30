@@ -80,6 +80,6 @@ const voteArrows = document.querySelectorAll(".notLoggedIn");
 voteArrows.forEach(function (arrow) {
   arrow.addEventListener("click", function (event) {
     event.preventDefault();
-    console.log("log in!");
+    document.body.classList.add("navigationOpen");
   });
 });

@@ -1,5 +1,14 @@
+
+<?php
+// if error message
+	if ($message) { ?>
+	<div class="message">
+		<?= $message; ?>
+	</div>
+<?php unset($_SESSION["message"]); } ?>
+
 <div class="newPost">
-	<form action="<?=($_SERVER['PHP_SELF'])?>" method="post">
+	<form action="app/posts/newpost.php" method="post">
 		<h4>Share a link</h4>
 		<div class="postMessage"><?php if(isset($postMessage)) echo $postMessage; ?></div>
 		<div class="newPostFields">
