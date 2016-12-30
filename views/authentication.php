@@ -19,6 +19,8 @@ $posts = getPosts($db);
 <!-- forms slide in -->
 <div class="menuSlide">
 
+	<p class="menuLink close">X</p>
+
 	<div class="forms">
 
 		<div class="loginWrap">

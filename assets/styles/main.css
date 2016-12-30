@@ -16,9 +16,6 @@ body {
 	float: left;
 	transition: width 0.4s linear;
 }
-.navigationOpen .page {
-	width: 75%;
-}
 
 .content {
 	padding: 1em 2em;
@@ -52,8 +49,8 @@ header nav a:hover {
 .menuSlide {
 	background: var(--primaryColor);
 	height: 100vh;
-	padding: 3em;
-	width: 25%;
+	padding: 1em;
+	width: 300px;
 	display: block;
 	position: absolute;
 	top: 0;
@@ -64,7 +61,21 @@ header nav a:hover {
 .navigationOpen .menuSlide {
 	transform: translateX(0);
 }
-
+.close {
+	border: #fff solid 1px;
+	display: inline-block;
+	color: #fff;
+	padding: 0.5em;
+	border-radius: 50%;
+	font-size: 1em;
+	width: 40px;
+	height: 40px;
+	margin: 0 0 3em 0;
+	text-align: center;
+}
+.close:hover {
+	cursor: pointer;
+}
 .forms input {
 	background: #fff;
 }
