@@ -20,7 +20,17 @@
 				<p><?=$post["description"]?></p>
 				<!-- user content -->
 				<div class="postUser">
-					<p>Posted by <a href="#"><?=$post["name"]?></a> on <?=date('jS \of M h:i', strtotime($post["published"]))?>.</p>
+					<p>Posted by
+						<?php // name only link if user is logged in
+						if (checkLogin($db)) { ?>
+							<a href="profile.page.php/?user=<?=$post["username"]?>">
+						<?php }
+						echo $post["name"];
+						if (checkLogin($db)) { ?>
+							</a>
+						<?php } ?>
+						on <?=date('jS \of M h:i', strtotime($post["published"]))?>.
+					</p>
 				</div>
 			</div>
 

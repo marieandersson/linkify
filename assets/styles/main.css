@@ -1,4 +1,4 @@
-/* typography and colors */
+/* --- typography and colors --- */
 :root {
 	--headingFont: "Source Sans Pro", sans-serif;
 	--bodyFont: Georgia, serif;
@@ -21,6 +21,7 @@ body {
 	padding: 1em 2em;
 }
 
+/* --- header --- */
 header {
 	border-bottom: solid #94BBB7 1px;
 	padding: 1em;
@@ -38,14 +39,15 @@ header h1 a {
 	text-decoration: none;
 	color: #000;
 }
-header nav a {
-	text-decoration: none;
+header nav p {
 	color: #94BBB7;
 }
-header nav a:hover {
-	color: #000;
+header nav p:hover {
+	color: #010101;
+	cursor: pointer;
 }
 
+/* --- slide navigation --- */
 .menuSlide {
 	background: var(--primaryColor);
 	height: 100vh;
@@ -83,7 +85,7 @@ header nav a:hover {
 	padding: 1em;
 }
 
-/* Error messages */
+/* --- Error messages --- */
 .error, .settingsError, .message {
   width: 100%;
   height: 50px;
@@ -104,6 +106,7 @@ header nav a:hover {
 	bottom: 0;
 	background: black; /* change color */
 }
+
 /* --- home page --- */
 .homeMain {
 	display: flex;
@@ -132,21 +135,35 @@ header nav a:hover {
 
 /* new post */
 .newPost {
-	width: 400px;
-	border: solid 1px gray;
+	width: 700px;
+	border: var(--mainBorder);
+	background: #fff;
+}
+.newPost h4 {
+	font-family: var(--headingFont);
+	font-size: 1.5em;
+	margin: 0.5em;
+	border-bottom: var(--mainBorder);
 }
 .newPostFields {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
-.newPostFields input {
+.newPostFields input[type="text"] {
 	height: 2em;
-	margin: 0.5em;
+	margin: 0.5em auto;
 	background: #fff;
+	width: 80%;
+	background: #f1f1f1;
+	border: var(--mainBorder);
+	padding-left: 0.5em;
+	font-size: small;
 }
 .newPostFields input[type="submit"] {
 	width: 100px;
+	border: var(--mainBorder);
+	margin: 0.5em auto;
 }
 
 /* existing posts */

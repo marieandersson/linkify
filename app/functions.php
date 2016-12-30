@@ -101,3 +101,10 @@ function countVotes($db, $postId) {
 	$votes = $countVotesStatement->fetch(PDO::FETCH_ASSOC);
 	return $votes;
 }
+// get info for other users profile pages
+function getProfileInfo($db, $profileUsername) {
+	$getProfileInfoQuery = "SELECT * FROM users WHERE username = '{$profileUsername}' LIMIT 1";
+	$getProfileInfoStatement = $db->query($getProfileInfoQuery);
+	$profileInfo = $getProfileInfoStatement->fetch(PDO::FETCH_ASSOC);
+	return $profileInfo;
+}

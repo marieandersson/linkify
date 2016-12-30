@@ -81,6 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	    } else {
 	      // put users info in session array and relocate to index, if log in succeeds
 	      $_SESSION["login"]["id"] = $userInfo["id"];
+				$_SESSION["login"]["username"] = $userInfo["username"];
 	    	if (isset($_POST["remember"])) {
 	      	createLoginCookie($db, $userInfo["id"]);
 	      }

@@ -16,15 +16,15 @@
 <body>
 	<div class="page">
 		<header>
-			<h1><a href="index.php">Linkify</a></h1>
+			<h1><a href="/index.php">Linkify</a></h1>
 
 			<?php if (!checkLogin($db)) { ?>
 				<nav class="auth">
-					<a href="#" class="menuLink">Log in</a>
+					<p class="menuLink">Log in</p>
 				</nav>
 			<?php } else { ?>
 				<nav class="menuNav">
-					<a href="#" class="menuLink">Menu</a>
+					<p class="menuLink">Menu</p>
 				</nav>
 
 			<?php }; ?>
