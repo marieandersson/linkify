@@ -1,7 +1,4 @@
 <?php
-require __DIR__.'/../app/auth/register.php';
-require __DIR__.'/../app/auth/login.php';
-
 require __DIR__."/partials/header.php";
 $posts = getPosts($db);
 ?>
@@ -26,7 +23,7 @@ $posts = getPosts($db);
 
 		<div class="loginWrap">
 			<h3>Log in</h3>
-			<form action="index.php" method="post" class="login">
+			<form action="app/auth/login.php" method="post" class="login">
 				<?php if ($error) { ?>
 					<div class="error">
 							<?= $error; ?>
@@ -41,7 +38,7 @@ $posts = getPosts($db);
 
 		<div class="registerWrap">
 			<h3>Register</h3>
-			<form action="index.php" method="post" class="register">
+			<form action="app/auth/register.php" method="post" class="register">
 				<?php if ($error) { ?>
 					<div class="error">
 							<?= $error; ?>

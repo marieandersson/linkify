@@ -1,4 +1,5 @@
 <?php
+require __DIR__."/../../autoload.php";
 
 // validation error codes defined as constants
 define("LOGIN_SUCCESS", "6");
@@ -85,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	      }
 			}
     }
-		header ("Location: " . $_SERVER["REQUEST_URI"]);
+		header("Location: /");
 	  exit();
   }
 }
