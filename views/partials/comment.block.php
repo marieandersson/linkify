@@ -10,7 +10,7 @@
 				</div>
 				<!-- edit comment form shown on click -->
 				<div class="editCommentForm">
-					<form action="index.php" method="post">
+					<form action="app/posts/comments.php" method="post">
 						<input type="hidden" name="postIdForEditComment" value="<?=$comment["id"]?>">
 						<input type="text" name="editComment" value="<?=$comment["comment"]?>">
 						<input type="submit" name="saveEditComment" value="Save" class="saveEdit">
@@ -18,7 +18,7 @@
 				</div>
 
 				<?php if (checkLogin($db) && $comment["user_id"] == $_SESSION["login"]["id"]) { ?>
-				<form action="index.php" method="post">
+				<form action="app/posts/comments.php" method="post">
 					<div class="postSettingsButtons">
 						<input type="hidden" name="commentId" value="<?=$comment["id"]?>">
 						<button class="editCommentButton">Edit</button>
@@ -37,7 +37,7 @@
 							<p class="commentPublished">Posted on <?=date('jS \of M h:i', strtotime($reply["published"]))?></p>
 						</div>
 						<div class="editCommentForm">
-							<form action="index.php" method="post">
+							<form action="app/posts/comments.php" method="post">
 								<input type="hidden" name="postIdForEditComment" value="<?=$reply["id"]?>">
 								<input type="text" name="editComment" value="<?=$reply["comment"]?>">
 								<input type="submit" name="saveEditComment" value="Save" class="saveEdit">
@@ -45,7 +45,7 @@
 						</div>
 
 						<?php if (checkLogin($db) && $reply["user_id"] == $_SESSION["login"]["id"]) { ?>
-						<form action="index.php" method="post">
+						<form action="app/posts/comments.php" method="post">
 							<div class="postSettingsButtons">
 								<input type="hidden" name="commentId" value="<?=$reply["id"]?>">
 								<button class="editCommentButton">Edit</button>
@@ -58,7 +58,7 @@
 			<?php }}
 			 if (checkLogin($db)) { ?>
 			<div class="ReplyForm">
-				<form action="index.php" method="post">
+				<form action="app/posts/comments.php" method="post">
 					<input type="hidden" name="commentId" value="<?=$comment["id"]?>">
 					<input type="hidden" name="postId" value="<?=$post["id"]?>">
 					<div class="replyFields">

@@ -1,4 +1,5 @@
 <?php
+require __DIR__."/../../autoload.php";
 
 function deletePost($db) {
 	$deletePostInDb = "DELETE FROM posts WHERE id = :postId";
@@ -34,7 +35,7 @@ function editPost($db) {
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	if (isset($_POST["deletePost"])) {
 		deletePost($db);
-		header ("Location: " . $_SERVER["REQUEST_URI"]);
+		header("Location: /");
 		exit();
 	}
 	if (isset($_POST["saveEdit"])) {
@@ -45,12 +46,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		$result = validateNewPostFields($_POST["editUrl"]);
 
 		if ($result == MISSING_POST_INPUT) {
-			$editMessage = "Your changes wasn't saved. All fields must be filled.";
+			$message = "Your changes wasn't saved. All fields must be filled.";
+			header("Location: /");
+			exit();
 		} else if ($result == INVALID_URL) {
-			$editMessage = "Your changes wasn't saved. Incorrect url format.";
+			$message = "Your changes wasn't saved. Incorrect url format.";
+			header("Location: /");
+			exit();
 		} else {
 			editPost($db);
-			header ("Location: " . $_SERVER["REQUEST_URI"]);
+			header("Location: /");
 			exit();
 		}
 	}

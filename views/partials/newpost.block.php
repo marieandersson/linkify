@@ -1,12 +1,3 @@
-
-<?php
-// if error message
-	if ($message) { ?>
-	<div class="message">
-		<?= $message; ?>
-	</div>
-<?php unset($_SESSION["message"]); } ?>
-
 <div class="newPost">
 	<form action="app/posts/newpost.php" method="post">
 		<h4>Share a link</h4>

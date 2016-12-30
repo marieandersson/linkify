@@ -1,4 +1,5 @@
 <?php
+require __DIR__."/../../autoload.php";
 
 function saveNewComment($db, $replyTo = NULL) {
 	$published = date("Y-m-d H:i:s");
@@ -46,25 +47,29 @@ function handleSubmits($db) {
 		escapeInput($_POST["comment"]);
 		// check if comment has content
 		if (empty($_POST["comment"])) {
-			return;
+			header("Location: /");
+			exit();
 		} else {
 			saveNewComment($db);
-			header ("Location: " . $_SERVER["REQUEST_URI"]);
+			header("Location: /");
 			exit();
 		}
 	}
 	if (isset($_POST["deleteComment"])) {
 		deleteComment($db);
+		header("Location: /");
+		exit();
 	}
 	if (isset($_POST["saveEditComment"])) {
 		// escape input to avoid exploit attempts
 		escapeInput($_POST["editComment"]);
 		// Check if comment has content
 		if (empty($_POST["editComment"])) {
-			return;
+			header("Location: /");
+			exit();
 		} else {
 			editComment($db);
-			header ("Location: " . $_SERVER["REQUEST_URI"]);
+			header("Location: /");
 			exit();
 		}
 	}
@@ -73,11 +78,12 @@ function handleSubmits($db) {
 		escapeInput($_POST["comment"]);
 		// Check if comment has content
 		if (empty($_POST["comment"])) {
-			return;
+			header("Location: /");
+			exit();
 		} else {
 			$replyTo = $_POST["commentId"];
 			saveNewComment($db, $replyTo);
-			header ("Location: " . $_SERVER["REQUEST_URI"]);
+			header("Location: /");
 			exit();
 		}
 	}
