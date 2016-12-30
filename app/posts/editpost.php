@@ -46,17 +46,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		$result = validateNewPostFields($_POST["editUrl"]);
 
 		if ($result == MISSING_POST_INPUT) {
-			$message = "Your changes wasn't saved. All fields must be filled.";
-			header("Location: /");
-			exit();
-		} else if ($result == INVALID_URL) {
-			$message = "Your changes wasn't saved. Incorrect url format.";
-			header("Location: /");
-			exit();
-		} else {
-			editPost($db);
+			$_SESSION["message"] = "Your changes wasn't saved. All fields must be filled.";
 			header("Location: /");
 			exit();
 		}
+		if ($result == INVALID_URL) {
+			$_SESSION["message"] = "Your changes wasn't saved. Incorrect url format.";
+			header("Location: /");
+			exit();
+		}
+		editPost($db);
+		header("Location: /");
+		exit();
 	}
 }

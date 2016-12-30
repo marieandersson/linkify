@@ -3,7 +3,7 @@
 
 	<div class="voteWrap">
 		<?php $votes = countVotes($db, $post["id"]) ?>
-		<form action ="" method="post">
+		<form action ="app/posts/votes.php" method="post">
 			<input type="hidden" name="postIdForVote" value="<?=$post["id"]?>">
 			<input type="submit" class="up<?=(!checkLogin($db)) ? " notLoggedIn" : ""; ?>" name="up" value="">
 			<span class="votes"><?= (!$votes["sum_votes"] == NULL) ? $votes["sum_votes"] : 0 ?></span>

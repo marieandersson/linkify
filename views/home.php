@@ -1,5 +1,4 @@
 <?php
-require __DIR__."/../app/posts/votes.php";
 require __DIR__."/partials/header.php";
 $user = getUserInfo($db);
 $posts = getPosts($db);

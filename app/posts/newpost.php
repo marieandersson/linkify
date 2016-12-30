@@ -28,15 +28,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			$_SESSION["message"] = "You must fill out all fields";
 			header("Location: /");
 			exit();
-		} else if ($result == INVALID_URL) {
+		}
+		if ($result == INVALID_URL) {
 			$_SESSION["message"] = "Incorrect url format.";
 			header("Location: /");
 			exit();
-		} else {
-			// save new post in database
-			saveNewPost($db);
-			header("Location: /");
-			exit();
 		}
+		// save new post in database
+		saveNewPost($db);
+		header("Location: /");
+		exit();
 	}
 }

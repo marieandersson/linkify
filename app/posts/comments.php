@@ -49,11 +49,10 @@ function handleSubmits($db) {
 		if (empty($_POST["comment"])) {
 			header("Location: /");
 			exit();
-		} else {
-			saveNewComment($db);
-			header("Location: /");
-			exit();
 		}
+		saveNewComment($db);
+		header("Location: /");
+		exit();
 	}
 	if (isset($_POST["deleteComment"])) {
 		deleteComment($db);
@@ -67,11 +66,10 @@ function handleSubmits($db) {
 		if (empty($_POST["editComment"])) {
 			header("Location: /");
 			exit();
-		} else {
-			editComment($db);
-			header("Location: /");
-			exit();
 		}
+		editComment($db);
+		header("Location: /");
+		exit();
 	}
 	if (isset($_POST["replySubmit"])) {
 		// escape input to avoid exploit attempts
@@ -80,11 +78,10 @@ function handleSubmits($db) {
 		if (empty($_POST["comment"])) {
 			header("Location: /");
 			exit();
-		} else {
-			$replyTo = $_POST["commentId"];
-			saveNewComment($db, $replyTo);
-			header("Location: /");
-			exit();
 		}
+		$replyTo = $_POST["commentId"];
+		saveNewComment($db, $replyTo);
+		header("Location: /");
+		exit();
 	}
 }

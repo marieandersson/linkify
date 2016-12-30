@@ -1,4 +1,5 @@
 <?php
+require __DIR__."/../../autoload.php";
 
 function getVote($db) {
 	$getVoteQuery = "SELECT * FROM votes WHERE user_id = '{$_SESSION["login"]["id"]}' AND post_id = '{$_POST["postIdForVote"]}' LIMIT 1";
@@ -42,16 +43,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		if ($vote) {
 			//if user already voted up
 			if ($vote[0]["vote"] == 1) {
-				return;
+				header("Location: /");
+				exit();
 			}
 			// if user already voted down
 			replaceVote($db, 1);
-			header ("Location: " . $_SERVER["REQUEST_URI"]);
+			header("Location: /");
 			exit();
 		}
 		// if no vote - save up vote
 		saveVote($db, 1);
-		header ("Location: " . $_SERVER["REQUEST_URI"]);
+		header("Location: /");
 		exit();
 	}
 	if (isset($_POST["down"])) {
@@ -60,16 +62,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		if ($vote) {
 			//if user already voted down
 			if ($vote[0]["vote"] == -1) {
-				return;
+				header("Location: /");
+				exit();
 			}
 			// if user already voted up
 			replaceVote($db, -1);
-			header ("Location: " . $_SERVER["REQUEST_URI"]);
+			header("Location: /");
 			exit();
 		}
 		// if no vote - save down vote
 		saveVote($db, -1);
-		header ("Location: " . $_SERVER["REQUEST_URI"]);
+		header("Location: /");
 		exit();
 	}
 }
