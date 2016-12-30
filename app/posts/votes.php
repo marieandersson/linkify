@@ -37,6 +37,12 @@ function replaceVote($db, $value) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+	// user can't vote on own post
+	if ($_POST["postUserIdForVote"] == $_SESSION["login"]["id"]) {
+		$_SESSION["message"] = "Sorry, you can't vote on your own post.";
+		header("Location: /");
+		exit();
+	}
 	if (isset($_POST["up"])) {
 		// check if user already voted
 		$vote = getVote($db);

@@ -13,6 +13,13 @@ function deletePost($db) {
 	$deletePostsCommentsStatement->execute([
 		":postId" => $_POST["postId"],
 	]);
+	// delete votes connected to post
+	$deletePostsVotesInDb = "DELETE FROM votes WHERE post_id = :postId";
+	$deletePostsVotesStatement = $db->prepare($deletePostsVotesInDb);
+	$deletePostsVotesStatement->execute([
+		":postId" => $_POST["postId"],
+	]);
+
 }
 
 function editPost($db) {

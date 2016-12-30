@@ -5,8 +5,9 @@
 		<?php $votes = countVotes($db, $post["id"]) ?>
 		<form action ="app/posts/votes.php" method="post">
 			<input type="hidden" name="postIdForVote" value="<?=$post["id"]?>">
+			<input type="hidden" name="postUserIdForVote" value="<?=$post["user_id"]?>">
 			<input type="submit" class="up<?=(!checkLogin($db)) ? " notLoggedIn" : ""; ?>" name="up" value="">
-			<span class="votes"><?= (!$votes["sum_votes"] == NULL) ? $votes["sum_votes"] : 0 ?></span>
+			<span class="votes<?=(!checkLogin($db)) ? " notLoggedInVotes" : ""; ?>"><?= (!$votes["sum_votes"] == NULL) ? $votes["sum_votes"] : 0 ?></span>
 			<input type="submit" class="down<?=(!checkLogin($db)) ? " notLoggedIn" : ""; ?>" name="down" value="">
 		</form>
 	</div>

@@ -184,6 +184,9 @@ header nav a:hover {
 .down {
 	transform: rotate(225deg);
 }
+.notLoggedIn, .notLoggedInVotes {
+	opacity: 0.3;
+}
 .up:hover {
 	border-top: lightgreen 3px solid;
 	border-left: lightgreen 3px solid;
