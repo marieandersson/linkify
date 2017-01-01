@@ -6,6 +6,17 @@ $posts = getPosts($db);
 $profile = getProfileInfo($db, $_GET["user"]);
 ?>
 <div class="content">
+	<!-- client side validation error message -->
+	<div class="jsMessage">
+	</div>
+	<?php
+	// server side validation error message
+		if ($message) { ?>
+		<div class="message">
+			<?= $message; ?>
+		</div>
+	<?php unset($_SESSION["message"]); } ?>
+
 	<div class="profileWrap">
 
 		<div class="displayUserProfile">
@@ -51,7 +62,9 @@ $profile = getProfileInfo($db, $_GET["user"]);
 
 </div>
 </div> <!-- end page -->
+<script src="/assets/scripts/handleposts.js"></script>
+
 <?php
-require __DIR__."/views/partials/footer.php";
 require __DIR__."/views/partials/navigation.php";
+require __DIR__."/views/partials/footer.php";
 ?>

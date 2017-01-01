@@ -5,8 +5,11 @@ $posts = getPosts($db);
 ?>
 
 	<div class="content">
+		<!-- client side validation error message -->
+		<div class="jsMessage">
+		</div>
 		<?php
-		// if error message on forms
+		// server side validation error message
 			if ($message) { ?>
 			<div class="message">
 				<?= $message; ?>
@@ -51,7 +54,7 @@ $posts = getPosts($db);
 	</div>
 
 </div> <!-- end page -->
-
+<script src="/assets/scripts/handleposts.js"></script>
 
 <?php require __DIR__."/partials/navigation.php"; ?>
 
