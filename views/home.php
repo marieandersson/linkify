@@ -20,15 +20,17 @@ $posts = getPosts($db);
 
 				<!-- user profile -->
 				<div class="displayUser">
-					<figure>
-						<?php if ($user["avatar"] !== NULL) {  ?>
-							<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" />
-						<?php } else { ?>
-							<img src="/assets/images/placeholder/smiley.jpg" />
-						<?php } ?>
-					</figure>
-					<h4><?=$user["name"]?></h4>
-					<h5>@<?=$user["username"]?></h5>
+					<a href="/profile.page.php/?user=<?=$_SESSION["login"]["username"]?>">
+						<figure>
+							<?php if ($user["avatar"] !== NULL) {  ?>
+								<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" />
+							<?php } else { ?>
+								<img src="/assets/images/placeholder/smiley.jpg" />
+							<?php } ?>
+						</figure>
+						<h4><?=$user["name"]?></h4>
+						<h5>@<?=$user["username"]?></h5>
+					</a>
 				</div>
 
 				<div class="posts">

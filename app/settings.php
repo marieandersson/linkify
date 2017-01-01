@@ -11,6 +11,9 @@ function updateUser($db, $userId, $newInput, $column) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+	foreach($_POST as $input=>$value) {
+		$_POST[$input] = escapeInput($value);
+	}
 	if (isset($_POST["saveChanges"])) {
 		$userInfo = getUserInfo($db);
 		// check password to allow changes

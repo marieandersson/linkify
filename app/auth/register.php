@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if (isset($_POST["registerSubmit"])) {
 	  // escape input to avoid exploit attempts
 	  foreach($_POST as $input=>$value) {
-	      escapeInput($_POST[$input]);
+	    $_POST[$input] = escapeInput($value);
 	  }
 	  // call function to validate input
 	  $result = validateRegistrationFields();
@@ -91,6 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			// put user info in session to login user
 			$id = $db->lastInsertId();
 			$_SESSION["login"]["id"] = $id;
+			$_SESSION["login"]["username"] = $userInfo["username"];
 	    }
 	  }
 		header("Location: /");

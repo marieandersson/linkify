@@ -20,23 +20,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	if (isset($_POST["postLink"])) {
 		// escape input to avoid exploit attempts
 		foreach($_POST as $input=>$value) {
-	      escapeInput($_POST[$input]);
+	    $_POST[$input] = escapeInput($value);
 	  }
 		$result = validateNewPostFields($_POST["url"]);
 
 		if ($result == MISSING_POST_INPUT) {
 			$_SESSION["message"] = "You must fill out all fields";
-			header("Location: /");
-			exit();
 		}
 		if ($result == INVALID_URL) {
 			$_SESSION["message"] = "Incorrect url format.";
-			header("Location: /");
-			exit();
 		}
 		// save new post in database
 		saveNewPost($db);
-		header("Location: /");
-		exit();
 	}
 }

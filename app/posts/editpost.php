@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	}
 	if (isset($_POST["saveEdit"])) {
 		foreach($_POST as $input=>$value) {
-	      escapeInput($_POST[$input]);
+	    $_POST[$input] = escapeInput($value);
 	  }
 		// call function in newpost.php
 		$result = validateNewPostFields($_POST["editUrl"]);

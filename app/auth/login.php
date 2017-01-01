@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if (isset($_POST["loginSubmit"])) {
 	  // escape input to avoid exploit attempts
 	  foreach($_POST as $input=>$value) {
-	      escapeInput($_POST[$input]);
+	    $_POST[$input] = escapeInput($value);
 	  }
 		// user = email or username
 	  $user = $_POST["username"];

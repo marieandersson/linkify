@@ -42,9 +42,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	handleSubmits($db);
 }
 function handleSubmits($db) {
+	// escape input to avoid exploit attempts
+	foreach($_POST as $input=>$value) {
+		$_POST[$input] = escapeInput($value);
+	}
 	if (isset($_POST["commentPost"])) {
-		// escape input to avoid exploit attempts
-		escapeInput($_POST["comment"]);
 		// check if comment has content
 		if (empty($_POST["comment"])) {
 			header("Location: /");
@@ -60,8 +62,6 @@ function handleSubmits($db) {
 		exit();
 	}
 	if (isset($_POST["saveEditComment"])) {
-		// escape input to avoid exploit attempts
-		escapeInput($_POST["editComment"]);
 		// Check if comment has content
 		if (empty($_POST["editComment"])) {
 			header("Location: /");
@@ -72,8 +72,6 @@ function handleSubmits($db) {
 		exit();
 	}
 	if (isset($_POST["replySubmit"])) {
-		// escape input to avoid exploit attempts
-		escapeInput($_POST["comment"]);
 		// Check if comment has content
 		if (empty($_POST["comment"])) {
 			header("Location: /");
