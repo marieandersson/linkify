@@ -11,7 +11,6 @@ submitLinkButton.addEventListener("click", function(event) {
 	if (subject == "" || url == "" || description == "") {
 		errorMessage.innerHTML = "Please fill out all fields.";
 		errorMessage.classList.add("showError"); // remove later?
-		// also validate url?
 	} else {
 		let postData = new FormData();
 		postData.append("subject", subject);
@@ -31,14 +30,20 @@ submitLinkButton.addEventListener("click", function(event) {
 					errorMessage.innerHTML = error;
 					errorMessage.classList.add("showError");
 				});
-			}
-			return response.text();
-		})
-		.then(function(result) {
-			// if success
-			document.querySelector(".newPostForm").reset();
-			// display new post
+			} else {
+				return response.text().then(function(result) {
+					console.log(result);
+					// if success, reset form
+					document.querySelector(".newPostForm").reset();
+					// display new post
+					let newPost = document.createElement("div");
+					newPost.innerHTML = result;
+					newPost.classList.add("post");
 
+					let allPosts = document.querySelector(".displayPosts");
+					allPosts.insertBefore(newPost, allPosts.firstChild);
+				});
+			}
 		});
 	}
 });

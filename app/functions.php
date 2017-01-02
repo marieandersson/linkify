@@ -64,7 +64,7 @@ function getUserInfo($db) {
 
 function getPosts($db) {
 	$getPostsQuery = "SELECT posts.id, posts.description, posts.subject, posts.url, posts.published, posts.user_id,
-	users.name,	users.username, users.avatar FROM posts INNER JOIN users ON posts.user_id = users.id";
+	users.name FROM posts INNER JOIN users ON posts.user_id = users.id";
 	$getPostsStatement = $db->query($getPostsQuery);
 
 	if ($getPostsStatement->rowCount() == 0 ) {
