@@ -87,8 +87,7 @@
 		$comments = getComments($db, $post["id"]);
 		if ($comments) {
 			usort($comments, "sortByDate");?>
-			<p class="commentCount"><a href="#" class="commentLink">This post has <?=count($comments)?> <?=count($comments) == 1 ? "comment" : "comments"?>.
-				Click here to <span class="readOrClose">read</span> <?=count($comments) == 1 ? "it" : "them"?>.</a></p>
+			<p class="commentCount"><a href="#" class="commentLink">This post has comments. Click here to <span class="readOrClose">read</span> them.</a></p>
 			<div class="comments">
 				<?php foreach ($comments as $comment) {
 					if ($comment["reply_to"] == NULL) { ?>
@@ -99,21 +98,7 @@
 								require __DIR__."/../partials/reply.block.php"; ?>
 								<?php }} ?>
 						</div>
-				<?php	}}}
-
-				if (checkLogin($db)) { ?>
-				<div class="ReplyForm">
-					<form action="app/posts/comments.php" method="post">
-						<input type="hidden" name="commentId" value="<?=$comment["id"]?>">
-						<input type="hidden" name="postId" value="<?=$post["id"]?>">
-						<div class="replyFields">
-							<input type="text" name="comment" placeholder="Reply to this...">
-							<input type="submit" name="replySubmit" value="Submit">
-						</div>
-						<button class="replyButton">Reply to this</button>
-					</form>
-				</div>
-				<?php } ?>
+				<?php	}}} ?>
 			</div>
 	</div>
 </div>

@@ -214,6 +214,9 @@ function handleCommentPost(commentButton) {
 					newComment.classList.add("commentWrap");
 					let comments = document.querySelector(".comments");
 					comments.insertBefore(newComment, comments.firstChild);
+					// open comments div
+					comments.classList.add("commentsShow");
+
 				});
 			}
 		});
