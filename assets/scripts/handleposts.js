@@ -226,7 +226,12 @@ function handleCommentPost(commentButton) {
 						// else append to existing comment div
 						commentElement.insertBefore(newComment, commentElement.firstChild);
 						commentElement.classList.add("commentsShow");
+						// add commentcount paragraph?
 					}
+					// add eventlistener to new comment post
+					replaceCommentWithForm();
+					showSettings();
+					showReplyForm();
 				});
 			}
 		});
