@@ -208,11 +208,10 @@ function handleCommentPost(commentButton) {
 					// if success remove error and reset form
 					errorMessage.classList.remove("showError");
 					document.querySelector(".commentForm").reset();
-					console.log("sucess!");
 					// and display new comment
 					let newComment = document.createElement("div");
 					newComment.innerHTML = result;
-					newComment.classList.add("comment");
+					newComment.classList.add("commentWrap");
 					let comments = document.querySelector(".comments");
 					comments.insertBefore(newComment, comments.firstChild);
 				});
