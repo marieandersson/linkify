@@ -52,7 +52,7 @@ function showReplyForm() {
 			if (replyInputFields.classList.contains("replyFieldsShow")) {
 				replyButton.innerHTML = "Close";
 			} else {
-				replyButton.innerHTML = "Reply";
+				replyButton.innerHTML = "Reply to this";
 			}
 		});
 	});
@@ -207,16 +207,26 @@ function handleCommentPost(commentButton) {
 				return response.text().then(function(result) {
 					// if success remove error and reset form
 					errorMessage.classList.remove("showError");
-					document.querySelector(".commentForm").reset();
+					commentButton.parentElement.parentElement.reset();
 					// and display new comment
 					let newComment = document.createElement("div");
 					newComment.innerHTML = result;
 					newComment.classList.add("commentWrap");
-					let comments = document.querySelector(".comments");
-					comments.insertBefore(newComment, comments.firstChild);
-					// open comments div
-					comments.classList.add("commentsShow");
-
+					// append new comment to post
+					let postDiv = commentButton.parentElement.parentElement.parentElement;
+					let commentElement = postDiv.querySelector(".comments");
+					// if this is the first comment create comments div
+					if (commentElement === null) {
+						let commentElement = document.createElement("div");
+						commentElement.classList.add("comments");
+						commentElement.classList.add("commentsShow");
+						commentElement.appendChild(newComment);
+						postDiv.appendChild(commentElement);
+					} else {
+						// else append to existing comment div
+						commentElement.insertBefore(newComment, commentElement.firstChild);
+						commentElement.classList.add("commentsShow");
+					}
 				});
 			}
 		});
