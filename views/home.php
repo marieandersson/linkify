@@ -56,7 +56,6 @@ $posts = getPosts($db);
 	</div>
 
 </div> <!-- end page -->
-<script src="/assets/scripts/newpost.js"></script>
 
 <?php require __DIR__."/partials/navigation.php"; ?>
 

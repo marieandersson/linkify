@@ -36,15 +36,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		}
 		// save new post in database
 		saveNewPost($db);
-
-		// new post to js response
+		// return new post to js response
 		$postId = $db->lastInsertId();
 		$getNewPostQuery = "SELECT posts.id, posts.description, posts.subject, posts.url, posts.published, posts.user_id,
 		users.name FROM posts INNER JOIN users ON posts.user_id = users.id WHERE posts.id = '{$postId}'";
 		$getNewPostStatement = $db->query($getNewPostQuery);
 		$post = $getNewPostStatement->fetch(PDO::FETCH_ASSOC);
-		$postTemplate = include(__DIR__."/../../views/partials/post.block.php");
+		include(__DIR__."/../../views/partials/post.block.php");
 		http_response_code(200);
-		echo $postTemplate;
 	}
 }

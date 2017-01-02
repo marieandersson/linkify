@@ -12,17 +12,20 @@ submitLinkButton.addEventListener("click", function(event) {
 		errorMessage.innerHTML = "Please fill out all fields.";
 		errorMessage.classList.add("showError"); // remove later?
 	} else {
+		// put form input in object
 		let postData = new FormData();
 		postData.append("subject", subject);
 		postData.append("url", url);
 		postData.append("description", description);
 		postData.append("postLink", "share");
+		// post to the php script handling post requests for new posts
 		fetch("/app/posts/newpost.php",
 		{
 			method: "POST",
 			body: postData,
 			credentials: "same-origin",
 		})
+		// response when php script have been executed
 		.then(function(response) {
 			// if error
 			if (!response.ok) {
@@ -32,16 +35,17 @@ submitLinkButton.addEventListener("click", function(event) {
 				});
 			} else {
 				return response.text().then(function(result) {
-					console.log(result);
-					// if success, reset form
+					// if success remove error and reset form
+					errorMessage.classList.remove("showError");
 					document.querySelector(".newPostForm").reset();
-					// display new post
+					// and display new post
 					let newPost = document.createElement("div");
 					newPost.innerHTML = result;
 					newPost.classList.add("post");
-
 					let allPosts = document.querySelector(".displayPosts");
 					allPosts.insertBefore(newPost, allPosts.firstChild);
+					// problem: edan inlästa script funkar inte.
+					showSettings();
 				});
 			}
 		});

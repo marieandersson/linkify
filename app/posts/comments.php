@@ -49,37 +49,32 @@ function handleSubmits($db) {
 	if (isset($_POST["commentPost"])) {
 		// check if comment has content
 		if (empty($_POST["comment"])) {
-			header("Location: /");
+			http_response_code(406);
+			echo "Write a comment before posting!";
 			exit();
 		}
 		saveNewComment($db);
-		header("Location: /");
-		exit();
+		http_response_code(200);
 	}
 	if (isset($_POST["deleteComment"])) {
 		deleteComment($db);
-		header("Location: /");
-		exit();
+
 	}
 	if (isset($_POST["saveEditComment"])) {
 		// Check if comment has content
 		if (empty($_POST["editComment"])) {
-			header("Location: /");
 			exit();
 		}
 		editComment($db);
-		header("Location: /");
-		exit();
+
 	}
 	if (isset($_POST["replySubmit"])) {
 		// Check if comment has content
 		if (empty($_POST["comment"])) {
-			header("Location: /");
 			exit();
 		}
 		$replyTo = $_POST["commentId"];
 		saveNewComment($db, $replyTo);
-		header("Location: /");
-		exit();
+
 	}
 }
