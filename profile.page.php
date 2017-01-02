@@ -62,7 +62,7 @@ $profile = getProfileInfo($db, $_GET["user"]);
 
 </div>
 </div> <!-- end page -->
-<script src="/assets/scripts/handleposts.js"></script>
+<script src="/assets/scripts/newpost.js"></script>
 
 <?php
 require __DIR__."/views/partials/navigation.php";

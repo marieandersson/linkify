@@ -9,7 +9,7 @@ $posts = getPosts($db);
 		<div class="jsMessage">
 		</div>
 		<?php
-		// server side validation error message
+		// server side validation error message REMOVE?
 			if ($message) { ?>
 			<div class="message">
 				<?= $message; ?>
@@ -56,7 +56,7 @@ $posts = getPosts($db);
 	</div>
 
 </div> <!-- end page -->
-<script src="/assets/scripts/handleposts.js"></script>
+<script src="/assets/scripts/newpost.js"></script>
 
 <?php require __DIR__."/partials/navigation.php"; ?>
 

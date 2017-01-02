@@ -1,5 +1,5 @@
 <?php
-require __DIR__.'/../../autoload.php';
+require __DIR__."/../../autoload.php";
 
 function saveNewPost($db) {
 	$published = date("Y-m-d H:i:s");
@@ -25,12 +25,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		$result = validateNewPostFields($_POST["url"]);
 
 		if ($result == MISSING_POST_INPUT) {
-			$_SESSION["message"] = "You must fill out all fields";
+			http_response_code(406);
+			echo "Please fill out all fields.";
+			exit();
 		}
 		if ($result == INVALID_URL) {
-			$_SESSION["message"] = "Incorrect url format.";
+			http_response_code(406);
+			echo "Invalid url format.";
+			exit();
 		}
 		// save new post in database
 		saveNewPost($db);
+		echo "Success!";
+		http_response_code(200);
+		// return new post to js fetch request
 	}
 }
