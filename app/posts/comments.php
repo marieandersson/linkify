@@ -50,10 +50,19 @@ function handleSubmits($db) {
 		// check if comment has content
 		if (empty($_POST["comment"])) {
 			http_response_code(406);
-			echo "Write a comment before posting!";
+			echo "Write a comment before posting.";
 			exit();
 		}
+		// save new comment in database
 		saveNewComment($db);
+		// return new comment to js response
+		$commentId = $db->lastInsertId();
+		$getNewCommentQuery = "SELECT comments.id, comments.user_id, comments.comment, comments.published, comments.reply_to,
+		users.name FROM comments INNER JOIN users ON comments.user_id = users.id WHERE comments.id = '{$commentId}' AND comments.post_id = '{$_POST["postId"]}'";
+		$getNewCommentStatement = $db->query($getNewCommentQuery);
+		$comment = $getNewCommentStatement->fetch(PDO::FETCH_ASSOC);
+
+		include(__DIR__."/../../views/partials/comment.block.php");
 		http_response_code(200);
 	}
 	if (isset($_POST["deleteComment"])) {

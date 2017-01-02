@@ -157,7 +157,7 @@ function handleNewPost() {
 					let commentButton = newPost.querySelector(".commentPost");
 					console.log(commentButton);
 					commentButton.addEventListener("click", function(event) {
-						handleCommentPost();
+						handleCommentPost(commentButton);
 					});
 				});
 			}
@@ -169,14 +169,14 @@ function handleNewPost() {
 const commentPostButtons = document.querySelectorAll(".commentPost");
 commentPostButtons.forEach (function(commentButton) {
 	commentButton.addEventListener("click", function(event) {
-		handleCommentPost();
+		handleCommentPost(commentButton);
 	});
 });
 
-function handleCommentPost() {
+function handleCommentPost(commentButton) {
 	event.preventDefault();
-	let comment = document.querySelector(".inputComment input[name=comment]").value;
-	let postId = document.querySelector(".inputComment input[name=postId]").value;
+	let comment = commentButton.parentElement.querySelector(".inputComment input[name=comment]").value;
+	let postId = commentButton.parentElement.querySelector(".inputComment input[name=postId]").value;
 	let errorMessage = document.querySelector(".jsMessage");
 	// check if all fields has content
 	if (comment == "") {
@@ -205,17 +205,16 @@ function handleCommentPost() {
 				});
 			} else {
 				return response.text().then(function(result) {
-					// if success remove error reset form
+					// if success remove error and reset form
 					errorMessage.classList.remove("showError");
 					document.querySelector(".commentForm").reset();
 					console.log("sucess!");
 					// and display new comment
-					// let newComment = document.createElement("div");
-					// newPost.innerHTML = result;
-					// newPost.classList.add("post");
-					// let allPosts = document.querySelector(".displayPosts");
-					// allPosts.insertBefore(newPost, allPosts.firstChild);
-					// problem: en 1:a visas?, redan inlästa script funkar inte.
+					let newComment = document.createElement("div");
+					newComment.innerHTML = result;
+					newComment.classList.add("comment");
+					let comments = document.querySelector(".comments");
+					comments.insertBefore(newComment, comments.firstChild);
 				});
 			}
 		});
