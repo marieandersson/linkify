@@ -1,5 +1,5 @@
 <!-- post content -->
-<div class="postAndVoteWrap">
+<div class="postAndVoteWrap post<?=$post["id"]?>">
 
 	<div class="voteWrap">
 		<?php $votes = countVotes($db, $post["id"]) ?>

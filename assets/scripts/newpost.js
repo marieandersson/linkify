@@ -3,11 +3,11 @@
 // handle post request for new link post without page reload
 const submitLinkButton = document.querySelector(".postLink");
 submitLinkButton.addEventListener("click", function(event) {
+	event.preventDefault();
 	handleNewPost();
 });
 
 function handleNewPost() {
-	event.preventDefault();
 	let subject = document.querySelector(".newPostFields input[name=subject]").value;
 	let url = document.querySelector(".newPostFields input[name=url]").value;
 	let description = document.querySelector(".newPostFields input[name=description]").value;
@@ -23,14 +23,14 @@ function handleNewPost() {
 		postData.append("url", url);
 		postData.append("description", description);
 		postData.append("postLink", "share");
-		// post to the php script handling post requests for new posts
+		// post to php script handling post requests for new posts
 		fetch("/app/posts/newpost.php",
 		{
 			method: "POST",
 			body: postData,
 			credentials: "same-origin",
 		})
-		// response when php script have been executed
+		// response after php script have been executed
 		.then(function(response) {
 			// if error
 			if (!response.ok) {
@@ -53,9 +53,16 @@ function handleNewPost() {
 					replacePostWithForm();
 					showSettings();
 					let commentButton = newPost.querySelector(".commentPost");
-					console.log(commentButton);
 					commentButton.addEventListener("click", function(event) {
+						event.preventDefault();
 						handleCommentPost(commentButton);
+					});
+					let deleteButton = newPost.querySelector(".deleteButton");
+					deleteButton.addEventListener("click", function(event) {
+						event.preventDefault();
+						if (window.confirm("Are you sure you want to delete this post?")) {
+							handlePostDelete(deleteButton);
+						}
 					});
 				});
 			}

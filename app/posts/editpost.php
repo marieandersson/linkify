@@ -42,8 +42,6 @@ function editPost($db) {
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	if (isset($_POST["deletePost"])) {
 		deletePost($db);
-		header("Location: /");
-		exit();
 	}
 	if (isset($_POST["saveEdit"])) {
 		foreach($_POST as $input=>$value) {

@@ -2,12 +2,12 @@
 const commentPostButtons = document.querySelectorAll(".commentPost");
 commentPostButtons.forEach (function(commentButton) {
 	commentButton.addEventListener("click", function(event) {
+		event.preventDefault();
 		handleCommentPost(commentButton);
 	});
 });
 
 function handleCommentPost(commentButton) {
-	event.preventDefault();
 	let comment = commentButton.parentElement.querySelector(".inputComment input[name=comment]").value;
 	let postId = commentButton.parentElement.querySelector(".inputComment input[name=postId]").value;
 	let errorMessage = document.querySelector(".jsMessage");

@@ -189,6 +189,10 @@ header nav p:hover {
 /* existing posts */
 .displayPosts {
 	width: 700px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	flex-wrap: nowrap;
 }
 .postAndVoteWrap {
 	width: 700px;
