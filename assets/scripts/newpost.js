@@ -43,7 +43,7 @@ function handleNewPost() {
 					// if success remove error and reset form
 					errorMessage.classList.remove("showError");
 					document.querySelector(".newPostForm").reset();
-					// and display new post
+					// display new post
 					let newPost = document.createElement("div");
 					newPost.innerHTML = result;
 					newPost.classList.add("post");
@@ -67,7 +67,11 @@ function handleNewPost() {
 						event.preventDefault();
 						showSettings(showSettingsButton);
 					});
-					replacePostWithForm();
+					let editButton = newPost.querySelector(".editButton");
+					editButton.addEventListener("click", function(event) {
+						event.preventDefault();
+						replacePostWithForm(editButton);
+					});
 				});
 			}
 		});
