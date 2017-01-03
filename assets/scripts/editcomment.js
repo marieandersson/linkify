@@ -45,3 +45,57 @@ function handleCommentDelete(deleteButton) {
 		}
 	});
 }
+
+// handle post request for editing comments without page reload
+const saveCommentEditButtons = document.querySelectorAll(".saveEditComment");
+saveCommentEditButtons.forEach(function(editButton) {
+	editButton.addEventListener("click", function(event) {
+		event.preventDefault();
+		handleEditComment(editButton);
+	});
+});
+function handleEditComment(editButton) {
+	let commentId = editButton.parentElement.querySelector(".commentIdForEdit").value;
+	let comment = editButton.parentElement.querySelector(".editComment").value;
+	let errorMessage = document.querySelector(".jsMessage");
+
+	if (comment == "") {
+		errorMessage.innerHTML = "Comment can't be empty.";
+		errorMessage.classList.add("showError");
+	} else {
+		// put form input in object
+		let postData = new FormData();
+		postData.append("commentIdForEdit", commentId);
+		postData.append("editComment", comment);
+		postData.append("saveEditComment", "save");
+		// post to php script handling post request for editing comments
+		fetch("/app/posts/comments.php",
+		{
+			method: "POST",
+			body: postData,
+			credentials: "same-origin",
+		})
+		// response after php script has been executed
+		.then(function(response) {
+			// if error
+			if (!response.ok) {
+				return response.text().then(function(error) {
+					errorMessage.innerHTML = error;
+					errorMessage.classList.add("showError");
+				});
+			} else {
+				return response.text().then(function(result) {
+					// if sucess remove possible error
+					errorMessage.classList.remove("showError");
+					// replace comment content
+					let commentElement = document.querySelector(".comment"+commentId);
+					commentElement.querySelector(".commentText").innerHTML = comment;
+					commentElement.querySelector(".commentDiv").classList.remove("commentHide");
+					commentElement.querySelector(".editCommentForm").classList.remove("editCommentFormShow");
+					commentElement.querySelector(".editCommentButton").innerHTML = "Edit";
+					commentElement.querySelector(".postSettingsButtons").classList.remove("postSettingsButtonsShow");
+				});
+			}
+		});
+	}
+}

@@ -1,14 +1,14 @@
 <div class="comment comment<?=$comment["id"]?>">
 	<div class="commentDiv">
-		<p class="commentContent"><?=$comment["name"]?>: <?=$comment["comment"]?></p>
+		<p class="commentContent"><?=$comment["name"]?>: <span class="commentText"><?=$comment["comment"]?></span></p>
 		<p class="commentPublished">Posted on <?=date('jS \of M h:i', strtotime($comment["published"]))?></p>
 	</div>
 	<!-- edit comment form shown on click -->
 	<div class="editCommentForm">
 		<form action="app/posts/comments.php" method="post">
-			<input type="hidden" name="postIdForEditComment" value="<?=$comment["id"]?>">
-			<input type="text" name="editComment" value="<?=$comment["comment"]?>">
-			<input type="submit" name="saveEditComment" value="Save" class="saveEdit">
+			<input type="hidden" name="commentIdForEdit" class="commentIdForEdit" value="<?=$comment["id"]?>">
+			<input type="text" name="editComment" class="editComment" value="<?=$comment["comment"]?>">
+			<input type="submit" name="saveEditComment" value="Save" class="saveEditComment">
 		</form>
 	</div>
 	<?php if (checkLogin($db) && $comment["user_id"] == $_SESSION["login"]["id"]) { ?>

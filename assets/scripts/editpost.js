@@ -74,7 +74,7 @@ function handleEditPost(editButton) {
 				});
 			} else {
 				return response.text().then(function(result) {
-					// if sucess remove error
+					// if sucess remove possible error
 					errorMessage.classList.remove("showError");
 					// replace post content
 					let postElement = document.querySelector(".post"+postId);

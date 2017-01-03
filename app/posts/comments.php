@@ -34,7 +34,7 @@ function editComment($db) {
 		":comment" => $_POST["editComment"],
 		":edited" => $edited,
 		":editDate" => $editDate,
-		":commentId" => $_POST["postIdForEditComment"],
+		":commentId" => $_POST["commentIdForEdit"],
 	]);
 }
 
@@ -71,8 +71,11 @@ function handleSubmits($db) {
 	if (isset($_POST["saveEditComment"])) {
 		// Check if comment has content
 		if (empty($_POST["editComment"])) {
+			http_response_code(406);
+			echo "Comment can't be empty.";
 			exit();
 		}
+		// save updates in database
 		editComment($db);
 
 	}
