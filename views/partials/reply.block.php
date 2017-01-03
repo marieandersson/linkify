@@ -7,7 +7,7 @@
 		<form action="app/posts/comments.php" method="post">
 			<input type="hidden" name="postIdForEditComment" value="<?=$reply["id"]?>">
 			<input type="text" name="editComment" value="<?=$reply["comment"]?>">
-			<input type="submit" name="saveEditComment" value="Save" class="saveEdit">
+			<input type="submit" name="saveEditComment" value="Save" class="saveEditComment">
 		</form>
 	</div>
 
@@ -16,7 +16,7 @@
 		<div class="postSettingsButtons">
 			<input type="hidden" name="commentId" value="<?=$reply["id"]?>">
 			<button class="editCommentButton">Edit</button>
-			<input type="submit" name="deleteComment" value="Delete">
+			<input type="submit" name="deleteComment" class="deleteComment" value="Delete">
 		</div>
 		<button class="showPostSettings"><img src="/assets/images/settingswheel.png" /></button>
 	</form>

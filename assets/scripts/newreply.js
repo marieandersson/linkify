@@ -48,10 +48,31 @@ function handleReply(saveReplyButton) {
 					let newReply = document.createElement("div");
 					newReply.innerHTML = result;
 					newReply.classList.add("replyWrap");
-
+					// append to replies div
 					let commentWrap = saveReplyButton.parentElement.parentElement.parentElement.parentElement;
 					let replies = commentWrap.querySelector(".replies");
 					replies.insertBefore(newReply, replies.firstChild);
+					// add eventlistener to new reply
+					let editCommentButton = newReply.querySelector(".editCommentButton");
+					editCommentButton.addEventListener("click", function(event) {
+						event.preventDefault();
+						replaceCommentWithForm(editCommentButton);
+					});
+					let showSettingsButton = newReply.querySelector(".showPostSettings");
+					showSettingsButton.addEventListener("click", function(event) {
+						event.preventDefault();
+						showSettings(showSettingsButton);
+					});
+					let deleteButton = newReply.querySelector(".deleteComment");
+					deleteButton.addEventListener("click", function(event) {
+						event.preventDefault();
+						handleCommentDelete(deleteButton);
+					});
+					let newEditButton = newReply.querySelector(".saveEditComment");
+					newEditButton.addEventListener("click", function(event) {
+						event.preventDefault();
+						handleEditComment(newEditButton);
+					});
 				});
 			}
 		});
