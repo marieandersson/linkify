@@ -21,13 +21,13 @@
 				<!-- user content -->
 				<div class="postUser">
 					<p>Posted by
-						<?php // name only link if user is logged in
-						if (checkLogin($db)) { ?>
-							<a href="profile.page.php/?user=<?=$post["username"]?>">
-						<?php }
-						echo $post["name"];
-						if (checkLogin($db)) { ?>
-							</a>
+					<?php // name only link if user is logged in
+					if (checkLogin($db)) { ?>
+						<a href="profile.page.php/?user=<?=$post["username"]?>">
+					<?php }
+					echo $post["name"];
+					if (checkLogin($db)) { ?>
+						</a>
 						<?php } ?>
 						on <?=date('jS \of M h:i', strtotime($post["published"]))?>.
 					</p>
@@ -36,24 +36,24 @@
 
 			<!-- edit form shown on button click, only to logged in user on own posts -->
 			<?php if (checkLogin($db) && $post["user_id"] == $_SESSION["login"]["id"]) { ?>
-				<div class="editPostForm">
-					<form action="app/posts/editpost.php" method="post">
-						<input type="hidden" name="postIdForEdit" class="postIdForEdit" value="<?=$post["id"]?>">
-						<div class="editInputField">
-							<label for="editSubject">Subject:</label>
-							<input type="text" name="editSubject" value="<?=$post["subject"]?>">
-						</div>
-						<div class="editInputField">
-							<label for="editUrl">Link url:</label>
-							<input type="text" name="editUrl" value="<?=$post["url"]?>">
-						</div>
-						<div class="editInputField">
-							<label for="editDescription">Description:</label>
-							<input type="text" name="editDescription" value="<?=$post["description"]?>">
-						</div>
-						<input type="submit" name="saveEdit" value="Save" class="saveEdit">
-					</form>
-				</div>
+			<div class="editPostForm">
+				<form action="app/posts/editpost.php" method="post">
+					<input type="hidden" name="postIdForEdit" class="postIdForEdit" value="<?=$post["id"]?>">
+					<div class="editInputField">
+						<label for="editSubject">Subject:</label>
+						<input type="text" name="editSubject" value="<?=$post["subject"]?>">
+					</div>
+					<div class="editInputField">
+						<label for="editUrl">Link url:</label>
+						<input type="text" name="editUrl" value="<?=$post["url"]?>">
+					</div>
+					<div class="editInputField">
+						<label for="editDescription">Description:</label>
+						<input type="text" name="editDescription" value="<?=$post["description"]?>">
+					</div>
+					<input type="submit" name="saveEdit" value="Save" class="saveEdit">
+				</form>
+			</div>
 			<?php } ?>
 
 			<!-- edit, delete and comment -->
@@ -92,18 +92,18 @@
 		<?php } ?></p>
 		<?php if ($comments) {
 			usort($comments, "sortByDate");?>
-			<div class="comments">
+		<div class="comments">
 				<?php foreach ($comments as $comment) {
-					if ($comment["reply_to"] == NULL) { ?>
-						<div class="commentWrap comment<?=$comment["id"]?>">
-							<?php require __DIR__."/../partials/comment.block.php";
-							foreach ($comments as $reply) {
-							if ($reply["reply_to"] == $comment["id"]) {
-								require __DIR__."/../partials/reply.block.php"; ?>
-								<?php }} ?>
-						</div>
-				<?php	}} ?>
+				if ($comment["reply_to"] == NULL) { ?>
+			<div class="commentWrap">
+				<?php require __DIR__."/../partials/comment.block.php";
+				foreach ($comments as $reply) {
+				if ($reply["reply_to"] == $comment["id"]) {
+					require __DIR__."/../partials/reply.block.php"; ?>
+				<?php }} ?>
 			</div>
-			<?php } ?>
+			<?php	}} ?>
+		</div>
+		<?php } ?>
 	</div>
 </div>

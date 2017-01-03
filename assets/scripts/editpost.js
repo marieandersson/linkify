@@ -13,7 +13,6 @@ deletePostButtons.forEach (function(deleteButton) {
 
 function handlePostDelete(deleteButton) {
 	let postId = deleteButton.parentElement.querySelector(".postButtonsId").value;
-	console.log(postId);
 	// put form input in object
 	let postData = new FormData();
 	postData.append("postId", postId);
@@ -25,7 +24,7 @@ function handlePostDelete(deleteButton) {
 		body: postData,
 		credentials: "same-origin",
 	})
-	// response after php script have been executed{
+	// response after php script have been executed
 	.then(function(response) {
 			let postElement = document.querySelector(".post"+postId).parentElement;
 			postElement.remove();

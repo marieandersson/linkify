@@ -67,7 +67,6 @@ function handleSubmits($db) {
 	}
 	if (isset($_POST["deleteComment"])) {
 		deleteComment($db);
-
 	}
 	if (isset($_POST["saveEditComment"])) {
 		// Check if comment has content

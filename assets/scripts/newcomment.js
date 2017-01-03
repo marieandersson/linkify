@@ -1,3 +1,4 @@
+"use strict";
 // handle post request for new comment without page reload
 const commentPostButtons = document.querySelectorAll(".commentPost");
 commentPostButtons.forEach (function(commentButton) {
@@ -59,7 +60,6 @@ function handleCommentPost(commentButton) {
 						// else append to existing comment div
 						commentElement.insertBefore(newComment, commentElement.firstChild);
 						commentElement.classList.add("commentsShow");
-						// add commentcount paragraph?
 					}
 					let commentCount = newComment.parentElement.parentElement.querySelector(".commentCount");
 					commentCount.innerHTML = "<a href='#' class='commentLink'>This post has comments. Click here to <span class='readOrClose'>close</span> them.</a>";
@@ -84,6 +84,7 @@ function handleCommentPost(commentButton) {
 						event.preventDefault();
 						clickToShowComments(showComments);
 					});
+					// handle commentdelte
 				});
 			}
 		});
