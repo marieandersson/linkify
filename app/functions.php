@@ -64,7 +64,7 @@ function getUserInfo($db) {
 
 function getPosts($db) {
 	$getPostsQuery = "SELECT posts.id, posts.description, posts.subject, posts.url, posts.published, posts.user_id,
-	users.name FROM posts INNER JOIN users ON posts.user_id = users.id";
+	users.name, users.username FROM posts INNER JOIN users ON posts.user_id = users.id";
 	$getPostsStatement = $db->query($getPostsQuery);
 
 	if ($getPostsStatement->rowCount() == 0 ) {
@@ -76,7 +76,7 @@ function getPosts($db) {
 
 function getComments($db, $postId) {
 	$getCommentsQuery = "SELECT comments.id, comments.user_id, comments.comment, comments.published, comments.reply_to,
-	users.name FROM comments INNER JOIN users ON comments.user_id = users.id WHERE comments.post_id = '{$postId}'";
+	users.name, users.username FROM comments INNER JOIN users ON comments.user_id = users.id WHERE comments.post_id = '{$postId}'";
 	$getCommentsStatement = $db->query($getCommentsQuery);
 
 	if ($getCommentsStatement->rowCount() == 0 ) {
