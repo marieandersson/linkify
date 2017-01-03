@@ -84,7 +84,11 @@ function handleCommentPost(commentButton) {
 						event.preventDefault();
 						clickToShowComments(showComments);
 					});
-					// handle commentdelte
+					let deleteButton = newComment.querySelector(".deleteComment");
+					deleteButton.addEventListener("click", function(event) {
+						event.preventDefault();
+						handleCommentDelete(deleteButton);
+					});
 				});
 			}
 		});
