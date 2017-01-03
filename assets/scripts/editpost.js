@@ -12,7 +12,8 @@ deletePostButtons.forEach (function(deleteButton) {
 });
 
 function handlePostDelete(deleteButton) {
-	let postId = document.querySelector(".postSettingsButtons input[name=postId]").value;
+	let postId = deleteButton.parentElement.querySelector(".postButtonsId").value;
+	console.log(postId);
 	// put form input in object
 	let postData = new FormData();
 	postData.append("postId", postId);
@@ -32,3 +33,17 @@ function handlePostDelete(deleteButton) {
 }
 
 // handle post request for editing post without page reload
+const saveEditButtons = document.querySelectorAll(".saveEdit");
+saveEditButtons.forEach (function(editButton) {
+	editButton.addEventListener("click", function(event) {
+		event.preventDefault();
+		handleEditPost();
+	});
+});
+function handleEditPost() {
+
+	let subject = document.querySelector(".newPostFields input[name=subject]").value;
+	let url = document.querySelector(".newPostFields input[name=url]").value;
+	let description = document.querySelector(".newPostFields input[name=description]").value;
+	let errorMessage = document.querySelector(".jsMessage");
+}

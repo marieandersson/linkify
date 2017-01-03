@@ -50,8 +50,6 @@ function handleNewPost() {
 					let allPosts = document.querySelector(".displayPosts");
 					allPosts.insertBefore(newPost, allPosts.firstChild);
 					// add event listeners to new post
-					replacePostWithForm();
-					showSettings();
 					let commentButton = newPost.querySelector(".commentPost");
 					commentButton.addEventListener("click", function(event) {
 						event.preventDefault();
@@ -64,6 +62,12 @@ function handleNewPost() {
 							handlePostDelete(deleteButton);
 						}
 					});
+					let showSettingsButton = newPost.querySelector(".showPostSettings");
+					showSettingsButton.addEventListener("click", function(event) {
+						event.preventDefault();
+						showSettings(showSettingsButton);
+					});
+					replacePostWithForm();
 				});
 			}
 		});

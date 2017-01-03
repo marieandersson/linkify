@@ -59,18 +59,19 @@ function showReplyForm() {
 }
 showReplyForm();
 // show settings with edit and delete buttons
-function showSettings() {
-	const showPostSettings = document.querySelectorAll(".showPostSettings");
-	showPostSettings.forEach (function (showSettingsButton) {
-		showSettingsButton.addEventListener("click", function (event) {
-			event.preventDefault();
-			let postButtonsForm = showSettingsButton.parentElement;
-			let postSettingsButtons = postButtonsForm.querySelector(".postSettingsButtons");
-			postSettingsButtons.classList.toggle("postSettingsButtonsShow");
-		});
-	});
+function showSettings(showSettingsButton) {
+	let postButtonsForm = showSettingsButton.parentElement;
+	let postSettingsButtons = postButtonsForm.querySelector(".postSettingsButtons");
+	postSettingsButtons.classList.toggle("postSettingsButtonsShow");
 }
-showSettings();
+const showPostSettings = document.querySelectorAll(".showPostSettings");
+showPostSettings.forEach (function (showSettingsButton) {
+	showSettingsButton.addEventListener("click", function (event) {
+		event.preventDefault();
+		showSettings(showSettingsButton);
+	});
+});
+
 // show comments
 function clickToShowComments() {
 	const showCommentsLink = document.querySelectorAll(".commentLink");
