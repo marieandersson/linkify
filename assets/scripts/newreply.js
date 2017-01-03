@@ -43,6 +43,15 @@ function handleReply(saveReplyButton) {
 				return response.text().then(function(result) {
 					// if success remove error and reset form
 					errorMessage.classList.remove("showError");
+					saveReplyButton.parentElement.parentElement.reset();
+					// display reply
+					let newReply = document.createElement("div");
+					newReply.innerHTML = result;
+					newReply.classList.add("replyWrap");
+
+					let commentWrap = saveReplyButton.parentElement.parentElement.parentElement.parentElement;
+					let replies = commentWrap.querySelector(".replies");
+					replies.insertBefore(newReply, replies.firstChild);
 				});
 			}
 		});

@@ -96,11 +96,15 @@
 				<?php foreach ($comments as $comment) {
 				if ($comment["reply_to"] == NULL) { ?>
 			<div class="commentWrap">
-				<?php require __DIR__."/../partials/comment.block.php";
-				foreach ($comments as $reply) {
-				if ($reply["reply_to"] == $comment["id"]) {
-					require __DIR__."/../partials/reply.block.php"; ?>
+				<?php require __DIR__."/../partials/comment.block.php"; ?>
+				<div class="replies">
+				<?php foreach ($comments as $reply) {
+				if ($reply["reply_to"] == $comment["id"]) { ?>
+					<div class="replyWrap">
+						<?php require __DIR__."/../partials/reply.block.php"; ?>
+					</div>
 				<?php }} ?>
+				</div>
 			</div>
 			<?php	}} ?>
 		</div>

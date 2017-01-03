@@ -90,5 +90,13 @@ function handleSubmits($db) {
 		$replyTo = $_POST["commentId"];
 		saveNewComment($db, $replyTo);
 
+		$commentId = $db->lastInsertId();
+		$getReplyQuery = "SELECT comments.id, comments.user_id, comments.comment, comments.published, comments.reply_to,
+		users.name FROM comments INNER JOIN users ON comments.user_id = users.id WHERE comments.id = '{$commentId}' AND comments.post_id = '{$_POST["postId"]}'";
+		$getReplyStatement = $db->query($getReplyQuery);
+		$reply = $getReplyStatement->fetch(PDO::FETCH_ASSOC);
+
+		include(__DIR__."/../../views/partials/reply.block.php");
+		http_response_code(200);
 	}
 }
