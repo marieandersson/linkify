@@ -89,6 +89,11 @@ function handleCommentPost(commentButton) {
 						event.preventDefault();
 						handleCommentDelete(deleteButton);
 					});
+					let newEditButton = newComment.querySelector(".saveEditComment");
+					newEditButton.addEventListener("click", function(event) {
+						event.preventDefault();
+						handleEditComment(newEditButton);
+					});
 				});
 			}
 		});

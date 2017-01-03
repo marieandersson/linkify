@@ -62,6 +62,11 @@ function handleNewPost() {
 							handlePostDelete(deleteButton);
 						}
 					});
+					let newEditButton = newPost.querySelector(".saveEdit");
+					newEditButton.addEventListener("click", function(event) {
+						event.preventDefault();
+						handleEditPost(newEditButton);
+					});
 					let showSettingsButton = newPost.querySelector(".showPostSettings");
 					showSettingsButton.addEventListener("click", function(event) {
 						event.preventDefault();
