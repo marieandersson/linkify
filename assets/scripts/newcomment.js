@@ -15,14 +15,14 @@ function handleCommentPost(commentButton) {
 	// check if all fields has content
 	if (comment == "") {
 		errorMessage.innerHTML = "Write a comment before posting.";
-		errorMessage.classList.add("showError"); // remove later?
+		errorMessage.classList.add("showError");
 	} else {
 		// put form input in object
 		let postData = new FormData();
 		postData.append("comment", comment);
 		postData.append("postId", postId);
 		postData.append("commentPost", "submit");
-		// post to the php script handling post requests for new posts
+		// post to the php script handling post requests for new comments
 		fetch("/app/posts/comments.php",
 		{
 			method: "POST",

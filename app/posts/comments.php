@@ -82,8 +82,11 @@ function handleSubmits($db) {
 	if (isset($_POST["replySubmit"])) {
 		// Check if comment has content
 		if (empty($_POST["comment"])) {
+			http_response_code(406);
+			echo "Comment can't be empty.";
 			exit();
 		}
+		// save reply in database
 		$replyTo = $_POST["commentId"];
 		saveNewComment($db, $replyTo);
 

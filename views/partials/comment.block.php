@@ -24,11 +24,11 @@
 <?php if (checkLogin($db)) { ?>
 <div class="ReplyForm">
 	<form action="app/posts/comments.php" method="post">
-		<input type="hidden" name="commentId" value="<?=$comment["id"]?>">
-		<input type="hidden" name="postId" value="<?=$post["id"]?>">
+		<input type="hidden" name="commentId" class="commentIdReply" value="<?=$comment["id"]?>">
+		<input type="hidden" name="postId" class="postIdReply" value="<?=$post["id"]?>">
 		<div class="replyFields">
 			<input type="text" name="comment" placeholder="Reply to this...">
-			<input type="submit" name="replySubmit" value="Submit">
+			<input type="submit" name="replySubmit" class="replySubmit" value="Submit">
 		</div>
 		<button class="replyButton">Reply to this</button>
 	</form>
