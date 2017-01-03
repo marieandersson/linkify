@@ -33,12 +33,11 @@ function handleCommentDelete(deleteButton) {
 		let childNodes = comments.childNodes;
 		let containsElement = false;
 		// loop through node list to check for element nodes (ignoring text nodes)
-		for (let node of childNodes.entries()) {
+		childNodes.forEach (function(node) {
 			if (node.nodeType == Node.ELEMENT_NODE) {
 				containsElement = true;
-				break;
 			}
-		}
+		});
 		if (containsElement == false) {
 			comments.parentElement.querySelector(".commentCount").innerHTML = "";
 			comments.remove();
