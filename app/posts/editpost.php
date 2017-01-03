@@ -51,17 +51,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		$result = validateNewPostFields($_POST["editUrl"]);
 
 		if ($result == MISSING_POST_INPUT) {
-			$_SESSION["message"] = "Your changes wasn't saved. All fields must be filled.";
-			header("Location: /");
+			http_response_code(406);
+			echo "Please fill out all fields.";
 			exit();
 		}
 		if ($result == INVALID_URL) {
-			$_SESSION["message"] = "Your changes wasn't saved. Incorrect url format.";
-			header("Location: /");
+			http_response_code(406);
+			echo "Invalid url format.";
 			exit();
 		}
+		// save updates in dataase
 		editPost($db);
-		header("Location: /");
-		exit();
 	}
 }

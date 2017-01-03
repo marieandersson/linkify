@@ -38,7 +38,7 @@
 			<?php if (checkLogin($db) && $post["user_id"] == $_SESSION["login"]["id"]) { ?>
 				<div class="editPostForm">
 					<form action="app/posts/editpost.php" method="post">
-						<input type="hidden" name="postIdForEdit" value="<?=$post["id"]?>">
+						<input type="hidden" name="postIdForEdit" class="postIdForEdit" value="<?=$post["id"]?>">
 						<div class="editInputField">
 							<label for="editSubject">Subject:</label>
 							<input type="text" name="editSubject" value="<?=$post["subject"]?>">
@@ -86,10 +86,12 @@
 			</div>
 		<?php }
 		// check if post has comments
-		$comments = getComments($db, $post["id"]);
-		if ($comments) {
+		$comments = getComments($db, $post["id"]); ?>
+		<p class="commentCount"><?php if ($comments) { ?>
+			<a href='#' class='commentLink'>This post has comments. Click here to <span class='readOrClose'>read</span> them.</a>
+		<?php } ?></p>
+		<?php if ($comments) {
 			usort($comments, "sortByDate");?>
-			<p class="commentCount"><a href="#" class="commentLink">This post has comments. Click here to <span class="readOrClose">read</span> them.</a></p>
 			<div class="comments">
 				<?php foreach ($comments as $comment) {
 					if ($comment["reply_to"] == NULL) { ?>

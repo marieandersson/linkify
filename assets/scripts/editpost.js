@@ -37,13 +37,57 @@ const saveEditButtons = document.querySelectorAll(".saveEdit");
 saveEditButtons.forEach (function(editButton) {
 	editButton.addEventListener("click", function(event) {
 		event.preventDefault();
-		handleEditPost();
+		handleEditPost(editButton);
 	});
 });
-function handleEditPost() {
-
-	let subject = document.querySelector(".newPostFields input[name=subject]").value;
-	let url = document.querySelector(".newPostFields input[name=url]").value;
-	let description = document.querySelector(".newPostFields input[name=description]").value;
+function handleEditPost(editButton) {
+	let postId = editButton.parentElement.querySelector(".postIdForEdit").value;
+	let subject = editButton.parentElement.querySelector(".editInputField input[name=editSubject]").value;
+	let url = document.querySelector(".editInputField input[name=editUrl]").value;
+	let description = document.querySelector(".editInputField input[name=editDescription]").value;
 	let errorMessage = document.querySelector(".jsMessage");
+
+	if (subject == "" || url == "" || description == "") {
+		errorMessage.innerHTML = "Please fill out all fields.";
+		errorMessage.classList.add("showError");
+	} else {
+		// put form input in object
+		let postData = new FormData();
+		postData.append("postIdForEdit", postId);
+		postData.append("editSubject", subject);
+		postData.append("editUrl", url);
+		postData.append("editDescription", description);
+		postData.append("saveEdit", "save");
+		// post to php script handling post requests for edit posts
+		fetch("/app/posts/editpost.php",
+		{
+			method: "POST",
+			body: postData,
+			credentials: "same-origin",
+		})
+		// response after php script have been executed
+		.then(function(response) {
+			// if error
+			if (!response.ok) {
+				return response.text().then(function(error) {
+					errorMessage.innerHTML = error;
+					errorMessage.classList.add("showError");
+				});
+			} else {
+				return response.text().then(function(result) {
+					// if sucess remove error
+					errorMessage.classList.remove("showError");
+					// replace post content
+					let postElement = document.querySelector(".post"+postId);
+					postElement.querySelector(".postWrap h4 a").innerHTML = subject;
+					postElement.querySelector(".postWrap h4 a").href = url;
+					postElement.querySelector(".postContent p").innerHTML = description;
+					postElement.querySelector(".postContent").classList.remove("postContentHide");
+					postElement.querySelector(".editPostForm").classList.remove("editPostFormShow");
+					postElement.querySelector(".editButton").innerHTML = "Edit post";
+					postElement.querySelector(".postSettingsButtons").classList.remove("postSettingsButtonsShow");
+				});
+			}
+		});
+	}
 }

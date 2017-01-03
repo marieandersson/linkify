@@ -61,6 +61,8 @@ function handleCommentPost(commentButton) {
 						commentElement.classList.add("commentsShow");
 						// add commentcount paragraph?
 					}
+					let commentCount = newComment.parentElement.parentElement.querySelector(".commentCount");
+					commentCount.innerHTML = "<a href='#' class='commentLink'>This post has comments. Click here to <span class='readOrClose'>close</span> them.</a>";
 					// add eventlistener to new comment post
 					let editCommentButton = newComment.querySelector(".editCommentButton");
 					editCommentButton.addEventListener("click", function(event) {
@@ -77,7 +79,11 @@ function handleCommentPost(commentButton) {
 						event.preventDefault();
 						showReplyForm(replyButton);
 					});
-					clickToShowComments();
+					let showComments = newComment.parentElement.parentElement.querySelector(".commentLink");
+					showComments.addEventListener("click", function(event) {
+						event.preventDefault();
+						clickToShowComments(showComments);
+					});
 				});
 			}
 		});

@@ -15,7 +15,7 @@ function handleNewPost() {
 	// check if all fields has content
 	if (subject == "" || url == "" || description == "") {
 		errorMessage.innerHTML = "Please fill out all fields.";
-		errorMessage.classList.add("showError"); // remove later?
+		errorMessage.classList.add("showError");
 	} else {
 		// put form input in object
 		let postData = new FormData();
