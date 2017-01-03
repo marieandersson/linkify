@@ -1,4 +1,4 @@
-<div class="commentReply">
+<div class="commentReply comment<?=$reply["id"]?>">
 	<div class="commentDiv">
 		<p class="commentContent"><?=$reply["name"]?>: <?=$reply["comment"]?></p>
 		<p class="commentPublished">Posted on <?=date('jS \of M h:i', strtotime($reply["published"]))?></p>

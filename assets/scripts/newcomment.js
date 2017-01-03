@@ -62,9 +62,22 @@ function handleCommentPost(commentButton) {
 						// add commentcount paragraph?
 					}
 					// add eventlistener to new comment post
-					replaceCommentWithForm();
-					showSettings();
-					showReplyForm();
+					let editCommentButton = newComment.querySelector(".editCommentButton");
+					editCommentButton.addEventListener("click", function(event) {
+						event.preventDefault();
+						replaceCommentWithForm(editCommentButton);
+					});
+					let showSettingsButton = newComment.querySelector(".showPostSettings");
+					showSettingsButton.addEventListener("click", function(event) {
+						event.preventDefault();
+						showSettings(showSettingsButton);
+					});
+					let replyButton = newComment.querySelector(".replyButton");
+					replyButton.addEventListener("click", function(event) {
+						event.preventDefault();
+						showReplyForm(replyButton);
+					});
+					clickToShowComments();
 				});
 			}
 		});

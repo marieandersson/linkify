@@ -81,7 +81,9 @@
 			<!-- user only able to edit or delete own posts -->
 		</form>
 		<?php } else { ?>
-			<p class="loginLink">Wanna discuss this? Please log in first. (Link to login)</p>
+			<div class="loginLink">
+				<p>Wanna discuss this? Please log in first. (Link to login)</p>
+			</div>
 		<?php }
 		// check if post has comments
 		$comments = getComments($db, $post["id"]);
@@ -91,14 +93,15 @@
 			<div class="comments">
 				<?php foreach ($comments as $comment) {
 					if ($comment["reply_to"] == NULL) { ?>
-						<div class="commentWrap">
+						<div class="commentWrap comment<?=$comment["id"]?>">
 							<?php require __DIR__."/../partials/comment.block.php";
 							foreach ($comments as $reply) {
 							if ($reply["reply_to"] == $comment["id"]) {
 								require __DIR__."/../partials/reply.block.php"; ?>
 								<?php }} ?>
 						</div>
-				<?php	}}} ?>
+				<?php	}} ?>
 			</div>
+			<?php } ?>
 	</div>
 </div>

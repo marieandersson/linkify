@@ -10,8 +10,9 @@ $posts = getPosts($db);
 				foreach ($posts as $post) { ?>
 					<div class="post">
 						<?php require __DIR__."/partials/post.block.php" ?>
-					</div>
-			<?php }} ?>
+			<?php } ?>
+			</div>
+		<?php } ?>
 		</div>
 	</div>
 </div> <!-- end page -->
