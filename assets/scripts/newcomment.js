@@ -87,7 +87,9 @@ function handleCommentPost(commentButton) {
 					let deleteButton = newComment.querySelector(".deleteComment");
 					deleteButton.addEventListener("click", function(event) {
 						event.preventDefault();
-						handleCommentDelete(deleteButton);
+						if (window.confirm("Are you sure you want to delete this comment?")) {
+							handleCommentDelete(deleteButton);
+						}
 					});
 					let newEditButton = newComment.querySelector(".saveEditComment");
 					newEditButton.addEventListener("click", function(event) {
