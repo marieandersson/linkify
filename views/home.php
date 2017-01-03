@@ -42,12 +42,12 @@ $posts = getPosts($db);
 					<div class="displayPosts">
 						<!-- check if any posts exists -->
 						<?php if ($posts) {
-							usort($posts, "sortByDate");
-							foreach ($posts as $post) { ?>
-								<div class="post">
-									<?php require __DIR__."/partials/post.block.php";	?>
-								</div>
-						<?php }} ?>
+						usort($posts, "sortByDate");
+						foreach ($posts as $post) { ?>
+						<div class="post">
+							<?php require __DIR__."/partials/post.block.php";	?>
+							<?php }} ?>
+						</div>
 					</div>
 
 				</div> <!-- end posts -->

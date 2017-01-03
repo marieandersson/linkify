@@ -30,3 +30,5 @@ function handlePostDelete(deleteButton) {
 			postElement.remove();
 	});
 }
+
+// handle post request for editing post without page reload
