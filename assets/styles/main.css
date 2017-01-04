@@ -100,6 +100,34 @@ header nav p:hover {
 	color: #d3d3d3;
 }
 
+/* --- cookie box --- */
+.acceptCookies {
+	align-items: center;
+  background: var(--primaryColor);
+  color: #fff;
+  display: none;
+  justify-content: space-between;
+  left: 0;
+  padding: 0 0.5em;
+  position: absolute;
+  top: 0;
+  width: 100%;
+	font-family: var(--headingFont);
+}
+.acceptCookies a {
+	color: #fff;
+}
+.acceptCookies.cookieShow {
+	display: flex;
+}
+.cookieButton {
+	border: solid 1px white;
+}
+.cookieButton:hover {
+	cursor:pointer;
+	color: var(--primaryColor);
+	background: #fff;
+}
 /* --- Error messages --- */
 .error, .settingsError, .message, .jsMessage {
   width: 100%;

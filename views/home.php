@@ -8,6 +8,7 @@ $posts = getPosts($db);
 		<!-- client side validation error message -->
 		<div class="jsMessage">
 		</div>
+
 		<?php
 		// server side validation error message REMOVE?
 			if ($message) { ?>
