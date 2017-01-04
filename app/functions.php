@@ -62,9 +62,10 @@ function getUserInfo($db) {
 	return $userInfo;
 }
 
-function getPosts($db) {
-	$getPostsQuery = "SELECT posts.id, posts.description, posts.subject, posts.url, posts.published, posts.user_id,
-	users.name, users.username FROM posts INNER JOIN users ON posts.user_id = users.id ORDER BY posts.published DESC";
+function getPosts($db, $order) {
+	$getPostsQuery = "SELECT posts.id, posts.description, posts.subject, posts.url, posts.published AS published, posts.user_id,
+	users.name, users.username, SUM(votes.vote) AS votes  FROM posts INNER JOIN users ON posts.user_id = users.id
+	LEFT JOIN votes ON posts.id = votes.post_id GROUP BY posts.id ORDER BY {$order} DESC";
 	$getPostsStatement = $db->query($getPostsQuery);
 
 	if ($getPostsStatement->rowCount() == 0 ) {
@@ -100,11 +101,3 @@ function getProfileInfo($db, $profileUsername) {
 	$profileInfo = $getProfileInfoStatement->fetch(PDO::FETCH_ASSOC);
 	return $profileInfo;
 }
-
-// order posts by votes
-// SELECT posts.id, posts.description, posts.subject, posts.url, posts.published, posts.user_id,
-// users.name, users.username, SUM(votes.vote) AS votes FROM posts
-// INNER JOIN users ON posts.user_id = users.id
-// LEFT JOIN votes ON posts.id = votes.post_id
-// GROUP BY posts.id
-// ORDER BY votes DESC

@@ -1,7 +1,8 @@
 <?php
 require __DIR__."/partials/header.php";
 $user = getUserInfo($db);
-$posts = getPosts($db);
+// get posts and handle users sort requests
+require __DIR__."/../app/posts/sortposts.php";
 ?>
 
 	<div class="content">
@@ -44,7 +45,7 @@ $posts = getPosts($db);
 						<!-- check if any posts exists -->
 						<?php if ($posts) { ?>
 							<div class="sortPosts">
-							<form action="" method="post">
+							<form action="/index.php" method="post">
 								<input type="submit" name="byDate" value="Most recent">
 								<input type="submit" name="byPop" value="Most popular">
 							</form>
