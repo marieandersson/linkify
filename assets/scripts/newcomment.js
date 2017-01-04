@@ -61,6 +61,10 @@ function handleCommentPost(commentButton) {
 						commentElement.insertBefore(newComment, commentElement.firstChild);
 						commentElement.classList.add("commentsShow");
 					}
+					// prepare for replies
+					let replies = document.createElement("div");
+					replies.classList.add("replies");
+					newComment.appendChild(replies);
 					let commentCount = newComment.parentElement.parentElement.querySelector(".commentCount");
 					commentCount.innerHTML = "<a href='#' class='commentLink'>This post has comments. Click here to <span class='readOrClose'>close</span> them.</a>";
 					// add eventlistener to new comment post
@@ -95,6 +99,11 @@ function handleCommentPost(commentButton) {
 					newEditButton.addEventListener("click", function(event) {
 						event.preventDefault();
 						handleEditComment(newEditButton);
+					});
+					let saveReplyButton = newComment.querySelector(".replySubmit");
+					saveReplyButton.addEventListener("click", function(event) {
+						event.preventDefault();
+						handleReply(saveReplyButton);
 					});
 				});
 			}

@@ -1,7 +1,7 @@
 <div class="comment comment<?=$comment["id"]?>">
 	<div class="commentDiv">
 		<p class="commentContent"><?=$comment["name"]?>: <span class="commentText"><?=$comment["comment"]?></span></p>
-		<p class="commentPublished">Posted on <?=date('jS \of M h:i', strtotime($comment["published"]))?></p>
+		<p class="commentPublished">Posted on <?=date('jS \of M H:i', strtotime($comment["published"]))?></p>
 	</div>
 	<!-- edit comment form shown on click -->
 	<div class="editCommentForm">

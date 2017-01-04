@@ -39,8 +39,8 @@ function replaceVote($db, $value) {
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	// user can't vote on own post
 	if ($_POST["postUserIdForVote"] == $_SESSION["login"]["id"]) {
-		$_SESSION["message"] = "Sorry, you can't vote on your own post.";
-		header("Location: /");
+		http_response_code(406);
+		echo "Sorry, you can't vote on you own post.";
 		exit();
 	}
 	if (isset($_POST["up"])) {
@@ -49,17 +49,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		if ($vote) {
 			//if user already voted up
 			if ($vote[0]["vote"] == 1) {
-				header("Location: /");
+				http_response_code(406);
+				echo "You can only vote up once.";
 				exit();
 			}
-			// if user already voted down
+			// if user already voted down replace vote in database
 			replaceVote($db, 1);
-			header("Location: /");
+			echo "vote replaced";
 			exit();
 		}
-		// if no vote - save up vote
+		// if no vote - save up vote in database
 		saveVote($db, 1);
-		header("Location: /");
+		echo "new vote saved";
 		exit();
 	}
 	if (isset($_POST["down"])) {
@@ -68,17 +69,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		if ($vote) {
 			//if user already voted down
 			if ($vote[0]["vote"] == -1) {
-				header("Location: /");
+				http_response_code(406);
+				echo "You can only vote down once.";
 				exit();
 			}
 			// if user already voted up
 			replaceVote($db, -1);
-			header("Location: /");
+			echo "vote replaced";
 			exit();
 		}
 		// if no vote - save down vote
 		saveVote($db, -1);
-		header("Location: /");
+		echo "new vote saved";
 		exit();
 	}
 }

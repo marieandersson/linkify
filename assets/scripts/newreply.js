@@ -51,7 +51,11 @@ function handleReply(saveReplyButton) {
 					// append to replies div
 					let commentWrap = saveReplyButton.parentElement.parentElement.parentElement.parentElement;
 					let replies = commentWrap.querySelector(".replies");
-					replies.insertBefore(newReply, replies.firstChild);
+					if (replies.hasChildNodes()) {
+						replies.insertBefore(newReply, replies.firstChild);
+					} else {
+						replies.appendChild(newReply);
+					}
 					// add eventlistener to new reply
 					let editCommentButton = newReply.querySelector(".editCommentButton");
 					editCommentButton.addEventListener("click", function(event) {

@@ -24,7 +24,7 @@ function handleCommentDelete(deleteButton) {
 		body: postData,
 		credentials: "same-origin",
 	})
-	// response after php script have been executed
+	// response after php script has been executed
 	.then(function(response) {
 		let commentElement = document.querySelector(".comment"+commentId).parentElement;
 		// if no comments left for post remove comments div and commentcount

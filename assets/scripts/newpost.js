@@ -77,6 +77,16 @@ function handleNewPost() {
 						event.preventDefault();
 						replacePostWithForm(editButton);
 					});
+					let upVoteNewPost = newPost.querySelector(".up");
+					upVoteNewPost.addEventListener("click", function(event) {
+						event.preventDefault();
+						handleVote(upVoteNewPost, "up", 1);
+					});
+					let downVoteNewPost = newPost.querySelector(".down");
+					downVoteNewPost.addEventListener("click", function(event) {
+						event.preventDefault();
+						handleVote(downVoteNewPost, "down", -1);
+					});
 				});
 			}
 		});
