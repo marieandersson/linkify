@@ -42,9 +42,14 @@ $posts = getPosts($db);
 					<!-- display existing posts -->
 					<div class="displayPosts">
 						<!-- check if any posts exists -->
-						<?php if ($posts) {
-						usort($posts, "sortByDate");
-						foreach ($posts as $post) { ?>
+						<?php if ($posts) { ?>
+							<div class="sortPosts">
+							<form action="" method="post">
+								<input type="submit" name="byDate" value="Most recent">
+								<input type="submit" name="byPop" value="Most popular">
+							</form>
+							</div>
+						<?php foreach ($posts as $post) { ?>
 						<div class="post">
 							<?php require __DIR__."/partials/post.block.php";	?>
 						</div>

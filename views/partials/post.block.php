@@ -91,8 +91,7 @@
 		<p class="commentCount"><?php if ($comments) { ?>
 			<a href='#' class='commentLink'>This post has comments. Click here to <span class='readOrClose'>read</span> them.</a>
 		<?php } ?></p>
-		<?php if ($comments) {
-			usort($comments, "sortByDate");?>
+		<?php if ($comments) { ?>
 		<div class="comments">
 				<?php foreach ($comments as $comment) {
 				if ($comment["reply_to"] == NULL) { ?>

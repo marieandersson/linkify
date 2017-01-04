@@ -64,7 +64,7 @@ function getUserInfo($db) {
 
 function getPosts($db) {
 	$getPostsQuery = "SELECT posts.id, posts.description, posts.subject, posts.url, posts.published, posts.user_id,
-	users.name, users.username FROM posts INNER JOIN users ON posts.user_id = users.id";
+	users.name, users.username FROM posts INNER JOIN users ON posts.user_id = users.id ORDER BY posts.published DESC";
 	$getPostsStatement = $db->query($getPostsQuery);
 
 	if ($getPostsStatement->rowCount() == 0 ) {
@@ -76,7 +76,7 @@ function getPosts($db) {
 
 function getComments($db, $postId) {
 	$getCommentsQuery = "SELECT comments.id, comments.user_id, comments.comment, comments.published, comments.reply_to,
-	users.name, users.username FROM comments INNER JOIN users ON comments.user_id = users.id WHERE comments.post_id = '{$postId}'";
+	users.name, users.username FROM comments INNER JOIN users ON comments.user_id = users.id WHERE comments.post_id = '{$postId}' ORDER BY comments.published DESC";
 	$getCommentsStatement = $db->query($getCommentsQuery);
 
 	if ($getCommentsStatement->rowCount() == 0 ) {
@@ -84,14 +84,6 @@ function getComments($db, $postId) {
 	}
 	$comments = $getCommentsStatement->fetchAll(PDO::FETCH_ASSOC);
 	return $comments;
-}
-// sort posts and comments by date
-function sortByDate($postA, $postB) {
-	return $postB["published"] <=> $postA["published"];
-}
-
-function sortPostsByVotes() {
-
 }
 
 function countVotes($db, $postId) {
@@ -108,3 +100,11 @@ function getProfileInfo($db, $profileUsername) {
 	$profileInfo = $getProfileInfoStatement->fetch(PDO::FETCH_ASSOC);
 	return $profileInfo;
 }
+
+// order posts by votes
+// SELECT posts.id, posts.description, posts.subject, posts.url, posts.published, posts.user_id,
+// users.name, users.username, SUM(votes.vote) AS votes FROM posts
+// INNER JOIN users ON posts.user_id = users.id
+// LEFT JOIN votes ON posts.id = votes.post_id
+// GROUP BY posts.id
+// ORDER BY votes DESC

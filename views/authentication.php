@@ -6,7 +6,6 @@ $posts = getPosts($db);
 	<div class="content">
 		<div class="displayPosts">
 			<?php if ($posts) {
-				usort($posts, "sortByDate");
 				foreach ($posts as $post) { ?>
 					<div class="post">
 						<?php require __DIR__."/partials/post.block.php" ?>

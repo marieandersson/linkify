@@ -213,7 +213,21 @@ header nav p:hover {
 	border: var(--mainBorder);
 	margin: 0.5em auto;
 }
-
+/* sort posts */
+.sortPosts {
+	margin: 1em 0 0;
+	text-align: center;
+}
+.sortPosts input {
+	margin: 0 2em;
+	border: var(--mainBorder);
+	padding: 0.5em;
+	background: #fff;
+	width: 200px;
+}
+.sortPosts input:hover {
+	cursor: pointer;
+}
 /* existing posts */
 .displayPosts {
 	width: 700px;

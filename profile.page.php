@@ -46,7 +46,6 @@ $profile = getProfileInfo($db, $_GET["user"]);
 							$userPosts[] = $post;
 						}
 					}
-					usort($userPosts, "sortByDate");
 					foreach ($userPosts as $post) { ?>
 						<div class="post">
 						<?php
