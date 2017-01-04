@@ -2,7 +2,7 @@
 require __DIR__."/autoload.php";
 require __DIR__."/views/partials/header.php";
 $user = getUserInfo($db);
-$posts = getPosts($db);
+$posts = getPosts($db, "published");
 $profile = getProfileInfo($db, $_GET["user"]);
 ?>
 <div class="content">

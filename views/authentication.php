@@ -1,12 +1,19 @@
 <?php
 require __DIR__."/partials/header.php";
-$posts = getPosts($db);
+// get posts and handle users sort requests
+require __DIR__."/../app/posts/sortposts.php";
 ?>
 
 	<div class="content">
 		<div class="displayPosts">
-			<?php if ($posts) {
-				foreach ($posts as $post) { ?>
+			<?php if ($posts) { ?>
+			<div class="sortPosts">
+			<form action="/index.php" method="post">
+				<input type="submit" name="byDate" value="Most recent">
+				<input type="submit" name="byPop" value="Most popular">
+			</form>
+			</div>
+			<?php	foreach ($posts as $post) { ?>
 					<div class="post">
 						<?php require __DIR__."/partials/post.block.php" ?>
 					</div>

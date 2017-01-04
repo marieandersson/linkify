@@ -11,7 +11,7 @@ require __DIR__."/../app/posts/sortposts.php";
 		</div>
 
 		<?php
-		// server side validation error message REMOVE?
+		// server side validation error message
 			if ($message) { ?>
 			<div class="message">
 				<?= $message; ?>
