@@ -14,6 +14,7 @@
 body {
 	background-color: var(--backgroundColor);
 	overflow-x: hidden;
+	margin: 0 2em;
 }
 .page {
 	width: 100%;
@@ -24,18 +25,6 @@ body {
 .content {
 	padding: 1em 2em;
 }
-/* --- responsive properties --- */
-@media only screen and (min-width: 60em) {
-	.displayPosts {
-		width: 70%;
-	}
-}
-@media only screen and (max-width: 60em) {
-	.displayPosts {
-  	width: 100%;
-  }
-}
-
 
 /* --- header --- */
 header {
@@ -48,7 +37,7 @@ header {
 }
 header h1 {
 	margin: 0;
-	font-size: 2em;
+	font-size: 1.5em;
 	font-family: var(--headingFont);
 	color: var(--fontBlack);
 	align-self: center;
@@ -57,20 +46,32 @@ header h1 a {
 	text-decoration: none;
 	color: var(--fontBlack);
 }
-header nav p {
-	color: var(--fontBlack);
+.menuNav {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
-header nav p:hover {
-	color: var(--fontColor);
-	cursor: pointer;
+.profileLink img {
+	width: 45px;
+	height: 45px;
+	object-fit: cover;
+	border-radius: 5px;
+}
+.menuLink img {
+	height: 45px;
+}
+.profileLink {
+	margin-right: 1em;
+}
+.menuLink:hover, .profileLink:hover {
+	cursor:pointer;
 }
 
 /* --- slide navigation --- */
 .menuSlide {
 	background: var(--primaryColor);
-	height: 100vh;
+	min-height: 100vh;
 	padding: 1em;
-	width: 300px;
 	display: block;
 	position: absolute;
 	top: 0;
@@ -183,31 +184,11 @@ header nav p:hover {
 .homeMain {
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-start;
-}
-/* display user info */
-.displayUser {
-	width: 200px;
-	text-align: center;
-}
-.displayUser h4, h5 {
-	margin: 0;
-}
-.displayUser figure {
-	border: 1px solid gray;
-	width: 100px;
-	height: 100px;
-	margin: 0 auto;
-}
-.displayUser figure img{
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+	justify-content: center;
 }
 
 /* new post */
 .newPost {
-	width: 70%;
 	border: var(--mainBorder);
 	background: var(--backgroundColor);
 }
@@ -252,7 +233,7 @@ header nav p:hover {
 .sortPosts input:hover {
 	cursor: pointer;
 }
-/* existing posts */
+/* --- existing posts --- */
 .displayPosts {
 	display: flex;
 	flex-direction: column;
@@ -533,7 +514,6 @@ header nav p:hover {
 	margin: 0;
 }
 .displayUserProfile figure {
-	border: 1px solid gray;
 	width: 200px;
 	height: 200px;
 	margin: 0 auto;
@@ -561,4 +541,26 @@ header nav p:hover {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+}
+
+
+/* --- responsive properties, mobile first --- */
+.displayPosts, .newPost {
+	width: 100%;
+}
+.menuSlide {
+	width: 100%;
+}
+@media only screen and (min-width: 400px) {
+	.displayPosts, .newPost {
+		width: 100%;
+	}
+	.menuSlide {
+		width: 300px;
+	}
+}
+@media only screen and (min-width: 800px) {
+	.displayPosts, .newPost {
+		width: 800px;
+	}
 }

@@ -13,8 +13,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		$_SESSION["sort"] = "byPop";
 	}
 	// check if choice has been made
-} else if (checkLogin($db) && $_SESSION["sort"] == "byDate") {
-	$posts = getPosts($db, "published");
+} else if (checkLogin($db) && isset($_SESSION["sort"])) {
+	if ($_SESSION["sort"] == "byDate") {
+		$posts = getPosts($db, "published");
+	}
 } else {
 	// sort by popularity by default
 	$posts = getPosts($db, "votes");

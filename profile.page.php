@@ -1,7 +1,6 @@
 <?php
 require __DIR__."/autoload.php";
 require __DIR__."/views/partials/header.php";
-$user = getUserInfo($db);
 $posts = getPosts($db, "published");
 $profile = getProfileInfo($db, $_GET["user"]);
 ?>
@@ -24,7 +23,7 @@ $profile = getProfileInfo($db, $_GET["user"]);
 				<?php if ($profile["avatar"] !== NULL) {  ?>
 					<img src="/assets/images/users/<?=$profile["id"]?>/<?=$profile["avatar"]?>" />
 				<?php } else { ?>
-					<img src="/assets/images/placeholder/smiley.jpg" />
+					<img src="/assets/images/profileicon.png" />
 				<?php } ?>
 			</figure>
 			<h4><?=$profile["name"]?></h4>

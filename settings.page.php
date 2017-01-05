@@ -2,7 +2,6 @@
 require __DIR__."/autoload.php";
 $pageTitle = "Settings";
 require __DIR__."/views/partials/header.php";
-$user = getUserInfo($db);
 ?>
 
 	<div class="content">

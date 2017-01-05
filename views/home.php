@@ -1,6 +1,5 @@
 <?php
 require __DIR__."/partials/header.php";
-$user = getUserInfo($db);
 // get posts and handle users sort requests
 require __DIR__."/../app/posts/sortposts.php";
 ?>
@@ -19,21 +18,6 @@ require __DIR__."/../app/posts/sortposts.php";
 		<?php unset($_SESSION["message"]); } ?>
 
 		<main class="homeMain">
-
-				<!-- user profile -->
-				<div class="displayUser">
-					<a href="/profile.page.php/?user=<?=$_SESSION["login"]["username"]?>">
-						<figure>
-							<?php if ($user["avatar"] !== NULL) {  ?>
-								<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" />
-							<?php } else { ?>
-								<img src="/assets/images/placeholder/smiley.jpg" />
-							<?php } ?>
-						</figure>
-						<h4><?=$user["name"]?></h4>
-						<h5>@<?=$user["username"]?></h5>
-					</a>
-				</div>
 
 				<div class="posts">
 

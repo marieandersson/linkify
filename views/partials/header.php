@@ -2,6 +2,9 @@
 	$pageTitle = (isset($pageTitle)) ? $pageTitle:"Linkify";
 	$error = $_SESSION["error"] ?? "";
 	$message = $_SESSION["message"] ?? "";
+	if (checkLogin($db)) {
+		$user = getUserInfo($db);
+	}
 ?>
 
 <!DOCTYPE html>
@@ -25,11 +28,22 @@
 
 			<?php if (!checkLogin($db)) { ?>
 				<nav class="auth">
-					<p class="menuLink">Log in</p>
+					<p class="menuLink"><img src="/assets/images/menuicon.png"/></p>
 				</nav>
 			<?php } else { ?>
 				<nav class="menuNav">
-					<p class="menuLink">Menu</p>
+					<div class="profileLink">
+						<a href="/profile.page.php/?user=<?=$_SESSION["login"]["username"]?>">
+							<?php if ($user["avatar"] !== NULL) {  ?>
+							<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" />
+							<?php } else { ?>
+							<img src="/assets/images/profileicon.png" />
+							<?php } ?>
+						</a>
+					</div>
+					<div class="menuLink">
+						<img src="/assets/images/menuicon.png"/>
+					</div>
 				</nav>
 
 			<?php }; ?>
