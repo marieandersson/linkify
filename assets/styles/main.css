@@ -552,8 +552,7 @@ header h1 {
 	font-size: 1.2em;
 }
 .profileLink img {
-	width: 35px;
-	height: 35px;
+	display: none;
 }
 .menuLink img {
 	height: 25px;
@@ -575,6 +574,7 @@ header h1 {
 		height: 45px;
 	}
 	.profileLink img {
+		display: block;
 		width: 45px;
 		height: 45px;
 	}
