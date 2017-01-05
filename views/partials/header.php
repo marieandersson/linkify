@@ -38,6 +38,15 @@
 			</nav>
 			<?php } else { ?>
 			<nav class="menuNav">
+				<?php if ($posts) {
+				if ($pageTitle != "Linkify - Settings" && $pageTitle != "Linkify - Profile") { ?>
+				<div class="sortPosts">
+				<form action="/index.php" method="post">
+					<input type="submit" name="byDate" value="New">
+					<input type="submit" name="byPop" value="Popular">
+				</form>
+				</div>
+				<?php }} ?>
 				<div class="profileLink">
 					<a href="/profile.page.php/?user=<?=$_SESSION["login"]["username"]?>">
 						<?php if ($user["avatar"] !== NULL) {  ?>

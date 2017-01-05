@@ -1,6 +1,7 @@
 <?php
 require __DIR__."/autoload.php";
-$pageTitle = "Settings";
+$pageTitle = "Linkify - Settings";
+$posts = NULL;
 require __DIR__."/views/partials/header.php";
 ?>
 

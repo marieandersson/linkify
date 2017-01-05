@@ -1,7 +1,8 @@
 <?php
 require __DIR__."/autoload.php";
-require __DIR__."/views/partials/header.php";
+$pageTitle = "Linkify - Profile";
 $posts = getPosts($db, "published");
+require __DIR__."/views/partials/header.php";
 $profile = getProfileInfo($db, $_GET["user"]);
 ?>
 <div class="content">

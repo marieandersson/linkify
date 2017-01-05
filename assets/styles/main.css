@@ -14,7 +14,6 @@
 body {
 	background-color: var(--backgroundColor);
 	overflow-x: hidden;
-	margin: 0 3em;
 }
 .page {
 	width: 100%;
@@ -34,8 +33,13 @@ header {
 	flex-direction: row;
 	justify-content: space-between;
 }
+.leftHeader {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+}
 header h1 {
-	font-size: 2em;
 	margin: 0;
 	padding: 0;
 	font-family: "Syncopate";
@@ -52,19 +56,32 @@ header h1 a {
 	align-items: center;
 }
 .profileLink img {
-	width: 45px;
-	height: 45px;
 	object-fit: cover;
 	border-radius: 5px;
 }
-.menuLink img {
-	height: 35px;
-}
 .profileLink {
-	margin-right: 1.2em;
+	margin: 0 1.2em 0;
 }
 .menuLink:hover, .profileLink:hover {
 	cursor:pointer;
+}
+/* sort posts */
+.sortPosts {
+	margin: 0;
+	text-align: center;
+}
+.sortPosts input {
+	margin: 0;
+	border: solid 1px #ab987a;
+	border-radius: 5px;
+	padding: 0.5em 1em;
+	font-family: var(--headingFont);
+	color: var(--fontBlack);
+}
+.sortPosts input:hover {
+	cursor: pointer;
+	background: var(--primaryColor);
+	color: var(--backgroundColor);
 }
 
 /* --- slide navigation --- */
@@ -218,21 +235,7 @@ header h1 a {
 	border: var(--mainBorder);
 	margin: 0.5em auto;
 }
-/* sort posts */
-.sortPosts {
-	margin: 1em 0 0;
-	text-align: center;
-}
-.sortPosts input {
-	margin: 0 2em;
-	border: var(--mainBorder);
-	padding: 0.5em;
-	background: #fff;
-	width: 200px;
-}
-.sortPosts input:hover {
-	cursor: pointer;
-}
+
 /* --- existing posts --- */
 .displayPosts {
 	display: flex;
@@ -545,6 +548,16 @@ header h1 a {
 
 
 /* --- responsive properties, mobile first --- */
+header h1 {
+	font-size: 1.2em;
+}
+.profileLink img {
+	width: 35px;
+	height: 35px;
+}
+.menuLink img {
+	height: 25px;
+}
 .displayPosts, .newPost {
 	width: 100%;
 }
@@ -552,6 +565,22 @@ header h1 a {
 	width: 100%;
 }
 @media only screen and (min-width: 400px) {
+	body {
+		margin: 0 3em;
+	}
+	header h1 {
+		font-size: 2em;
+	}
+	.sortPosts input {
+		height: 45px;
+	}
+	.profileLink img {
+		width: 45px;
+		height: 45px;
+	}
+	.menuLink img {
+		height: 35px;
+	}
 	.displayPosts, .newPost {
 		width: 100%;
 	}

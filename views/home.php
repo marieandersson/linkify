@@ -1,7 +1,7 @@
 <?php
-require __DIR__."/partials/header.php";
 // get posts and handle users sort requests
 require __DIR__."/../app/posts/sortposts.php";
+require __DIR__."/partials/header.php";
 ?>
 
 	<div class="content">
@@ -27,14 +27,8 @@ require __DIR__."/../app/posts/sortposts.php";
 					<!-- display existing posts -->
 					<div class="displayPosts">
 						<!-- check if any posts exists -->
-						<?php if ($posts) { ?>
-							<div class="sortPosts">
-							<form action="/index.php" method="post">
-								<input type="submit" name="byDate" value="Most recent">
-								<input type="submit" name="byPop" value="Most popular">
-							</form>
-							</div>
-						<?php foreach ($posts as $post) { ?>
+						<?php if ($posts) {
+						foreach ($posts as $post) { ?>
 						<div class="post">
 							<?php require __DIR__."/partials/post.block.php";	?>
 						</div>
