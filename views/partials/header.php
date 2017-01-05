@@ -14,6 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title><?= $pageTitle; ?></title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/4.1.0/sanitize.min.css">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Syncopate">
 	<link rel="stylesheet" href="/assets/styles/main.css">
 </head>
 <body>
@@ -24,29 +25,31 @@
 	</div>
 	<div class="page">
 		<header>
-			<h1><a href="/index.php">Linkify</a></h1>
+			<div class="leftHeader">
+				<h1><a href="/index.php">Linkify</a></h1>
+
+			</div>
 
 			<?php if (!checkLogin($db)) { ?>
-				<nav class="authNav">
-					<div class="menuLink">
-						<img src="/assets/images/menuicon.png"/>
-					</div>
-				</nav>
+			<nav class="authNav">
+				<div class="menuLink">
+					<img src="/assets/images/menuicon.png"/>
+				</div>
+			</nav>
 			<?php } else { ?>
-				<nav class="menuNav">
-					<div class="profileLink">
-						<a href="/profile.page.php/?user=<?=$_SESSION["login"]["username"]?>">
-							<?php if ($user["avatar"] !== NULL) {  ?>
-							<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" />
-							<?php } else { ?>
-							<img src="/assets/images/profileicon.png" />
-							<?php } ?>
-						</a>
-					</div>
-					<div class="menuLink">
-						<img src="/assets/images/menuicon.png"/>
-					</div>
-				</nav>
-
+			<nav class="menuNav">
+				<div class="profileLink">
+					<a href="/profile.page.php/?user=<?=$_SESSION["login"]["username"]?>">
+						<?php if ($user["avatar"] !== NULL) {  ?>
+						<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" />
+						<?php } else { ?>
+						<img src="/assets/images/profileicon.png" />
+						<?php } ?>
+					</a>
+				</div>
+				<div class="menuLink">
+					<img src="/assets/images/menuicon.png"/>
+				</div>
+			</nav>
 			<?php }; ?>
 		</header>

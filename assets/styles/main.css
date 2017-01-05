@@ -29,18 +29,17 @@ body {
 /* --- header --- */
 header {
 	border-bottom: var(--mainBorder);
-	padding: 1em;
+	padding: 1.5em 1em 1em;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	align-items: flex-end;
 }
 header h1 {
+	font-size: 2em;
 	margin: 0;
-	font-size: 1.5em;
-	font-family: var(--headingFont);
+	padding: 0;
+	font-family: "Syncopate";
 	color: var(--fontBlack);
-	align-self: center;
 }
 header h1 a {
 	text-decoration: none;
