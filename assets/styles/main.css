@@ -24,6 +24,18 @@ body {
 .content {
 	padding: 1em 2em;
 }
+/* --- responsive properties --- */
+@media only screen and (min-width: 60em) {
+	.displayPosts {
+		width: 70%;
+	}
+}
+@media only screen and (max-width: 60em) {
+	.displayPosts {
+  	width: 100%;
+  }
+}
+
 
 /* --- header --- */
 header {
@@ -36,8 +48,10 @@ header {
 }
 header h1 {
 	margin: 0;
-	font-size: 1.5em;
+	font-size: 2em;
+	font-family: var(--headingFont);
 	color: var(--fontBlack);
+	align-self: center;
 }
 header h1 a {
 	text-decoration: none;
@@ -159,6 +173,12 @@ header nav p:hover {
 .showError {
 	display: block;
 }
+/* --- auth page --- */
+.authMain {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
 /* --- home page --- */
 .homeMain {
 	display: flex;
@@ -187,7 +207,7 @@ header nav p:hover {
 
 /* new post */
 .newPost {
-	width: 700px;
+	width: 70%;
 	border: var(--mainBorder);
 	background: var(--backgroundColor);
 }
@@ -234,14 +254,13 @@ header nav p:hover {
 }
 /* existing posts */
 .displayPosts {
-	width: 700px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	flex-wrap: nowrap;
 }
 .postAndVoteWrap {
-	width: 700px;
+	width: 100%;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
