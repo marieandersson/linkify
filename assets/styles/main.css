@@ -14,7 +14,7 @@
 body {
 	background-color: var(--backgroundColor);
 	overflow-x: hidden;
-	margin: 0 2em;
+	margin: 0 3em;
 }
 .page {
 	width: 100%;
@@ -46,10 +46,11 @@ header h1 a {
 	text-decoration: none;
 	color: var(--fontBlack);
 }
-.menuNav {
+.authNav, .menuNav {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	align-items: center;
 }
 .profileLink img {
 	width: 45px;
@@ -58,10 +59,10 @@ header h1 a {
 	border-radius: 5px;
 }
 .menuLink img {
-	height: 45px;
+	height: 35px;
 }
 .profileLink {
-	margin-right: 1em;
+	margin-right: 1.2em;
 }
 .menuLink:hover, .profileLink:hover {
 	cursor:pointer;

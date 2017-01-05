@@ -27,8 +27,10 @@
 			<h1><a href="/index.php">Linkify</a></h1>
 
 			<?php if (!checkLogin($db)) { ?>
-				<nav class="auth">
-					<p class="menuLink"><img src="/assets/images/menuicon.png"/></p>
+				<nav class="authNav">
+					<div class="menuLink">
+						<img src="/assets/images/menuicon.png"/>
+					</div>
 				</nav>
 			<?php } else { ?>
 				<nav class="menuNav">
