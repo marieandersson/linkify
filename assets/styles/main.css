@@ -49,6 +49,9 @@ header h1 a {
 	text-decoration: none;
 	color: var(--fontBlack);
 }
+.leftHeader img {
+	padding: 0 0.5em 0 0;
+}
 .authNav, .menuNav {
 	display: flex;
 	flex-direction: row;
@@ -549,10 +552,13 @@ header h1 a {
 
 /* --- responsive properties, mobile first --- */
 header h1 {
-	font-size: 1.2em;
+	display: none;
+}
+.leftHeader img {
+	height: 35px;
 }
 .profileLink img {
-	display: none;
+	height: 35px;
 }
 .menuLink img {
 	height: 25px;
@@ -567,8 +573,8 @@ header h1 {
 	body {
 		margin: 0 3em;
 	}
-	header h1 {
-		font-size: 2em;
+	.leftHeader img {
+		height: 45px;
 	}
 	.sortPosts input {
 		height: 45px;
@@ -589,6 +595,10 @@ header h1 {
 	}
 }
 @media only screen and (min-width: 800px) {
+	header h1 {
+		display: inline-block;
+		font-size: 2em;
+	}
 	.displayPosts, .newPost {
 		width: 800px;
 	}

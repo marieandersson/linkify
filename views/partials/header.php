@@ -26,6 +26,7 @@
 	<div class="page">
 		<header>
 			<div class="leftHeader">
+				<img src="/assets/images/logo.png"/>
 				<h1><a href="/index.php">Linkify</a></h1>
 
 			</div>
