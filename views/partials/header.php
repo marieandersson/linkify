@@ -28,6 +28,8 @@
 			<div class="leftHeader">
 				<a href="/index.php">
 					<img src="/assets/images/logo.png"/>
+				</a>
+				<a href="/index.php">
 					<h1>Linkify</h1>
 				</a>
 			</div>
