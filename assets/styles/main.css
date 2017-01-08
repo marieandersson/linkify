@@ -40,17 +40,17 @@ header {
 	align-items: center;
 }
 header h1 {
-	margin: 0;
+	margin: 0 0 -0.3em 0;
 	padding: 0;
 	font-family: "Syncopate";
 	color: var(--fontBlack);
 }
-header h1 a {
+.leftHeader a {
 	text-decoration: none;
 	color: var(--fontBlack);
 }
 .leftHeader img {
-	padding: 0 0.5em 0 0;
+	padding: 0 0.7em 0 0;
 }
 .authNav, .menuNav {
 	display: flex;
@@ -63,14 +63,15 @@ header h1 a {
 	border-radius: 5px;
 }
 .profileLink {
-	margin: 0 1.2em 0;
+	margin: 0 0.5em 0 0;
 }
+
 .menuLink:hover, .profileLink:hover {
 	cursor:pointer;
 }
 /* sort posts */
 .sortPosts {
-	margin: 0;
+	margin: 0 1.2em 0 0;
 	text-align: center;
 }
 .sortPosts input {
@@ -580,7 +581,6 @@ header h1 {
 		height: 45px;
 	}
 	.profileLink img {
-		display: block;
 		width: 45px;
 		height: 45px;
 	}
@@ -600,6 +600,6 @@ header h1 {
 		font-size: 2em;
 	}
 	.displayPosts, .newPost {
-		width: 800px;
+		width: 90%;
 	}
 }

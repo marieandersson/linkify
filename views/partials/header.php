@@ -26,13 +26,20 @@
 	<div class="page">
 		<header>
 			<div class="leftHeader">
-				<img src="/assets/images/logo.png"/>
-				<h1><a href="/index.php">Linkify</a></h1>
-
+				<a href="/index.php">
+					<img src="/assets/images/logo.png"/>
+					<h1>Linkify</h1>
+				</a>
 			</div>
 
 			<?php if (!checkLogin($db)) { ?>
 			<nav class="authNav">
+				<div class="sortPosts">
+					<form action="/index.php" method="post">
+						<input type="submit" name="byDate" value="New">
+						<input type="submit" name="byPop" value="Popular">
+					</form>
+				</div>
 				<div class="menuLink">
 					<img src="/assets/images/menuicon.png"/>
 				</div>
@@ -42,10 +49,10 @@
 				<?php if ($posts) {
 				if ($pageTitle != "Linkify - Settings" && $pageTitle != "Linkify - Profile") { ?>
 				<div class="sortPosts">
-				<form action="/index.php" method="post">
-					<input type="submit" name="byDate" value="New">
-					<input type="submit" name="byPop" value="Popular">
-				</form>
+					<form action="/index.php" method="post">
+						<input type="submit" name="byDate" value="New">
+						<input type="submit" name="byPop" value="Popular">
+					</form>
 				</div>
 				<?php }} ?>
 				<div class="profileLink">
