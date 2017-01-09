@@ -158,6 +158,9 @@ header h1 {
 	cursor: pointer;
 }
 /* when user is logged in */
+.menu {
+	text-align: center;
+}
 .menu a {
 	text-decoration: none;
 	color: #fff;
@@ -166,7 +169,7 @@ header h1 {
 	padding: 0.5em;
 }
 .menu a:hover {
-	color: #d3d3d3;
+	color: var(--fontBlack);
 }
 
 /* --- cookie box --- */
