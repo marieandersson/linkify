@@ -18,12 +18,12 @@
 	<link rel="stylesheet" href="/assets/styles/main.css">
 </head>
 <body>
-	<div class="acceptCookies">
-		<p>This website uses <a class="cookieLink" href="https://cookielaw.org/the-cookie-law" title="Read more about the cookie law">cookies</a>
-			to give you the best experience possible.</p>
-		<button class="cookieButton">Accept</button>
-	</div>
 	<div class="page">
+		<div class="acceptCookies">
+			<p>This website uses <a class="cookieLink" href="https://cookielaw.org/the-cookie-law" title="Read more about the cookie law">cookies</a>
+				to give you the best experience possible.</p>
+			<button class="cookieButton">Accept</button>
+		</div>
 		<header>
 			<div class="leftHeader">
 				<a href="/index.php">

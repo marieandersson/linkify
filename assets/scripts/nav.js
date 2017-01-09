@@ -8,9 +8,13 @@ menuButtons.forEach(function(menuButton) {
 	});
 });
 // keep navigation open if error message is displayed
-const errorMessages = document.querySelectorAll(".error");
-errorMessages.forEach(function(message) {
-	if (message.innerHTML !== "") {
-		document.body.classList.add("navigationOpen");
-	}
+const errorMessage = document.querySelector(".loginError");
+if (errorMessage.innerHTML !== "") {
+	document.body.classList.add("navigationOpen");
+}
+
+// close navigation
+const closeNavButton = document.querySelector(".menuClose");
+closeNavButton.addEventListener("click", event => {
+	document.body.classList.remove("navigationOpen");
 });

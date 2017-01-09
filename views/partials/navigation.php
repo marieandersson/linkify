@@ -1,5 +1,5 @@
 <div class="menuSlide">
-	<p class="menuLink close">X</p>
+	<p class="menuLink menuClose">X</p>
 	<div class="menu">
 		<a href="/settings.page.php">Settings</a>
 		<a href="/profile.page.php/?user=<?=$_SESSION["login"]["username"]?>">My profile</a>

@@ -93,7 +93,7 @@ header h1 {
 	min-height: 100vh;
 	padding: 1em;
 	display: block;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	right: 0;
 	transform: translateX(100%);
@@ -102,7 +102,7 @@ header h1 {
 .navigationOpen .menuSlide {
 	transform: translateX(0);
 }
-.close {
+.menuClose {
 	border: #fff solid 1px;
 	display: inline-block;
 	color: #fff;
@@ -111,22 +111,51 @@ header h1 {
 	font-size: 1em;
 	width: 40px;
 	height: 40px;
-	margin: 0 0 3em 0;
+	margin: 0 0 1em 0;
 	text-align: center;
 }
-.close:hover {
+.menuClose:hover {
 	cursor: pointer;
 }
-.forms input {
-	background: #fff;
-}
 .loginWrap, .registerWrap {
-	padding: 1em;
+	margin: 0 auto;
+	width: 70%;
 }
-.menu {
+.menu, .forms {
 	display: flex;
 	flex-direction: column;
-	text-align: center;
+	justify-content: center;
+}
+.forms h3 {
+	font-family: var(--headingFont);
+	margin: 1em 0 0;
+	font-size: 1.5em;
+}
+.forms input {
+	background: var(--backgroundColor);
+	font-size: small;
+	height: 2em;
+	margin: 0.5em 0;
+	padding-left: 0.5em;
+	display: block;
+}
+.forms input[type="checkbox"] {
+	padding: 0;
+	margin: 0;
+	height: auto;
+	display: inline-block;
+}
+.forms label {
+	font-family: var(--headingFont);
+	margin-left: 0.5em;
+}
+.forms input[type="submit"] {
+	width: 100px;
+}
+.forms input[type="submit"]:hover {
+	background: var(--primaryColor);
+	color: #fff;
+	border: 2px solid #fff;
 }
 .menu a {
 	text-decoration: none;
@@ -178,15 +207,8 @@ header h1 {
   text-align: center;
   font-size: 14px;
   font-weight: bold;
-}
-/* login and reg errors */
-.error {
-	top: 0;
-}
-/* settings and post errors */
-.settingsError, .message, .jsMessage {
+	background: var(--secondaryColor); /* change color */
 	bottom: 0;
-	background: black; /* change color */
 }
 .jsMessage {
 	display: none;
@@ -571,6 +593,15 @@ header h1 {
 }
 .menuSlide {
 	width: 100%;
+}
+@media only screen and (max-width: 800px) and (orientation: landscape) {
+	.menuSlide {
+		width: 100% !important;
+	}
+	.forms {
+		flex-direction: row;
+		justify-content: space-around;
+	}
 }
 @media only screen and (min-width: 420px) {
 	.leftHeader img {
