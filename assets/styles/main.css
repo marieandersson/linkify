@@ -69,7 +69,7 @@ header h1 {
 .menuLink:hover, .profileLink:hover {
 	cursor:pointer;
 }
-/* sort posts */
+/* sort posts form in header */
 .sortPosts {
 	margin: 0 1.2em 0 0;
 	text-align: center;
@@ -117,27 +117,25 @@ header h1 {
 .menuClose:hover {
 	cursor: pointer;
 }
+/* authentication page */
 .loginWrap, .registerWrap {
 	margin: 0 auto;
-	width: 70%;
 }
-.menu, .forms {
+.forms form {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 }
 .forms h3 {
 	font-family: var(--headingFont);
-	margin: 1em 0 0;
+	color: var(--fontBlack);
 	font-size: 1.5em;
 }
 .forms input {
 	background: var(--backgroundColor);
 	font-size: small;
 	height: 2em;
-	margin: 0.5em 0;
+	margin: 0.3em 0;
 	padding-left: 0.5em;
-	display: block;
 }
 .forms input[type="checkbox"] {
 	padding: 0;
@@ -146,6 +144,7 @@ header h1 {
 	display: inline-block;
 }
 .forms label {
+	color: var(--fontBlack);
 	font-family: var(--headingFont);
 	margin-left: 0.5em;
 }
@@ -156,7 +155,9 @@ header h1 {
 	background: var(--primaryColor);
 	color: #fff;
 	border: 2px solid #fff;
+	cursor: pointer;
 }
+/* when user is logged in */
 .menu a {
 	text-decoration: none;
 	color: #fff;
@@ -573,6 +574,7 @@ header h1 {
 
 
 /* --- responsive properties, mobile first --- */
+/* header */
 header h1 {
 	display: none;
 }
@@ -588,17 +590,32 @@ header h1 {
 .sortPosts input {
 	padding: 0.5em;
 }
-.displayPosts, .newPost {
-	width: 100%;
-}
+/* navigation */
 .menuSlide {
 	width: 100%;
 }
+.forms h3 {
+	margin: 1em 0 0;
+}
+.menu, .forms {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+/* posts */
+.displayPosts, .newPost {
+	width: 100%;
+}
+/* not on desktop!! */
 @media only screen and (max-width: 800px) and (orientation: landscape) {
 	.menuSlide {
 		width: 100% !important;
 	}
+	.forms h3 {
+		margin: 0;
+	}
 	.forms {
+		margin: 0 3em;
 		flex-direction: row;
 		justify-content: space-around;
 	}
