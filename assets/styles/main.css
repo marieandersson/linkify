@@ -180,7 +180,7 @@ header h1 {
   display: none;
   justify-content: space-between;
   left: 0;
-  padding: 0 0.5em;
+  padding: 0 1em;
   position: absolute;
   top: 0;
   width: 100%;
@@ -189,16 +189,20 @@ header h1 {
 .acceptCookies a {
 	color: #fff;
 }
+.acceptCookies a:hover {
+	color: var(--fontBlack);
+}
 .acceptCookies.cookieShow {
 	display: flex;
 }
 .cookieButton {
 	border: solid 1px white;
+	font-size: small;
 }
 .cookieButton:hover {
 	cursor:pointer;
 	color: var(--primaryColor);
-	background: #fff;
+	background: var(--backgroundColor);
 }
 /* --- Error messages --- */
 .error, .settingsError, .message, .jsMessage {
@@ -557,6 +561,11 @@ header h1 {
 }
 
 /* --- settings page --- */
+.settingsWrap {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
 .settingsForm {
 	width: 60%;
 }
