@@ -78,7 +78,6 @@ header h1 {
 	margin: 0;
 	border: solid 1px #ab987a;
 	border-radius: 5px;
-	padding: 0.5em 1em;
 	font-family: var(--headingFont);
 	color: var(--fontBlack);
 }
@@ -564,16 +563,16 @@ header h1 {
 .menuLink img {
 	height: 25px;
 }
+.sortPosts input {
+	padding: 0.5em;
+}
 .displayPosts, .newPost {
 	width: 100%;
 }
 .menuSlide {
 	width: 100%;
 }
-@media only screen and (min-width: 400px) {
-	body {
-		margin: 0 3em;
-	}
+@media only screen and (min-width: 420px) {
 	.leftHeader img {
 		height: 45px;
 	}
@@ -587,6 +586,9 @@ header h1 {
 	.menuLink img {
 		height: 35px;
 	}
+	.sortPosts input {
+		padding: 0.5em 1em;
+	}
 	.displayPosts, .newPost {
 		width: 100%;
 	}
@@ -595,6 +597,9 @@ header h1 {
 	}
 }
 @media only screen and (min-width: 800px) {
+	body {
+		margin: 0 3em;
+	}
 	header h1 {
 		display: inline-block;
 		font-size: 2em;
