@@ -1,4 +1,9 @@
 "use strict";
+// show new post form
+const showFormButton = document.querySelector(".clickToShowNewPost");
+showFormButton.addEventListener("click", function (event) {
+	document.querySelector(".newPost").classList.add("showNewPostForm");
+});
 
 // replace post content with form
 function replacePostWithForm(editButton) {

@@ -22,10 +22,11 @@ require __DIR__."/partials/header.php";
 				<div class="posts">
 
 					<!-- write new post -->
+					<h4 class="clickToShowNewPost">Share a link +</h4>
 					<?php require __DIR__."/partials/newpost.block.php";	?>
 
 					<!-- display existing posts -->
-					<div class="displayPosts">
+					<div class="displayPosts postsOnHomePage">
 						<!-- check if any posts exists -->
 						<?php if ($posts) {
 						foreach ($posts as $post) { ?>

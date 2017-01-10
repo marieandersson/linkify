@@ -237,9 +237,27 @@ header h1 {
 }
 
 /* new post */
+.clickToShowNewPost {
+	float: right;
+	font-family: var(--headingFont);
+	color: var(--fontColor);
+	margin: 0;
+	padding: 0;
+}
+.clickToShowNewPost:hover {
+	cursor: pointer;
+	color: var(--primaryColor);
+}
 .newPost {
+	width: 500px;
 	border: var(--mainBorder);
 	background: var(--backgroundColor);
+	position: absolute;
+	top:0;
+	display: none;
+}
+.showNewPostForm {
+	display: block;
 }
 .newPost h4 {
 	font-family: var(--headingFont);
@@ -672,7 +690,7 @@ header h1 {
 	justify-content: center;
 }
 /* posts */
-.displayPosts, .newPost {
+.displayPosts {
 	width: 100%;
 }
 /* profile page */
@@ -728,9 +746,6 @@ header h1 {
 	.sortPosts input {
 		padding: 0.5em 1em;
 	}
-	.displayPosts, .newPost {
-		width: 100%;
-	}
 	.menuSlide {
 		width: 300px;
 	}
@@ -756,7 +771,6 @@ header h1 {
 		display: inline-block;
 		font-size: 2em;
 	}
-
 	.postsOnProfile {
 		width: 600px;
 	}
