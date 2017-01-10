@@ -536,9 +536,7 @@ header h1 {
 
 /* --- display user --- */
 .displayUserProfile {
-	width: 200px;
 	text-align: center;
-	margin: 0 5em 0 0;
 }
 .displayUserProfile h4 {
 	margin: 0;
@@ -560,8 +558,6 @@ header h1 {
 	padding: 0.5em;
 }
 .displayUserProfile figure {
-	width: 200px;
-	height: 200px;
 	margin: 0 auto;
 }
 .displayUserProfile figure img{
@@ -573,7 +569,7 @@ header h1 {
 /* --- profile page --- */
 .profileWrap {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: flex-start;
 	margin-top: 1em;
 }
@@ -679,11 +675,27 @@ header h1 {
 .displayPosts, .newPost {
 	width: 100%;
 }
+/* profile page */
+.displayUserProfile {
+	width: 200px;
+	margin: 0;
+}
+.displayUserProfile figure {
+	height: 200px;
+	width: 200px;
+}
+.displayUserProfilePage {
+	margin: 0 auto;
+}
+.displayUserProfilePage p {
+	width: 280px;
+	margin-left: -40px;
+}
 /* settingspage */
 .displayUserSettings {
 	display: none;
 }
-.settings {
+.settings, .postsOnProfile {
 	width: 100%;
 }
 @media only screen and (max-width: 800px) and (orientation: landscape) {
@@ -726,6 +738,7 @@ header h1 {
 @media only screen and (min-width: 600px) {
 	.displayUserSettings {
 		display: block;
+		margin: 0 2em 0 0;
 	}
 	.settingsWrap {
 		justify-content: center;
@@ -743,13 +756,38 @@ header h1 {
 		display: inline-block;
 		font-size: 2em;
 	}
-	.displayPosts, .newPost {
-		width: 90%;
+
+	.postsOnProfile {
+		width: 600px;
+	}
+	.profileWrap {
+		flex-direction: row;
+		justify-content: center;
+	}
+	.displayUserProfile {
+		width: 150px;
+		margin: 0 2em 0 0;
+	}
+	.displayUserProfile figure {
+		height: 150px;
+		width: 150px;
+	}
+	.displayUserProfilePage p {
+		width: auto;;
+		margin-left: auto;
 	}
 }
 @media only screen and (min-width: 1000px) {
 	.page {
 		width: 80%;
+	}
+	.displayUserProfile {
+		width: 200px;
+		margin: 0 5em 0 0;
+	}
+	.displayUserProfile figure {
+		height: 200px;
+		width: 200px;
 	}
 }
 @media only screen and (min-width: 1200px) {

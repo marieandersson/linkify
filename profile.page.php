@@ -19,7 +19,7 @@ $profile = getProfileInfo($db, $_GET["user"]);
 
 	<div class="profileWrap">
 
-		<div class="displayUserProfile">
+		<div class="displayUserProfile displayUserProfilePage">
 			<figure>
 				<?php if ($profile["avatar"] !== NULL) {  ?>
 					<img src="/assets/images/users/<?=$profile["id"]?>/<?=$profile["avatar"]?>" />
