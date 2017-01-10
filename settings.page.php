@@ -7,7 +7,7 @@ require __DIR__."/views/partials/header.php";
 
 	<div class="content">
 		<div class="settingsWrap">
-			<div class="displayUserProfile">
+			<div class="displayUserProfile displayUserSettings">
 				<figure>
 					<?php if ($user["avatar"] !== NULL) {  ?>
 						<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" />
@@ -20,7 +20,7 @@ require __DIR__."/views/partials/header.php";
 				<p><?=$user["about"]?></p>
 			</div>
 			<div class="settings">
-				<h2>Account settings</h2>
+				<h2 class="settingsHeading">Account settings</h2>
 
 				<form action="app/settings.php" method="post" class="settingsForm" enctype="multipart/form-data">
 					<?php if ($error) { ?>
@@ -29,40 +29,34 @@ require __DIR__."/views/partials/header.php";
 						</div>
 					<?php unset($_SESSION["error"]); } ?>
 					<div class="change">
-						<h3>Change username</h3>
-						<label for="editUsername">Username</label>
+						<h3>Change username:</h3>
 						<input type="text" name="editUsername" value="<?=$user['username']?>">
 					</div>
 
 					<div class="change">
-						<h3>Change email</h3>
-						<label for="editEmail">Email</label>
+						<h3>Change email:</h3>
 						<input type="text" name="editEmail" value="<?=$user['email']?>">
 					</div>
 
 					<div class="change">
-						<h3>Change name</h3>
-						<label for="editFullName">Name</label>
+						<h3>Change name:</h3>
 						<input type="text" name="editFullName" value="<?=$user['name']?>">
 					</div>
 
 
 					<div class="change">
-						<h3>Change password</h3>
-						<label for="editPassword">New password</label>
-						<input type="password" name="editPassword">
-
-						<label for="repeatPassword">Repeat password</label>
-						<input type="password" name="repeatPassword">
+						<h3>Change password:</h3>
+						<input type="password" name="editPassword" placeholder="Write new password..."></br>
+						<input type="password" name="repeatPassword" placeholder="Repeat new password...">
 					</div>
 
 					<div class="change">
-						<h3>About</h3>
+						<h3>About me:</h3>
 							<textarea name="about"><?= $user["about"]?></textarea>
 					</div>
 
 					<div class="change">
-						<h3>Profile picture</h3>
+						<h3>Upload profile picture:</h3>
 						<input type="file" name="avatar" accept="image/png, image/jpeg">
 						<div class="placeholderAvatar">
 							<?php if ($user["avatar"] !== NULL) {  ?>
@@ -73,10 +67,9 @@ require __DIR__."/views/partials/header.php";
 						</div>
 					</div>
 
-					<hr/>
-
-					<div class="change">
-						<label for="saveWithPassword">Password</label><input type="password" name="saveWithPassword">
+					<div class="change saveChanges">
+						<h3>Type in password to save changes:</h3>
+						<input type="password" name="saveWithPassword">
 						<input type="submit" name="saveChanges" value="Save changes">
 					</div>
 
