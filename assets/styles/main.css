@@ -17,7 +17,6 @@ body {
 }
 .page {
 	width: 100%;
-	float: left;
 	transition: width 0.4s linear;
 }
 
@@ -541,8 +540,24 @@ header h1 {
 	text-align: center;
 	margin: 0 5em 0 0;
 }
-.displayUserProfile h4, h5 {
+.displayUserProfile h4 {
 	margin: 0;
+	font-family: var(--headingFont);
+	color: var(--fontBlack);
+}
+.displayUserProfile h5 {
+	margin: 0;
+	font-family: var(--headingFont);
+	color: var(--primaryColor);
+}
+.displayUserProfile p {
+	font-family: var(--bodyFont);
+	color: var(--fontBlack);
+	text-align: left;
+	font-size: small;
+	border-top: var(--mainBorder);
+	border-bottom: var(--mainBorder);
+	padding: 0.5em;
 }
 .displayUserProfile figure {
 	width: 200px;
@@ -569,9 +584,6 @@ header h1 {
 	justify-content: flex-start;
 	margin-top: 1em;
 }
-.settings {
-	width: 400px;
-}
 .settingsHeading {
 	font-family: var(--headingFont);
 	margin: 0;
@@ -581,12 +593,14 @@ header h1 {
 	width:100%;
 	display:flex;
 	flex-direction: column;
-
 }
 .settingsForm h3 {
 	font-family: var(--headingFont);
 	font-size: 1em;
 	margin-bottom: 0.2em;
+}
+.change {
+	padding: 0 2em;
 }
 .settingsForm input {
 	border: var(--mainBorder);
@@ -594,6 +608,7 @@ header h1 {
 	font-size: small;
 	height: 2em;
 	font-family: var(--bodyFont);
+	width: 200px;
 }
 .settingsForm input[type="password"] {
 	margin-bottom: 0.5em;
@@ -608,6 +623,13 @@ header h1 {
 	width: 100%;
 	height: 5em;
 	font-family: var(--bodyFont);
+}
+.settingsForm input[type="submit"] {
+	width: 100px;
+}
+.settingsForm input[type="submit"]:hover {
+	background: var(--primaryColor);
+	color: #fff;
 }
 .placeholderAvatar {
 	width: 100px;
@@ -661,8 +683,11 @@ header h1 {
 .displayUserSettings {
 	display: none;
 }
+.settings {
+	width: 100%;
+}
 @media only screen and (max-width: 800px) and (orientation: landscape) {
-	.menuSlide {
+	.authSlide {
 		width: 100% !important;
 	}
 	.forms h3 {
@@ -703,12 +728,16 @@ header h1 {
 		display: block;
 	}
 	.settingsWrap {
-
+		justify-content: center;
+	}
+	.settings {
+		width: 400px;
 	}
 }
 @media only screen and (min-width: 800px) {
-	body {
-		margin: 0 3em;
+	.page {
+		width: 90%;
+		margin: 0 auto;
 	}
 	header h1 {
 		display: inline-block;
@@ -716,5 +745,15 @@ header h1 {
 	}
 	.displayPosts, .newPost {
 		width: 90%;
+	}
+}
+@media only screen and (min-width: 1000px) {
+	.page {
+		width: 80%;
+	}
+}
+@media only screen and (min-width: 1200px) {
+	.page {
+		width: 70%;
 	}
 }

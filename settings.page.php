@@ -68,9 +68,9 @@ require __DIR__."/views/partials/header.php";
 					</div>
 
 					<div class="change saveChanges">
-						<h3>Type in password to save changes:</h3>
-						<input type="password" name="saveWithPassword">
-						<input type="submit" name="saveChanges" value="Save changes">
+						<h3>Save changes:</h3>
+						<input type="password" name="saveWithPassword" placeholder="Type in your password...">
+						<input type="submit" name="saveChanges" value="Save">
 					</div>
 
 				</form>
