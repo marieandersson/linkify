@@ -6,6 +6,9 @@ require __DIR__."/views/partials/header.php";
 $profile = getProfileInfo($db, $_GET["user"]);
 ?>
 <div class="content">
+	<?php if ($profile["id"] == $_SESSION["login"]["id"]) { ?>
+	<h4 class="clickToShowNewPostForm">Share a link +</h4>
+	<?php	}	?>
 	<!-- client side validation error message -->
 	<div class="jsMessage">
 	</div>
@@ -35,9 +38,6 @@ $profile = getProfileInfo($db, $_GET["user"]);
 		</div>
 
 		<div class="postsOnProfile">
-			<?php if ($profile["id"] == $_SESSION["login"]["id"]) { ?>
-			<h4 class="clickToShowNewPostForm">Share a link +</h4>
-			<?php	}	?>
 
 			<div class="displayPosts">
 				<!-- check if any posts exists -->

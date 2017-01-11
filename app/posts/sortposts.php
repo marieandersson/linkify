@@ -1,23 +1,20 @@
 <?php
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-	// user clicks to sort posts by publish date
 	if (isset($_POST["byDate"])) {
-		$posts = getPosts($db, "published");
-		// save users choice in session
+		// user clicks to sort posts by publish date
 		$_SESSION["sort"] = "byDate";
-	}
-	// user clicks to sort posts by popularity
-	if (isset($_POST["byPop"])) {
-		$posts = getPosts($db, "votes");
-		// save users choice in session
+	 }
+	 else if (isset($_POST["byPop"])) {
+		// user clicks to sort posts by popularity
 		$_SESSION["sort"] = "byPop";
 	}
-	// check if choice has been made
-} else if (checkLogin($db) && isset($_SESSION["sort"])) {
-	if ($_SESSION["sort"] == "byDate") {
-		$posts = getPosts($db, "published");
-	}
-} else {
-	// sort by popularity by default
-	$posts = getPosts($db, "votes");
 }
+// default sort method
+$sortMethod = "votes";
+if (isset($_SESSION["sort"])) {
+	if ($_SESSION["sort"] == "byDate") {
+		$sortMethod = "published";
+	}
+}
+$posts = getPosts($db, $sortMethod);

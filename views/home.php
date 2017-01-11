@@ -5,6 +5,7 @@ require __DIR__."/partials/header.php";
 ?>
 
 	<div class="content">
+		<h4 class="clickToShowNewPostForm">Share a link +</h4>
 		<!-- client side validation error message -->
 		<div class="jsMessage">
 		</div>
@@ -22,7 +23,6 @@ require __DIR__."/partials/header.php";
 			<?php require __DIR__."/partials/newpost.block.php";	?>
 
 				<div class="posts">
-					<h4 class="clickToShowNewPostForm">Share a link +</h4>
 
 					<!-- display existing posts -->
 					<div class="displayPosts postsOnHomePage">

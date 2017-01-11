@@ -236,7 +236,7 @@ header h1 {
 
 /* --- new post form --- */
 .clickToShowNewPostForm {
-	float: right;
+	text-align: right;
 	font-family: var(--headingFont);
 	color: var(--fontColor);
 	margin: 0;
@@ -335,6 +335,12 @@ header h1 {
 	justify-content: center;
 	flex-wrap: nowrap;
 }
+.post {
+	border-bottom: var(--mainBorder);
+	margin: 0.5em 0 0;
+	background: var(--backgroundColor);
+	padding-bottom: 1em;
+}
 .postAndVoteWrap {
 	width: 100%;
 	display: flex;
@@ -344,7 +350,6 @@ header h1 {
 .voteWrap {
 	padding: 1em 0;
 	width: 8%;
-	border-right: var(--mainBorder);
 	text-align: center;
 }
 .postWrap {
@@ -381,14 +386,7 @@ header h1 {
 	cursor: pointer;
 }
 /* post content */
-.post {
-	border: var(--mainBorder);
-	margin: 1em 0;
-	background: var(--backgroundColor);
-	padding: 0.5em;
-}
 .postHeadingWrap {
-	border-bottom: var(--mainBorder);
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -473,7 +471,7 @@ header h1 {
 	background: var(--backgroundColor);
 	font-size: small;
 	margin-right: 0.3em;
-	width: 80px;
+	width: 50px;
 }
 .editButton:hover, .deleteButton:hover {
 	color: #fff;
@@ -885,6 +883,9 @@ header h1 {
 		width: auto;;
 		margin-left: auto;
 	}
+	.postContent {
+		width: 70%;
+	}
 }
 @media only screen and (min-width: 1000px) {
 	.page {
@@ -901,9 +902,6 @@ header h1 {
 }
 @media only screen and (min-width: 1200px) {
 	.page {
-		width: 70%;
-	}
-	.posts, .authMain {
-		width: 80%;
+		width: 65%;
 	}
 }

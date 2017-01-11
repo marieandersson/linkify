@@ -20,7 +20,7 @@ function replacePostWithForm(editButton) {
 	if (postContent.classList.contains("postContentHide")) {
 		editButton.innerHTML = "Close";
 	} else {
-		editButton.innerHTML = "Edit post";
+		editButton.innerHTML = "Edit";
 	}
 }
 const editButtons = document.querySelectorAll(".editButton");

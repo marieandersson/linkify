@@ -24,8 +24,8 @@
 					<button class="showPostSettings"><img src="/assets/images/settingswheel.png" /></button>
 					<div class="postSettingsButtons">
 						<input type="hidden" name="postId" class="postButtonsId" value="<?=$post["id"]?>">
-						<button class="editButton">Edit post</button>
-						<input type="submit" name="deletePost" value="Delete post" class="deleteButton">
+						<button class="editButton">Edit</button>
+						<input type="submit" name="deletePost" value="Delete" class="deleteButton">
 					</div>
 				</form>
 				<?php } ?>
