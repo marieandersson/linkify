@@ -349,7 +349,7 @@ header h1 {
 }
 .postWrap {
 	width: 92%;
-	padding: 1em;
+	padding: 1em 1em 0;
 }
 /* votes */
 .up, .down {
@@ -394,8 +394,7 @@ header h1 {
 }
 .post h4 {
 	font-family: var(--headingFont);
-	font-size: 1.3em;
-	margin: 0.5em;
+	margin: 0 0 0.5em 0;
 	border-bottom: var(--mainBorder);
 	color: var(--fontBlack);
 }
@@ -413,14 +412,14 @@ header h1 {
 .postContent p, .loginLink {
 	font-family: var(--bodyFont);
 	font-size: 0.9em;
-	margin: 0 1em;
+	margin: 0;
 	color: var(--fontBlack);
 }
 .postContentHide {
 	display: none;
 }
 .postUser {
-	margin: 0.5em 0;
+	margin: 0.5em 0 0;
 }
 .postUser p {
 	font-style: italic;
@@ -432,6 +431,7 @@ header h1 {
 	margin: 0.5em;
 	font-family: var(--headingFont);
 	font-size: small;
+	position: relative;
 }
 .showPostSettings img {
 	width: 20px;
@@ -447,18 +447,30 @@ header h1 {
 	display: none;
 }
 .postSettingsButtonsShow {
-	display: inline-block;
+	display: block;
 	margin: 0 0.5em;
+	position: absolute;
+	text-align: right;
+	right: 0.3em;
 }
 .editButton, .deleteButton {
+	color: #fff;
+	font-family: var(--headingFont);
 	border: var(--mainBorder);
-	height: 2em;
-	margin: 0 0.5em 0 0;
+	background: var(--primaryColor);
+	font-size: small;
+	margin-bottom: 0.3em;
+	width: 100px;
 }
+.editButton:hover, .deleteButton:hover {
+	color: var(--primaryColor);
+	background: var(--backgroundColor);
+	cursor: pointer;
+}
+/* comments */
 .inputComment input[type="text"] {
 	height: 2em;
 	width: 80%;
-	background: #f1f1f1;
 	border: var(--mainBorder);
 	padding-left: 0.5em;
 	font-size: small;
@@ -468,8 +480,10 @@ header h1 {
 	height: 2em;
 	margin: 0 0.5em;
 	font-size: small;
+	color: var(--fontBlack);
+	font-family: var(--headingFont);
 }
-.inputComment input[type="submit"]:hover, .editButton:hover, .deleteButton:hover {
+.inputComment input[type="submit"]:hover {
 	background: var(--primaryColor);
 	color: #fff;
 	cursor: pointer;
@@ -517,6 +531,9 @@ header h1 {
  }
 
 /* comments */
+.commentForm {
+
+}
 .commentCount {
 	font-family: var(--bodyFont);
 	font-size: small;
@@ -746,6 +763,9 @@ header h1 {
 .displayPosts {
 	width: 100%;
 }
+.post h4 {
+	font-size: 1em;
+}
 /* profile page */
 .displayUserProfile {
 	width: 200px;
@@ -813,6 +833,9 @@ header h1 {
 	}
 	.settings {
 		width: 400px;
+	}
+	.post h4 {
+		font-size: 1.3em;
 	}
 }
 @media only screen and (min-width: 800px) {

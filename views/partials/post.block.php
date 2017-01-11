@@ -31,7 +31,7 @@
 						</a>
 						<?php } ?>
 						on <?=date('jS \of M H:i', strtotime($post["published"]));
-						if ($post["edited"]) { ?> (have been edited)<?php } ?>.
+						if ($post["edited"]) { ?> (has been edited)<?php } ?>.
 					</p>
 				</div>
 			</div>
@@ -62,12 +62,12 @@
 			<div class="postButtons">
 				<?php if (checkLogin($db) && $post["user_id"] == $_SESSION["login"]["id"]) { ?>
 				<form action="app/posts/editpost.php" method="post">
+					<button class="showPostSettings"><img src="/assets/images/settingswheel.png" /></button>
 					<div class="postSettingsButtons">
 						<input type="hidden" name="postId" class="postButtonsId" value="<?=$post["id"]?>">
 						<button class="editButton">Edit post</button>
 						<input type="submit" name="deletePost" value="Delete post" class="deleteButton">
 					</div>
-					<button class="showPostSettings"><img src="/assets/images/settingswheel.png" /></button>
 				</form>
 				<?php } ?>
 			</div>
