@@ -21,7 +21,7 @@ body {
 }
 
 .content {
-	padding: 1em 2em;
+	padding: 0.5em;
 }
 
 /* --- header --- */
@@ -387,20 +387,27 @@ header h1 {
 	background: var(--backgroundColor);
 	padding: 0.5em;
 }
-.postDiv {
+.postHeadingWrap {
+	border-bottom: var(--mainBorder);
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	align-items: flex-end;
+	margin-bottom: 0.5em;
 }
 .post h4 {
 	font-family: var(--headingFont);
-	margin: 0 0 0.5em 0;
-	border-bottom: var(--mainBorder);
+	margin: 0;
 	color: var(--fontBlack);
 }
 .post h4 a {
 	text-decoration: none;
 	color: var(--fontBlack);
+}
+.postDiv {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 .postUser a {
 	text-decoration: none;
@@ -428,13 +435,17 @@ header h1 {
 	font-family: var(--bodyFont);
 }
 .postButtons {
-	margin: 0.5em;
+	margin: 0 0 0.2em 0;
 	font-family: var(--headingFont);
 	font-size: small;
 	position: relative;
 }
+.postButtons form {
+	display: flex;
+	flex-direction: row;
+}
 .showPostSettings img {
-	width: 20px;
+	width: 15px;
 	margin: 0;
 	border-radius: 50%;
 	transition: transform 0.5s linear;
@@ -447,24 +458,26 @@ header h1 {
 	display: none;
 }
 .postSettingsButtonsShow {
-	display: block;
-	margin: 0 0.5em;
+	display: inline-block;
+	margin: 0;
 	position: absolute;
-	text-align: right;
 	right: 0.3em;
+	display: flex;
+	flex-direction: row;
+	right: 2.5em;
 }
 .editButton, .deleteButton {
-	color: #fff;
+	color: var(--fontBlack);
 	font-family: var(--headingFont);
 	border: var(--mainBorder);
-	background: var(--primaryColor);
+	background: var(--backgroundColor);
 	font-size: small;
-	margin-bottom: 0.3em;
-	width: 100px;
+	margin-right: 0.3em;
+	width: 80px;
 }
 .editButton:hover, .deleteButton:hover {
-	color: var(--primaryColor);
-	background: var(--backgroundColor);
+	color: #fff;
+	background: var(--primaryColor);
 	cursor: pointer;
 }
 /* comments */
@@ -766,6 +779,9 @@ header h1 {
 .post h4 {
 	font-size: 1em;
 }
+.showPostSettings img {
+	width: 15px;
+}
 /* profile page */
 .displayUserProfile {
 	width: 200px;
@@ -837,6 +853,9 @@ header h1 {
 	.post h4 {
 		font-size: 1.3em;
 	}
+	.showPostSettings img {
+		width: 20px;
+	}
 }
 @media only screen and (min-width: 800px) {
 	.page {
@@ -884,8 +903,6 @@ header h1 {
 	.page {
 		width: 70%;
 	}
-}
-@media only screen and (min-width: 1300px) {
 	.posts, .authMain {
 		width: 80%;
 	}

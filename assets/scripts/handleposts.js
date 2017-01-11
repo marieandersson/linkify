@@ -12,7 +12,7 @@ closeNewPostForm.addEventListener("click", function (event) {
 
 // replace post content with form
 function replacePostWithForm(editButton) {
-	let postElement = editButton.parentElement.parentElement.parentElement.parentElement;
+	let postElement = editButton.parentElement.parentElement.parentElement.parentElement.parentElement;
 	let postContent = postElement.querySelector(".postContent");
 	postContent.classList.toggle("postContentHide");
 	let editForm = postElement.querySelector(".editPostForm");

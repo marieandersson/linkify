@@ -15,7 +15,22 @@
 
 	<div class="postWrap">
 		<div class="editMessage"><?php if(isset($editMessage)) echo $editMessage; ?></div>
-		<h4><a href="<?=$post["url"]?>"><?=$post["subject"]?></a></h4>
+		<div class="postHeadingWrap">
+			<h4><a href="<?=$post["url"]?>"><?=$post["subject"]?></a></h4>
+			<!-- edit, delete  -->
+			<div class="postButtons">
+				<?php if (checkLogin($db) && $post["user_id"] == $_SESSION["login"]["id"]) { ?>
+				<form action="app/posts/editpost.php" method="post">
+					<button class="showPostSettings"><img src="/assets/images/settingswheel.png" /></button>
+					<div class="postSettingsButtons">
+						<input type="hidden" name="postId" class="postButtonsId" value="<?=$post["id"]?>">
+						<button class="editButton">Edit post</button>
+						<input type="submit" name="deletePost" value="Delete post" class="deleteButton">
+					</div>
+				</form>
+				<?php } ?>
+			</div>
+		</div>
 		<div class="postDiv">
 			<div class="postContent">
 				<p><?=$post["description"]?></p>
@@ -57,22 +72,9 @@
 				</form>
 			</div>
 			<?php } ?>
-
-			<!-- edit, delete and comment -->
-			<div class="postButtons">
-				<?php if (checkLogin($db) && $post["user_id"] == $_SESSION["login"]["id"]) { ?>
-				<form action="app/posts/editpost.php" method="post">
-					<button class="showPostSettings"><img src="/assets/images/settingswheel.png" /></button>
-					<div class="postSettingsButtons">
-						<input type="hidden" name="postId" class="postButtonsId" value="<?=$post["id"]?>">
-						<button class="editButton">Edit post</button>
-						<input type="submit" name="deletePost" value="Delete post" class="deleteButton">
-					</div>
-				</form>
-				<?php } ?>
-			</div>
 		</div>
 
+		<!-- comment -->
 		<?php if (checkLogin($db)) { ?>
 		<form action="app/posts/comments.php" method="post" class="commentForm">
 			<div class="inputComment">
