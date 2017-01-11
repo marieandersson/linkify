@@ -248,22 +248,54 @@ header h1 {
 	cursor: pointer;
 	color: var(--primaryColor);
 }
+.newPostWrap {
+	position: fixed;
+	top:0;
+	display: none;
+	width: 100%;
+	height: 100%;
+	background: rgba(255,255,255,0.7);
+	z-index: 100;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+}
+.showNewPostForm {
+	display: flex;
+}
 .newPost {
 	width: 500px;
 	border: var(--mainBorder);
 	background: var(--backgroundColor);
-	position: absolute;
-	top:0;
-	display: none;
 }
-.showNewPostForm {
-	display: block;
+.newPostHeading {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 1em;
 }
 .newPost h4 {
 	font-family: var(--headingFont);
 	font-size: 1.5em;
-	margin: 0.5em;
+	margin: 0;
+	color: var(--fontBlack);
 	border-bottom: var(--mainBorder);
+}
+.shareClose {
+	border: var(--fontBlack) solid 1px;
+	display: inline-block;
+	color: var(--fontBlack);
+	padding: 0.5em;
+	border-radius: 50%;
+	font-size: 1em;
+	width: 40px;
+	height: 40px;
+	margin: 0;
+	text-align: center;
+}
+.shareClose:hover {
+	cursor: pointer;
 }
 .newPostFields {
 	display: flex;

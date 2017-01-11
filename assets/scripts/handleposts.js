@@ -2,7 +2,12 @@
 // show new post form
 const showFormButton = document.querySelector(".clickToShowNewPost");
 showFormButton.addEventListener("click", function (event) {
-	document.querySelector(".newPost").classList.add("showNewPostForm");
+	document.querySelector(".newPostWrap").classList.add("showNewPostForm");
+});
+// close new post form
+const closeNewPostForm = document.querySelector(".shareClose");
+closeNewPostForm.addEventListener("click", function (event) {
+	document.querySelector(".newPostWrap").classList.remove("showNewPostForm");
 });
 
 // replace post content with form

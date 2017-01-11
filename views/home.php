@@ -18,12 +18,12 @@ require __DIR__."/partials/header.php";
 		<?php unset($_SESSION["message"]); } ?>
 
 		<main class="homeMain">
+			<!-- write new post -->
+			<?php require __DIR__."/partials/newpost.block.php";	?>
 
 				<div class="posts">
 
-					<!-- write new post -->
 					<h4 class="clickToShowNewPost">Share a link +</h4>
-					<?php require __DIR__."/partials/newpost.block.php";	?>
 
 					<!-- display existing posts -->
 					<div class="displayPosts postsOnHomePage">
