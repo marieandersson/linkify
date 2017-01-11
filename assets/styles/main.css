@@ -214,14 +214,16 @@ header h1 {
   text-align: center;
   font-size: 14px;
   font-weight: bold;
-	background: var(--secondaryColor); /* change color */
+	background: var(--secondaryColor);
 	bottom: 0;
+	z-index: 200;
 }
 .jsMessage {
 	display: none;
 }
 .showError {
 	display: block;
+	z-index: 200;
 }
 /* --- auth page --- */
 .authMain {

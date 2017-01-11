@@ -8,6 +8,7 @@ showFormButton.addEventListener("click", function (event) {
 const closeNewPostForm = document.querySelector(".shareClose");
 closeNewPostForm.addEventListener("click", function (event) {
 	document.querySelector(".newPostWrap").classList.remove("showNewPostForm");
+	document.querySelector(".jsMessage").classList.remove("showError");
 });
 
 // replace post content with form
