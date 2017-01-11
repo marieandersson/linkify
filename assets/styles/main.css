@@ -237,14 +237,14 @@ header h1 {
 }
 
 /* new post */
-.clickToShowNewPost {
+.clickToShowNewPostForm {
 	float: right;
 	font-family: var(--headingFont);
 	color: var(--fontColor);
 	margin: 0;
 	padding: 0;
 }
-.clickToShowNewPost:hover {
+.clickToShowNewPostForm:hover {
 	cursor: pointer;
 	color: var(--primaryColor);
 }
@@ -259,13 +259,13 @@ header h1 {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-
 }
 .showNewPostForm {
 	display: flex;
 }
 .newPost {
 	width: 500px;
+	height: 300px;
 	border: var(--mainBorder);
 	background: var(--backgroundColor);
 }
@@ -273,19 +273,22 @@ header h1 {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	padding: 1em;
-}
-.newPost h4 {
-	font-family: var(--headingFont);
-	font-size: 1.5em;
-	margin: 0;
-	color: var(--fontBlack);
+	align-items: center;
+	margin: 1em;
+	height: 3em;
 	border-bottom: var(--mainBorder);
 }
-.shareClose {
-	border: var(--fontBlack) solid 1px;
-	display: inline-block;
+.newPostHeading h4 {
+	font-family: var(--headingFont);
+	font-size: 1.5em;
+	padding: 0;
+	margin: 0;
 	color: var(--fontBlack);
+}
+.shareClose {
+	border: var(--primaryColor) solid 1px;
+	display: inline-block;
+	color: var(--primaryColor);
 	padding: 0.5em;
 	border-radius: 50%;
 	font-size: 1em;
@@ -293,9 +296,12 @@ header h1 {
 	height: 40px;
 	margin: 0;
 	text-align: center;
+	align-self: flex-start;
 }
 .shareClose:hover {
 	cursor: pointer;
+	color: #fff;
+	background: var(--primaryColor);
 }
 .newPostFields {
 	display: flex;
@@ -303,11 +309,9 @@ header h1 {
 	justify-content: center;
 }
 .newPostFields input[type="text"] {
-	height: 2em;
+	height: 2.5em;
 	margin: 0.5em auto;
-	background: #fff;
 	width: 80%;
-	background: #f1f1f1;
 	border: var(--mainBorder);
 	padding-left: 0.5em;
 	font-size: small;
@@ -315,7 +319,15 @@ header h1 {
 .newPostFields input[type="submit"] {
 	width: 100px;
 	border: var(--mainBorder);
-	margin: 0.5em auto;
+	margin: 1.5em auto 0.5em;
+	height: 2em;
+	font-family: var(--headingFont);
+	color: var(--fontBlack);
+}
+.newPostFields input[type="submit"]:hover {
+	color: #fff;
+	background: var(--primaryColor);
+	cursor: pointer;
 }
 
 /* --- existing posts --- */

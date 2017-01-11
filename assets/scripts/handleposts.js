@@ -1,6 +1,6 @@
 "use strict";
 // show new post form
-const showFormButton = document.querySelector(".clickToShowNewPost");
+const showFormButton = document.querySelector(".clickToShowNewPostForm");
 showFormButton.addEventListener("click", function (event) {
 	document.querySelector(".newPostWrap").classList.add("showNewPostForm");
 });

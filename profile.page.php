@@ -18,6 +18,8 @@ $profile = getProfileInfo($db, $_GET["user"]);
 	<?php unset($_SESSION["message"]); } ?>
 
 	<div class="profileWrap">
+	<!-- write new post, show on click -->
+	<?php require __DIR__."/views/partials/newpost.block.php"; ?>
 
 		<div class="displayUserProfile displayUserProfilePage">
 			<figure>
@@ -33,9 +35,9 @@ $profile = getProfileInfo($db, $_GET["user"]);
 		</div>
 
 		<div class="postsOnProfile">
-			<?php if ($profile["id"] == $_SESSION["login"]["id"]) {
-				require __DIR__."/views/partials/newpost.block.php";
-			}	?>
+			<?php if ($profile["id"] == $_SESSION["login"]["id"]) { ?>
+			<h4 class="clickToShowNewPostForm">Share a link +</h4>
+			<?php	}	?>
 
 			<div class="displayPosts">
 				<!-- check if any posts exists -->

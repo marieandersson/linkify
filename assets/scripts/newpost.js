@@ -43,7 +43,7 @@ function handleNewPost() {
 					// if success remove error and reset form
 					errorMessage.classList.remove("showError");
 					document.querySelector(".newPostForm").reset();
-					document.querySelector(".newPost").classList.remove("showNewPostForm");
+					document.querySelector(".newPostWrap").classList.remove("showNewPostForm");
 					// display new post
 					let newPost = document.createElement("div");
 					newPost.innerHTML = result;

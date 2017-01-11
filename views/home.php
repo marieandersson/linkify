@@ -23,7 +23,7 @@ require __DIR__."/partials/header.php";
 
 				<div class="posts">
 
-					<h4 class="clickToShowNewPost">Share a link +</h4>
+					<h4 class="clickToShowNewPostForm">Share a link +</h4>
 
 					<!-- display existing posts -->
 					<div class="displayPosts postsOnHomePage">
