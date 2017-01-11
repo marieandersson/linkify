@@ -30,7 +30,8 @@
 					if (checkLogin($db)) { ?>
 						</a>
 						<?php } ?>
-						on <?=date('jS \of M H:i', strtotime($post["published"]))?>.
+						on <?=date('jS \of M H:i', strtotime($post["published"]));
+						if ($post["edited"]) { ?> (have been edited)<?php } ?>.
 					</p>
 				</div>
 			</div>

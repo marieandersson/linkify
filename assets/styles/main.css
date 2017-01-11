@@ -225,9 +225,7 @@ header h1 {
 }
 /* --- auth page --- */
 .authMain {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
+	margin: 0 auto;
 }
 /* --- home page --- */
 .homeMain {
@@ -236,7 +234,7 @@ header h1 {
 	justify-content: center;
 }
 
-/* new post */
+/* --- new post form --- */
 .clickToShowNewPostForm {
 	float: right;
 	font-family: var(--headingFont);
@@ -334,7 +332,7 @@ header h1 {
 .displayPosts {
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
+	justify-content: center;
 	flex-wrap: nowrap;
 }
 .postAndVoteWrap {
@@ -353,6 +351,7 @@ header h1 {
 	width: 92%;
 	padding: 1em;
 }
+/* votes */
 .up, .down {
 	display: block;
 	margin: auto;
@@ -381,6 +380,7 @@ header h1 {
 	border-left: lightpink 3px solid;
 	cursor: pointer;
 }
+/* post content */
 .post {
 	border: var(--mainBorder);
 	margin: 1em 0;
@@ -394,14 +394,18 @@ header h1 {
 }
 .post h4 {
 	font-family: var(--headingFont);
-	font-size: 1.5em;
+	font-size: 1.3em;
 	margin: 0.5em;
 	border-bottom: var(--mainBorder);
 	color: var(--fontBlack);
 }
-.post h4 a, .postUser a {
+.post h4 a {
 	text-decoration: none;
 	color: var(--fontBlack);
+}
+.postUser a {
+	text-decoration: none;
+	color: var(--primaryColor);
 }
 .post h4 a:hover, .postUser a:hover {
 	color: #ff533d;
@@ -417,9 +421,11 @@ header h1 {
 }
 .postUser {
 	margin: 0.5em 0;
-	font-size: 0.8em;
+}
+.postUser p {
 	font-style: italic;
-	color: #6c6c6c;
+	font-size: 0.8em;
+	color: var(--primaryColor);
 	font-family: var(--bodyFont);
 }
 .postButtons {
@@ -734,6 +740,9 @@ header h1 {
 	justify-content: center;
 }
 /* posts */
+.posts {
+	width: 100%;
+}
 .displayPosts {
 	width: 100%;
 }
@@ -851,5 +860,10 @@ header h1 {
 @media only screen and (min-width: 1200px) {
 	.page {
 		width: 70%;
+	}
+}
+@media only screen and (min-width: 1300px) {
+	.posts, .authMain {
+		width: 80%;
 	}
 }

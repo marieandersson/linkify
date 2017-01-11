@@ -22,7 +22,6 @@ require __DIR__."/partials/header.php";
 			<?php require __DIR__."/partials/newpost.block.php";	?>
 
 				<div class="posts">
-
 					<h4 class="clickToShowNewPostForm">Share a link +</h4>
 
 					<!-- display existing posts -->
