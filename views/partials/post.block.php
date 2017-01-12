@@ -41,7 +41,7 @@
 					if (checkLogin($db)) { ?>
 						<a href="profile.page.php/?user=<?=$post["username"]?>">
 					<?php }
-					echo $post["name"];
+					echo ucfirst($post["username"]);
 					if (checkLogin($db)) { ?>
 						</a>
 						<?php } ?>
