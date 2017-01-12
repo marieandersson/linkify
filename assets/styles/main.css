@@ -41,7 +41,7 @@ header {
 header h1 {
 	margin: 0 0 -0.3em 0;
 	padding: 0;
-	font-family: "Syncopate";
+	font-family: "Syncopate", sans-serif;
 	color: var(--fontBlack);
 }
 .leftHeader a {
@@ -352,20 +352,18 @@ header h1 {
 	justify-content: flex-start;
 }
 .voteWrap {
-	padding: 1em 0;
-	width: 8%;
 	text-align: center;
 }
 .postWrap {
-	width: 92%;
 	padding: 1em 1em 0;
 }
 /* votes */
+.voteWrap form {
+	display: flex;
+	flex-direction: column;
+}
 .up, .down {
-	display: block;
 	margin: auto;
-	width: 1.2em;
-	height: 1.2em;
 	border-top: gray 3px solid;
 	border-left: gray 3px solid;
 	border-radius: 3px;
@@ -375,6 +373,10 @@ header h1 {
 }
 .down {
 	transform: rotate(225deg);
+}
+.votes {
+	font-family: var(--headingFont);
+	color: var(--fontBlack);
 }
 .notLoggedIn, .notLoggedInVotes {
 	opacity: 0.3;
@@ -784,6 +786,16 @@ header h1 {
 .showPostSettings img {
 	width: 15px;
 }
+.voteWrap {
+	padding: 2em 0 0 0.3em;
+}
+.up, .down {
+	width: 0.8em;
+	height: 0.8em;
+}
+.votes {
+	font-size: small;
+}
 /* profile page */
 .displayUserProfile {
 	width: 200px;
@@ -857,6 +869,13 @@ header h1 {
 	}
 	.showPostSettings img {
 		width: 20px;
+	}
+	.voteWrap {
+		padding: 2em 1em 0;
+	}
+	.up, .down {
+		width: 1.2em;
+		height: 1.2em;
 	}
 }
 @media only screen and (min-width: 800px) {
