@@ -38,8 +38,8 @@
 			<nav class="authNav">
 				<div class="sortPosts">
 					<form action="/index.php" method="post">
-						<input type="submit" name="byDate" value="New">
-						<input type="submit" name="byPop" value="Popular">
+						<input type="submit" name="byDate" value="New" class="<?=$sortMethod === 'published' ? 'sortMethod':''; ?>" >
+						<input type="submit" name="byPop" value="Popular" class="<?=$sortMethod === 'votes' ? 'sortMethod':''; ?>">
 					</form>
 				</div>
 				<div class="menuLink">
@@ -52,8 +52,8 @@
 				if ($pageTitle != "Linkify - Settings" && $pageTitle != "Linkify - Profile") { ?>
 				<div class="sortPosts">
 					<form action="/index.php" method="post">
-						<input type="submit" name="byDate" value="New">
-						<input type="submit" name="byPop" value="Popular">
+						<input type="submit" name="byDate" value="New" class="<?=$sortMethod === 'published' ? 'sortMethod':''; ?>">
+						<input type="submit" name="byPop" value="Popular" class="<?=$sortMethod === 'votes' ? 'sortMethod':''; ?>">
 					</form>
 				</div>
 				<?php }} ?>

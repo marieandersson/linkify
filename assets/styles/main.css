@@ -85,7 +85,9 @@ header h1 {
 	background: var(--primaryColor);
 	color: var(--backgroundColor);
 }
-
+.sortMethod {
+	background: rgba(171,152,122,0.4);
+}
 /* --- slide navigation --- */
 .menuSlide {
 	background: var(--primaryColor);
