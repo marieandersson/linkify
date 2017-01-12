@@ -92,7 +92,7 @@
 		// check if post has comments
 		$comments = getComments($db, $post["id"]); ?>
 		<p class="commentCount"><?php if ($comments) { ?>
-			<a href='#' class='commentLink'>This post has comments. Click here to <span class='readOrClose'>read</span> them.</a>
+			<a href='#' class='commentLink'><span class='readOrClose'>Read</span> comments.</a>
 		<?php } ?></p>
 		<?php if ($comments) { ?>
 		<div class="comments">

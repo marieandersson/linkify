@@ -93,9 +93,9 @@ function clickToShowComments(showComments) {
 	comments.classList.toggle("commentsShow");
 	let readOrClose = showComments.querySelector(".readOrClose");
 	if (comments.classList.contains("commentsShow")) {
-		readOrClose.innerHTML = "close";
+		readOrClose.innerHTML = "Close";
 	} else {
-		readOrClose.innerHTML = "read";
+		readOrClose.innerHTML = "Read";
 	}
 }
 const showCommentsLink = document.querySelectorAll(".commentLink");

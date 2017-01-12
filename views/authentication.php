@@ -21,7 +21,7 @@ require __DIR__."/partials/header.php";
 <!-- forms slide in -->
 <div class="menuSlide authSlide">
 
-	<p class="menuLink menuClose">X</p>
+	<p class="menuClose">X</p>
 
 	<div class="forms">
 

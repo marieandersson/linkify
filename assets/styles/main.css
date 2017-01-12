@@ -356,6 +356,7 @@ header h1 {
 }
 .postWrap {
 	padding: 1em 1em 0;
+	flex-grow: 1;
 }
 /* votes */
 .voteWrap form {
@@ -487,6 +488,7 @@ header h1 {
 	border: var(--mainBorder);
 	padding-left: 0.5em;
 	font-size: small;
+	flex-grow: 1;
 }
 .inputComment input[type="submit"] {
 	border: var(--mainBorder);
@@ -544,20 +546,17 @@ header h1 {
  }
 
 /* comments */
-.commentForm {
-
-}
 .commentCount {
 	font-family: var(--bodyFont);
-	font-size: small;
-	margin: 1em;
+	font-size: 0.9em;
+	margin: 1em 0 0;
 }
 .commentCount a {
 	text-decoration: none;
-	color: gray;
+	color: var(--primaryColor);
 }
 .commentCount a:hover {
-	color: var(--primaryColor);
+	color: var(--secondaryColor);
 }
 .comments {
 	display: none;
@@ -760,6 +759,7 @@ header h1 {
 /* navigation */
 .menuSlide {
 	width: 100%;
+	z-index: 50;
 }
 .forms h3 {
 	margin: 1em 0 0;
@@ -791,6 +791,10 @@ header h1 {
 }
 .votes {
 	font-size: small;
+}
+/* comments */
+.inputComment {
+	width: 100%;
 }
 /* profile page */
 .displayUserProfile {
@@ -903,6 +907,9 @@ header h1 {
 		margin-left: auto;
 	}
 	.postContent {
+		width: 70%;
+	}
+	.inputComment {
 		width: 70%;
 	}
 }

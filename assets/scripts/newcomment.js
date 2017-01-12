@@ -66,7 +66,7 @@ function handleCommentPost(commentButton) {
 					replies.classList.add("replies");
 					newComment.appendChild(replies);
 					let commentCount = newComment.parentElement.parentElement.querySelector(".commentCount");
-					commentCount.innerHTML = "<a href='#' class='commentLink'>This post has comments. Click here to <span class='readOrClose'>close</span> them.</a>";
+					commentCount.innerHTML = "<a href='#' class='commentLink'><span class='readOrClose'>Close</span> comments.</a>";
 					// add eventlistener to new comment post
 					let editCommentButton = newComment.querySelector(".editCommentButton");
 					editCommentButton.addEventListener("click", function(event) {

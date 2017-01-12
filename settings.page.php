@@ -80,6 +80,6 @@ require __DIR__."/views/partials/header.php";
 
 </div> <!-- end page -->
 <?php
-require __DIR__."/views/partials/footer.php";
 require __DIR__."/views/partials/navigation.php";
+require __DIR__."/views/partials/footer.php";
 ?>

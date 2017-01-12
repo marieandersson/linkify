@@ -83,7 +83,7 @@ function handleEditPost(editButton) {
 					postElement.querySelector(".postContent p").innerHTML = description;
 					postElement.querySelector(".postContent").classList.remove("postContentHide");
 					postElement.querySelector(".editPostForm").classList.remove("editPostFormShow");
-					postElement.querySelector(".editButton").innerHTML = "Edit post";
+					postElement.querySelector(".editButton").innerHTML = "Edit";
 					postElement.querySelector(".postSettingsButtons").classList.remove("postSettingsButtonsShow");
 				});
 			}
