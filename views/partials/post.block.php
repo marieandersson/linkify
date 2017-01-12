@@ -57,7 +57,7 @@
 				<form action="app/posts/editpost.php" method="post">
 					<input type="hidden" name="postIdForEdit" class="postIdForEdit" value="<?=$post["id"]?>">
 					<div class="editInputField">
-						<label for="editSubject">Subject:</label>
+						<label for="editSubject">Title:</label>
 						<input type="text" name="editSubject" value="<?=$post["subject"]?>">
 					</div>
 					<div class="editInputField">
@@ -92,7 +92,7 @@
 		// check if post has comments
 		$comments = getComments($db, $post["id"]); ?>
 		<p class="commentCount"><?php if ($comments) { ?>
-			<a href='#' class='commentLink'><span class='readOrClose'>Read</span> comments.</a>
+			<a href='#' class='commentLink'><span class='readOrClose'>Read</span> comments</a>
 		<?php } ?></p>
 		<?php if ($comments) { ?>
 		<div class="comments">

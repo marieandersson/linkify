@@ -12,13 +12,13 @@
 	</div>
 
 	<?php if (checkLogin($db) && $reply["user_id"] == $_SESSION["login"]["id"]) { ?>
-	<form action="app/posts/comments.php" method="post">
+	<form action="app/posts/comments.php" method="post" class="commentSettings">
+		<button class="showPostSettings"><img src="/assets/images/settingswheel.png" /></button>
 		<div class="postSettingsButtons">
 			<input type="hidden" name="commentId" class="commentId" value="<?=$reply["id"]?>">
 			<button class="editCommentButton">Edit</button>
 			<input type="submit" name="deleteComment" class="deleteComment" value="Delete">
 		</div>
-		<button class="showPostSettings"><img src="/assets/images/settingswheel.png" /></button>
 	</form>
 	<?php } ?>
 </div>
