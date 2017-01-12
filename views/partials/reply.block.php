@@ -1,20 +1,22 @@
 <div class="commentReply comment<?=$reply["id"]?>">
 	<div class="commentDiv">
 		<p class="commentContent"><?=$reply["comment"]?></p>
-		<p class="commentPublished">
-			Posted by
-			<span class="commentAuthor">
-			<?php // name only link if user is logged in
-			if (checkLogin($db)) { ?>
-				<a href="profile.page.php/?user=<?=$reply['username']?>">
-			<?php }
-			echo ucfirst($reply["username"]);
-			if (checkLogin($db)) { ?>
-				</a>
-				<?php } ?>
-			</span>
-			on <?=date('jS \of M H:i', strtotime($reply["published"]))?>.
-		</p>
+		<div class="commentInfoAndReply">
+			<p class="commentPublished">
+				Posted by
+				<span class="commentAuthor">
+				<?php // name only link if user is logged in
+				if (checkLogin($db)) { ?>
+					<a href="profile.page.php/?user=<?=$reply['username']?>">
+				<?php }
+				echo ucfirst($reply["username"]);
+				if (checkLogin($db)) { ?>
+					</a>
+					<?php } ?>
+				</span>
+				on <?=date('jS \of M H:i', strtotime($reply["published"]))?>.
+			</p>
+		</div>
 	</div>
 	<div class="editCommentForm">
 		<form action="app/posts/comments.php" method="post">

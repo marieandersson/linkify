@@ -55,13 +55,13 @@ editCommentButtons.forEach (function(editCommentButton) {
 
 // show reply to comment fields
 function showReplyForm(replyButton) {
-	let form = replyButton.parentElement;
-	let replyInputFields = form.querySelector(".replyFields");
+	let commentDiv = replyButton.parentElement.parentElement.parentElement.parentElement;
+	let replyInputFields = commentDiv.querySelector(".replyFields");
 	replyInputFields.classList.toggle("replyFieldsShow");
 	if (replyInputFields.classList.contains("replyFieldsShow")) {
-		replyButton.innerHTML = "Close";
+		replyButton.innerHTML = "Close.";
 	} else {
-		replyButton.innerHTML = "Reply to this";
+		replyButton.innerHTML = "Reply to this.";
 	}
 }
 const replyToComment = document.querySelectorAll(".replyButton");

@@ -591,7 +591,7 @@ header h1 {
 	font-family: var(--bodyFont);
 	color: var(--fontBlack);
 	font-size: 1em;
-	margin: 1em 0 0 !important;
+	margin: 1em 0 0.2em !important;
 }
 .commentAuthor a {
 	text-decoration: none;
@@ -600,7 +600,9 @@ header h1 {
 .commentAuthor a:hover {
 	color: var(--fontColor);
 }
-.commentPublished {
+.commentInfoAndReply {
+	display: flex;
+	flex-direction: row;
 	font-size: 0.9em;
 	font-style: italic;
 	color: var(--primaryColor);
@@ -617,22 +619,34 @@ header h1 {
 	flex-direction: row;
 	justify-content: flex-start;
 }
-.replyButton, .replyFields input[type="submit"] {
+.replyButton {
+	color: var(--primaryColor);
+	padding-left: 0.5em;
+	color: #778899;
+}
+.replyButton:hover {
+	color: var(--secondaryColor);
+	cursor: pointer;
+}
+.replyFields input[type="submit"] {
 	border: var(--mainBorder);
 	height: 2em;
-	margin-right: 0.5em;
+	margin: 0 0.5em;
+	font-size: small;
+	color: var(--fontBlack);
+	font-family: var(--headingFont);
 }
-.replyButton:hover, .replyFields input[type="submit"]:hover {
+.replyFields input[type="submit"]:hover {
 	background: var(--primaryColor);
 	color: #fff;
 	cursor: pointer;
 }
 .replyFields input[type="text"] {
 	height: 2em;
-	background: #f1f1f1;
 	border: var(--mainBorder);
 	padding-left: 0.5em;
-	margin-right: 0.5em;
+	font-size: small;
+	flex-grow: 1;
 }
 .replyFields {
 	display: none;
@@ -641,6 +655,7 @@ header h1 {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
+	flex-grow: 1;
 }
 .commentReply {
 	margin: 0 0 1em 2em;
@@ -812,7 +827,7 @@ header h1 {
 	font-size: small;
 }
 /* comments */
-.inputComment {
+.inputComment, .replyForm form {
 	width: 100%;
 }
 /* profile page */
@@ -931,7 +946,7 @@ header h1 {
 	.postContent {
 		width: 70%;
 	}
-	.inputComment {
+	.inputComment, .replyForm form {
 		width: 70%;
 	}
 }

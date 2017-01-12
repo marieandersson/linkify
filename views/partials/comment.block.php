@@ -1,20 +1,23 @@
 <div class="comment comment<?=$comment["id"]?>">
 	<div class="commentDiv">
 		<p class="commentContent"><?=$comment["comment"]?></p>
-		<p class="commentPublished">
-			Posted by
-			<span class="commentAuthor">
-			<?php // name only link if user is logged in
-			if (checkLogin($db)) { ?>
-				<a href="profile.page.php/?user=<?=$comment['username']?>">
-			<?php }
-			echo ucfirst($comment["username"]);
-			if (checkLogin($db)) { ?>
-				</a>
-				<?php } ?>
-			</span>
-			on <?=date('jS \of M H:i', strtotime($comment["published"]))?>.
-		</p>
+		<div class="commentInfoAndReply">
+			<p class="commentPublished">
+				Posted by
+				<span class="commentAuthor">
+				<?php // name only link if user is logged in
+				if (checkLogin($db)) { ?>
+					<a href="profile.page.php/?user=<?=$comment['username']?>">
+				<?php }
+				echo ucfirst($comment["username"]);
+				if (checkLogin($db)) { ?>
+					</a>
+					<?php } ?>
+				</span>
+				on <?=date('jS \of M H:i', strtotime($comment["published"]))?>.
+			</p>
+			<p class="replyButton">Reply to this.</p>
+		</div>
 	</div>
 	<!-- edit comment form shown on click -->
 	<div class="editCommentForm">
@@ -35,7 +38,7 @@
 	</form>
 </div>
 <?php if (checkLogin($db)) { ?>
-<div class="ReplyForm">
+<div class="replyForm">
 	<form action="app/posts/comments.php" method="post">
 		<input type="hidden" name="commentId" class="commentIdReply" value="<?=$comment["id"]?>">
 		<input type="hidden" name="postId" class="postIdReply" value="<?=$post["id"]?>">
@@ -43,6 +46,5 @@
 			<input type="text" name="comment" placeholder="Reply to this...">
 			<input type="submit" name="replySubmit" class="replySubmit" value="Submit">
 		</div>
-		<button class="replyButton">Reply to this</button>
 	</form>
 </div><?php } ?>
