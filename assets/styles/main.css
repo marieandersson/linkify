@@ -385,7 +385,7 @@ header h1 {
 }
 .up:hover, .down:hover {
 	cursor: pointer;
-	border-color: var(--primaryColor) !important;
+	border-color: #778899 !important;
 }
 
 /* post content */
