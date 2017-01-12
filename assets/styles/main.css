@@ -363,10 +363,11 @@ header h1 {
 	flex-direction: column;
 }
 .up, .down {
-	margin: auto;
-	border-top: gray 3px solid;
-	border-left: gray 3px solid;
-	border-radius: 3px;
+	margin: 0 auto;
+	border-top: var(--fontBlack) 2px solid;
+	border-left: var(--fontBlack) 2px solid;
+	border-radius: 1px;
+	transition: margin 0.2s ease-out;
 }
 .up {
 	transform: rotate(45deg);
@@ -379,18 +380,13 @@ header h1 {
 	color: var(--fontBlack);
 }
 .notLoggedIn, .notLoggedInVotes {
-	opacity: 0.3;
+	opacity: 0.5;
 }
-.up:hover {
-	border-top: lightgreen 3px solid;
-	border-left: lightgreen 3px solid;
+.up:hover, .down:hover {
 	cursor: pointer;
+	border-color: var(--primaryColor) !important;
 }
-.down:hover {
-	border-top: lightpink 3px solid;
-	border-left: lightpink 3px solid;
-	cursor: pointer;
-}
+
 /* post content */
 .postHeadingWrap {
 	display: flex;

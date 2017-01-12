@@ -105,15 +105,3 @@ showCommentsLink.forEach (function (showComments) {
 		clickToShowComments(showComments);
 	});
 });
-
-// user must be looged in to vote on posts
-function logInToVote() {
-	const voteArrows = document.querySelectorAll(".notLoggedIn");
-	voteArrows.forEach(function (arrow) {
-	  arrow.addEventListener("click", function (event) {
-	    event.preventDefault();
-	    document.body.classList.add("navigationOpen");
-	  });
-	});
-}
-logInToVote();

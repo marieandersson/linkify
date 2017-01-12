@@ -5,7 +5,12 @@ const upVoteButtons = document.querySelectorAll(".up");
 upVoteButtons.forEach (function(upVoteButton) {
 	upVoteButton.addEventListener("click", function(event) {
 		event.preventDefault();
-		handleVote(upVoteButton, "up", 1);
+		let isUserLoggedIn = upVoteButton.parentElement.querySelector(".loggedInUser").value;
+		if (isUserLoggedIn == "noLoggedInUser") {
+			document.body.classList.add("navigationOpen");
+		} else {
+			handleVote(upVoteButton, "up", 1);
+		}
 	});
 });
 
@@ -14,7 +19,12 @@ const downVoteButtons = document.querySelectorAll(".down");
 downVoteButtons.forEach (function(downVoteButton) {
 	downVoteButton.addEventListener("click", function(event) {
 		event.preventDefault();
-		handleVote(downVoteButton, "down", -1);
+		let isUserLoggedIn = upVoteButton.parentElement.querySelector(".loggedInUser").value;
+		if (isUserLoggedIn == "noLoggedInUser") {
+			document.body.classList.add("navigationOpen");
+		} else {
+			handleVote(downVoteButton, "down", -1);
+		}
 	});
 });
 

@@ -6,7 +6,7 @@
 		<form action ="app/posts/votes.php" method="post">
 			<input type="hidden" name="postIdForVote" class="postIdForVote" value="<?=$post["id"]?>">
 			<input type="hidden" name="postUserIdForVote" class="postUserIdForVote" value="<?=$post["user_id"]?>">
-			<input type="hidden" name="loggedInUser" class="loggedInUser" value="<?=$_SESSION["login"]["id"]?>">
+			<input type="hidden" name="loggedInUser" class="loggedInUser" value="<?=checkLogin($db) ? $_SESSION['login']['id'] : 'noLoggedInUser'?>">
 			<input type="submit" class="up<?=(!checkLogin($db)) ? " notLoggedIn" : ""; ?>" name="up" value="">
 			<span class="votes<?=(!checkLogin($db)) ? " notLoggedInVotes" : ""; ?>"><?= (!$votes["sum_votes"] == NULL) ? $votes["sum_votes"] : 0 ?></span>
 			<input type="submit" class="down<?=(!checkLogin($db)) ? " notLoggedIn" : ""; ?>" name="down" value="">
