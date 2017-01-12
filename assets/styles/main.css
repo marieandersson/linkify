@@ -510,13 +510,15 @@ header h1 {
 }
 
 /* hidden form for edit posts */
-.editPostForm {
+.editPostForm, .editCommentForm {
 	display: none;
 }
 .editPostFormShow {
 	display: block;
 	flex-grow: 1;
-	f
+}
+.editCommentFormShow {
+	display: block;
 }
 .editPostForm form {
 	font-family: var(--bodyFont);
@@ -526,17 +528,21 @@ header h1 {
 	flex-direction: column;
 	justify-content: center;
 }
+.editCommentForm form {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
 .editInputField {
 	display: flex;
 	flex-direction: column;
 }
 .editInputField input[type="text"] {
 	height: 2em;
-	width:100%;
 	margin: 0.2em 0 0.5em;
-	background: #f1f1f1;
 	border: var(--mainBorder);
 	padding-left: 0.5em;
+	flex-grow: 1;
 }
  .editPostForm input[type="submit"] {
 	 border: var(--mainBorder);
@@ -544,7 +550,19 @@ header h1 {
 	 margin: 0.5em auto 0;
 	 width: 70px;
  }
- .editPostForm input[type="submit"]:hover {
+ .editCommentForm form input[type="text"] {
+	 height: 2em;
+	 border: var(--mainBorder);
+ 	 padding-left: 0.5em;
+	 flex-grow: 1;
+ }
+  .editCommentForm form input[type="submit"] {
+		border: var(--mainBorder);
+ 	  height: 2em;
+		margin: 0 0.5em
+	}
+ .editPostForm input[type="submit"]:hover,
+ .editCommentForm form input[type="submit"]:hover {
 	 background: var(--primaryColor);
 	 color: #fff;
 	 cursor: pointer;
@@ -591,7 +609,7 @@ header h1 {
 	font-family: var(--bodyFont);
 	color: var(--fontBlack);
 	font-size: 1em;
-	margin: 1em 0 0.2em !important;
+	margin: 0.5em 0 0.2em !important;
 }
 .commentAuthor a {
 	text-decoration: none;
@@ -602,17 +620,11 @@ header h1 {
 }
 .commentInfoAndReply {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	font-size: 0.9em;
 	font-style: italic;
 	color: var(--primaryColor);
 	font-family: var(--bodyFont);
-}
-.editCommentForm {
-	display: none;
-}
-.editCommentFormShow {
-	display: block;
 }
 .replyForm form {
 	display: flex;
@@ -621,7 +633,6 @@ header h1 {
 }
 .replyButton {
 	color: var(--primaryColor);
-	padding-left: 0.5em;
 	color: #778899;
 }
 .replyButton:hover {
@@ -657,8 +668,13 @@ header h1 {
 	justify-content: flex-start;
 	flex-grow: 1;
 }
+.replies {
+	border-left: var(--mainBorder);
+	margin-left: 1em;
+	padding-left: 1em;
+}
 .commentReply {
-	margin: 0 0 1em 2em;
+	margin: 0;
 	display: flex;
 	flex-flow: row;
 	justify-content: space-between;
@@ -827,8 +843,11 @@ header h1 {
 	font-size: small;
 }
 /* comments */
-.inputComment, .replyForm form {
+.inputComment, .replyForm form, .editCommentForm {
 	width: 100%;
+}
+.commentInfoAndReply {
+	flex-direction: column;
 }
 /* profile page */
 .displayUserProfile {
@@ -864,6 +883,14 @@ header h1 {
 		margin: 0 3em;
 		flex-direction: row;
 		justify-content: space-around;
+	}
+}
+@media only screen and (min-width: 350px) {
+	.commentInfoAndReply {
+		flex-direction: row;
+	}
+	.replyButton {
+			padding-left: 0.3em;
 	}
 }
 @media only screen and (min-width: 420px) {
@@ -946,7 +973,7 @@ header h1 {
 	.postContent {
 		width: 70%;
 	}
-	.inputComment, .replyForm form {
+	.inputComment, .replyForm form, .editCommentForm  {
 		width: 70%;
 	}
 }

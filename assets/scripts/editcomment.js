@@ -88,7 +88,7 @@ function handleEditComment(editButton) {
 					errorMessage.classList.remove("showError");
 					// replace comment content
 					let commentElement = document.querySelector(".comment"+commentId);
-					commentElement.querySelector(".commentText").innerHTML = comment;
+					commentElement.querySelector(".commentContent").innerHTML = comment;
 					commentElement.querySelector(".commentDiv").classList.remove("commentHide");
 					commentElement.querySelector(".editCommentForm").classList.remove("editCommentFormShow");
 					commentElement.querySelector(".editCommentButton").innerHTML = "Edit";
