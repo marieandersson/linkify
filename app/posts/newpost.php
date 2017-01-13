@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		// return new post to js response
 		$postId = $db->lastInsertId();
 		$getNewPostQuery = "SELECT posts.id, posts.description, posts.subject,
-		posts.url, posts.published, posts.edited, posts.user_id,	users.name FROM posts
+		posts.url, posts.published, posts.edited, posts.user_id,	users.username FROM posts
 		INNER JOIN users ON posts.user_id = users.id WHERE posts.id = '{$postId}'";
 		$getNewPostStatement = $db->query($getNewPostQuery);
 		$post = $getNewPostStatement->fetch(PDO::FETCH_ASSOC);

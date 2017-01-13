@@ -57,7 +57,7 @@ function handleSubmits($db) {
 		saveNewComment($db);
 		// return new comment to js response
 		$commentId = $db->lastInsertId();
-		$getNewCommentQuery = "SELECT comments.id, comments.user_id, comments.comment, comments.published, comments.reply_to,
+		$getNewCommentQuery = "SELECT comments.id, comments.user_id, comments.comment, comments.published, comments.reply_to, comments.edited,
 		users.username FROM comments INNER JOIN users ON comments.user_id = users.id WHERE comments.id = '{$commentId}' AND comments.post_id = '{$_POST["postId"]}'";
 		$getNewCommentStatement = $db->query($getNewCommentQuery);
 		$comment = $getNewCommentStatement->fetch(PDO::FETCH_ASSOC);
@@ -91,7 +91,7 @@ function handleSubmits($db) {
 		saveNewComment($db, $replyTo);
 
 		$commentId = $db->lastInsertId();
-		$getReplyQuery = "SELECT comments.id, comments.user_id, comments.comment, comments.published, comments.reply_to,
+		$getReplyQuery = "SELECT comments.id, comments.user_id, comments.comment, comments.published, comments.reply_to, comments.edited,
 		users.username FROM comments INNER JOIN users ON comments.user_id = users.id WHERE comments.id = '{$commentId}' AND comments.post_id = '{$_POST["postId"]}'";
 		$getReplyStatement = $db->query($getReplyQuery);
 		$reply = $getReplyStatement->fetch(PDO::FETCH_ASSOC);

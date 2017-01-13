@@ -472,6 +472,7 @@ header h1 {
 	font-size: small;
 	margin-right: 0.3em;
 	width: 50px;
+	height: 2em;
 }
 .editButton:hover, .deleteButton:hover,
 .editCommentButton:hover, .deleteComment:hover {
@@ -531,7 +532,7 @@ header h1 {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
-	margin: 1em 0 0.5em;
+	margin: 0.6em 0 0.9em;
 }
 .editInputField {
 	display: flex;
@@ -851,7 +852,7 @@ header h1 {
 	flex-direction: column;
 }
 .commentSettingsButtons {
-	bottom: 2em;
+	bottom: 2.2em;
 	right: 2.2em;
 }
 /* profile page */
@@ -890,14 +891,6 @@ header h1 {
 		justify-content: space-around;
 	}
 }
-@media only screen and (min-width: 350px) {
-	.commentInfoAndReply {
-		flex-direction: row;
-	}
-	.replyButton {
-			padding-left: 0.3em;
-	}
-}
 @media only screen and (min-width: 420px) {
 	.leftHeader img {
 		height: 45px;
@@ -917,6 +910,12 @@ header h1 {
 	}
 	.menuSlide {
 		width: 300px;
+	}
+	.commentInfoAndReply {
+		flex-direction: row;
+	}
+	.replyButton {
+			padding-left: 0.3em;
 	}
 }
 @media only screen and (min-width: 600px) {

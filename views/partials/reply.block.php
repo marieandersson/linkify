@@ -14,7 +14,7 @@
 					</a>
 					<?php } ?>
 				</span>
-				on <?=date('jS \of M H:i', strtotime($reply["published"]))?>.
+				on <?=date('jS \of M H:i', strtotime($reply["published"]));  if ($reply["edited"]) { ?> (has been edited)<?php } ?>.
 			</p>
 		</div>
 	</div>

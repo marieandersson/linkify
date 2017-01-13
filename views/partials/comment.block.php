@@ -14,7 +14,7 @@
 					</a>
 					<?php } ?>
 				</span>
-				on <?=date('jS \of M H:i', strtotime($comment["published"]))?>.
+				on <?=date('jS \of M H:i', strtotime($comment["published"])); if ($comment["edited"]) { ?> (has been edited)<?php } ?>.
 			</p>
 			<p class="replyButton">Reply to this.</p>
 		</div>

@@ -76,7 +76,7 @@ function getPosts($db, $order) {
 }
 
 function getComments($db, $postId) {
-	$getCommentsQuery = "SELECT comments.id, comments.user_id, comments.comment, comments.published, comments.reply_to,
+	$getCommentsQuery = "SELECT comments.id, comments.user_id, comments.comment, comments.published, comments.reply_to, comments.edited,
 	users.name, users.username FROM comments INNER JOIN users ON comments.user_id = users.id WHERE comments.post_id = '{$postId}' ORDER BY comments.published DESC";
 	$getCommentsStatement = $db->query($getCommentsQuery);
 
