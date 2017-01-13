@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			//if user already voted up
 			if ($vote[0]["vote"] == 1) {
 				http_response_code(406);
-				echo "You can only vote up once.";
+				echo "You have already voted up on this link.";
 				exit();
 			}
 			// if user already voted down replace vote in database
@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			//if user already voted down
 			if ($vote[0]["vote"] == -1) {
 				http_response_code(406);
-				echo "You can only vote down once.";
+				echo "You have already voted down on this link.";
 				exit();
 			}
 			// if user already voted up

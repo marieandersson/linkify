@@ -773,7 +773,6 @@ header h1 {
 	border: var(--mainBorder);
 	color: var(--fontBlack);
 	font-size: small;
-	width: 100%;
 	height: 5em;
 	font-family: var(--bodyFont);
 }
@@ -913,6 +912,9 @@ header h1 {
 .settings, .postsOnProfile {
 	width: 100%;
 }
+.settingsForm textarea {
+	width: 100%;
+}
 @media only screen and (max-width: 800px) and (orientation: landscape) {
 	.authSlide {
 		width: 100% !important;
@@ -951,6 +953,9 @@ header h1 {
 	}
 	.replyButton {
 			padding-left: 0.3em;
+	}
+	.settingsForm textarea {
+		width: 70%;
 	}
 }
 @media only screen and (min-width: 600px) {

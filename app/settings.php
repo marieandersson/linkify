@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			exit();
 		}
 		if (!password_verify($_POST["saveWithPassword"], $userInfo["password"])) {
-			$_SESSION["error"] = "You entered the wrong password";
+			$_SESSION["error"] = "You entered the wrong password.";
 			header("Location: /settings.page.php");
 			exit();
 		}
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		// update password
 		if (!empty($_POST["editPassword"])) {
 			if($_POST["editPassword"] !== $_POST["repeatPassword"]) {
-				$_SESSION["error"] = "Passwords not matching.";
+				$_SESSION["error"] = "Passwords are not matching.";
 				header("Location: /settings.page.php");
 				exit();
 			}
@@ -66,13 +66,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			$ext = strtolower(pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION));
 			// check file type
 			if (!in_array($ext, $allowed)) {
-				$_SESSION["error"] = "The file must be jpg or png format.";
+				$_SESSION["error"] = "The file must be in jpg or png format.";
 				header("Location: /settings.page.php");
 				exit();
 			}
 			// check file errors
 			if ($_FILES["avatar"]["error"] !== 0) {
-				$_SESSION["error"] = "something went wrong trying upload your file.";
+				$_SESSION["error"] = "Something went wrong trying to upload your file.";
 				header("Location: /settings.page.php");
 				exit();
 			}

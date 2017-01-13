@@ -69,9 +69,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	  // output error messages if  a field is empty
 	  if ($result == NO_USERNAME) {
-	    $_SESSION["error"] = "Fill out username or email.";
+	    $_SESSION["error"] = "Fill out your username or email.";
 	  } else if ($result == NO_PASSWORD) {
-	    $_SESSION["error"] = "Fill out password.";
+	    $_SESSION["error"] = "Fill out your password.";
 	  } else {
 	    // call function to check if user exists
 	    $userInfo = checkUser($db, $user, $password);

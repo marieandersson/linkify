@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	  if ($result == MISSING_INPUT) {
 	    $_SESSION["error"] = "Please fill out all fields.";
 	  } else if ($result == INVALID_EMAIL) {
-	    $_SESSION["error"] = "Incorrect email format.";
+	    $_SESSION["error"] = "You must enter a valid email.";
 	  } else if ($result == TERMS_NOT_ACCEPTED){
 	    $_SESSION["error"] = "You have to accept our terms.";
 	  } else {
@@ -73,9 +73,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	    $result = checkEmailAndUsername($db, $email, $username);
 
 	    if ($result ==  EMAIL_ALREADY_REG) {
-	      $_SESSION["error"] = "Email is already registered.";
+	      $_SESSION["error"] = "This email is already registered.";
 	    } else if ($result ==  USERNAME_TAKEN)  {
-				$_SESSION["error"] = "Username is already taken, pick another one.";
+				$_SESSION["error"] = "This username is already taken, pick another one.";
 			} else {
 	    // store new user data in database
 			$insertUserIntoDb = "INSERT INTO users (name, username, email, password)

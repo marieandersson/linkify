@@ -35,7 +35,7 @@ function handleVote(voteButton, vote, number) {
 	let errorMessage = document.querySelector(".jsMessage");
 	// check local storage to see if user already voted on post
 	if (localStorage.getItem(loggedInUser+":vote"+postId) == vote) {
-		errorMessage.innerHTML = "You can only vote " + vote + " once.";
+		errorMessage.innerHTML = "You have already voted " + vote + " on this link.";
 		errorMessage.classList.add("showError");
 	} else if (postUserId == loggedInUser) {
 		errorMessage.innerHTML = "Sorry, you can't vote on you own post.";
