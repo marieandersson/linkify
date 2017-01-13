@@ -15,7 +15,7 @@ body {
 	background-color: var(--backgroundColor);
 	overflow-x: hidden;
 }
-.page {
+.page, footer {
 	width: 100%;
 	transition: width 0.4s linear;
 }
@@ -797,7 +797,34 @@ header h1 {
 	border-top: var(--mainBorder);
 	margin-top: 1em;
 }
+
 /* --- footer --- */
+footer {
+	text-align: center;
+	padding: 1em 0;
+}
+.footerLogo {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+footer img {
+	height: 20px;
+	padding-right: 0.3em;
+}
+footer h5 {
+	font-family: "Syncopate", sans-serif;
+	color: var(--fontBlack);
+	margin: 0;
+	font-size: 1em;
+}
+footer p {
+	font-size: small;
+	color: var(--primaryColor);
+	font-family: var(--bodyFont);
+	font-style: italic;
+	margin: 0;
+}
 
 /* --- responsive properties, mobile first --- */
 /* header */
@@ -958,7 +985,7 @@ header h1 {
 	}
 }
 @media only screen and (min-width: 800px) {
-	.page {
+	.page, footer {
 		width: 90%;
 		margin: 0 auto;
 	}
@@ -997,7 +1024,7 @@ header h1 {
 	}
 }
 @media only screen and (min-width: 1000px) {
-	.page {
+	.page, footer {
 		width: 80%;
 	}
 	.displayUserProfile {
@@ -1010,7 +1037,7 @@ header h1 {
 	}
 }
 @media only screen and (min-width: 1200px) {
-	.page {
+	.page , footer {
 		width: 65%;
 	}
 }
