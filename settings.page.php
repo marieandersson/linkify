@@ -62,7 +62,7 @@ require __DIR__."/views/partials/header.php";
 							<?php if ($user["avatar"] !== NULL) {  ?>
 								<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" />
 							<?php } else { ?>
-								<img src="/assets/images/smiley.jpg" />
+								<img src="/assets/images/profileicon.png" />
 							<?php } ?>
 						</div>
 					</div>

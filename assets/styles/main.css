@@ -709,7 +709,6 @@ header h1 {
 	text-align: left;
 	font-size: small;
 	border-top: var(--mainBorder);
-	border-bottom: var(--mainBorder);
 	padding: 0.5em;
 }
 .displayUserProfile figure {
@@ -727,6 +726,9 @@ header h1 {
 	flex-direction: column;
 	justify-content: flex-start;
 	margin-top: 1em;
+}
+.postsOnProfile {
+	border-top: var(--mainBorder);
 }
 /* --- settings page --- */
 .settingsWrap {
@@ -785,7 +787,6 @@ header h1 {
 .placeholderAvatar {
 	width: 100px;
 	height: 100px;
-	border: var(--mainBorder);
 }
 .placeholderAvatar img {
 	width: 100%;
@@ -796,6 +797,7 @@ header h1 {
 	border-top: var(--mainBorder);
 	margin-top: 1em;
 }
+/* --- footer --- */
 
 /* --- responsive properties, mobile first --- */
 /* header */
