@@ -1017,8 +1017,14 @@ header h1 {
 	.postContent {
 		width: 70%;
 	}
+	.postsOnProfile .postContent {
+		width: 100%;
+	}
 	.inputComment, .replyForm form, .editCommentForm  {
 		width: 70%;
+	}
+	.postsOnProfile .inputComment {
+		width: 100%;
 	}
 	.commentSettingsButtons {
 		bottom: 0;
