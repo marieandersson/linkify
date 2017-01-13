@@ -735,7 +735,7 @@ header h1 {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
-	margin-top: 1em;
+	margin-top: 2.5em;
 }
 .settingsHeading {
 	font-family: var(--headingFont);
@@ -958,11 +958,8 @@ header h1 {
 		display: block;
 		margin: 0 2em 0 0;
 	}
-	.settingsWrap {
-		justify-content: center;
-	}
 	.settings {
-		width: 400px;
+		flex-grow: 1;
 	}
 	.post h4 {
 		font-size: 1.3em;
