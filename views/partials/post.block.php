@@ -84,15 +84,11 @@
 			</div>
 			<!-- user only able to edit or delete own posts -->
 		</form>
-		<?php } else { ?>
-			<div class="loginLink">
-				<p>Wanna discuss this? Please log in first. (Link to login)</p>
-			</div>
 		<?php }
 		// check if post has comments
 		$comments = getComments($db, $post["id"]); ?>
-		<h5 class="commentCount"><?php if ($comments) { ?>
-			<a href='#' class='commentLink'><span class='readOrClose'>Read</span> comments</a>
+		<h5 class="commentLink"><?php if ($comments) { ?>
+			<span class='readOrClose'>Read</span> comments
 		<?php } ?></h5>
 		<?php if ($comments) { ?>
 		<div class="comments">
@@ -110,6 +106,7 @@
 				</div>
 			</div>
 			<?php	}} ?>
+			<?php if (!checkLogin($db)) {?> <h5 class="joinAndDiscuss">Log in and join the discussion!</h5> <?php } ?>
 		</div>
 		<?php } ?>
 	</div>

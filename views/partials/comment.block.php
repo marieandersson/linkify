@@ -16,7 +16,7 @@
 				</span>
 				on <?=date('jS \of M H:i', strtotime($comment["published"])); if ($comment["edited"]) { ?> (has been edited)<?php } ?>.
 			</p>
-			<p class="replyButton">Reply to this.</p>
+			<?php if (checkLogin($db)) { ?><p class="replyButton">Reply to this.</p><?php } ?>
 		</div>
 	</div>
 	<!-- edit comment form shown on click -->

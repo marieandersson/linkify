@@ -571,18 +571,16 @@ header h1 {
  }
 
 /* comments */
-.commentCount {
+.commentLink {
 	font-family: var(--headingFont);
 	font-size: 0.9em;
 	margin: 1em 0.5em 0;
 	text-align: right;
-}
-.commentCount a {
-	text-decoration: none;
 	color: #778899;
 }
-.commentCount a:hover {
+.commentLink:hover {
 	color: var(--fontColor);
+	cursor: pointer;
 }
 .comments {
 	display: none;
@@ -681,7 +679,16 @@ header h1 {
 	justify-content: space-between;
 	align-items: center;
 }
-
+.joinAndDiscuss {
+	font-family: var(--headingFont);
+	color: #778899;
+	font-size: 1em;
+	margin: 1em 0 0;
+}
+.joinAndDiscuss:hover {
+	cursor: pointer;
+	color: var(--fontColor);
+}
 /* --- display user --- */
 .displayUserProfile {
 	text-align: center;

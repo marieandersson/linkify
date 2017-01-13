@@ -2,10 +2,12 @@
 
 // handle post request for new link post without page reload
 const submitLinkButton = document.querySelector(".postLink");
-submitLinkButton.addEventListener("click", function(event) {
-	event.preventDefault();
-	handleNewPost();
-});
+if (submitLinkButton) {
+	submitLinkButton.addEventListener("click", function(event) {
+		event.preventDefault();
+		handleNewPost();
+	});
+}
 
 function handleNewPost() {
 	let subject = document.querySelector(".newPostFields input[name=subject]").value;

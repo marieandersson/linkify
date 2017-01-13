@@ -1,16 +1,19 @@
 "use strict";
 // show new post form
 const showFormButton = document.querySelector(".clickToShowNewPostForm");
-showFormButton.addEventListener("click", function (event) {
-	document.querySelector(".newPostWrap").classList.add("showNewPostForm");
-});
+if (showFormButton) {
+	showFormButton.addEventListener("click", function (event) {
+		document.querySelector(".newPostWrap").classList.add("showNewPostForm");
+	});
+}
 // close new post form
 const closeNewPostForm = document.querySelector(".shareClose");
-closeNewPostForm.addEventListener("click", function (event) {
-	document.querySelector(".newPostWrap").classList.remove("showNewPostForm");
-	document.querySelector(".jsMessage").classList.remove("showError");
-});
-
+if (closeNewPostForm) {
+	closeNewPostForm.addEventListener("click", function (event) {
+		document.querySelector(".newPostWrap").classList.remove("showNewPostForm");
+		document.querySelector(".jsMessage").classList.remove("showError");
+	});
+}
 // replace post content with form
 function replacePostWithForm(editButton) {
 	let postElement = editButton.parentElement.parentElement.parentElement.parentElement.parentElement;
@@ -101,7 +104,16 @@ function clickToShowComments(showComments) {
 const showCommentsLink = document.querySelectorAll(".commentLink");
 showCommentsLink.forEach (function (showComments) {
 	showComments.addEventListener("click", function (event) {
-		event.preventDefault();
 		clickToShowComments(showComments);
 	});
 });
+
+// log in link from comments
+const joinAndDiscuss = document.querySelectorAll(".joinAndDiscuss");
+if (joinAndDiscuss) {
+	joinAndDiscuss.forEach (function (loginLink) {
+		loginLink.addEventListener("click", function (event) {
+			document.body.classList.toggle("navigationOpen");
+		});
+	});
+}
