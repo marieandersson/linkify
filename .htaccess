@@ -1,0 +1,5 @@
+RewriteEngine on
+
+RewriteRule ^logout$ app/auth/logout.php [NC]
+RewriteRule ^settings$ settings.page.php [NC]
+RewriteRule ^profile/([A-Za-z0-9-]+)/?$ profile.page.php?user=$1 [NC]

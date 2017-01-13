@@ -26,10 +26,10 @@
 		</div>
 		<header>
 			<div class="leftHeader">
-				<a href="/index.php">
+				<a href="/">
 					<img src="/assets/images/logo.png"/>
 				</a>
-				<a href="/index.php">
+				<a href="/">
 					<h1>Linkify</h1>
 				</a>
 			</div>
@@ -37,7 +37,7 @@
 			<?php if (!checkLogin($db)) { ?>
 			<nav class="authNav">
 				<div class="sortPosts">
-					<form action="/index.php" method="post">
+					<form action="/" method="post">
 						<input type="submit" name="byDate" value="New" class="<?=$sortMethod === 'published' ? 'sortMethod':''; ?>" >
 						<input type="submit" name="byPop" value="Popular" class="<?=$sortMethod === 'votes' ? 'sortMethod':''; ?>">
 					</form>
@@ -51,14 +51,14 @@
 				<?php if ($posts) {
 				if ($pageTitle != "Linkify - Settings" && $pageTitle != "Linkify - Profile") { ?>
 				<div class="sortPosts">
-					<form action="/index.php" method="post">
+					<form action="/" method="post">
 						<input type="submit" name="byDate" value="New" class="<?=$sortMethod === 'published' ? 'sortMethod':''; ?>">
 						<input type="submit" name="byPop" value="Popular" class="<?=$sortMethod === 'votes' ? 'sortMethod':''; ?>">
 					</form>
 				</div>
 				<?php }} ?>
 				<div class="profileLink">
-					<a href="/profile.page.php/?user=<?=$_SESSION["login"]["username"]?>">
+					<a href="/profile/<?=$_SESSION["login"]["username"]?>">
 						<?php if ($user["avatar"] !== NULL) {  ?>
 						<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" />
 						<?php } else { ?>

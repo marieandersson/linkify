@@ -7,7 +7,7 @@
 				<span class="commentAuthor">
 				<?php // name only link if user is logged in
 				if (checkLogin($db)) { ?>
-					<a href="profile.page.php/?user=<?=$comment['username']?>">
+					<a href="profile/<?=$comment['username']?>">
 				<?php }
 				echo ucfirst($comment["username"]);
 				if (checkLogin($db)) { ?>
