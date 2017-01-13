@@ -460,7 +460,6 @@ header h1 {
 	display: inline-block;
 	margin: 0;
 	position: absolute;
-	right: 0.3em;
 	display: flex;
 	flex-direction: row;
 	right: 2.5em;
@@ -532,6 +531,7 @@ header h1 {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
+	margin: 1em 0 0.5em;
 }
 .editInputField {
 	display: flex;
@@ -559,7 +559,8 @@ header h1 {
   .editCommentForm form input[type="submit"] {
 		border: var(--mainBorder);
  	  height: 2em;
-		margin: 0 0.5em
+		margin: 0 0.5em;
+		width: 70px;
 	}
  .editPostForm input[type="submit"]:hover,
  .editCommentForm form input[type="submit"]:hover {
@@ -849,6 +850,10 @@ header h1 {
 .commentInfoAndReply {
 	flex-direction: column;
 }
+.commentSettingsButtons {
+	bottom: 2em;
+	right: 2.2em;
+}
 /* profile page */
 .displayUserProfile {
 	width: 200px;
@@ -941,6 +946,9 @@ header h1 {
 	.editPostForm form {
 		width: 400px;
 	}
+	.commentSettingsButtons {
+		right: 2.6em;
+	}
 }
 @media only screen and (min-width: 800px) {
 	.page {
@@ -975,6 +983,10 @@ header h1 {
 	}
 	.inputComment, .replyForm form, .editCommentForm  {
 		width: 70%;
+	}
+	.commentSettingsButtons {
+		bottom: 0;
+		right: 2.5em;
 	}
 }
 @media only screen and (min-width: 1000px) {
