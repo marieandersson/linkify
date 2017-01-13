@@ -15,9 +15,15 @@ body {
 	background-color: var(--backgroundColor);
 	overflow-x: hidden;
 }
-.page, footer {
+.page {
 	width: 100%;
-	transition: width 0.4s linear;
+	min-height: calc(100vh - 80px);
+}
+footer {
+	width: 100%;
+	text-align: center;
+	padding: 1em 0;
+	height: 80px;
 }
 
 .content {
@@ -797,11 +803,7 @@ header h1 {
 	margin-top: 1em;
 }
 
-/* --- footer --- */
-footer {
-	text-align: center;
-	padding: 1em 0;
-}
+/* --- footer content --- */
 .footerLogo {
 	display: flex;
 	flex-direction: row;
