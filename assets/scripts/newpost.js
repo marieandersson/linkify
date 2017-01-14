@@ -50,48 +50,53 @@ function handleNewPost() {
 					let newPost = document.createElement("div");
 					newPost.innerHTML = result;
 					newPost.classList.add("post");
+					newPost.classList.add("fadeInPost");
 					let allPosts = document.querySelector(".displayPosts");
 					allPosts.insertBefore(newPost, allPosts.firstChild);
 					// add event listeners to new post
-					let commentButton = newPost.querySelector(".commentPost");
-					commentButton.addEventListener("click", function(event) {
-						event.preventDefault();
-						handleCommentPost(commentButton);
-					});
-					let deleteButton = newPost.querySelector(".deleteButton");
-					deleteButton.addEventListener("click", function(event) {
-						event.preventDefault();
-						if (window.confirm("Are you sure you want to delete this post?")) {
-							handlePostDelete(deleteButton);
-						}
-					});
-					let newEditButton = newPost.querySelector(".saveEdit");
-					newEditButton.addEventListener("click", function(event) {
-						event.preventDefault();
-						handleEditPost(newEditButton);
-					});
-					let showSettingsButton = newPost.querySelector(".showPostSettings");
-					showSettingsButton.addEventListener("click", function(event) {
-						event.preventDefault();
-						showSettings(showSettingsButton);
-					});
-					let editButton = newPost.querySelector(".editButton");
-					editButton.addEventListener("click", function(event) {
-						event.preventDefault();
-						replacePostWithForm(editButton);
-					});
-					let upVoteNewPost = newPost.querySelector(".up");
-					upVoteNewPost.addEventListener("click", function(event) {
-						event.preventDefault();
-						handleVote(upVoteNewPost, "up", 1);
-					});
-					let downVoteNewPost = newPost.querySelector(".down");
-					downVoteNewPost.addEventListener("click", function(event) {
-						event.preventDefault();
-						handleVote(downVoteNewPost, "down", -1);
-					});
+					addExistingEventListeners(newPost);
 				});
 			}
 		});
 	}
+}
+
+function addExistingEventListeners(newPost) {
+	let commentButton = newPost.querySelector(".commentPost");
+	commentButton.addEventListener("click", function(event) {
+		event.preventDefault();
+		handleCommentPost(commentButton);
+	});
+	let deleteButton = newPost.querySelector(".deleteButton");
+	deleteButton.addEventListener("click", function(event) {
+		event.preventDefault();
+		if (window.confirm("Are you sure you want to delete this post?")) {
+			handlePostDelete(deleteButton);
+		}
+	});
+	let newEditButton = newPost.querySelector(".saveEdit");
+	newEditButton.addEventListener("click", function(event) {
+		event.preventDefault();
+		handleEditPost(newEditButton);
+	});
+	let showSettingsButton = newPost.querySelector(".showPostSettings");
+	showSettingsButton.addEventListener("click", function(event) {
+		event.preventDefault();
+		showSettings(showSettingsButton);
+	});
+	let editButton = newPost.querySelector(".editButton");
+	editButton.addEventListener("click", function(event) {
+		event.preventDefault();
+		replacePostWithForm(editButton);
+	});
+	let upVoteNewPost = newPost.querySelector(".up");
+	upVoteNewPost.addEventListener("click", function(event) {
+		event.preventDefault();
+		handleVote(upVoteNewPost, "up", 1);
+	});
+	let downVoteNewPost = newPost.querySelector(".down");
+	downVoteNewPost.addEventListener("click", function(event) {
+		event.preventDefault();
+		handleVote(downVoteNewPost, "down", -1);
+	});
 }

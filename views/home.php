@@ -33,6 +33,7 @@ require __DIR__."/partials/header.php";
 							<?php require __DIR__."/partials/post.block.php";	?>
 						</div>
 						<?php }} ?>
+						<button class="showMore">Show me more...</button>
 					</div>
 
 				</div> <!-- end posts -->

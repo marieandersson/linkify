@@ -9,7 +9,11 @@
 	--fontBlack: #0f1626;
 	--fontColor: #ff533d;
 }
-
+/* --- animations --- */
+@keyframes fadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
 /* --- wrapping --- */
 body {
 	background-color: var(--backgroundColor);
@@ -184,7 +188,7 @@ header h1 {
 	align-items: center;
   background: var(--primaryColor);
   color: #fff;
-	display: none;
+	display: flex;
 	flex-direction: row;
   justify-content: space-between;
   left: 0;
@@ -193,6 +197,9 @@ header h1 {
   top: 0;
   width: 100%;
 	font-family: var(--headingFont);
+	height: 0;
+	overflow: hidden;
+	transition: height 0.5s linear;
 }
 .acceptCookies a {
 	color: #fff;
@@ -201,7 +208,8 @@ header h1 {
 	color: var(--fontBlack);
 }
 .acceptCookies.cookieShow {
-	display: flex;
+	height: 50px;
+	transition: height 0.5s ease-in-out;
 }
 .cookieButton {
 	border: solid 1px white;
@@ -268,6 +276,7 @@ header h1 {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+	animation: fadeIn 0.3s;
 }
 .showNewPostForm {
 	display: flex;
@@ -805,7 +814,10 @@ header h1 {
 	border-top: var(--mainBorder);
 	margin-top: 1em;
 }
-
+/* fade in new post */
+.fadeInPost {
+	animation: fadeIn 0.4s linear;
+}
 /* --- footer content --- */
 .footerLogo {
 	display: flex;

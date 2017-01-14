@@ -15,5 +15,6 @@
 	<script src="/assets/scripts/newcomment.js"></script>
 	<script src="/assets/scripts/editpost.js"></script>
 	<script src="/assets/scripts/newpost.js"></script>
+	<script src="/assets/scripts/loadposts.js"></script>
 </body>
 </html>
