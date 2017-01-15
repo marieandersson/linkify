@@ -10,7 +10,7 @@ if (showMore) {
 function loadMorePosts() {
 	let countPosts = document.querySelectorAll(".post");
 	let offset = countPosts.length - 1;
-	let limit = 10;
+	let limit = 2;
 	let order = "published";
 	let currentOrder = document.querySelector(".sortMethod");
 	if (currentOrder) {
@@ -27,20 +27,21 @@ function loadMorePosts() {
 	{
 		method: "POST",
 		body: postData,
+		credentials: "same-origin",
 	})
 	.then(function(response) {
 		if (!response.ok) {
 			// add error
 		} else {
 			return response.text().then(function(result) {
-				console.log(result);
 				// remove error
 				let allPosts = document.querySelector(".displayPosts");
-				// let newPosts = result.querySelectorAll(".post");
-				// newPosts.forEach (function(newPost) {
-				// 	addExistingEventListeners(newPost);
-				// });
-				allPosts.appendChild(result.text);
+				allPosts.innerHTML += result;
+				let posts = document.querySelectorAll(".fadeInPost");
+				posts.forEach (function(post) {
+					console.log(post);
+					addExistingEventListeners(post);
+				});
 			});
 		}
 

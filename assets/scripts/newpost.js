@@ -68,27 +68,35 @@ function addExistingEventListeners(newPost) {
 		handleCommentPost(commentButton);
 	});
 	let deleteButton = newPost.querySelector(".deleteButton");
-	deleteButton.addEventListener("click", function(event) {
-		event.preventDefault();
-		if (window.confirm("Are you sure you want to delete this post?")) {
-			handlePostDelete(deleteButton);
-		}
-	});
+	if (deleteButton) {
+		deleteButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			if (window.confirm("Are you sure you want to delete this post?")) {
+				handlePostDelete(deleteButton);
+			}
+		});
+	}
 	let newEditButton = newPost.querySelector(".saveEdit");
-	newEditButton.addEventListener("click", function(event) {
-		event.preventDefault();
-		handleEditPost(newEditButton);
-	});
+	if (newEditButton) {
+		newEditButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			handleEditPost(newEditButton);
+		});
+	}
 	let showSettingsButton = newPost.querySelector(".showPostSettings");
-	showSettingsButton.addEventListener("click", function(event) {
-		event.preventDefault();
-		showSettings(showSettingsButton);
-	});
+	if (showSettingsButton) {
+		showSettingsButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			showSettings(showSettingsButton);
+		});
+	}
 	let editButton = newPost.querySelector(".editButton");
-	editButton.addEventListener("click", function(event) {
-		event.preventDefault();
-		replacePostWithForm(editButton);
-	});
+	if (editButton) {
+		editButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			replacePostWithForm(editButton);
+		});
+	}
 	let upVoteNewPost = newPost.querySelector(".up");
 	upVoteNewPost.addEventListener("click", function(event) {
 		event.preventDefault();
