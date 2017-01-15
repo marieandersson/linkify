@@ -83,11 +83,13 @@ function addPostEventListeners(newPost) {
 			handleEditPost(newEditButton);
 		});
 	}
-	let showSettingsButton = newPost.querySelector(".showPostSettings");
-	if (showSettingsButton) {
-		showSettingsButton.addEventListener("click", function(event) {
-			event.preventDefault();
-			showSettings(showSettingsButton);
+	let showSettingsButtons = newPost.querySelectorAll(".showPostSettings");
+	if (showSettingsButtons) {
+		showSettingsButtons.forEach(function(showSettingsButton) {
+			showSettingsButton.addEventListener("click", function(event) {
+				event.preventDefault();
+				showSettings(showSettingsButton);
+			});
 		});
 	}
 	let editButton = newPost.querySelector(".editButton");

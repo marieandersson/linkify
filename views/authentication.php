@@ -14,6 +14,12 @@ require __DIR__."/partials/header.php";
 				</div>
 				<?php }} ?>
 			</div>
+			<?php if (!$lastPost) { ?>
+			<div class="showMoreDiv">
+				<button class="showMore">Show more links...</button>
+			</div>
+			<?php } ?>
+
 		</main>
 	</div>
 </div> <!-- end page -->

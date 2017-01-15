@@ -77,42 +77,52 @@ function handleCommentPost(commentButton) {
 }
 
 function addCommentEventListeners(newComment) {
-	let editCommentButton = newComment.querySelector(".editCommentButton");
-	if (editCommentButton) {
-		editCommentButton.addEventListener("click", function(event) {
-			event.preventDefault();
-			replaceCommentWithForm(editCommentButton);
+	let editCommentButtons = newComment.querySelectorAll(".editCommentButton");
+	if (editCommentButtons) {
+		editCommentButtons.forEach (function(editCommentButton) {
+			editCommentButton.addEventListener("click", function(event) {
+				event.preventDefault();
+				replaceCommentWithForm(editCommentButton);
+			});
 		});
 	}
 
-	let replyButton = newComment.querySelector(".replyButton");
-	if (replyButton) {
-		replyButton.addEventListener("click", function(event) {
-			event.preventDefault();
-			showReplyForm(replyButton);
+	let replyButtons = newComment.querySelectorAll(".replyButton");
+	if (replyButtons) {
+		replyButtons.forEach (function(replyButton) {
+			replyButton.addEventListener("click", function(event) {
+				event.preventDefault();
+				showReplyForm(replyButton);
+			});
 		});
 	}
-	let deleteButton = newComment.querySelector(".deleteComment");
-	if (deleteButton) {
-		deleteButton.addEventListener("click", function(event) {
-			event.preventDefault();
-			if (window.confirm("Are you sure you want to delete this comment?")) {
-				handleCommentDelete(deleteButton);
-			}
+	let deleteButtons = newComment.querySelectorAll(".deleteComment");
+	if (deleteButtons) {
+		deleteButtons.forEach(function(deleteButton) {
+			deleteButton.addEventListener("click", function(event) {
+				event.preventDefault();
+				if (window.confirm("Are you sure you want to delete this comment?")) {
+					handleCommentDelete(deleteButton);
+				}
+			});
 		});
 	}
-	let newEditButton = newComment.querySelector(".saveEditComment");
-	if (newEditButton) {
-		newEditButton.addEventListener("click", function(event) {
-			event.preventDefault();
-			handleEditComment(newEditButton);
+	let newEditButtons = newComment.querySelectorAll(".saveEditComment");
+	if (newEditButtons) {
+		newEditButtons.forEach(function(newEditButton) {
+			newEditButton.addEventListener("click", function(event) {
+				event.preventDefault();
+				handleEditComment(newEditButton);
+			});
 		});
 	}
-	let saveReplyButton = newComment.querySelector(".replySubmit");
-	if (saveReplyButton) {
-		saveReplyButton.addEventListener("click", function(event) {
-			event.preventDefault();
-			handleReply(saveReplyButton);
+	let saveReplyButtons = newComment.querySelectorAll(".replySubmit");
+	if (saveReplyButtons) {
+		saveReplyButtons.forEach(function(saveReplyButton) {
+			saveReplyButton.addEventListener("click", function(event) {
+				event.preventDefault();
+				handleReply(saveReplyButton);
+			});
 		});
 	}
 }

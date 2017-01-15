@@ -40,8 +40,8 @@ function loadMorePosts(showMore) {
 				allPosts.innerHTML += result;
 				let posts = document.querySelectorAll(".post");
 				posts.forEach (function(post) {
-					addCommentEventListeners(post);
 					addPostEventListeners(post);
+					addCommentEventListeners(post);
 				});
 				let lastPost = document.querySelector(".lastPost");
 				if (lastPost) {

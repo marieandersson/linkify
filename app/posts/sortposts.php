@@ -17,4 +17,10 @@ if (isset($_SESSION["sort"])) {
 		$sortMethod = "published";
 	}
 }
-$posts = getPosts($db, $sortMethod);
+$posts = getPosts($db, $sortMethod, 0, 3+1);
+$lastPost = true;
+$countPosts = count($posts);
+if ($countPosts == 3+1) {
+	$lastPost = false;
+}
+array_pop($posts);

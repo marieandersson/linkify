@@ -4,7 +4,7 @@ if (!checkLogin($db)) {
 	header("Location: /");
 }
 $pageTitle = "Linkify - Profile";
-$posts = getPosts($db, "published");
+$posts = getPosts($db, "published", 0, 15);
 require __DIR__."/views/partials/header.php";
 $profile = getProfileInfo($db, $_GET["user"]);
 ?>
