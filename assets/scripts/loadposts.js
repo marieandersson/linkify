@@ -48,6 +48,9 @@ function loadMorePosts(showMore) {
 							document.body.classList.toggle("navigationOpen");
 						});
 					}
+					setTimeout(function(){
+					  post.classList.remove("fadeInPost");
+					}, 1000);
 				});
 				let lastPost = document.querySelector(".lastPost");
 				if (lastPost) {
