@@ -54,14 +54,14 @@ function handleNewPost() {
 					let allPosts = document.querySelector(".displayPosts");
 					allPosts.insertBefore(newPost, allPosts.firstChild);
 					// add event listeners to new post
-					addExistingEventListeners(newPost);
+					addPostEventListeners(newPost);
 				});
 			}
 		});
 	}
 }
 
-function addExistingEventListeners(newPost) {
+function addPostEventListeners(newPost) {
 	let commentButton = newPost.querySelector(".commentPost");
 	commentButton.addEventListener("click", function(event) {
 		event.preventDefault();

@@ -9,13 +9,15 @@ if (showMore) {
 
 function loadMorePosts() {
 	let countPosts = document.querySelectorAll(".post");
-	let offset = countPosts.length - 1;
+	let offset = countPosts.length;
 	let limit = 2;
 	let order = "published";
 	let currentOrder = document.querySelector(".sortMethod");
+
 	if (currentOrder) {
-		if (currentOrder.value == "Popular") {
-			let order = "votes";
+
+		if (currentOrder.value === "Popular") {
+			order = "votes";
 		}
 	}
 	let postData = new FormData();
@@ -39,8 +41,7 @@ function loadMorePosts() {
 				allPosts.innerHTML += result;
 				let posts = document.querySelectorAll(".fadeInPost");
 				posts.forEach (function(post) {
-					console.log(post);
-					addExistingEventListeners(post);
+					addPostEventListeners(post);
 				});
 			});
 		}
