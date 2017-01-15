@@ -27,7 +27,7 @@ function handleCommentDelete(deleteButton) {
 	// response after php script has been executed
 	.then(function(response) {
 		let commentElement = document.querySelector(".comment"+commentId).parentElement;
-		// if no comments left for post remove comments div and commentcount
+		// if no comments left for post remove comments div and comment link
 		let comments = commentElement.parentElement;
 		commentElement.remove();
 		let childNodes = comments.childNodes;
@@ -39,7 +39,7 @@ function handleCommentDelete(deleteButton) {
 			}
 		});
 		if (containsElement == false) {
-			comments.parentElement.querySelector(".commentCount").innerHTML = "";
+			comments.parentElement.querySelector(".commentLink").innerHTML = "";
 			comments.remove();
 		}
 	});

@@ -87,9 +87,9 @@
 		<?php }
 		// check if post has comments
 		$comments = getComments($db, $post["id"]); ?>
-		<h5 class="commentLink"><?php if ($comments) { ?>
-			<span class='readOrClose'>Read</span> comments
-		<?php } ?></h5>
+		<div class="commentLink"><?php if ($comments) { ?>
+			<h5><span class='readOrClose'>Read</span> comments</h5>
+		<?php } ?></div>
 		<?php if ($comments) { ?>
 		<div class="comments">
 				<?php foreach ($comments as $comment) {

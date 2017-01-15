@@ -34,7 +34,9 @@ require __DIR__."/partials/header.php";
 						</div>
 						<?php }} ?>
 					</div>
-					<button class="showMore">Show me more...</button>
+					<div class="showMoreDiv">
+						<button class="showMore">Show more links...</button>
+					</div>
 
 				</div> <!-- end posts -->
 

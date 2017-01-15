@@ -66,47 +66,62 @@ function handleCommentPost(commentButton) {
 					replies.classList.add("replies");
 					newComment.appendChild(replies);
 					let commentLink = newComment.parentElement.parentElement.querySelector(".commentLink");
-					commentLink.innerHTML = "<span class='readOrClose'>Close</span> comments";
+					commentLink.innerHTML = "<h5><span class='readOrClose'>Close</span> comments</h5>";
 					// add eventlistener to new comment post
-					let editCommentButton = newComment.querySelector(".editCommentButton");
-					editCommentButton.addEventListener("click", function(event) {
-						event.preventDefault();
-						replaceCommentWithForm(editCommentButton);
-					});
-					let showSettingsButton = newComment.querySelector(".showPostSettings");
-					showSettingsButton.addEventListener("click", function(event) {
-						event.preventDefault();
-						showSettings(showSettingsButton);
-					});
-					let replyButton = newComment.querySelector(".replyButton");
-					replyButton.addEventListener("click", function(event) {
-						event.preventDefault();
-						showReplyForm(replyButton);
-					});
-					let showComments = newComment.parentElement.parentElement.querySelector(".commentLink");
-					showComments.addEventListener("click", function(event) {
-						event.preventDefault();
-						clickToShowComments(showComments);
-					});
-					let deleteButton = newComment.querySelector(".deleteComment");
-					deleteButton.addEventListener("click", function(event) {
-						event.preventDefault();
-						if (window.confirm("Are you sure you want to delete this comment?")) {
-							handleCommentDelete(deleteButton);
-						}
-					});
-					let newEditButton = newComment.querySelector(".saveEditComment");
-					newEditButton.addEventListener("click", function(event) {
-						event.preventDefault();
-						handleEditComment(newEditButton);
-					});
-					let saveReplyButton = newComment.querySelector(".replySubmit");
-					saveReplyButton.addEventListener("click", function(event) {
-						event.preventDefault();
-						handleReply(saveReplyButton);
-					});
+					addCommentEventListeners(newComment);
+					addCommentEventListenersForNewComments(newComment);
 				});
 			}
+		});
+	}
+}
+
+function addCommentEventListeners(newComment) {
+	let editCommentButton = newComment.querySelector(".editCommentButton");
+	if (editCommentButton) {
+		editCommentButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			replaceCommentWithForm(editCommentButton);
+		});
+	}
+
+	let replyButton = newComment.querySelector(".replyButton");
+	if (replyButton) {
+		replyButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			showReplyForm(replyButton);
+		});
+	}
+	let deleteButton = newComment.querySelector(".deleteComment");
+	if (deleteButton) {
+		deleteButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			if (window.confirm("Are you sure you want to delete this comment?")) {
+				handleCommentDelete(deleteButton);
+			}
+		});
+	}
+	let newEditButton = newComment.querySelector(".saveEditComment");
+	if (newEditButton) {
+		newEditButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			handleEditComment(newEditButton);
+		});
+	}
+	let saveReplyButton = newComment.querySelector(".replySubmit");
+	if (saveReplyButton) {
+		saveReplyButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			handleReply(saveReplyButton);
+		});
+	}
+}
+function addCommentEventListenersForNewComments(newComment) {
+	let showSettingsButton = newComment.querySelector(".showPostSettings");
+	if (showSettingsButton) {
+		showSettingsButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			showSettings(showSettingsButton);
 		});
 	}
 }

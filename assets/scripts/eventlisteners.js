@@ -91,7 +91,7 @@ showPostSettings.forEach (function (showSettingsButton) {
 
 // show comments
 function clickToShowComments(showComments) {
-	let commentWrap = showComments.parentElement.parentElement;
+	let commentWrap = showComments.parentElement;
 	let comments = commentWrap.querySelector(".comments");
 	comments.classList.toggle("commentsShow");
 	let readOrClose = showComments.querySelector(".readOrClose");

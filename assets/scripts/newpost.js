@@ -107,4 +107,9 @@ function addPostEventListeners(newPost) {
 		event.preventDefault();
 		handleVote(downVoteNewPost, "down", -1);
 	});
+	let showComments = newPost.querySelector(".commentLink");
+	showComments.addEventListener("click", function(event) {
+		event.preventDefault();
+		clickToShowComments(showComments);
+	});
 }

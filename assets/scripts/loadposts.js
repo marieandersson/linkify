@@ -3,11 +3,10 @@
 let showMore = document.querySelector(".showMore");
 if (showMore) {
 	showMore.addEventListener("click", function(event) {
-		loadMorePosts();
+		loadMorePosts(showMore);
 	});
 }
-
-function loadMorePosts() {
+function loadMorePosts(showMore) {
 	let countPosts = document.querySelectorAll(".post");
 	let offset = countPosts.length;
 	let limit = 2;
@@ -39,10 +38,15 @@ function loadMorePosts() {
 				// remove error
 				let allPosts = document.querySelector(".displayPosts");
 				allPosts.innerHTML += result;
-				let posts = document.querySelectorAll(".fadeInPost");
+				let posts = document.querySelectorAll(".post");
 				posts.forEach (function(post) {
+					addCommentEventListeners(post);
 					addPostEventListeners(post);
 				});
+				let lastPost = document.querySelector(".lastPost");
+				if (lastPost) {
+					showMore.classList.add("showMoreHide");
+				}
 			});
 		}
 

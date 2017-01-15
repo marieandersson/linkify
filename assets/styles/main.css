@@ -589,7 +589,7 @@ header h1 {
  }
 
 /* comments */
-.commentLink {
+.commentLink h5 {
 	font-family: var(--headingFont);
 	font-size: 0.9em;
 	margin: 1em 0.5em 0;
@@ -706,6 +706,18 @@ header h1 {
 .joinAndDiscuss:hover {
 	cursor: pointer;
 	color: var(--fontColor);
+}
+/* show more posts */
+.showMoreDiv {
+	width: 100%;
+	text-align: center;
+}
+.showMore {
+	display: inline-block;
+	margin: 1em;
+}
+.showMoreHide {
+	display: none;
 }
 /* --- display user --- */
 .displayUserProfile {
