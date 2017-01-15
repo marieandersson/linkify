@@ -4,7 +4,11 @@ if (!checkLogin($db)) {
 	header("Location: /");
 }
 $pageTitle = "Linkify - Profile";
-$posts = getPosts($db, "published", 0, 15);
+$posts = getPosts($db, "published", 0, 2+1);
+$lastPost = checkIfLastPost($posts, 2+1);
+if (!$lastPost) {
+	array_pop($posts);
+}
 require __DIR__."/views/partials/header.php";
 $profile = getProfileInfo($db, $_GET["user"]);
 ?>
@@ -59,6 +63,12 @@ $profile = getProfileInfo($db, $_GET["user"]);
 						</div>
 				<?php }} ?>
 			</div>
+			<?php if (!$lastPost) { ?>
+			<div class="showMoreDiv">
+				<button class="showMore">Show more links...</button>
+			</div>
+			<?php } ?>
+
 		</div>
 
 

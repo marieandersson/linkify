@@ -3,21 +3,21 @@ require __DIR__."/../../autoload.php";
 
 $limit = intval($_POST["limit"]) + 1;
 
-$posts = getPosts($db, $_POST["order"], $_POST["offset"], $limit);
-$numberOfPosts = count($posts);
-$lastPost = true;
-if ($numberOfPosts == $limit) {
-	$lastPost = false;
+$postsToLoad = getPosts($db, $_POST["order"], $_POST["offset"], $limit);
+$lastPost = checkIfLastPost($postsToLoad, $limit);
+if (count($postsToLoad) > $_POST["limit"]) {
+	array_pop($postsToLoad);
 }
+$numberOfPosts = count($postsToLoad);
 
 $i = 0;
-for (; $i < $numberOfPosts - 2; $i++) {
-  $post = $posts[$i]; ?>
+for (; $i < $numberOfPosts - 1; $i++) {
+  $post = $postsToLoad[$i]; ?>
 	<div class="post fadeInPost">
 	<?php include(__DIR__."/../../views/partials/post.block.php"); ?>
 	</div>
 <?php }
-$post = $posts[$i]; ?>
+$post = $postsToLoad[$i]; ?>
 <div class="post fadeInPost <?= $lastPost ? 'lastPost' : '';?>">
 <?php include(__DIR__."/../../views/partials/post.block.php"); ?>
 </div>

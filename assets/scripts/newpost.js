@@ -63,10 +63,12 @@ function handleNewPost() {
 
 function addPostEventListeners(newPost) {
 	let commentButton = newPost.querySelector(".commentPost");
-	commentButton.addEventListener("click", function(event) {
-		event.preventDefault();
-		handleCommentPost(commentButton);
-	});
+		if (commentButton) {
+		commentButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			handleCommentPost(commentButton);
+		});
+	}
 	let deleteButton = newPost.querySelector(".deleteButton");
 	if (deleteButton) {
 		deleteButton.addEventListener("click", function(event) {

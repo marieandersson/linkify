@@ -42,6 +42,12 @@ function loadMorePosts(showMore) {
 				posts.forEach (function(post) {
 					addPostEventListeners(post);
 					addCommentEventListeners(post);
+					let join = post.querySelector(".joinAndDiscuss");
+					if (join) {
+						join.addEventListener("click", function(event) {
+							document.body.classList.toggle("navigationOpen");
+						});
+					}
 				});
 				let lastPost = document.querySelector(".lastPost");
 				if (lastPost) {
