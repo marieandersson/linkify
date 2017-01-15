@@ -11,7 +11,7 @@ if ($numberOfPosts == $limit) {
 }
 
 $i = 0;
-for (; $i < $_POST["limit"] - 1; $i++) {
+for (; $i < $numberOfPosts - 2; $i++) {
   $post = $posts[$i]; ?>
 	<div class="post fadeInPost">
 	<?php include(__DIR__."/../../views/partials/post.block.php"); ?>
