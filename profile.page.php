@@ -6,8 +6,9 @@ if (!checkLogin($db)) {
 $pageTitle = "Linkify - Profile";
 $profile = getProfileInfo($db, $_GET["user"]);
 $profileId = "= " . $profile["id"];
-$posts = getPosts($db, "published", 0, 3+1, $profileId);
-$lastPost = checkIfLastPost($posts, 3+1);
+$postsToShowProfile = 10;
+$posts = getPosts($db, "published", 0, $postsToShowProfile+1, $profileId);
+$lastPost = checkIfLastPost($posts, $postsToShowProfile+1);
 if (!$lastPost) {
 	array_pop($posts);
 }

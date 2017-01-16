@@ -15,9 +15,10 @@ if (showMoreProfile) {
 function loadMorePosts(showMore) {
 	let countPosts = document.querySelectorAll(".post");
 	let offset = countPosts.length;
-	let limit = 2;
+	let limit = 10;
 	let order = "published";
 	let currentOrder = document.querySelector(".sortMethod");
+	let errorMessage = document.querySelector(".jsMessage");
 
 	if (currentOrder) {
 
@@ -39,10 +40,13 @@ function loadMorePosts(showMore) {
 	})
 	.then(function(response) {
 		if (!response.ok) {
-			// add error
+			return response.text().then(function (error) {
+				errorMessage.innerHTML = "Something went wrong trying to load, please try again.";
+				errorMessage.classList.add("showError");
+			});
 		} else {
 			return response.text().then(function(result) {
-				// remove error
+				errorMessage.classList.remove("showError");
 				let allPosts = document.querySelector(".displayPosts");
 				allPosts.innerHTML += result;
 				let posts = document.querySelectorAll(".post");
