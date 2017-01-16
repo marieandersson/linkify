@@ -57,7 +57,16 @@ require __DIR__."/views/partials/header.php";
 							require __DIR__."/views/partials/post.block.php";
 						?>
 						</div>
-				<?php }} ?>
+				<?php }} else { ?>
+					<div class="noPosts">
+						<h2>No links to show</h2>
+						<?php if ($profile["id"] == $_SESSION["login"]["id"]) { ?>
+						<p>You haven't shared any links yet. When you have, you'll see all of them here.</p>
+						<?php } else { ?>
+						<p><?=$profile["username"]?> hasn't shared anything quite yet.</p>
+						<?php } ?>
+					</div>
+				<?php } ?>
 			</div>
 			<?php if (!$lastPost) { ?>
 			<div class="showMoreDiv">
