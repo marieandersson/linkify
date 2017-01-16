@@ -404,8 +404,8 @@ header h1 {
 }
 .up, .down {
 	margin: 0 auto;
-	border-top: #778899 3px solid;
-	border-left: #778899 3px solid;
+	border-top: #778899 2px solid;
+	border-left: #778899 2px solid;
 	border-radius: 1px;
 	transition: margin 0.2s ease-out;
 }

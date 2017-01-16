@@ -56,6 +56,8 @@ function handleReply(saveReplyButton) {
 					} else {
 						replies.appendChild(newReply);
 					}
+					commentWrap.querySelector(".replyFields").classList.remove("replyFieldsShow");
+					commentWrap.querySelector(".replyButton").innerHTML = "Reply to this.";
 					// add eventlistener to new reply
 					let editCommentButton = newReply.querySelector(".editCommentButton");
 					editCommentButton.addEventListener("click", function(event) {
