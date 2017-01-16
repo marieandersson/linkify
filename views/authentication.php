@@ -12,7 +12,13 @@ require __DIR__."/partials/header.php";
 				<div class="post">
 					<?php require __DIR__."/partials/post.block.php" ?>
 				</div>
-				<?php }} ?>
+				<?php }} else { ?>
+				<div class="noPosts">
+					<h2>Welcome to Linkify!</h2>
+					<p>Join our community to share and discuss interesting things you find on the web.</p>
+					<button class="joinLinkify">Let's join!</button>
+				</div>
+				<?php } ?>
 			</div>
 			<?php if (!$lastPost) { ?>
 			<div class="showMoreDiv">

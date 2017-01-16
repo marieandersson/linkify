@@ -1,4 +1,5 @@
 "use strict";
+
 // show new post form
 const showFormButton = document.querySelector(".clickToShowNewPostForm");
 if (showFormButton) {
@@ -115,5 +116,12 @@ if (joinAndDiscuss) {
 		loginLink.addEventListener("click", function (event) {
 			document.body.classList.toggle("navigationOpen");
 		});
+	});
+}
+// login link on auth page when there is no posts
+const join = document.querySelector(".joinLinkify");
+if (join) {
+	join.addEventListener("click", function (event) {
+		document.body.classList.toggle("navigationOpen");
 	});
 }

@@ -128,7 +128,7 @@ header h1 {
 .menuClose:hover {
 	cursor: pointer;
 }
-/* authentication page */
+/* menu authentication page */
 .loginWrap, .registerWrap {
 	margin: 0 auto;
 }
@@ -168,7 +168,7 @@ header h1 {
 	border: 2px solid #fff;
 	cursor: pointer;
 }
-/* when user is logged in */
+/* menu when user is logged in */
 .menu {
 	text-align: center;
 }
@@ -208,7 +208,7 @@ header h1 {
 	color: var(--fontBlack);
 }
 .acceptCookies.cookieShow {
-	height: 50px;
+	height: 40px;
 	transition: height 0.5s ease-in-out;
 }
 .cookieButton {
@@ -245,6 +245,29 @@ header h1 {
 /* --- auth page --- */
 .authMain {
 	margin: 0 auto;
+}
+.noPosts {
+	margin: 2em auto;
+	text-align: center;
+	width: 300px;
+}
+.noPosts h2 {
+	font-family: var(--headingFont);
+	border-bottom: var(--mainBorder);
+}
+.noPosts p {
+	font-family: var(--bodyFont);
+}
+.noPosts button {
+	border: var(--mainBorder);
+	padding: 0.5em 1em;
+	margin-top: 2em;
+	font-family: var(--bodyFont);
+}
+.noPosts button:hover {
+	background: var(--primaryColor);
+	color: #fff;
+	cursor: pointer;
 }
 /* --- home page --- */
 .homeMain {
