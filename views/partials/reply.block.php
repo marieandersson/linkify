@@ -28,7 +28,7 @@
 
 	<?php if (checkLogin($db) && $reply["user_id"] == $_SESSION["login"]["id"]) { ?>
 	<form action="app/posts/comments.php" method="post" class="commentSettings">
-		<button class="showPostSettings"><img src="/assets/images/settingswheel.png" /></button>
+		<button class="showPostSettings"><img src="/assets/images/settingswheel.png" alt="settings" /></button>
 		<div class="postSettingsButtons commentSettingsButtons">
 			<input type="hidden" name="commentId" class="commentId" value="<?=$reply["id"]?>">
 			<button class="editCommentButton">Edit</button>

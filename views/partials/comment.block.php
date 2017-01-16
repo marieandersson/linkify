@@ -29,7 +29,7 @@
 	</div>
 	<?php if (checkLogin($db) && $comment["user_id"] == $_SESSION["login"]["id"]) { ?>
 	<form action="app/posts/comments.php" method="post" class="commentSettings">
-		<button class="showPostSettings"><img src="/assets/images/settingswheel.png" /></button><?php } ?>
+		<button class="showPostSettings"><img src="/assets/images/settingswheel.png" alt="settings"/></button><?php } ?>
 		<div class="postSettingsButtons commentSettingsButtons">
 			<input type="hidden" name="commentId" class="commentId" value="<?=$comment["id"]?>">
 			<button class="editCommentButton">Edit</button>

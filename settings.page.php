@@ -13,9 +13,9 @@ require __DIR__."/views/partials/header.php";
 			<div class="displayUserProfile displayUserSettings">
 				<figure>
 					<?php if ($user["avatar"] !== NULL) {  ?>
-						<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" />
+						<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" alt="users profile avatar" />
 					<?php } else { ?>
-						<img src="/assets/images/profileicon.png" />
+						<img src="/assets/images/profileicon.png" alt="users profile avatar" />
 					<?php } ?>
 				</figure>
 				<h4><?=$user["name"]?></h4>
@@ -63,9 +63,9 @@ require __DIR__."/views/partials/header.php";
 						<input type="file" name="avatar" accept="image/png, image/jpeg">
 						<div class="placeholderAvatar">
 							<?php if ($user["avatar"] !== NULL) {  ?>
-								<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" />
+								<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" alt="users current profile avatar" />
 							<?php } else { ?>
-								<img src="/assets/images/profileicon.png" />
+								<img src="/assets/images/profileicon.png" alt="avatar placeholder" />
 							<?php } ?>
 						</div>
 					</div>

@@ -1,6 +1,6 @@
 	<footer>
 		<div class="footerLogo">
-			<img src="/assets/images/logo.png"/>
+			<img src="/assets/images/logo.png" alt="Linkify logo"/>
 			<h5>Linkify</h5>
 		</div>
 		<p>Contact us at contact[at]linkify.com.</p>

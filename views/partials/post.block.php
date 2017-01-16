@@ -21,7 +21,7 @@
 			<div class="postButtons">
 				<?php if (checkLogin($db) && $post["user_id"] == $_SESSION["login"]["id"]) { ?>
 				<form action="app/posts/editpost.php" method="post">
-					<button class="showPostSettings"><img src="/assets/images/settingswheel.png" /></button>
+					<button class="showPostSettings"><img src="/assets/images/settingswheel.png" alt="settings"/></button>
 					<div class="postSettingsButtons">
 						<input type="hidden" name="postId" class="postButtonsId" value="<?=$post["id"]?>">
 						<button class="editButton">Edit</button>

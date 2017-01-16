@@ -36,9 +36,9 @@ require __DIR__."/views/partials/header.php";
 		<div class="displayUserProfile displayUserProfilePage">
 			<figure>
 				<?php if ($profile["avatar"] !== NULL) {  ?>
-					<img src="/assets/images/users/<?=$profile["id"]?>/<?=$profile["avatar"]?>" />
+					<img src="/assets/images/users/<?=$profile["id"]?>/<?=$profile["avatar"]?>" alt="users profile avatar"/>
 				<?php } else { ?>
-					<img src="/assets/images/profileicon.png" />
+					<img src="/assets/images/profileicon.png" alt="users profile avatar" />
 				<?php } ?>
 			</figure>
 			<h4><?=$profile["name"]?></h4>

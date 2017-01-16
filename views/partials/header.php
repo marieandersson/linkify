@@ -27,7 +27,7 @@
 		<header>
 			<div class="leftHeader">
 				<a href="/">
-					<img src="/assets/images/logo.png"/>
+					<img src="/assets/images/logo.png" alt="Linkify logo"/>
 				</a>
 				<a href="/">
 					<h1>Linkify</h1>
@@ -43,7 +43,7 @@
 					</form>
 				</div>
 				<div class="menuLink">
-					<img src="/assets/images/menuicon.png"/>
+					<img src="/assets/images/menuicon.png"/ alt="menu">
 				</div>
 			</nav>
 			<?php } else { ?>
@@ -60,14 +60,14 @@
 				<div class="profileLink">
 					<a href="/profile/<?=$_SESSION["login"]["username"]?>">
 						<?php if ($user["avatar"] !== NULL) {  ?>
-						<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" />
+						<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" alt="profile" />
 						<?php } else { ?>
-						<img src="/assets/images/profileicon.png" />
+						<img src="/assets/images/profileicon.png" alt="profile" />
 						<?php } ?>
 					</a>
 				</div>
 				<div class="menuLink">
-					<img src="/assets/images/menuicon.png"/>
+					<img src="/assets/images/menuicon.png" alt="menu"/>
 				</div>
 			</nav>
 			<?php }; ?>
