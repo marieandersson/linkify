@@ -404,8 +404,8 @@ header h1 {
 }
 .up, .down {
 	margin: 0 auto;
-	border-top: var(--fontBlack) 2px solid;
-	border-left: var(--fontBlack) 2px solid;
+	border-top: #778899 3px solid;
+	border-left: #778899 3px solid;
 	border-radius: 1px;
 	transition: margin 0.2s ease-out;
 }
@@ -417,14 +417,14 @@ header h1 {
 }
 .votes {
 	font-family: var(--headingFont);
-	color: var(--fontBlack);
+	color: #778899;
 }
 .notLoggedIn, .notLoggedInVotes {
 	opacity: 0.5;
 }
 .up:hover, .down:hover {
 	cursor: pointer;
-	border-color: #778899 !important;
+	border-color: var(--primaryColor) !important;
 }
 
 /* post content */

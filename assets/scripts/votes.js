@@ -3,30 +3,44 @@
 // handle up vote
 const upVoteButtons = document.querySelectorAll(".up");
 upVoteButtons.forEach (function(upVoteButton) {
-	upVoteButton.addEventListener("click", function(event) {
-		event.preventDefault();
-		let isUserLoggedIn = upVoteButton.parentElement.querySelector(".loggedInUser").value;
-		if (isUserLoggedIn == "noLoggedInUser") {
-			document.body.classList.add("navigationOpen");
-		} else {
-			handleVote(upVoteButton, "up", 1);
-		}
-	});
+	if (upVoteButton) {
+		setColorOnVoted(upVoteButton, "up");
+		upVoteButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			let isUserLoggedIn = upVoteButton.parentElement.querySelector(".loggedInUser").value;
+			if (isUserLoggedIn == "noLoggedInUser") {
+				document.body.classList.add("navigationOpen");
+			} else {
+				handleVote(upVoteButton, "up", 1);
+			}
+		});
+	}
 });
 
 // handle down vote
 const downVoteButtons = document.querySelectorAll(".down");
 downVoteButtons.forEach (function(downVoteButton) {
-	downVoteButton.addEventListener("click", function(event) {
-		event.preventDefault();
-		let isUserLoggedIn = upVoteButton.parentElement.querySelector(".loggedInUser").value;
-		if (isUserLoggedIn == "noLoggedInUser") {
-			document.body.classList.add("navigationOpen");
-		} else {
-			handleVote(downVoteButton, "down", -1);
-		}
-	});
+	if (downVoteButton) {
+		setColorOnVoted(downVoteButton, "down");
+		downVoteButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			let isUserLoggedIn = downVoteButton.parentElement.querySelector(".loggedInUser").value;
+			if (isUserLoggedIn == "noLoggedInUser") {
+				document.body.classList.add("navigationOpen");
+			} else {
+				handleVote(downVoteButton, "down", -1);
+			}
+		});
+	}
 });
+
+function setColorOnVoted(button, vote) {
+	let postId = button.parentElement.querySelector(".postIdForVote").value;
+	let loggedInUser = button.parentElement.querySelector(".loggedInUser").value;
+	if (localStorage.getItem(loggedInUser+":vote"+postId) == vote) {
+		button.style.borderColor = "#ab987a";
+	}
+}
 
 function handleVote(voteButton, vote, number) {
 	let postId = voteButton.parentElement.querySelector(".postIdForVote").value;
@@ -70,6 +84,11 @@ function handleVote(voteButton, vote, number) {
 					let votes = voteButton.parentElement.querySelector(".votes");
 					if (result == "vote replaced") {
 						votes.innerHTML = Number(votes.innerHTML) + number + number;
+						if (number == -1) {
+							voteButton.parentElement.querySelector(".up").style.borderColor = "#778899";
+						} else {
+							voteButton.parentElement.querySelector(".down").style.borderColor = "#778899";
+						}
 						// put vote in local storage
 						localStorage.setItem(loggedInUser+":vote"+postId, vote);
 					}
@@ -78,6 +97,7 @@ function handleVote(voteButton, vote, number) {
 						// put vote in local storage
 						localStorage.setItem(loggedInUser+":vote"+postId, vote);
 					}
+					voteButton.style.borderColor = "#ab987a";
 				});
 			}
 		});
