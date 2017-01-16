@@ -39,7 +39,7 @@
 					<p>Posted by
 					<?php // name only link if user is logged in
 					if (checkLogin($db)) { ?>
-						<a href="profile/<?=$post["username"]?>">
+						<a href="/profile/<?=$post["username"]?>">
 					<?php }
 					echo ucfirst($post["username"]);
 					if (checkLogin($db)) { ?>

@@ -4,13 +4,14 @@ if (!checkLogin($db)) {
 	header("Location: /");
 }
 $pageTitle = "Linkify - Profile";
-$posts = getPosts($db, "published", 0, 2+1);
-$lastPost = checkIfLastPost($posts, 2+1);
+$profile = getProfileInfo($db, $_GET["user"]);
+$profileId = "= " . $profile["id"];
+$posts = getPosts($db, "published", 0, 3+1, $profileId);
+$lastPost = checkIfLastPost($posts, 3+1);
 if (!$lastPost) {
 	array_pop($posts);
 }
 require __DIR__."/views/partials/header.php";
-$profile = getProfileInfo($db, $_GET["user"]);
 ?>
 <div class="content">
 	<?php if ($profile["id"] == $_SESSION["login"]["id"]) { ?>
@@ -49,13 +50,7 @@ $profile = getProfileInfo($db, $_GET["user"]);
 			<div class="displayPosts">
 				<!-- check if any posts exists -->
 				<?php if ($posts) {
-					$userPosts = [];
-					foreach ($posts as $post) {
-						if ($post["user_id"] == $profile["id"]) {
-							$userPosts[] = $post;
-						}
-					}
-					foreach ($userPosts as $post) { ?>
+					foreach ($posts as $post) { ?>
 						<div class="post">
 						<?php
 							require __DIR__."/views/partials/post.block.php";
