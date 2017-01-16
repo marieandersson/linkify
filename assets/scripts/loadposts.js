@@ -6,6 +6,12 @@ if (showMore) {
 		loadMorePosts(showMore);
 	});
 }
+let userId = "is not null";
+let showMoreProfile = document.querySelector(".showMoreProfile");
+if (showMoreProfile) {
+	let getUserId = showMoreProfile.parentElement.querySelector(".profileId").value;
+	userId = "= " + getUserId;
+}
 function loadMorePosts(showMore) {
 	let countPosts = document.querySelectorAll(".post");
 	let offset = countPosts.length;
@@ -23,6 +29,7 @@ function loadMorePosts(showMore) {
 	postData.append("offset", offset);
 	postData.append("limit", limit);
 	postData.append("order", order);
+	postData.append("userId", userId);
 
 	fetch("/app/posts/loadposts.php",
 	{

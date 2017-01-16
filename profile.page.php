@@ -60,7 +60,8 @@ require __DIR__."/views/partials/header.php";
 			</div>
 			<?php if (!$lastPost) { ?>
 			<div class="showMoreDiv">
-				<button class="showMore">Show more links...</button>
+				<button class="showMore showMoreProfile">Show more links...</button>
+				<input type="hidden" class="profileId" value="<?=$profile['id']?>">
 			</div>
 			<?php } ?>
 

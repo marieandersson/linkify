@@ -1,9 +1,8 @@
 <?php
 require __DIR__."/../../autoload.php";
-
 $limit = intval($_POST["limit"]) + 1;
 
-$postsToLoad = getPosts($db, $_POST["order"], $_POST["offset"], $limit);
+$postsToLoad = getPosts($db, $_POST["order"], $_POST["offset"], $limit, $_POST['userId']);
 $lastPost = checkIfLastPost($postsToLoad, $limit);
 if (count($postsToLoad) > $_POST["limit"]) {
 	array_pop($postsToLoad);
