@@ -596,7 +596,7 @@ header h1 {
 	text-align: right;
 	color: #778899;
 }
-.commentLink:hover {
+.commentLink h5:hover {
 	color: var(--fontColor);
 	cursor: pointer;
 }
@@ -713,8 +713,16 @@ header h1 {
 	text-align: center;
 }
 .showMore {
+	font-family: var(--headingFont);
+	font-weight: bold;
 	display: inline-block;
 	margin: 1em;
+	color: #778899;
+}
+.showMore:hover {
+	cursor: pointer;
+	color: var(--fontColor);
+
 }
 .showMoreHide {
 	display: none;

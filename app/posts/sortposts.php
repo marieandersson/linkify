@@ -17,7 +17,7 @@ if (isset($_SESSION["sort"])) {
 		$sortMethod = "published";
 	}
 }
-$postsToShow = 1;
+$postsToShow = 15;
 $posts = getPosts($db, $sortMethod, 0, $postsToShow+1);
 $lastPost = checkIfLastPost($posts, $postsToShow+1);
 if (count($posts) > $postsToShow) {
