@@ -42,8 +42,8 @@ saveEditButtons.forEach (function(editButton) {
 function handleEditPost(editButton) {
 	let postId = editButton.parentElement.querySelector(".postIdForEdit").value;
 	let subject = editButton.parentElement.querySelector(".editInputField input[name=editSubject]").value;
-	let url = document.querySelector(".editInputField input[name=editUrl]").value;
-	let description = document.querySelector(".editInputField input[name=editDescription]").value;
+	let url = editButton.parentElement.querySelector(".editInputField input[name=editUrl]").value;
+	let description = editButton.parentElement.querySelector(".editInputField input[name=editDescription]").value;
 	let errorMessage = document.querySelector(".jsMessage");
 
 	if (subject == "" || url == "" || description == "") {

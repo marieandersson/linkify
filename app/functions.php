@@ -62,7 +62,7 @@ function getUserInfo($db) {
 	return $userInfo;
 }
 
-function getPosts($db, $order, $offset, $limit) {
+function getPosts($db, $order, $offset, $limit, $userId = null) {
 	$getPostsQuery = "SELECT posts.id, posts.description, posts.subject, posts.url, posts.published AS published, posts.user_id,
 	posts.edited, users.name, users.username, SUM(votes.vote) AS votes  FROM posts INNER JOIN users ON posts.user_id = users.id
 	LEFT JOIN votes ON posts.id = votes.post_id GROUP BY posts.id ORDER BY {$order} DESC LIMIT {$offset}, {$limit}";
