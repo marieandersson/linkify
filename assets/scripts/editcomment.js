@@ -30,17 +30,20 @@ function handleCommentDelete(deleteButton) {
 		// if no comments left for post remove comments div and comment link
 		let comments = commentElement.parentElement;
 		commentElement.remove();
-		let childNodes = comments.childNodes;
-		let containsElement = false;
-		// loop through node list to check for element nodes (ignoring text nodes)
-		childNodes.forEach (function(node) {
-			if (node.nodeType == Node.ELEMENT_NODE) {
-				containsElement = true;
+		// separate last comment left from last reply left
+		if (comments.classList.contains("comments")) {
+			let childNodes = comments.childNodes;
+			let containsElement = false;
+			// loop through node list to check for element nodes (ignoring text nodes)
+			childNodes.forEach (function(node) {
+				if (node.nodeType == Node.ELEMENT_NODE) {
+					containsElement = true;
+				}
+			});
+			if (containsElement == false) {
+				comments.parentElement.querySelector(".commentLink").innerHTML = "";
+				comments.remove();
 			}
-		});
-		if (containsElement == false) {
-			comments.parentElement.querySelector(".commentLink").innerHTML = "";
-			comments.remove();
 		}
 	});
 }

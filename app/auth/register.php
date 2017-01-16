@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			// put user info in session to login user
 			$id = $db->lastInsertId();
 			$_SESSION["login"]["id"] = $id;
-			$_SESSION["login"]["username"] = $userInfo["username"];
+			$_SESSION["login"]["username"] = $_POST["usernameReg"];
 	    }
 	  }
 		header("Location: /");
