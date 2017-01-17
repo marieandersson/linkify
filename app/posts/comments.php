@@ -50,13 +50,13 @@ function handleSubmits($db) {
 			echo "Write a comment before posting.";
 			exit();
 		}
-		// save new comment in database
 		saveNewComment($db);
 		// return new comment to js response
 		$commentId = $db->lastInsertId();
-		$getNewCommentQuery = "SELECT comments.id, comments.user_id, comments.comment, comments.published, comments.reply_to, comments.edited,
-		users.username FROM comments INNER JOIN users ON comments.user_id = users.id WHERE comments.id = '{$commentId}' AND comments.post_id = '{$_POST["postId"]}'";
-		$getNewCommentStatement = $db->query($getNewCommentQuery);
+		$getNewCommentQuery = "SELECT comments.id, comments.user_id, comments.comment, comments.published, comments.reply_to,
+		comments.edited, users.username FROM comments INNER JOIN users ON comments.user_id = users.id
+		WHERE comments.id = '{$commentId}' AND comments.post_id = '{$_POST["postId"]}'";
+		$getNewCommentStatement = queryToDb($db, $getNewCommentQuery);
 		$comment = $getNewCommentStatement->fetch(PDO::FETCH_ASSOC);
 
 		include(__DIR__."/../../views/partials/comment.block.php");
@@ -72,7 +72,6 @@ function handleSubmits($db) {
 			echo "Comment can't be empty.";
 			exit();
 		}
-		// save updates in database
 		editComment($db);
 
 	}
@@ -83,14 +82,14 @@ function handleSubmits($db) {
 			echo "Comment can't be empty.";
 			exit();
 		}
-		// save reply in database
 		$replyTo = $_POST["commentId"];
 		saveNewComment($db, $replyTo);
-
+		// return new reply to js response
 		$commentId = $db->lastInsertId();
-		$getReplyQuery = "SELECT comments.id, comments.user_id, comments.comment, comments.published, comments.reply_to, comments.edited,
-		users.username FROM comments INNER JOIN users ON comments.user_id = users.id WHERE comments.id = '{$commentId}' AND comments.post_id = '{$_POST["postId"]}'";
-		$getReplyStatement = $db->query($getReplyQuery);
+		$getReplyQuery = "SELECT comments.id, comments.user_id, comments.comment, comments.published, comments.reply_to,
+		comments.edited,users.username FROM comments INNER JOIN users ON comments.user_id = users.id
+		WHERE comments.id = '{$commentId}' AND comments.post_id = '{$_POST["postId"]}'";
+		$getReplyStatement = queryToDb($db, $getReplyQuery);
 		$reply = $getReplyStatement->fetch(PDO::FETCH_ASSOC);
 
 		include(__DIR__."/../../views/partials/reply.block.php");

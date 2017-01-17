@@ -1,6 +1,7 @@
 <?php
 
 require __DIR__."/../../autoload.php";
+// set +1 on posts to show limit, to check if the last post in database is included in result
 $limit = intval($_POST["limit"]) + 1;
 
 $postsToLoad = getPosts($db, $_POST["order"], $_POST["offset"], $limit, $_POST['userId']);

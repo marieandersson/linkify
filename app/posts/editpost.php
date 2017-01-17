@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		foreach($_POST as $input=>$value) {
 	    $_POST[$input] = escapeInput($value);
 	  }
-		// call function in newpost.php
+		// check if all fields has input
 		$result = validateNewPostFields($_POST["editUrl"]);
 
 		if ($result == MISSING_POST_INPUT) {
@@ -55,7 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			echo "Invalid url format.";
 			exit();
 		}
-		// save updates in dataase
 		editPost($db);
 	}
 }
