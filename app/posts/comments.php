@@ -1,13 +1,12 @@
 <?php
 require __DIR__."/../../autoload.php";
 
+
 function saveNewComment($db, $replyTo = NULL) {
 	$published = date("Y-m-d H:i:s");
 	$insertCommentIntoDb = "INSERT INTO comments (comment, published, user_id, post_id, reply_to)
 	VALUES (:comment, :published, :user_id, :post_id, :reply_to)";
-
-	$insertCommentStatement = $db->prepare($insertCommentIntoDb);
-	$insertCommentStatement->execute([
+	prepareAndExecute($db, $insertCommentIntoDb, [
 		":comment" => $_POST["comment"],
 		":published" => $published,
 		":user_id" => $_SESSION["login"]["id"],
@@ -18,8 +17,7 @@ function saveNewComment($db, $replyTo = NULL) {
 
 function deleteComment($db) {
 	$deleteCommentInDb = "DELETE FROM comments WHERE id = :commentId OR reply_to = :commentId";
-	$deleteCommentStatement = $db->prepare($deleteCommentInDb);
-	$deleteCommentStatement->execute([
+	prepareAndExecute($db, $deleteCommentInDb, [
 		":commentId" => $_POST["commentId"],
 	]);
 }
@@ -29,8 +27,7 @@ function editComment($db) {
 	$editDate = date("Y-m-d H:i:s");
 	$editCommentInDb = "UPDATE comments SET comment = :comment,
 	edited = :edited, edit_date = :editDate WHERE id = :commentId";
-	$editCommentStatement = $db->prepare($editCommentInDb);
-	$editCommentStatement->execute([
+	prepareAndExecute($db, $editCommentInDb, [
 		":comment" => $_POST["editComment"],
 		":edited" => $edited,
 		":editDate" => $editDate,

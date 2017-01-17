@@ -110,3 +110,14 @@ function getProfileInfo($db, $profileUsername) {
 	$profileInfo = $getProfileInfoStatement->fetch(PDO::FETCH_ASSOC);
 	return $profileInfo;
 }
+
+function prepareAndExecute($db, $query, $arguments) {
+	try {
+		$insertStatement = $db->prepare($query);
+		return $insertStatement->execute($arguments);
+
+	} catch (PDOException $exception) {
+		var_dump($exeption->getMessage());
+		die();
+	}
+}

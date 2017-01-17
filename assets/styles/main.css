@@ -20,14 +20,14 @@ body {
 	overflow-x: hidden;
 }
 .page {
-	width: 100%;
 	min-height: calc(100vh - 80px);
+	width: 100%;
 }
 footer {
-	width: 100%;
-	text-align: center;
-	padding: 1em 0;
 	height: 80px;
+	padding: 1em 0;
+	text-align: center;
+	width: 100%;
 }
 
 .content {
@@ -37,39 +37,39 @@ footer {
 /* --- header --- */
 header {
 	border-bottom: var(--mainBorder);
-	padding: 1.5em 1em 1em;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	padding: 1.5em 1em 1em;
 }
 .leftHeader {
+	align-items: center;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
-	align-items: center;
 }
 header h1 {
+	color: var(--fontBlack);
+	font-family: "Syncopate", sans-serif;
 	margin: 0 0 -0.3em 0;
 	padding: 0;
-	font-family: "Syncopate", sans-serif;
-	color: var(--fontBlack);
 }
 .leftHeader a {
-	text-decoration: none;
 	color: var(--fontBlack);
+	text-decoration: none;
 }
 .leftHeader img {
 	padding: 0 0.7em 0 0;
 }
 .authNav, .menuNav {
+	align-items: center;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	align-items: center;
 }
 .profileLink img {
-	object-fit: cover;
 	border-radius: 5px;
+	object-fit: cover;
 }
 .profileLink {
 	margin: 0 0.5em 0 0;
@@ -84,16 +84,16 @@ header h1 {
 	text-align: center;
 }
 .sortPosts input {
-	margin: 0;
 	border: solid 1px #ab987a;
 	border-radius: 5px;
-	font-family: var(--headingFont);
 	color: var(--fontBlack);
+	font-family: var(--headingFont);
+	margin: 0;
 }
 .sortPosts input:hover {
-	cursor: pointer;
 	background: var(--primaryColor);
 	color: var(--backgroundColor);
+	cursor: pointer;
 }
 .sortMethod {
 	background: rgba(171,152,122,0.4);
@@ -101,12 +101,12 @@ header h1 {
 /* --- slide navigation --- */
 .menuSlide {
 	background: var(--primaryColor);
+	display: block;
 	min-height: 100vh;
 	padding: 1em;
-	display: block;
 	position: fixed;
-	top: 0;
 	right: 0;
+	top: 0;
 	transform: translateX(100%);
 	transition: transform 0.4s linear;
 }
@@ -115,15 +115,15 @@ header h1 {
 }
 .menuClose {
 	border: #fff solid 1px;
-	display: inline-block;
-	color: #fff;
-	padding: 0.5em;
 	border-radius: 50%;
+	color: #fff;
+	display: inline-block;
 	font-size: 1em;
-	width: 40px;
 	height: 40px;
 	margin: 0 0 1em 0;
+	padding: 0.5em;
 	text-align: center;
+	width: 40px;
 }
 .menuClose:hover {
 	cursor: pointer;
@@ -137,8 +137,8 @@ header h1 {
 	flex-direction: column;
 }
 .forms h3 {
-	font-family: var(--headingFont);
 	color: var(--fontBlack);
+	font-family: var(--headingFont);
 	font-size: 1.5em;
 }
 .forms input {

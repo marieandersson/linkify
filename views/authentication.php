@@ -5,6 +5,9 @@ require __DIR__."/partials/header.php";
 ?>
 
 	<div class="content">
+		<!-- client side validation error message -->
+		<div class="jsMessage">
+		</div>
 		<main class="authMain">
 			<div class="displayPosts">
 				<?php if ($posts) {
