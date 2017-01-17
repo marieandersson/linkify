@@ -15,7 +15,7 @@ if (closeNewPostForm) {
 		document.querySelector(".jsMessage").classList.remove("showError");
 	});
 }
-// replace post content with form
+// replace post content with form for edit
 function replacePostWithForm(editButton) {
 	let postElement = editButton.parentElement.parentElement.parentElement.parentElement.parentElement;
 	let postContent = postElement.querySelector(".postContent");
@@ -29,14 +29,15 @@ function replacePostWithForm(editButton) {
 	}
 }
 const editButtons = document.querySelectorAll(".editButton");
-editButtons.forEach (function(editButton) {
-	editButton.addEventListener("click", function (event) {
-		event.preventDefault();
-		replacePostWithForm(editButton);
+if (editButtons) {
+	editButtons.forEach (function(editButton) {
+		editButton.addEventListener("click", function (event) {
+			event.preventDefault();
+			replacePostWithForm(editButton);
+		});
 	});
-});
-
-// repalce comment content with form
+}
+// repalce comment content with form for edit
 function replaceCommentWithForm(editCommentButton) {
 	let commentElement = editCommentButton.parentElement.parentElement.parentElement;
 	let commentContent = commentElement.querySelector(".commentDiv");
@@ -50,14 +51,16 @@ function replaceCommentWithForm(editCommentButton) {
 	}
 }
 const editCommentButtons = document.querySelectorAll(".editCommentButton");
-editCommentButtons.forEach (function(editCommentButton) {
-	editCommentButton.addEventListener("click", function (event) {
-		event.preventDefault();
-		replaceCommentWithForm(editCommentButton);
+if (editCommentButtons) {
+	editCommentButtons.forEach (function(editCommentButton) {
+		editCommentButton.addEventListener("click", function (event) {
+			event.preventDefault();
+			replaceCommentWithForm(editCommentButton);
+		});
 	});
-});
+}
 
-// show reply to comment fields
+// show reply to comment form
 function showReplyForm(replyButton) {
 	let commentDiv = replyButton.parentElement.parentElement.parentElement.parentElement;
 	let replyInputFields = commentDiv.querySelector(".replyFields");
@@ -69,26 +72,30 @@ function showReplyForm(replyButton) {
 	}
 }
 const replyToComment = document.querySelectorAll(".replyButton");
-replyToComment.forEach (function(replyButton) {
-	replyButton.addEventListener("click", function (event) {
-		event.preventDefault();
-		showReplyForm(replyButton);
+if (replyToComment) {
+	replyToComment.forEach (function(replyButton) {
+		replyButton.addEventListener("click", function (event) {
+			event.preventDefault();
+			showReplyForm(replyButton);
+		});
 	});
-});
+}
 
-// show settings with edit and delete buttons
+// show edit and delete buttons
 function showSettings(showSettingsButton) {
 	let postButtonsForm = showSettingsButton.parentElement;
 	let postSettingsButtons = postButtonsForm.querySelector(".postSettingsButtons");
 	postSettingsButtons.classList.toggle("postSettingsButtonsShow");
 }
 const showPostSettings = document.querySelectorAll(".showPostSettings");
-showPostSettings.forEach (function (showSettingsButton) {
-	showSettingsButton.addEventListener("click", function (event) {
-		event.preventDefault();
-		showSettings(showSettingsButton);
+if (showPostSettings) {
+	showPostSettings.forEach (function (showSettingsButton) {
+		showSettingsButton.addEventListener("click", function (event) {
+			event.preventDefault();
+			showSettings(showSettingsButton);
+		});
 	});
-});
+}
 
 // show comments
 function clickToShowComments(showComments) {
@@ -103,13 +110,15 @@ function clickToShowComments(showComments) {
 	}
 }
 const showCommentsLink = document.querySelectorAll(".commentLink");
-showCommentsLink.forEach (function (showComments) {
-	showComments.addEventListener("click", function (event) {
-		clickToShowComments(showComments);
+if (showCommentsLink) {
+	showCommentsLink.forEach (function (showComments) {
+		showComments.addEventListener("click", function (event) {
+			clickToShowComments(showComments);
+		});
 	});
-});
+}
 
-// log in link from comments
+// log in link from comments on authentication page
 const joinAndDiscuss = document.querySelectorAll(".joinAndDiscuss");
 if (joinAndDiscuss) {
 	joinAndDiscuss.forEach (function (loginLink) {
@@ -118,7 +127,7 @@ if (joinAndDiscuss) {
 		});
 	});
 }
-// login link on auth page when there is no posts
+// login link on authentication page when there is no posts
 const join = document.querySelector(".joinLinkify");
 if (join) {
 	join.addEventListener("click", function (event) {

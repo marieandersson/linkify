@@ -1,6 +1,6 @@
 "use strict";
 
-// handle post request for deleting comments without page reload
+// handle post request for deleting comments
 const deleteCommentButtons = document.querySelectorAll(".deleteComment");
 deleteCommentButtons.forEach (function(deleteButton) {
 	deleteButton.addEventListener("click", function(event) {
@@ -17,7 +17,7 @@ function handleCommentDelete(deleteButton) {
 	let postData = new FormData();
 	postData.append("commentId", commentId);
 	postData.append("deleteComment", "delete");
-	// post to php script handling requests for deleting comments
+	// fetch php script handling requests for deleting comments
 	fetch("/app/posts/comments.php",
 	{
 		method: "POST",
@@ -27,7 +27,6 @@ function handleCommentDelete(deleteButton) {
 	// response after php script has been executed
 	.then(function(response) {
 		let commentElement = document.querySelector(".comment"+commentId).parentElement;
-		// if no comments left for post remove comments div and comment link
 		let comments = commentElement.parentElement;
 		commentElement.remove();
 		// separate last comment left from last reply left
@@ -41,6 +40,7 @@ function handleCommentDelete(deleteButton) {
 				}
 			});
 			if (containsElement == false) {
+				// if no comments left for post remove comments div and comment link
 				comments.parentElement.querySelector(".commentLink").innerHTML = "";
 				comments.remove();
 			}
@@ -48,7 +48,7 @@ function handleCommentDelete(deleteButton) {
 	});
 }
 
-// handle post request for editing comments without page reload
+// handle post request for editing comments
 const saveCommentEditButtons = document.querySelectorAll(".saveEditComment");
 saveCommentEditButtons.forEach(function(editButton) {
 	editButton.addEventListener("click", function(event) {
@@ -70,7 +70,7 @@ function handleEditComment(editButton) {
 		postData.append("commentIdForEdit", commentId);
 		postData.append("editComment", comment);
 		postData.append("saveEditComment", "save");
-		// post to php script handling post request for editing comments
+		// fetch php script handling post request for editing comments
 		fetch("/app/posts/comments.php",
 		{
 			method: "POST",
@@ -87,7 +87,7 @@ function handleEditComment(editButton) {
 				});
 			} else {
 				return response.text().then(function(result) {
-					// if sucess remove possible error
+					// if sucess remove possible error message
 					errorMessage.classList.remove("showError");
 					// replace comment content
 					let commentElement = document.querySelector(".comment"+commentId);

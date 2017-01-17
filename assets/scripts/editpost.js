@@ -1,6 +1,6 @@
 "use strict";
 
-// handle post request for deleting post without page reload
+// handle post request for deleting post
 const deletePostButtons = document.querySelectorAll(".deleteButton");
 deletePostButtons.forEach (function(deleteButton) {
 	deleteButton.addEventListener("click", function(event) {
@@ -17,7 +17,7 @@ function handlePostDelete(deleteButton) {
 	let postData = new FormData();
 	postData.append("postId", postId);
 	postData.append("deletePost", "delete");
-	// post to php script handling requests for deleting post
+	// fetch php script handling requests for deleting post
 	fetch("/app/posts/editpost.php",
 	{
 		method: "POST",
@@ -31,7 +31,7 @@ function handlePostDelete(deleteButton) {
 	});
 }
 
-// handle post request for editing post without page reload
+// handle post request for editing post
 const saveEditButtons = document.querySelectorAll(".saveEdit");
 saveEditButtons.forEach (function(editButton) {
 	editButton.addEventListener("click", function(event) {
@@ -57,7 +57,7 @@ function handleEditPost(editButton) {
 		postData.append("editUrl", url);
 		postData.append("editDescription", description);
 		postData.append("saveEdit", "save");
-		// post to php script handling post requests for edit posts
+		// fetch php script handling post requests for edit posts
 		fetch("/app/posts/editpost.php",
 		{
 			method: "POST",
@@ -74,7 +74,7 @@ function handleEditPost(editButton) {
 				});
 			} else {
 				return response.text().then(function(result) {
-					// if sucess remove possible error
+					// if sucess remove possible error message
 					errorMessage.classList.remove("showError");
 					// replace post content
 					let postElement = document.querySelector(".post"+postId);
