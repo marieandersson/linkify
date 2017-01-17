@@ -2,14 +2,16 @@
 
 // handle post request for deleting post
 const deletePostButtons = document.querySelectorAll(".deleteButton");
-deletePostButtons.forEach (function(deleteButton) {
-	deleteButton.addEventListener("click", function(event) {
-		event.preventDefault();
-		if (window.confirm("Are you sure you want to delete this post?")) {
-			handlePostDelete(deleteButton);
-		}
+if (deletePostButtons) {
+	deletePostButtons.forEach (function(deleteButton) {
+		deleteButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			if (window.confirm("Are you sure you want to delete this post?")) {
+				handlePostDelete(deleteButton);
+			}
+		});
 	});
-});
+}
 
 function handlePostDelete(deleteButton) {
 	let postId = deleteButton.parentElement.querySelector(".postButtonsId").value;
@@ -33,12 +35,14 @@ function handlePostDelete(deleteButton) {
 
 // handle post request for editing post
 const saveEditButtons = document.querySelectorAll(".saveEdit");
-saveEditButtons.forEach (function(editButton) {
-	editButton.addEventListener("click", function(event) {
-		event.preventDefault();
-		handleEditPost(editButton);
+if (saveEditButtons) {
+	saveEditButtons.forEach (function(editButton) {
+		editButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			handleEditPost(editButton);
+		});
 	});
-});
+}
 function handleEditPost(editButton) {
 	let postId = editButton.parentElement.querySelector(".postIdForEdit").value;
 	let subject = editButton.parentElement.querySelector(".editInputField input[name=editSubject]").value;

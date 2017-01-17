@@ -1,18 +1,20 @@
 "use strict";
-// handle post request for new comment without page reload
+// handle post request for new comment
 const commentPostButtons = document.querySelectorAll(".commentPost");
-commentPostButtons.forEach (function(commentButton) {
-	commentButton.addEventListener("click", function(event) {
-		event.preventDefault();
-		handleCommentPost(commentButton);
+if (commentPostButtons) {
+	commentPostButtons.forEach (function(commentButton) {
+		commentButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			handleCommentPost(commentButton);
+		});
 	});
-});
+}
 
 function handleCommentPost(commentButton) {
 	let comment = commentButton.parentElement.querySelector(".inputComment input[name=comment]").value;
 	let postId = commentButton.parentElement.querySelector(".inputComment input[name=postId]").value;
 	let errorMessage = document.querySelector(".jsMessage");
-	// check if all fields has content
+
 	if (comment == "") {
 		errorMessage.innerHTML = "Write a comment before posting.";
 		errorMessage.classList.add("showError");
@@ -22,7 +24,7 @@ function handleCommentPost(commentButton) {
 		postData.append("comment", comment);
 		postData.append("postId", postId);
 		postData.append("commentPost", "submit");
-		// post to the php script handling post requests for new comments
+		// fetch php script handling post requests for new comments
 		fetch("/app/posts/comments.php",
 		{
 			method: "POST",
@@ -42,7 +44,7 @@ function handleCommentPost(commentButton) {
 					// if success remove error and reset form
 					errorMessage.classList.remove("showError");
 					commentButton.parentElement.parentElement.reset();
-					// and display new comment
+					// display new comment
 					let newComment = document.createElement("div");
 					newComment.innerHTML = result;
 					newComment.classList.add("commentWrap");
@@ -57,7 +59,7 @@ function handleCommentPost(commentButton) {
 						commentElement.appendChild(newComment);
 						postDiv.appendChild(commentElement);
 					} else {
-						// else append to existing comment div
+						// append to existing comment div
 						commentElement.insertBefore(newComment, commentElement.firstChild);
 						commentElement.classList.add("commentsShow");
 					}

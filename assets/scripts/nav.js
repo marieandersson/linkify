@@ -14,7 +14,7 @@ closeNavButton.addEventListener("click", event => {
 
 // keep navigation open if error message is displayed
 const errorMessage = document.querySelector(".loginError");
-if (errorMessage != null) {
+if (errorMessage) {
 	if (errorMessage.innerHTML !== "") {
 		document.body.classList.add("navigationOpen");
 	}

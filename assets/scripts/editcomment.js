@@ -2,14 +2,16 @@
 
 // handle post request for deleting comments
 const deleteCommentButtons = document.querySelectorAll(".deleteComment");
-deleteCommentButtons.forEach (function(deleteButton) {
-	deleteButton.addEventListener("click", function(event) {
-		event.preventDefault();
-		if (window.confirm("Are you sure you want to delete this comment?")) {
-			handleCommentDelete(deleteButton);
-		}
+if (deleteCommentButtons) {
+	deleteCommentButtons.forEach (function(deleteButton) {
+		deleteButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			if (window.confirm("Are you sure you want to delete this comment?")) {
+				handleCommentDelete(deleteButton);
+			}
+		});
 	});
-});
+}
 
 function handleCommentDelete(deleteButton) {
 	let commentId = deleteButton.parentElement.querySelector(".commentId").value;
@@ -50,12 +52,14 @@ function handleCommentDelete(deleteButton) {
 
 // handle post request for editing comments
 const saveCommentEditButtons = document.querySelectorAll(".saveEditComment");
-saveCommentEditButtons.forEach(function(editButton) {
-	editButton.addEventListener("click", function(event) {
-		event.preventDefault();
-		handleEditComment(editButton);
+if (saveCommentEditButtons) {
+	saveCommentEditButtons.forEach(function(editButton) {
+		editButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			handleEditComment(editButton);
+		});
 	});
-});
+}
 function handleEditComment(editButton) {
 	let commentId = editButton.parentElement.querySelector(".commentIdForEdit").value;
 	let comment = editButton.parentElement.querySelector(".editComment").value;
