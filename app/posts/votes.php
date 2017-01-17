@@ -15,9 +15,7 @@ function getVote($db) {
 function saveVote($db, $value) {
 	$insertVoteIntoDb = "INSERT INTO votes (post_id, user_id, vote)
 	VALUES (:post_id, :user_id, :vote)";
-
-	$insertVoteStatement = $db->prepare($insertVoteIntoDb);
-	$insertVoteStatement->execute([
+	prepareAndExecute($db, $insertVoteIntoDb, [
 		":post_id" => $_POST["postIdForVote"],
 		":user_id" => $_SESSION["login"]["id"],
 		":vote" => $value,
@@ -26,9 +24,7 @@ function saveVote($db, $value) {
 
 function replaceVote($db, $value) {
 	$replaceVoteInDb = "UPDATE votes SET vote = :vote WHERE user_id = :user_id AND post_id = :post_id";
-
-	$replaceVoteStatement = $db->prepare($replaceVoteInDb);
-	$replaceVoteStatement->execute([
+	prepareAndExecute($db, $replaceVoteInDb, [
 		":post_id" => $_POST["postIdForVote"],
 		":user_id" => $_SESSION["login"]["id"],
 		":vote" => $value,

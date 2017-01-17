@@ -3,20 +3,17 @@ require __DIR__."/../../autoload.php";
 
 function deletePost($db) {
 	$deletePostInDb = "DELETE FROM posts WHERE id = :postId";
-	$deletePostStatement = $db->prepare($deletePostInDb);
-	$deletePostStatement->execute([
+	prepareAndExecute($db, $deletePostInDb, [
 		":postId" => $_POST["postId"],
 	]);
 	// delete comments connected to post
 	$deletePostsCommentsInDb = "DELETE FROM comments WHERE post_id = :postId";
-	$deletePostsCommentsStatement = $db->prepare($deletePostsCommentsInDb);
-	$deletePostsCommentsStatement->execute([
+	prepareAndExecute($db, $deletePostsCommentsInDb, [
 		":postId" => $_POST["postId"],
 	]);
 	// delete votes connected to post
 	$deletePostsVotesInDb = "DELETE FROM votes WHERE post_id = :postId";
-	$deletePostsVotesStatement = $db->prepare($deletePostsVotesInDb);
-	$deletePostsVotesStatement->execute([
+	prepareAndExecute($db, $deletePostsVotesInDb, [
 		":postId" => $_POST["postId"],
 	]);
 
@@ -27,8 +24,7 @@ function editPost($db) {
 	$editDate = date("Y-m-d H:i:s");
 	$editPostInDb = "UPDATE posts SET subject = :subject, url = :url, description = :description,
 	edited = :edited, edit_date = :editDate WHERE id = :postId";
-	$editPostStatement = $db->prepare($editPostInDb);
-	$editPostStatement->execute([
+	prepareAndExecute($db, $editPostInDb, [
 		":subject" => $_POST["editSubject"],
 		":url" => $_POST["editUrl"],
 		":description" => $_POST["editDescription"],
@@ -36,7 +32,6 @@ function editPost($db) {
 		":editDate" => $editDate,
 		":postId" => $_POST["postIdForEdit"],
 	]);
-
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

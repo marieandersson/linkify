@@ -5,9 +5,7 @@ function saveNewPost($db) {
 	$published = date("Y-m-d H:i:s");
 	$insertPostIntoDb = "INSERT INTO posts (user_id, subject, url, description, published)
 	VALUES (:user_id, :subject, :url, :description, :published)";
-
-	$insertPostStatement = $db->prepare($insertPostIntoDb);
-	$insertPostStatement->execute([
+	prepareAndExecute($db, $insertPostIntoDb, [
 		":user_id" => $_SESSION["login"]["id"],
 		":subject" => $_POST["subject"],
 		":url" => $_POST["url"],

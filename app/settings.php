@@ -2,9 +2,8 @@
 require __DIR__."/../autoload.php";
 
 function updateUser($db, $userId, $newInput, $column) {
-	$updateUsernameInDb = sprintf("UPDATE users SET %s = :newInput WHERE id = :id", $column);
-	$updateUsernameStatement = $db->prepare($updateUsernameInDb);
-	$updateUsernameStatement->execute([
+	$updateUserInDb = sprintf("UPDATE users SET %s = :newInput WHERE id = :id", $column);
+	prepareAndExecute($db, $updateUserInDb, [
 		":newInput" => $newInput,
 		":id" => $userId,
 	]);
