@@ -149,10 +149,10 @@ header h1 {
 	padding-left: 0.5em;
 }
 .forms input[type="checkbox"] {
-	padding: 0;
-	margin: 0;
-	height: auto;
 	display: inline-block;
+	height: auto;
+	margin: 0;
+	padding: 0;
 }
 .forms label {
 	color: var(--fontBlack);
@@ -164,8 +164,8 @@ header h1 {
 }
 .forms input[type="submit"]:hover {
 	background: var(--primaryColor);
-	color: #fff;
 	border: 2px solid #fff;
+	color: #fff;
 	cursor: pointer;
 }
 /* menu when user is logged in */
@@ -173,11 +173,11 @@ header h1 {
 	text-align: center;
 }
 .menu a {
-	text-decoration: none;
 	color: #fff;
 	font-size: 1.5em;
 	font-family: var(--headingFont);
 	padding: 0.5em;
+	text-decoration: none;
 }
 .menu a:hover {
 	color: var(--fontBlack);
@@ -186,20 +186,20 @@ header h1 {
 /* --- cookie box --- */
 .acceptCookies {
 	align-items: center;
-  background: var(--primaryColor);
-  color: #fff;
 	display: flex;
 	flex-direction: row;
+	font-family: var(--headingFont);
+	height: 0;
+	overflow: hidden;
+	transition: height 0.5s linear;
+  background: var(--primaryColor);
+  color: #fff;
   justify-content: space-between;
   left: 0;
   padding: 0 1em;
   position: absolute;
   top: 0;
   width: 100%;
-	font-family: var(--headingFont);
-	height: 0;
-	overflow: hidden;
-	transition: height 0.5s linear;
 }
 .acceptCookies a {
 	color: #fff;
@@ -216,23 +216,23 @@ header h1 {
 	font-size: small;
 }
 .cookieButton:hover {
-	cursor:pointer;
-	color: var(--primaryColor);
 	background: var(--backgroundColor);
+	color: var(--primaryColor);
+	cursor:pointer;
 }
 /* --- Error messages --- */
 .error, .settingsError, .message, .jsMessage {
-  width: 100%;
-  height: 50px;
-  position: fixed;
-  left: 0;
-  line-height: 50px;
-  color: #fff;
-  text-align: center;
-  font-size: 14px;
-  font-weight: bold;
 	background: var(--secondaryColor);
 	bottom: 0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  height: 50px;
+  left: 0;
+  line-height: 50px;
+  position: fixed;
+  text-align: center;
+  width: 100%;
 	z-index: 200;
 }
 .jsMessage {
@@ -252,17 +252,17 @@ header h1 {
 	width: 300px;
 }
 .noPosts h2 {
-	font-family: var(--headingFont);
 	border-bottom: var(--mainBorder);
+	font-family: var(--headingFont);
 }
 .noPosts p {
 	font-family: var(--bodyFont);
 }
 .noPosts button {
 	border: var(--mainBorder);
-	padding: 0.5em 1em;
-	margin-top: 2em;
 	font-family: var(--bodyFont);
+	margin-top: 2em;
+	padding: 0.5em 1em;
 }
 .noPosts button:hover {
 	background: var(--primaryColor);
@@ -278,71 +278,71 @@ header h1 {
 
 /* --- new post form --- */
 .clickToShowNewPostForm {
-	text-align: right;
-	font-family: var(--headingFont);
 	color: var(--fontColor);
+	font-family: var(--headingFont);
 	margin: 0;
 	padding: 0;
+	text-align: right;
 }
 .clickToShowNewPostForm:hover {
-	cursor: pointer;
 	color: var(--primaryColor);
+	cursor: pointer;
 }
 .newPostWrap {
-	position: fixed;
-	top:0;
-	height: 100%;
-	width: 100%;
-	background: rgba(255,255,255,0.7);
-	z-index: 100;
-	display: none;
-	flex-direction: row;
-	justify-content: center;
 	align-items: center;
 	animation: fadeIn 0.3s;
+	background: rgba(255,255,255,0.7);
+	display: none;
+	flex-direction: row;
+	height: 100%;
+	justify-content: center;
+	position: fixed;
+	top:0;
+	width: 100%;
+	z-index: 100;
 }
 .showNewPostForm {
 	display: flex;
 }
 .newPost {
-	width: 500px;
-	height: 300px;
-	border: var(--mainBorder);
 	background: var(--backgroundColor);
+	border: var(--mainBorder);
+	height: 300px;
+	width: 500px;
 }
 .newPostHeading {
+	align-items: center;
+	border-bottom: var(--mainBorder);
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	margin: 1em;
 	height: 3em;
-	border-bottom: var(--mainBorder);
+	justify-content: space-between;
+	margin: 1em;
 }
 .newPostHeading h4 {
+	color: var(--fontBlack);
 	font-family: var(--headingFont);
 	font-size: 1.5em;
-	padding: 0;
 	margin: 0;
-	color: var(--fontBlack);
+	padding: 0;
 }
 .shareClose {
-	border: var(--primaryColor) solid 1px;
-	display: inline-block;
-	color: var(--primaryColor);
-	padding: 0.5em;
+	align-self: flex-start;
 	border-radius: 50%;
+	border: var(--primaryColor) solid 1px;
+	color: var(--primaryColor);
+	display: inline-block;
 	font-size: 1em;
-	width: 40px;
 	height: 40px;
 	margin: 0;
+	padding: 0.5em;
 	text-align: center;
-	align-self: flex-start;
+	width: 40px;
 }
 .shareClose:hover {
-	cursor: pointer;
-	color: #fff;
 	background: var(--primaryColor);
+	color: #fff;
+	cursor: pointer;
 }
 .newPostFields {
 	display: flex;
@@ -350,24 +350,24 @@ header h1 {
 	justify-content: center;
 }
 .newPostFields input[type="text"] {
+	border: var(--mainBorder);
+	font-size: small;
 	height: 2.5em;
 	margin: 0.5em auto;
-	width: 80%;
-	border: var(--mainBorder);
 	padding-left: 0.5em;
-	font-size: small;
+	width: 80%;
 }
 .newPostFields input[type="submit"] {
-	width: 100px;
 	border: var(--mainBorder);
-	margin: 1.5em auto 0.5em;
-	height: 2em;
-	font-family: var(--headingFont);
 	color: var(--fontBlack);
+	font-family: var(--headingFont);
+	height: 2em;
+	margin: 1.5em auto 0.5em;
+	width: 100px;
 }
 .newPostFields input[type="submit"]:hover {
-	color: #fff;
 	background: var(--primaryColor);
+	color: #fff;
 	cursor: pointer;
 }
 
@@ -375,20 +375,20 @@ header h1 {
 .displayPosts {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	flex-wrap: nowrap;
+	justify-content: center;
 }
 .post {
+	background: var(--backgroundColor);
 	border-bottom: var(--mainBorder);
 	margin: 0.5em 0 0;
-	background: var(--backgroundColor);
 	padding-bottom: 1em;
 }
 .postAndVoteWrap {
-	width: 100%;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
+	width: 100%;
 }
 .voteWrap {
 	text-align: center;
@@ -403,10 +403,10 @@ header h1 {
 	flex-direction: column;
 }
 .up, .down {
-	margin: 0 auto;
-	border-top: #778899 2px solid;
 	border-left: #778899 2px solid;
 	border-radius: 1px;
+	border-top: #778899 2px solid;
+	margin: 0 auto;
 	transition: margin 0.2s ease-out;
 }
 .up {
@@ -416,33 +416,33 @@ header h1 {
 	transform: rotate(225deg);
 }
 .votes {
-	font-family: var(--headingFont);
 	color: #778899;
+	font-family: var(--headingFont);
 }
 .notLoggedIn, .notLoggedInVotes {
 	opacity: 0.5;
 }
 .up:hover, .down:hover {
-	cursor: pointer;
 	border-color: var(--primaryColor) !important;
+	cursor: pointer;
 }
 
 /* post content */
 .postHeadingWrap {
+	align-items: flex-end;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	align-items: flex-end;
 	margin-bottom: 0.5em;
 }
 .post h4 {
+	color: var(--fontBlack);
 	font-family: var(--headingFont);
 	margin: 0;
-	color: var(--fontBlack);
 }
 .post h4 a {
-	text-decoration: none;
 	color: var(--fontBlack);
+	text-decoration: none;
 }
 .postDiv {
 	display: flex;
@@ -450,17 +450,17 @@ header h1 {
 	justify-content: space-between;
 }
 .postUser a {
-	text-decoration: none;
 	color: var(--primaryColor);
+	text-decoration: none;
 }
 .post h4 a:hover, .postUser a:hover {
 	color: #ff533d;
 }
 .postContent p, .loginLink {
+	color: var(--fontBlack);
 	font-family: var(--bodyFont);
 	font-size: 0.9em;
 	margin: 0;
-	color: var(--fontBlack);
 }
 .postContentHide {
 	display: none;
@@ -469,74 +469,74 @@ header h1 {
 	margin: 0.5em 0 0;
 }
 .postUser p {
-	font-style: italic;
-	font-size: 0.8em;
 	color: var(--primaryColor);
 	font-family: var(--bodyFont);
+	font-size: 0.8em;
+	font-style: italic;
 }
 .postButtons form, .commentSettings {
 	display: flex;
 	flex-direction: row;
-	position: relative;
-	margin: 0 0 0.2em 0;
 	font-family: var(--headingFont);
 	font-size: small;
+	margin: 0 0 0.2em 0;
+	position: relative;
 }
 .showPostSettings img {
-	width: 15px;
-	margin: 0;
 	border-radius: 50%;
+	margin: 0;
 	transition: transform 0.5s linear;
+	width: 15px;
 }
 .showPostSettings img:hover {
 	cursor: pointer;
 	transform: rotate(90deg);
 }
 .postSettingsButtons {
-	width: 0;
-	overflow: hidden;
-	transition: width 0.5s linear;
-	margin: 0;
-	position: absolute;
 	display: flex;
 	flex-direction: row;
+	margin: 0;
+	overflow: hidden;
+	position: absolute;
 	right: 2.5em;
+	transition: width 0.5s linear;
+	width: 0;
 }
 .postSettingsButtonsShow {
 	width: 100px;
 }
 .editButton, .deleteButton, .editCommentButton, .deleteComment {
+	background: var(--backgroundColor);
+	border: var(--mainBorder);
 	color: var(--fontBlack);
 	font-family: var(--headingFont);
-	border: var(--mainBorder);
-	background: var(--backgroundColor);
 	font-size: small;
+	height: 2em;
 	margin-right: 0.3em;
 	width: 50px;
-	height: 2em;
 }
 .editButton:hover, .deleteButton:hover,
 .editCommentButton:hover, .deleteComment:hover {
-	color: #fff;
 	background: var(--primaryColor);
+	color: #fff;
 	cursor: pointer;
 }
 /* comments */
 .inputComment input[type="text"] {
-	height: 2em;
-	width: 80%;
 	border: var(--mainBorder);
-	padding-left: 0.5em;
-	font-size: small;
 	flex-grow: 1;
+	font-size: small;
+	height: 2em;
+	padding-left: 0.5em;
+	width: 80%;
 }
 .inputComment input[type="submit"] {
 	border: var(--mainBorder);
-	height: 2em;
-	margin: 0 0.5em;
-	font-size: small;
 	color: var(--fontBlack);
 	font-family: var(--headingFont);
+	font-size: small;
+	height: 2em;
+	margin: 0 0.5em;
 }
 .inputComment input[type="submit"]:hover {
 	background: var(--primaryColor);
@@ -544,10 +544,10 @@ header h1 {
 	cursor: pointer;
 }
 .inputComment {
-	margin-top: 1em;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
+	margin-top: 1em;
 }
 
 /* hidden form for edit posts */
@@ -562,12 +562,12 @@ header h1 {
 	display: block;
 }
 .editPostForm form {
-	font-family: var(--bodyFont);
-	font-size: small;
-	margin:0;
 	display: flex;
 	flex-direction: column;
+	font-family: var(--bodyFont);
+	font-size: small;
 	justify-content: center;
+	margin:0;
 }
 .editCommentForm form {
 	display: flex;
@@ -580,11 +580,11 @@ header h1 {
 	flex-direction: column;
 }
 .editInputField input[type="text"] {
+	border: var(--mainBorder);
+	flex-grow: 1;
 	height: 2em;
 	margin: 0.2em 0 0.5em;
-	border: var(--mainBorder);
 	padding-left: 0.5em;
-	flex-grow: 1;
 }
  .editPostForm input[type="submit"] {
 	 border: var(--mainBorder);
@@ -593,16 +593,16 @@ header h1 {
 	 width: 70px;
  }
  .editCommentForm form input[type="text"] {
-	 height: 2em;
 	 border: var(--mainBorder);
- 	 padding-left: 0.5em;
 	 flex-grow: 1;
+	 height: 2em;
+ 	 padding-left: 0.5em;
  }
   .editCommentForm form input[type="submit"] {
 		border: var(--mainBorder);
- 	  height: 2em;
 		margin: 0 0.5em;
 		width: 70px;
+ 	  height: 2em;
 	}
  .editPostForm input[type="submit"]:hover,
  .editCommentForm form input[type="submit"]:hover {
@@ -613,11 +613,11 @@ header h1 {
 
 /* comments */
 .commentLink h5 {
+	color: #778899;
 	font-family: var(--headingFont);
 	font-size: 0.9em;
 	margin: 1em 0.5em 0;
 	text-align: right;
-	color: #778899;
 }
 .commentLink h5:hover {
 	color: var(--fontColor);
@@ -628,16 +628,16 @@ header h1 {
 }
 .commentsShow {
 	display: block;
-	margin: 0;
-	font-size: small;
 	font-family: var(--bodyFont);
+	font-size: small;
+	margin: 0;
 }
 .comment {
-	margin: 0 0 0.5em 0;
+	align-items: center;
 	display: flex;
 	flex-flow: row;
 	justify-content: space-between;
-	align-items: center;
+	margin: 0 0 0.5em 0;
 }
 .commentHide {
 	display: none;
@@ -646,25 +646,25 @@ header h1 {
 	margin: 0;
 }
 .commentContent {
-	font-family: var(--bodyFont);
 	color: var(--fontBlack);
+	font-family: var(--bodyFont);
 	font-size: 1em;
 	margin: 0.5em 0 0.2em !important;
 }
 .commentAuthor a {
-	text-decoration: none;
 	color: var(--primaryColor);
+	text-decoration: none;
 }
 .commentAuthor a:hover {
 	color: var(--fontColor);
 }
 .commentInfoAndReply {
+	color: var(--primaryColor);
 	display: flex;
 	flex-direction: column;
+	font-family: var(--bodyFont);
 	font-size: 0.9em;
 	font-style: italic;
-	color: var(--primaryColor);
-	font-family: var(--bodyFont);
 }
 .replyForm form {
 	display: flex;
@@ -672,7 +672,6 @@ header h1 {
 	justify-content: flex-start;
 }
 .replyButton {
-	color: var(--primaryColor);
 	color: #778899;
 }
 .replyButton:hover {
@@ -681,11 +680,11 @@ header h1 {
 }
 .replyFields input[type="submit"] {
 	border: var(--mainBorder);
-	height: 2em;
-	margin: 0 0.5em;
-	font-size: small;
 	color: var(--fontBlack);
 	font-family: var(--headingFont);
+	font-size: small;
+	height: 2em;
+	margin: 0 0.5em;
 }
 .replyFields input[type="submit"]:hover {
 	background: var(--primaryColor);
@@ -693,11 +692,11 @@ header h1 {
 	cursor: pointer;
 }
 .replyFields input[type="text"] {
-	height: 2em;
 	border: var(--mainBorder);
-	padding-left: 0.5em;
-	font-size: small;
 	flex-grow: 1;
+	font-size: small;
+	height: 2em;
+	padding-left: 0.5em;
 }
 .replyFields {
 	display: none;
@@ -705,8 +704,8 @@ header h1 {
 .replyFieldsShow {
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-start;
 	flex-grow: 1;
+	justify-content: flex-start;
 }
 .replies {
 	border-left: var(--mainBorder);
@@ -714,37 +713,37 @@ header h1 {
 	padding-left: 1em;
 }
 .commentReply {
-	margin: 0;
+	align-items: center;
 	display: flex;
 	flex-flow: row;
 	justify-content: space-between;
-	align-items: center;
+	margin: 0;
 }
 .joinAndDiscuss {
-	font-family: var(--headingFont);
 	color: #778899;
+	font-family: var(--headingFont);
 	font-size: 1em;
 	margin: 1em 0 0;
 }
 .joinAndDiscuss:hover {
-	cursor: pointer;
 	color: var(--fontColor);
+	cursor: pointer;
 }
 /* show more posts */
 .showMoreDiv {
-	width: 100%;
 	text-align: center;
+	width: 100%;
 }
 .showMore {
+	color: #778899;
+	display: inline-block;
 	font-family: var(--headingFont);
 	font-weight: bold;
-	display: inline-block;
 	margin: 1em;
-	color: #778899;
 }
 .showMore:hover {
-	cursor: pointer;
 	color: var(--fontColor);
+	cursor: pointer;
 
 }
 .showMoreHide {
@@ -755,30 +754,30 @@ header h1 {
 	text-align: center;
 }
 .displayUserProfile h4 {
-	margin: 0;
-	font-family: var(--headingFont);
 	color: var(--fontBlack);
+	font-family: var(--headingFont);
+	margin: 0;
 }
 .displayUserProfile h5 {
-	margin: 0;
-	font-family: var(--headingFont);
 	color: var(--primaryColor);
+	font-family: var(--headingFont);
+	margin: 0;
 }
 .displayUserProfile p {
-	font-family: var(--bodyFont);
-	color: var(--fontBlack);
-	text-align: left;
-	font-size: small;
 	border-top: var(--mainBorder);
+	color: var(--fontBlack);
+	font-family: var(--bodyFont);
+	font-size: small;
 	padding: 0.5em;
+	text-align: left;
 }
 .displayUserProfile figure {
 	margin: 0 auto;
 }
 .displayUserProfile figure img{
-	width: 100%;
 	height: 100%;
 	object-fit: cover;
+	width: 100%;
 }
 
 /* --- profile page --- */
@@ -799,14 +798,14 @@ header h1 {
 	margin-top: 2.5em;
 }
 .settingsHeading {
+	border-bottom: var(--mainBorder);
 	font-family: var(--headingFont);
 	margin: 0;
-	border-bottom: var(--mainBorder);
 }
 .settingsForm {
-	width:100%;
 	display:flex;
 	flex-direction: column;
+	width:100%;
 }
 .settingsForm h3 {
 	font-family: var(--headingFont);
@@ -819,9 +818,9 @@ header h1 {
 .settingsForm input {
 	border: var(--mainBorder);
 	color: var(--fontBlack);
+	font-family: var(--bodyFont);
 	font-size: small;
 	height: 2em;
-	font-family: var(--bodyFont);
 	width: 200px;
 }
 .settingsForm input[type="password"] {
@@ -833,9 +832,9 @@ header h1 {
 .settingsForm textarea {
 	border: var(--mainBorder);
 	color: var(--fontBlack);
+	font-family: var(--bodyFont);
 	font-size: small;
 	height: 5em;
-	font-family: var(--bodyFont);
 }
 .settingsForm input[type="submit"] {
 	width: 100px;
@@ -845,13 +844,13 @@ header h1 {
 	color: #fff;
 }
 .placeholderAvatar {
-	width: 100px;
 	height: 100px;
+	width: 100px;
 }
 .placeholderAvatar img {
-	width: 100%;
 	height: 100%;
 	object-fit: cover;
+	width: 100%;
 }
 .saveChanges {
 	border-top: var(--mainBorder);
@@ -872,15 +871,15 @@ footer img {
 	padding-right: 0.3em;
 }
 footer h5 {
-	font-family: "Syncopate", sans-serif;
 	color: var(--fontBlack);
-	margin: 0;
+	font-family: "Syncopate", sans-serif;
 	font-size: 1em;
+	margin: 0;
 }
 footer p {
-	font-size: small;
 	color: var(--primaryColor);
 	font-family: var(--bodyFont);
+	font-size: small;
 	font-style: italic;
 	margin: 0;
 }
@@ -932,8 +931,8 @@ header h1 {
 	padding: 2em 0 0 0.3em;
 }
 .up, .down {
-	width: 0.8em;
 	height: 0.8em;
+	width: 0.8em;
 }
 .votes {
 	font-size: small;
@@ -951,8 +950,8 @@ header h1 {
 }
 /* profile page */
 .displayUserProfile {
-	width: 200px;
 	margin: 0;
+	width: 200px;
 }
 .displayUserProfile figure {
 	height: 200px;
@@ -962,8 +961,8 @@ header h1 {
 	margin: 0 auto;
 }
 .displayUserProfilePage p {
-	width: 280px;
 	margin-left: -40px;
+	width: 280px;
 }
 /* settingspage */
 .displayUserSettings {
@@ -983,9 +982,9 @@ header h1 {
 		margin: 0;
 	}
 	.forms {
-		margin: 0 3em;
 		flex-direction: row;
 		justify-content: space-around;
+		margin: 0 3em;
 	}
 }
 @media only screen and (min-width: 420px) {
@@ -996,8 +995,8 @@ header h1 {
 		height: 45px;
 	}
 	.profileLink img {
-		width: 45px;
 		height: 45px;
+		width: 45px;
 	}
 	.menuLink img {
 		height: 35px;
@@ -1012,7 +1011,7 @@ header h1 {
 		flex-direction: row;
 	}
 	.replyButton {
-			padding-left: 0.3em;
+		padding-left: 0.3em;
 	}
 	.settingsForm textarea {
 		width: 70%;
@@ -1036,8 +1035,8 @@ header h1 {
 		padding: 2em 1em 0;
 	}
 	.up, .down {
-		width: 1.2em;
 		height: 1.2em;
+		width: 1.2em;
 	}
 	.editPostForm form {
 		width: 400px;
@@ -1048,8 +1047,8 @@ header h1 {
 }
 @media only screen and (min-width: 800px) {
 	.page, footer {
-		width: 90%;
 		margin: 0 auto;
+		width: 90%;
 	}
 	header h1 {
 		display: inline-block;
@@ -1063,16 +1062,16 @@ header h1 {
 		justify-content: center;
 	}
 	.displayUserProfile {
-		width: 150px;
 		margin: 0 2em 0 0;
+		width: 150px;
 	}
 	.displayUserProfile figure {
 		height: 150px;
 		width: 150px;
 	}
 	.displayUserProfilePage p {
-		width: auto;;
 		margin-left: auto;
+		width: auto;;
 	}
 	.postContent {
 		width: 70%;
@@ -1096,8 +1095,8 @@ header h1 {
 		width: 80%;
 	}
 	.displayUserProfile {
-		width: 200px;
 		margin: 0 5em 0 0;
+		width: 200px;
 	}
 	.displayUserProfile figure {
 		height: 200px;
