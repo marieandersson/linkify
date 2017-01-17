@@ -1,5 +1,4 @@
 <?php
-// get posts and handle users sort requests
 require __DIR__."/../app/posts/sortposts.php";
 require __DIR__."/partials/header.php";
 ?>
@@ -43,10 +42,10 @@ require __DIR__."/partials/header.php";
 		<div class="loginWrap">
 			<h3>Log in</h3>
 			<form action="app/auth/login.php" method="post" class="login">
-				<?php if ($error) { ?>
-					<div class="error loginError">
-							<?= $error; ?>
-					</div>
+			<?php if ($error) { ?>
+				<div class="error loginError">
+					<?= $error; ?>
+				</div>
 				<?php unset($_SESSION["error"]); } ?>
 				<input type="text" name="username" placeholder="Email or username" value="<?=isset($_POST["username"]) ? $_POST["username"] : ''; ?>">
 				<input type="password" name="password" placeholder="Password">
@@ -61,9 +60,9 @@ require __DIR__."/partials/header.php";
 			<h3>Register</h3>
 			<form action="app/auth/register.php" method="post" class="register">
 				<?php if ($error) { ?>
-					<div class="error">
-							<?= $error; ?>
-						</div>
+				<div class="error">
+					<?= $error; ?>
+				</div>
 				<?php unset($_SESSION["error"]); } ?>
 				<input type="text" name="fullName" placeholder="Full name" value="<?=isset($_POST["fullName"]) ? $_POST["fullName"] : ''; ?>">
 	      <input type="text" name="usernameReg" placeholder="Username" value="<?=isset($_POST["usernameReg"]) ? $_POST["usernameReg"] : ''; ?>">

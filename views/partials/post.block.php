@@ -87,20 +87,22 @@
 		<?php }
 		// check if post has comments
 		$comments = getComments($db, $post["id"]); ?>
-		<div class="commentLink"><?php if ($comments) { ?>
+		<div class="commentLink">
+		<?php if ($comments) { ?>
 			<h5><span class='readOrClose'>Read</span> comments</h5>
-		<?php } ?></div>
+		<?php } ?>
+		</div>
 		<?php if ($comments) { ?>
 		<div class="comments">
-				<?php foreach ($comments as $comment) {
-				if ($comment["reply_to"] == NULL) { ?>
+			<?php foreach ($comments as $comment) {
+			if ($comment["reply_to"] == NULL) { ?>
 			<div class="commentWrap">
 				<?php require __DIR__."/../partials/comment.block.php"; ?>
 				<div class="replies">
 				<?php foreach ($comments as $reply) {
 				if ($reply["reply_to"] == $comment["id"]) { ?>
 					<div class="replyWrap">
-						<?php require __DIR__."/../partials/reply.block.php"; ?>
+					<?php require __DIR__."/../partials/reply.block.php"; ?>
 					</div>
 				<?php }} ?>
 				</div>

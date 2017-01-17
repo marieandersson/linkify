@@ -1,6 +1,6 @@
 "use strict";
 
-// handle post request for new link post without page reload
+// handle post request for new link post
 const submitLinkButton = document.querySelector(".postLink");
 if (submitLinkButton) {
 	submitLinkButton.addEventListener("click", function(event) {
@@ -25,7 +25,7 @@ function handleNewPost() {
 		postData.append("url", url);
 		postData.append("description", description);
 		postData.append("postLink", "share");
-		// post to php script handling post requests for new posts
+		// fetch php script handling post requests for new posts
 		fetch("/app/posts/newpost.php",
 		{
 			method: "POST",

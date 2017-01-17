@@ -8,11 +8,11 @@
 				<?php // name only link if user is logged in
 				if (checkLogin($db)) { ?>
 					<a href="profile/<?=$reply['username']?>">
-				<?php }
-				echo ucfirst($reply["username"]);
-				if (checkLogin($db)) { ?>
+					<?php }
+					echo ucfirst($reply["username"]);
+					if (checkLogin($db)) { ?>
 					</a>
-					<?php } ?>
+				<?php } ?>
 				</span>
 				on <?=date('jS \of M H:i', strtotime($reply["published"]));  if ($reply["edited"]) { ?> (has been edited)<?php } ?>.
 			</p>

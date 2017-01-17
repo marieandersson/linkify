@@ -1,12 +1,14 @@
 "use strict";
 
 const saveReplyButtons = document.querySelectorAll(".replySubmit");
-saveReplyButtons.forEach(function(saveReplyButton) {
-	saveReplyButton.addEventListener("click", function(event) {
-		event.preventDefault();
-		handleReply(saveReplyButton);
+if (saveReplyButtons) {
+	saveReplyButtons.forEach(function(saveReplyButton) {
+		saveReplyButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			handleReply(saveReplyButton);
+		});
 	});
-});
+}
 
 function handleReply(saveReplyButton) {
 	let commentId = saveReplyButton.parentElement.parentElement.querySelector(".commentIdReply").value;
@@ -24,14 +26,14 @@ function handleReply(saveReplyButton) {
 		postData.append("postId", postId);
 		postData.append("commentId", commentId);
 		postData.append("replySubmit", "submit");
-		// post to the php script handling post requests for new comments
+		// fetch php script handling post requests for new comments
 		fetch("/app/posts/comments.php",
 		{
 			method: "POST",
 			body: postData,
 			credentials: "same-origin",
 		})
-		// response when php script have been executed
+		// response when php script has been executed
 		.then(function(response) {
 			// if error
 			if (!response.ok) {
@@ -58,7 +60,7 @@ function handleReply(saveReplyButton) {
 					}
 					commentWrap.querySelector(".replyFields").classList.remove("replyFieldsShow");
 					commentWrap.querySelector(".replyButton").innerHTML = "Reply to this.";
-					// add eventlistener to new reply
+					// add event listeners to new reply
 					let editCommentButton = newReply.querySelector(".editCommentButton");
 					editCommentButton.addEventListener("click", function(event) {
 						event.preventDefault();

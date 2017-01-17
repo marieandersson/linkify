@@ -1,10 +1,10 @@
 <?php
-	$pageTitle = (isset($pageTitle)) ? $pageTitle:"Linkify";
-	$error = $_SESSION["error"] ?? "";
-	$message = $_SESSION["message"] ?? "";
-	if (checkLogin($db)) {
-		$user = getUserInfo($db);
-	}
+$pageTitle = (isset($pageTitle)) ? $pageTitle:"Linkify";
+$error = $_SESSION["error"] ?? "";
+$message = $_SESSION["message"] ?? "";
+if (checkLogin($db)) {
+	$user = getUserInfo($db);
+}
 ?>
 
 <!DOCTYPE html>

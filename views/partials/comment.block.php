@@ -5,7 +5,7 @@
 			<p class="commentPublished">
 				Posted by
 				<span class="commentAuthor">
-				<?php // name only link if user is logged in
+				<?php // username only a link if user is logged in
 				if (checkLogin($db)) { ?>
 					<a href="profile/<?=$comment['username']?>">
 				<?php }

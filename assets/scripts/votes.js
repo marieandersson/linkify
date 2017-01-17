@@ -4,11 +4,13 @@
 const upVoteButtons = document.querySelectorAll(".up");
 upVoteButtons.forEach (function(upVoteButton) {
 	if (upVoteButton) {
+		// set color on arrows on already voted posts
 		setColorOnVoted(upVoteButton, "up");
 		upVoteButton.addEventListener("click", function(event) {
 			event.preventDefault();
 			let isUserLoggedIn = upVoteButton.parentElement.querySelector(".loggedInUser").value;
 			if (isUserLoggedIn == "noLoggedInUser") {
+				// user can not vote if not logged in, open log in form
 				document.body.classList.add("navigationOpen");
 			} else {
 				handleVote(upVoteButton, "up", 1);
@@ -21,11 +23,13 @@ upVoteButtons.forEach (function(upVoteButton) {
 const downVoteButtons = document.querySelectorAll(".down");
 downVoteButtons.forEach (function(downVoteButton) {
 	if (downVoteButton) {
+		// set color on arrows on already voted posts
 		setColorOnVoted(downVoteButton, "down");
 		downVoteButton.addEventListener("click", function(event) {
 			event.preventDefault();
 			let isUserLoggedIn = downVoteButton.parentElement.querySelector(".loggedInUser").value;
 			if (isUserLoggedIn == "noLoggedInUser") {
+				// user can not vote if not logged in, open log in form
 				document.body.classList.add("navigationOpen");
 			} else {
 				handleVote(downVoteButton, "down", -1);
@@ -62,7 +66,7 @@ function handleVote(voteButton, vote, number) {
 		postData.append("postIdForVote", postId);
 		postData.append("postUserIdForVote", postUserId);
 		postData.append(vote, "vote");
-		// post to php script handling votes
+		// fetch php script handling votes
 		fetch("app/posts/votes.php",
 		{
 			method: "POST",
@@ -82,6 +86,7 @@ function handleVote(voteButton, vote, number) {
 					//remove error
 					errorMessage.classList.remove("showError");
 					let votes = voteButton.parentElement.querySelector(".votes");
+					// update vote count and color on vote arrow
 					if (result == "vote replaced") {
 						votes.innerHTML = Number(votes.innerHTML) + number + number;
 						if (number == -1) {

@@ -58,10 +58,19 @@ function loadMorePosts(showMore) {
 					// add event listners
 					addPostEventListeners(post);
 					addCommentEventListeners(post);
+					// even listners on authentication page
 					let join = post.querySelector(".joinAndDiscuss");
 					if (join) {
 						join.addEventListener("click", function(event) {
 							document.body.classList.toggle("navigationOpen");
+						});
+					}
+					let notLoggedIn = document.querySelectorAll(".notLoggedIn");
+					if (notLoggedIn) {
+						notLoggedIn.forEach(function(arrow) {
+							arrow.addEventListener("click", function(event) {
+								document.body.classList.add("navigationOpen");
+							})
 						});
 					}
 					// remove temp class on posts after fade in is completed
