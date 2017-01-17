@@ -16,7 +16,7 @@
 	<div class="postWrap">
 		<div class="editMessage"><?php if(isset($editMessage)) echo $editMessage; ?></div>
 		<div class="postHeadingWrap">
-			<h4><a href="<?=$post["url"]?>"><?=$post["subject"]?></a></h4>
+			<h4><a href="<?=$post["url"]?>" target="_blank"><?=$post["subject"]?></a></h4>
 			<!-- edit, delete  -->
 			<div class="postButtons">
 				<?php if (checkLogin($db) && $post["user_id"] == $_SESSION["login"]["id"]) { ?>
