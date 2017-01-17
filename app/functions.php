@@ -15,7 +15,8 @@ function validateCookie($db) {
 
 	$getCookieFromDb = "SELECT user_id FROM cookies
   WHERE user_id = '{$userId}' AND first = '{$first}' AND second = '{$second}' AND expire >= NOW()";
-	$getCookieStatement = $db->query($getCookieFromDb);
+
+	$getCookieStatement = queryToDb($db, $getCookieFromDb);
 
 	if ($getCookieStatement->rowCount() > 0 ) {
      return $userId;
@@ -57,7 +58,7 @@ function validateNewPostFields($url) {
 function getUserInfo($db) {
 	$id = $_SESSION["login"]["id"];
 	$getUserInfoQuery = "SELECT * FROM users WHERE id = '{$id}' LIMIT 1";
-	$getUserInfoStatement = $db->query($getUserInfoQuery);
+	$getUserInfoStatement = queryToDb($db, $getUserInfoQuery);
 	$userInfo = $getUserInfoStatement->fetch(PDO::FETCH_ASSOC);
 	return $userInfo;
 }
@@ -66,7 +67,7 @@ function getPosts($db, $order, $offset, $limit, $userId = "IS NOT NULL") {
 	$getPostsQuery = "SELECT posts.id, posts.description, posts.subject, posts.url, posts.published AS published, posts.user_id,
 	posts.edited, users.name, users.username, SUM(votes.vote) AS votes  FROM posts INNER JOIN users ON posts.user_id = users.id
 	LEFT JOIN votes ON posts.id = votes.post_id WHERE users.id {$userId} GROUP BY posts.id ORDER BY {$order} DESC LIMIT {$offset}, {$limit}";
-	$getPostsStatement = $db->query($getPostsQuery);
+	$getPostsStatement = queryToDb($db, $getPostsQuery);
 
 	if ($getPostsStatement->rowCount() == 0 ) {
      return NULL;
@@ -87,7 +88,7 @@ function checkIfLastPost($posts, $limit) {
 function getComments($db, $postId) {
 	$getCommentsQuery = "SELECT comments.id, comments.user_id, comments.comment, comments.published, comments.reply_to, comments.edited,
 	users.name, users.username FROM comments INNER JOIN users ON comments.user_id = users.id WHERE comments.post_id = '{$postId}' ORDER BY comments.published DESC";
-	$getCommentsStatement = $db->query($getCommentsQuery);
+	$getCommentsStatement = queryToDb($db, $getCommentsQuery);
 
 	if ($getCommentsStatement->rowCount() == 0 ) {
 		 return NULL;
@@ -98,7 +99,7 @@ function getComments($db, $postId) {
 
 function countVotes($db, $postId) {
 	$countVotesQuery = "SELECT SUM(vote) AS sum_votes FROM votes WHERE post_id = '{$postId}'";
-	$countVotesStatement = $db->query($countVotesQuery);
+	$countVotesStatement = queryToDb($db, $countVotesQuery);
 
 	$votes = $countVotesStatement->fetch(PDO::FETCH_ASSOC);
 	return $votes;
@@ -106,18 +107,7 @@ function countVotes($db, $postId) {
 // get info for other users profile pages
 function getProfileInfo($db, $profileUsername) {
 	$getProfileInfoQuery = "SELECT * FROM users WHERE username = '{$profileUsername}' LIMIT 1";
-	$getProfileInfoStatement = $db->query($getProfileInfoQuery);
+	$getProfileInfoStatement = queryToDb($db, $getProfileInfoQuery);
 	$profileInfo = $getProfileInfoStatement->fetch(PDO::FETCH_ASSOC);
 	return $profileInfo;
-}
-
-function prepareAndExecute($db, $query, $arguments) {
-	try {
-		$insertStatement = $db->prepare($query);
-		return $insertStatement->execute($arguments);
-
-	} catch (PDOException $exception) {
-		var_dump($exeption->getMessage());
-		die();
-	}
 }

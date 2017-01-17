@@ -9,3 +9,24 @@ try {
 } catch (PDOException $connectionException) {
   echo "Connection failed: ", $connectionException->getMessage();
 }
+
+function prepareAndExecute($db, $query, $arguments) {
+	try {
+		$insertStatement = $db->prepare($query);
+		return $insertStatement->execute($arguments);
+
+	} catch (PDOException $exception) {
+		var_dump($exeption->getMessage());
+		die();
+	}
+}
+
+function queryToDb($db, $query) {
+	try {
+		return $queryStatement = $db->query($query);
+
+	} catch (PDOException $exception) {
+		var_dump($exeption->getMessage());
+		die();
+	}
+}

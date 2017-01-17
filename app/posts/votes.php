@@ -3,12 +3,12 @@ require __DIR__."/../../autoload.php";
 
 function getVote($db) {
 	$getVoteQuery = "SELECT * FROM votes WHERE user_id = '{$_SESSION["login"]["id"]}' AND post_id = '{$_POST["postIdForVote"]}' LIMIT 1";
-	$getVoteStatement = $db->query($getVoteQuery);
+	$votes = queryToDb($db, $getVoteQuery);
 
-	if ($getVoteStatement->rowCount() == 0 ) {
+	if ($votes->rowCount() == 0 ) {
      return NULL;
   }
-	$vote = $getVoteStatement->fetchAll(PDO::FETCH_ASSOC);
+	$vote = $votes->fetchAll(PDO::FETCH_ASSOC);
 	return $vote;
 }
 
