@@ -1,7 +1,7 @@
 <?php
 require __DIR__."/../../autoload.php";
 
-//validation error codes defined as constants
+//validation error codes
 define("REG_SUCCESS", "0");
 define("MISSING_INPUT", "1");
 define("INVALID_EMAIL", "2");
@@ -16,29 +16,29 @@ function validateRegistrationFields () {
       return MISSING_INPUT;
     }
   }
-  // Validate email
+  // validate email
   if (!filter_var($_POST["emailReg"], FILTER_VALIDATE_EMAIL)) {
     return INVALID_EMAIL;
   }
-  // Validation to check if terms and conditions are accepted
+  // check if terms and conditions are accepted
   if(!isset($_POST["terms"])) {
     return TERMS_NOT_ACCEPTED;
   }
   return REG_SUCCESS;
 }
 
-// Check if email or username is already registered
+// check if email or username is already registered
 function checkEmailAndUsername($db, $email, $username) {
 	$checkEmailQuery = "SELECT email FROM users WHERE email = '{$email}'";
-	$checkEmailStatement = $db->query($checkEmailQuery);
-	// if rows found in query
+	$checkEmailStatement = queryToDb($db, $checkEmailQuery);
+
 	if ($checkEmailStatement->rowCount() > 0 ) {
      return EMAIL_ALREADY_REG;
   }
 	$checkUsernameQuery = "SELECT username FROM users WHERE username = '{$username}'";
 
-	$checkUsernameStatement = $db->query($checkUsernameQuery);
-	// if rows found in query
+	$checkUsernameStatement = queryToDb($db, $checkUsernameQuery);
+
 	if ($checkUsernameStatement->rowCount() > 0 ) {
      return USERNAME_TAKEN;
   }
@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	  foreach($_POST as $input=>$value) {
 	    $_POST[$input] = escapeInput($value);
 	  }
-	  // call function to validate input
+	  // validate input
 	  $result = validateRegistrationFields();
 
 	  // output error messages if something is wrong
@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			// encrypt password
 	    $password = password_hash($_POST["passwordReg"], PASSWORD_BCRYPT);
 
-	    // call function to check if email or username already is registred
+	    // check if email or username already is registred
 	    $result = checkEmailAndUsername($db, $email, $username);
 
 	    if ($result ==  EMAIL_ALREADY_REG) {
@@ -80,9 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	    // store new user data in database
 			$insertUserIntoDb = "INSERT INTO users (name, username, email, password)
 			VALUES (:name, :username, :email, :password)";
-
-			$insertUserStatement = $db->prepare($insertUserIntoDb);
-			$insertUserStatement->execute([
+			prepareAndExecute($db, $insertUserIntoDb, [
 				":name" => $fullName,
 				":username" => $username,
 				":email" => $email,
