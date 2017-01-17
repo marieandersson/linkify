@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Värd: localhost:8889
--- Tid vid skapande: 17 jan 2017 kl 14:57
+-- Tid vid skapande: 17 jan 2017 kl 22:15
 -- Serverversion: 5.6.33
 -- PHP-version: 7.0.12
 
@@ -27,11 +27,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `comments` (
-  `id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `comment` varchar(255) NOT NULL,
   `published` datetime NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `post_id` int(11) NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL,
+  `post_id` int(11) UNSIGNED NOT NULL,
   `edited` tinyint(1) NOT NULL,
   `edit_date` datetime NOT NULL,
   `reply_to` int(11) DEFAULT NULL
@@ -42,7 +42,12 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `comment`, `published`, `user_id`, `post_id`, `edited`, `edit_date`, `reply_to`) VALUES
-(251, 'Nice!', '2017-01-03 22:31:42', 3, 188, 0, '0000-00-00 00:00:00', NULL);
+(251, 'Nice!', '2017-01-03 22:31:42', 3, 188, 0, '0000-00-00 00:00:00', NULL),
+(340, 'I like this link!', '2017-01-17 20:00:26', 1, 189, 0, '0000-00-00 00:00:00', NULL),
+(341, 'Nice!', '2017-01-17 20:00:51', 1, 258, 1, '2017-01-17 20:45:20', NULL),
+(342, 'Thanks :)', '2017-01-17 20:01:30', 4, 258, 0, '0000-00-00 00:00:00', 341),
+(353, 'Interesting!', '2017-01-17 21:33:35', 1, 256, 1, '2017-01-17 21:33:51', NULL),
+(354, 'I think so to!', '2017-01-17 21:35:21', 1, 188, 0, '0000-00-00 00:00:00', 251);
 
 -- --------------------------------------------------------
 
@@ -51,32 +56,12 @@ INSERT INTO `comments` (`id`, `comment`, `published`, `user_id`, `post_id`, `edi
 --
 
 CREATE TABLE `cookies` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL,
   `expire` datetime NOT NULL,
   `first` varchar(128) NOT NULL,
   `second` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumpning av Data i tabell `cookies`
---
-
-INSERT INTO `cookies` (`id`, `user_id`, `expire`, `first`, `second`) VALUES
-(229, 1, '2017-02-15 20:47:19', 'd093b7ea584d480a4d1b47d4a685d684af18e431bf954c065015511163e5303eb77a304048b5e4bbea40f9b869f7058d727926b84dbb72c11b199d9014d9ca4b', '21ba6b5de8466903d9141a3aba367d34c47beff94170de5daec4bf5c492ede9f18fc34f50d453454c82b3075c50d37c398d5dcf0d47fcd877a6cb8527d050a49186703d88f40dd5222d37e730054ca649814cf3fe84f6b47b183271b7a87c62d0dc72c0fef53496615012f7573f8a517a61c5475a2e79165ff5d1115b4038ce8'),
-(230, 4, '2017-02-15 21:45:06', 'fab8a64f91446dc4051948636c566658b18b0105f839318dafca0e07d98958ecbbad399c8b4d1cbf6fe65a4b0a93d8ce74c2832caf16c2dc24ec318e4418593a', '6c39d95cab70a3ef20e65bfd17f3acb660f0d33f5d45b11dd4f71757b93992e4fca22cdb0138ba1c87015f12fcd5a84c39d55d9ba81c99527e9f391a32b34cf19af5ee6ab9cfa0f2008795ffc8c018fe985a8619aedb300aa13aec583c379b9f128201172e2d824167456b115f12f0fa69009fa1ef6275436c52158774595213'),
-(231, 6, '2017-02-15 22:10:15', 'f396a0f9a8b0ff4bea176884b3850a8157196a3d5a532b1bbf03414008303e5845192df02b86c0e78b802bc4d47f1a5137d42e2d715344be2aecc74b62a75e4b', 'a715899040af3aad0817352044fe629415468c59877503312fd9923b620227a28ebd8a14cc387034bfc9252d50a4faa4e51313dad30fc74bc705b7837c28dcb533deba0b02ff721648d7dca1f37f148e26366d7d2e0ff31e6d069aee9279fd900886dc2c576c9c822565802c3014f5bbf1d0a808ddf7fcac5d35f7ce73d3344a'),
-(232, 3, '2017-02-16 11:19:47', 'c23bfbe271f7447451b20cba107fd7eba5fe40f292dfcde6c151b4dfdcfc893848cd3582cd957d2aa05a0b75b86d139c6dfe5a7490e4d1d1a27114ac813a25b8', 'e5fc9e534c9044f38b6e932aeda09be1a62592f3a842662e4c9c68a3e7c88d3c6617708735740addc0f1462f424a6a4b00eea25ffe488c7964bb0b41c70a7bf0c57f7a5a0581e13a378f5c1af5d3b33d2de0c12663e920a5462712e1ffb7446546d301b17f41554488571be2fd54bae1f27c287d9dedc6bf5eb0e81f165e07e4'),
-(233, 4, '2017-02-16 11:29:26', '645775eedb0870f8abc40c53738e38280e4eaf4a836eec952cab00b2f98e86a3e16308085708b560c866e06f9e8c7e7a9048b858c50efca56a59a036d7a75540', '50fb679e4420248d2d59113f4c6158c9ea28dcdc7e991209039e63a1f77f6b2711a31eb496efe5dbf727258936593c4d1670ec7e4baa9d969a97d56481368a15c0c256b116301346e2ce512e0b4f6fd54d04b9ec69597a0240292b3d99b154831e917b5522f79c267b7bfdce5f11d4d773f2fc62a2cd5d4861b950d02e418043'),
-(234, 4, '2017-02-16 11:49:43', '2450862213d95480e187360966686ac90af8c3b775ece894b019ae0463098d753d41ce4bc27457f474a3176fed6d6088ff0ffe1b4045d633f01d3f4a4aa9f9f2', 'dc38962478edff5bbcf0a59a597ec46e91c78c65937034e8426ba365087267f02c3808a1783e0c5a3bb2fdcaeb74b91def1d957942b972e75bf307ecf71f8799822236f3f1a027c5ce2d9278baa00c61d25352e3d46213729d5d90bced0993de6b841645ad68a01a9f34d1b7763f41d08be46c18b73669c9046c8cac55000a1e'),
-(235, 1, '2017-02-16 11:50:08', '2b39135729370e9ad7b4f8cbb1867b5daedc890b214afc3b1244afc99e8fbe422a5ed42f88a881c9ee6caa60a7f9aaa883d71ef552528106433964619c0c3995', '3460d9b6a67dd29b5fb129c2d72794311e3af8ad3d672d367f3e7ca79bf868055aba4709c46d60d850cc7049295fb43576b04fd0a887c7e66204267f332f0bbc9041094e8d36a1afe2644011a078d26a678aa14d142c8cefd4617b3d183009926cab7e49c40159c3d9cee6f6942d01e157c38ab89e5e93a2083cadb98abba500'),
-(236, 1, '2017-02-16 13:33:56', '55bef351a2afd42973e9c1fa9a78f56960bd0f05f79cded106e2b2d04941c51d6401c7dfd2fe1710cb5e6b4d2cfac168de552736182682e94045aa0a242782d3', '3c034846ebf847d8417c2a331a2ad6a48744ebfe53bb5cee1998f3bb84f10fb95030096bfff96b1173a03b65c700e7d36c6daeb2560dd1f0aae2683be2d22aeb8dbb3fb4bd5202fc2acb3c8efd626eba78d65b2e02d03c4366d346726c0ff539b7f910ee6d4f4275fe7113b7d8caf95bb3398a4ace9c34c8f81ec87b9ad379b4'),
-(237, 1, '2017-02-16 13:35:49', 'd7cab10f49dc06940c0ef9d93a12a26afa3e45aa5bf8c7ba7d9ebc6e728d533839a112a63f67703218d66a72b203244416db24490424fce7b5d9298d8998cd0d', 'b8e4e63bae2e155b2e3bc707e7ec7607b313cd217060cad4f26a33a1de2f6fe792d2998fb755549bdf9cb0c50c891699c711a0dbe37493e2a726b48cbd3b859ba2056ba6647a237f11b5625818da480fa77f10ac8c3cd5f6026780c19761f5467e3753af132bf5eb06cefd890f37eda1ed519680962bd14063685676d360b977'),
-(238, 1, '2017-02-16 13:36:26', 'fd793b889b795c297704116e5c523f6b03c57663d3ccbdcc06c5d2e0011d27b9f848326fe8992fb6c27e17b177d3eac85dfd51a1902c29df3dbcb14a72ff54dd', '783c5e86761d400fe71bf5a6ca0f33fd3e434315c0736d73438549c275994cfa77c0069a3d0162be03993ae69d5311657222455a6b8d2c85ae1e599a80e59cbae3d51ebcfdf37d210ff9fa0fdfe3aa009cded49a4af9442be01f44e0e5df38e169704018e257ca71a8f4d6d0e44815a659dbdae701ce2085a725a91753cb189a'),
-(239, 1, '2017-02-16 13:43:25', 'e0997e995807d736a3fd44e1e63679ab96501f19d027b7ca0982e60949cb891130f7da34662dc0cd5d5a5eb6bf8d05dae9037d1afb8ab978054b486acb48876d', 'de8beb054e9499510aef74f1e02e06fe0b604a201240678afb58d407e5b6faa2e57cc4300907d1f4f25ec61360927c0570c4f75b957774b0dda928c7e836c5411fdaa4ca506a6be6ce564c697e14c329efb6bf26139b52ceefa70a5d5233640e6d9d3f6e30140f34b59650e872252afba25590cdda43afb30f7b7713993453a3'),
-(240, 1, '2017-02-16 13:44:54', 'eedab8024831f9df5e65ca5caa45fdfa8a0feec4026dd68bb77394b542da4f26f840ff00cd12b78399dda5464098121eeb00347afb778f978f063aa9def90368', 'e8b4fe8755e382396120152ff1a60c4afb392bdca629fcd3668075e74c85eee8957514936f1008afdf1dd0cc28a8fba0320ad74dbc2153f6e55b2978e039d83126a5a758ab0eb42c2e4eecc75d5679bda84832542dd58c646fb3b3a2954b45b44afcc86b0c7c27547c7ff0cf1653e695e7d2641a1b753d5ce1ece6caf887c2aa'),
-(241, 1, '2017-02-16 14:36:47', 'c834345a34f66e3669d3397193e666465369ec0ed915917498ade142e06de68e62df9a17fc7a98c7c8689fc7b12739cddecf522ee8d4d748fcda61a3af9bd03d', '7fa3f5ea80a46421b530259c07ad78d0343ab669e586b8a9f25bd5f713e6adb2117203121739540172e1c47d06262a2cf22427c6adcd6727baba008433c5ffc34118d9d972032104ff99a3a9b7889d072cfad2d52bae1137c5e7d75720150d8b2b6d48513ed4a5890e8bc767dc6d0d8d7bdbae7a5c04a2577183553f67c1b584'),
-(242, 1, '2017-02-16 14:39:15', '59b50cea4dbd4b5a74e9f42cee5cd86cbc329f3bc0c6c39cf8efcde8b3ee2b697e8144cc61aa9861245b877dd12091016594de61def0248ec3bdde911b752648', 'f8bfd96ff8d76088b29e6e0b565329313e629f3e43506cfb6a133a982e2eb0831007c4181c39612497641e7f335e2b40408aae30caf08853cbe2565c535d92ba8e1e36420bfbef1da22bbb081d9ff13b3610962e9d7562eaa12feb0aa2f8aaa3e9bd718b96c5986e2cdc38a90daafe5feda937b83152b77e9891bc84b646589b');
 
 -- --------------------------------------------------------
 
@@ -85,8 +70,8 @@ INSERT INTO `cookies` (`id`, `user_id`, `expire`, `first`, `second`) VALUES
 --
 
 CREATE TABLE `posts` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL,
   `subject` varchar(255) NOT NULL,
   `url` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
@@ -128,7 +113,7 @@ INSERT INTO `posts` (`id`, `user_id`, `subject`, `url`, `description`, `publishe
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -143,10 +128,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `about`, `avatar`) VALUES
 (1, 'Marie Eriksson', 'Marie', 'eriksson.km@gmail.com', '$2y$10$CTbprQw/pzKIaXhKbAC/zu2fzVELozBw8GYLLstu/Vio6SuuEQbn6', 'My name is Marie and this is my Linkify project.', '5874d973beece.jpg'),
-(2, 'Erica Glimsholt', 'ericaglimsholt', 'ericaglimsholt@hotmail.com', '$2y$10$xz6M/RWYVRqEWj0M1nEQcezkToh7Wkxy7qD71ttUX7yJYdJuXC4QC', NULL, NULL),
 (3, 'Andreas Andersson', 'andreas', 'andreas@herrandersson.se', '$2y$10$0Vby0PfinQDYcwsog264Ru.4y0pqALKCO7uM1MjKZ/pbb.Qdnp0ka', 'Hi! I\'m Andreas and I like to share all kinds of  links.', '586c186b9b35b.jpg'),
 (4, 'Leon Andersson', 'Leon', 'leon@herrandersson.se', '$2y$10$pc7eSaxDz7agAhOmBvBYROBYmtr3TuDnquF7y0JTUN.xCFO6rlcEm', NULL, NULL),
-(6, 'Holly Andersson', 'Holly', 'holly@herrandersson.se', '$2y$10$gMFyub4hvJ3bc/bgMrv7MuFpr3lFlEiuCAojeQKxZ0DQTnXuIjy42', NULL, NULL);
+(6, 'Holly Andersson', 'Holly', 'holly@herrandersson.se', '$2y$10$gMFyub4hvJ3bc/bgMrv7MuFpr3lFlEiuCAojeQKxZ0DQTnXuIjy42', 'My name is Holly and I\'m new to Linkify.', NULL);
 
 -- --------------------------------------------------------
 
@@ -155,9 +139,9 @@ INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `about`, `av
 --
 
 CREATE TABLE `votes` (
-  `id` int(11) NOT NULL,
-  `post_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
+  `post_id` int(11) UNSIGNED NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL,
   `vote` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -177,7 +161,10 @@ INSERT INTO `votes` (`id`, `post_id`, `user_id`, `vote`) VALUES
 (33, 247, 3, 1),
 (34, 247, 1, 1),
 (35, 258, 1, 1),
-(36, 257, 1, 1);
+(36, 257, 1, 1),
+(37, 251, 1, 1),
+(38, 256, 1, 1),
+(39, 258, 6, 1);
 
 --
 -- Index för dumpade tabeller
@@ -221,27 +208,27 @@ ALTER TABLE `votes`
 -- AUTO_INCREMENT för tabell `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=335;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=360;
 --
 -- AUTO_INCREMENT för tabell `cookies`
 --
 ALTER TABLE `cookies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=243;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=254;
 --
 -- AUTO_INCREMENT för tabell `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=262;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=270;
 --
 -- AUTO_INCREMENT för tabell `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT för tabell `votes`
 --
 ALTER TABLE `votes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
