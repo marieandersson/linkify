@@ -12,11 +12,11 @@ require __DIR__."/views/partials/header.php";
 		<div class="settingsWrap">
 			<div class="displayUserProfile displayUserSettings">
 				<figure>
-					<?php if ($user["avatar"] !== NULL) {  ?>
-						<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" alt="users profile avatar" />
-					<?php } else { ?>
-						<img src="/assets/images/profileicon.png" alt="users profile avatar" />
-					<?php } ?>
+				<?php if ($user["avatar"] !== NULL) {  ?>
+					<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" alt="users profile avatar" />
+				<?php } else { ?>
+					<img src="/assets/images/profileicon.png" alt="users profile avatar" />
+				<?php } ?>
 				</figure>
 				<h4><?=$user["name"]?></h4>
 				<h5>@<?=$user["username"]?></h5>
@@ -27,9 +27,9 @@ require __DIR__."/views/partials/header.php";
 
 				<form action="app/settings.php" method="post" class="settingsForm" enctype="multipart/form-data">
 					<?php if ($error) { ?>
-						<div class="settingsError">
-								<?= $error; ?>
-						</div>
+					<div class="settingsError">
+						<?= $error; ?>
+					</div>
 					<?php unset($_SESSION["error"]); } ?>
 					<div class="change">
 						<h3>Change username:</h3>
@@ -46,7 +46,6 @@ require __DIR__."/views/partials/header.php";
 						<input type="text" name="editFullName" value="<?=$user['name']?>">
 					</div>
 
-
 					<div class="change">
 						<h3>Change password:</h3>
 						<input type="password" name="editPassword" placeholder="Write new password..."></br>
@@ -55,18 +54,18 @@ require __DIR__."/views/partials/header.php";
 
 					<div class="change">
 						<h3>About me:</h3>
-							<textarea name="about"><?= $user["about"]?></textarea>
+						<textarea name="about"><?= $user["about"]?></textarea>
 					</div>
 
 					<div class="change">
 						<h3>Upload profile picture:</h3>
 						<input type="file" name="avatar" accept="image/png, image/jpeg">
 						<div class="placeholderAvatar">
-							<?php if ($user["avatar"] !== NULL) {  ?>
-								<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" alt="users current profile avatar" />
-							<?php } else { ?>
-								<img src="/assets/images/profileicon.png" alt="avatar placeholder" />
-							<?php } ?>
+						<?php if ($user["avatar"] !== NULL) {  ?>
+							<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" alt="users current profile avatar" />
+						<?php } else { ?>
+							<img src="/assets/images/profileicon.png" alt="avatar placeholder" />
+						<?php } ?>
 						</div>
 					</div>
 

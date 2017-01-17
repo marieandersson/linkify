@@ -23,10 +23,10 @@ require __DIR__."/views/partials/header.php";
 	</div>
 	<?php
 	// server side validation error message
-		if ($message) { ?>
-		<div class="message">
-			<?= $message; ?>
-		</div>
+	if ($message) { ?>
+	<div class="message">
+		<?= $message; ?>
+	</div>
 	<?php unset($_SESSION["message"]); } ?>
 
 	<div class="profileWrap">
@@ -35,11 +35,11 @@ require __DIR__."/views/partials/header.php";
 
 		<div class="displayUserProfile displayUserProfilePage">
 			<figure>
-				<?php if ($profile["avatar"] !== NULL) {  ?>
-					<img src="/assets/images/users/<?=$profile["id"]?>/<?=$profile["avatar"]?>" alt="users profile avatar"/>
-				<?php } else { ?>
-					<img src="/assets/images/profileicon.png" alt="users profile avatar" />
-				<?php } ?>
+			<?php if ($profile["avatar"] !== NULL) {  ?>
+				<img src="/assets/images/users/<?=$profile["id"]?>/<?=$profile["avatar"]?>" alt="users profile avatar"/>
+			<?php } else { ?>
+				<img src="/assets/images/profileicon.png" alt="users profile avatar" />
+			<?php } ?>
 			</figure>
 			<h4><?=$profile["name"]?></h4>
 			<h5>@<?=$profile["username"]?></h5>
@@ -49,23 +49,21 @@ require __DIR__."/views/partials/header.php";
 		<div class="postsOnProfile">
 
 			<div class="displayPosts">
-				<!-- check if any posts exists -->
-				<?php if ($posts) {
-					foreach ($posts as $post) { ?>
-						<div class="post">
-						<?php
-							require __DIR__."/views/partials/post.block.php";
-						?>
-						</div>
+			<!-- check if any posts exists -->
+			<?php if ($posts) {
+				foreach ($posts as $post) { ?>
+				<div class="post">
+					<?php require __DIR__."/views/partials/post.block.php"; ?>
+				</div>
 				<?php }} else { ?>
-					<div class="noPosts">
-						<h2>No links to show</h2>
-						<?php if ($profile["id"] == $_SESSION["login"]["id"]) { ?>
-						<p>You haven't shared any links yet. When you have, you'll see all of them here.</p>
-						<?php } else { ?>
-						<p><?=$profile["username"]?> hasn't shared anything quite yet.</p>
-						<?php } ?>
-					</div>
+				<div class="noPosts">
+					<h2>No links to show</h2>
+					<?php if ($profile["id"] == $_SESSION["login"]["id"]) { ?>
+					<p>You haven't shared any links yet. When you have, you'll see all of them here.</p>
+					<?php } else { ?>
+					<p><?=$profile["username"]?> hasn't shared anything quite yet.</p>
+					<?php } ?>
+				</div>
 				<?php } ?>
 			</div>
 			<?php if (!$lastPost) { ?>
@@ -76,8 +74,6 @@ require __DIR__."/views/partials/header.php";
 			<?php } ?>
 
 		</div>
-
-
 	</div>
 
 </div>
