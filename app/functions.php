@@ -37,19 +37,19 @@ function checkLogin($db) {
   return true;
 }
 
-// constants for validation of posts input
+// validation codes for post input
 define("POST_SUCCESS", "10");
 define("MISSING_POST_INPUT", "11");
 define("INVALID_URL", "12");
 
-function validateNewPostFields($url) {
+function validateNewPostFields() {
 	// check if all fields has input
 	foreach($_POST as $input=>$value) {
     if(empty($_POST[$input])) {
       return MISSING_POST_INPUT;
     }
   }
-	if (!filter_var($url, FILTER_VALIDATE_URL)) {
+	if (!filter_var($_POST["url"], FILTER_VALIDATE_URL)) {
     return INVALID_URL;
   }
 	return POST_SUCCESS;
@@ -86,8 +86,9 @@ function checkIfLastPost($posts, $limit) {
 }
 
 function getComments($db, $postId) {
-	$getCommentsQuery = "SELECT comments.id, comments.user_id, comments.comment, comments.published, comments.reply_to, comments.edited,
-	users.name, users.username FROM comments INNER JOIN users ON comments.user_id = users.id WHERE comments.post_id = '{$postId}' ORDER BY comments.published DESC";
+	$getCommentsQuery = "SELECT comments.id, comments.user_id, comments.comment, comments.published, comments.reply_to,
+	comments.edited, users.name, users.username FROM comments INNER JOIN users ON comments.user_id = users.id
+	WHERE comments.post_id = '{$postId}' ORDER BY comments.published DESC";
 	$getCommentsStatement = queryToDb($db, $getCommentsQuery);
 
 	if ($getCommentsStatement->rowCount() == 0 ) {

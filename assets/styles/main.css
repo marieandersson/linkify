@@ -842,6 +842,7 @@ header h1 {
 .settingsForm input[type="submit"]:hover {
 	background: var(--primaryColor);
 	color: #fff;
+	cursor: pointer;
 }
 .placeholderAvatar {
 	height: 100px;

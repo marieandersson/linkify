@@ -43,13 +43,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		// check if user already voted
 		$vote = getVote($db);
 		if ($vote) {
-			//if user already voted up
 			if ($vote[0]["vote"] == 1) {
 				http_response_code(406);
 				echo "You have already voted up on this link.";
 				exit();
 			}
-			// if user already voted down replace vote in database
+			// if user voted down earlier - replace vote
 			replaceVote($db, 1);
 			echo "vote replaced";
 			exit();
@@ -63,18 +62,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		// check if user already voted
 		$vote = getVote($db);
 		if ($vote) {
-			//if user already voted down
 			if ($vote[0]["vote"] == -1) {
 				http_response_code(406);
 				echo "You have already voted down on this link.";
 				exit();
 			}
-			// if user already voted up
+			// if user voted up earlier - replace vote
 			replaceVote($db, -1);
 			echo "vote replaced";
 			exit();
 		}
-		// if no vote - save down vote
+		// if no vote - save down vote in database
 		saveVote($db, -1);
 		echo "new vote saved";
 		exit();

@@ -20,7 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		foreach($_POST as $input=>$value) {
 	    $_POST[$input] = escapeInput($value);
 	  }
-		$result = validateNewPostFields($_POST["url"]);
+		// check if all fields has correct input
+		$result = validateNewPostFields();
 
 		if ($result == MISSING_POST_INPUT) {
 			http_response_code(406);
@@ -32,14 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			echo "Invalid url format.";
 			exit();
 		}
-		// save new post in database
 		saveNewPost($db);
 		// return new post to js response
 		$postId = $db->lastInsertId();
 		$getNewPostQuery = "SELECT posts.id, posts.description, posts.subject,
 		posts.url, posts.published, posts.edited, posts.user_id,	users.username FROM posts
 		INNER JOIN users ON posts.user_id = users.id WHERE posts.id = '{$postId}'";
-		$getNewPostStatement = $db->query($getNewPostQuery);
+		$getNewPostStatement = queryToDb($db, $getNewPostQuery);
 		$post = $getNewPostStatement->fetch(PDO::FETCH_ASSOC);
 		include(__DIR__."/../../views/partials/post.block.php");
 		http_response_code(200);

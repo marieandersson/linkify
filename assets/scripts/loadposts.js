@@ -30,7 +30,7 @@ function loadMorePosts(showMore) {
 	postData.append("offset", offset);
 	postData.append("limit", limit);
 	postData.append("order", order);
-	postData.append("userId", userId);
+	postData.append("possUserId", userId);
 
 	fetch("/app/posts/loadposts.php",
 	{

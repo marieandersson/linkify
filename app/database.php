@@ -9,7 +9,7 @@ try {
 } catch (PDOException $connectionException) {
   echo "Connection failed: ", $connectionException->getMessage();
 }
-
+// insert data
 function prepareAndExecute($db, $query, $arguments) {
 	try {
 		$insertStatement = $db->prepare($query);
@@ -20,7 +20,7 @@ function prepareAndExecute($db, $query, $arguments) {
 		die();
 	}
 }
-
+// get data
 function queryToDb($db, $query) {
 	try {
 		return $queryStatement = $db->query($query);
