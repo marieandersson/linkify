@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	    $_POST[$input] = escapeInput($value);
 	  }
 		// check if all fields has correct input
-		$result = validateNewPostFields();
+		$result = validateNewPostFields($_POST["url"]);
 
 		if ($result == MISSING_POST_INPUT) {
 			http_response_code(406);

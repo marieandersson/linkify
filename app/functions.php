@@ -42,14 +42,14 @@ define("POST_SUCCESS", "10");
 define("MISSING_POST_INPUT", "11");
 define("INVALID_URL", "12");
 
-function validateNewPostFields() {
+function validateNewPostFields($url) {
 	// check if all fields has input
 	foreach($_POST as $input=>$value) {
     if(empty($_POST[$input])) {
       return MISSING_POST_INPUT;
     }
   }
-	if (!filter_var($_POST["url"], FILTER_VALIDATE_URL)) {
+	if (!filter_var($url, FILTER_VALIDATE_URL)) {
     return INVALID_URL;
   }
 	return POST_SUCCESS;
