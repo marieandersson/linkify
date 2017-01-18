@@ -53,6 +53,10 @@ function handleNewPost() {
 					newPost.classList.add("fadeInPost");
 					let allPosts = document.querySelector(".displayPosts");
 					allPosts.insertBefore(newPost, allPosts.firstChild);
+					let noPosts = document.querySelector(".noPosts");
+					if (noPosts) {
+						noPosts.remove();
+					}
 					// add event listeners to new post
 					addPostEventListeners(newPost);
 				});
