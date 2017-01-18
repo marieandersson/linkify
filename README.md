@@ -5,7 +5,7 @@ Linkify is a Reddit clone where you can share links, comment on shared links and
 ## Install
 - Clone [this repo](https://git@github.com:marieeriksson/linkify.git) to your computer.
 - Create a database and import [the sql backup file](https://github.com/marieeriksson/linkify/tree/master/backups).
-- Open app/database.php and set up your preferences for the database connection: username, password and connection string.
+- Open **app/database.php** and set up your preferences for the database connection: username, password and connection string.
 >'mysql:host=localhost;port=**$yourport**;dbname=**$yourdbname**;charset=utf8'.
 
 - Set up a local server for the repos root. [MAMP](https://www.mamp.info/en/) is easy to use for this purpose.  
