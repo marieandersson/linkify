@@ -2,10 +2,6 @@
 require __DIR__."/../../autoload.php";
 
 function deletePost($db) {
-	$deletePostInDb = "DELETE FROM posts WHERE id = :postId";
-	prepareAndExecute($db, $deletePostInDb, [
-		":postId" => $_POST["postId"],
-	]);
 	// delete comments connected to post
 	$deletePostsCommentsInDb = "DELETE FROM comments WHERE post_id = :postId";
 	prepareAndExecute($db, $deletePostsCommentsInDb, [
@@ -14,6 +10,10 @@ function deletePost($db) {
 	// delete votes connected to post
 	$deletePostsVotesInDb = "DELETE FROM votes WHERE post_id = :postId";
 	prepareAndExecute($db, $deletePostsVotesInDb, [
+		":postId" => $_POST["postId"],
+	]);
+	$deletePostInDb = "DELETE FROM posts WHERE id = :postId";
+	prepareAndExecute($db, $deletePostInDb, [
 		":postId" => $_POST["postId"],
 	]);
 }

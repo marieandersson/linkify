@@ -1,7 +1,7 @@
 <?php
 
 // conncetion to database
-$connectionString = "mysql:host=localhost;port=8889;dbname=linkifycopy;charset=utf8";
+$connectionString = "mysql:host=localhost;port=8889;dbname=linkify;charset=utf8";
 $user = "admin";
 $password = "secret";
 try {

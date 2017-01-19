@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Värd: localhost:8889
--- Tid vid skapande: 17 jan 2017 kl 22:15
+-- Tid vid skapande: 19 jan 2017 kl 08:36
 -- Serverversion: 5.6.33
 -- PHP-version: 7.0.12
 
@@ -47,7 +47,8 @@ INSERT INTO `comments` (`id`, `comment`, `published`, `user_id`, `post_id`, `edi
 (341, 'Nice!', '2017-01-17 20:00:51', 1, 258, 1, '2017-01-17 20:45:20', NULL),
 (342, 'Thanks :)', '2017-01-17 20:01:30', 4, 258, 0, '0000-00-00 00:00:00', 341),
 (353, 'Interesting!', '2017-01-17 21:33:35', 1, 256, 1, '2017-01-17 21:33:51', NULL),
-(354, 'I think so to!', '2017-01-17 21:35:21', 1, 188, 0, '0000-00-00 00:00:00', 251);
+(354, 'I think so to!', '2017-01-17 21:35:21', 1, 188, 0, '0000-00-00 00:00:00', 251),
+(361, 'hej', '2017-01-18 23:07:31', 1, 189, 0, '0000-00-00 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -62,6 +63,13 @@ CREATE TABLE `cookies` (
   `first` varchar(128) NOT NULL,
   `second` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumpning av Data i tabell `cookies`
+--
+
+INSERT INTO `cookies` (`id`, `user_id`, `expire`, `first`, `second`) VALUES
+(254, 1, '2017-02-17 08:41:37', 'd3f80c6fc8b41390e12734aa92c513b7a6641f69c89bb47078f706a26c99f560160c76dbbe178e632363ca46bb7e54183ca2f368d50ce321c75e339fda7830a2', 'f5e11905ce68ce173fb6d8805e3355e8291bceff28e57ddc41d504156163244a286412954c0ce514e669561d86516f879d35bb2f09ee3a9b272682dfdd9117c56f0b79c3d18e0e655bedd752bed60a379fc2bba997fe350d28ef45a1031598df71c4e160a3569324211cae65dd990f7c32d8dd2a26eb39883d7c3f9a870aed43');
 
 -- --------------------------------------------------------
 
@@ -92,7 +100,7 @@ INSERT INTO `posts` (`id`, `user_id`, `subject`, `url`, `description`, `publishe
 (243, 1, 'Master web dev with these 9,985 weird tricks', 'https://hackernoon.com/master-web-development-with-these-9-985-weird-tricks-77c71d1d96f3#.2bdg2hu1o', 'Ladies and gentleman, I would like to introduce you to Know It All, a tool to help you discover what you don’t yet know about web development.', '2017-01-16 11:15:43', 1, '2017-01-16 11:15:54'),
 (244, 6, 'The best new portfolio sites', 'http://www.webdesignerdepot.com/2017/01/the-best-new-portfolio-sites-january-2017/', 'Start the year right by ignoring your resolutions, and focusing on this latest installment of awesome portfolios.', '2017-01-16 13:51:58', NULL, '0000-00-00 00:00:00'),
 (245, 3, '30 days vanilla JS coding challange', 'https://javascript30.com/', 'Bulid 30 things in 30 days with 30 tutorials', '2017-01-16 20:15:00', NULL, '0000-00-00 00:00:00'),
-(246, 1, 'Writing HTML with accessibility in mind', 'https://medium.com/@matuzo/writing-html-with-accessibility-in-mind-a62026493412#.8hqitlmwj', 'An introduction to web accessibility. Tips on how to improve your markup and provide users with more and betters ways to navigate and interact with your site.', '2017-01-16 21:27:39', NULL, '0000-00-00 00:00:00'),
+(246, 1, 'Writing HTML with accessibility in mind.', 'https://medium.com/@matuzo/writing-html-with-accessibility-in-mind-a62026493412#.8hqitlmwj', 'An introduction to web accessibility. Tips on how to improve your markup and provide users with more and betters ways to navigate and interact with your site.', '2017-01-16 21:27:39', 1, '2017-01-18 22:22:27'),
 (247, 4, '12 UX rules every designer should know', 'http://www.webdesignerdepot.com/2016/12/26-ux-rules-every-designer-should-know/', 'UX has a huge impact on what web designers do. You can create the best design in the world, but it won’t succeed if it’s not usable.', '2017-01-16 21:51:06', NULL, '0000-00-00 00:00:00'),
 (248, 4, 'Tilt hover effects', 'https://tympanus.net/codrops/2016/11/23/tilt-hover-effects/', 'Some ideas for hover animations with a fancy tilt effect.', '2017-01-16 22:09:02', NULL, '0000-00-00 00:00:00'),
 (249, 6, '100+ Awesome Web Development Tools and Resources', 'https://www.keycdn.com/blog/web-development-tools/', 'A comprehensive list of web development tools and resources that can help you be more productive, stay informed, and become a better developer.', '2017-01-16 22:12:29', NULL, '0000-00-00 00:00:00'),
@@ -130,7 +138,8 @@ INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `about`, `av
 (1, 'Marie Eriksson', 'Marie', 'eriksson.km@gmail.com', '$2y$10$CTbprQw/pzKIaXhKbAC/zu2fzVELozBw8GYLLstu/Vio6SuuEQbn6', 'My name is Marie and this is my Linkify project.', '5874d973beece.jpg'),
 (3, 'Andreas Andersson', 'andreas', 'andreas@herrandersson.se', '$2y$10$0Vby0PfinQDYcwsog264Ru.4y0pqALKCO7uM1MjKZ/pbb.Qdnp0ka', 'Hi! I\'m Andreas and I like to share all kinds of  links.', '586c186b9b35b.jpg'),
 (4, 'Leon Andersson', 'Leon', 'leon@herrandersson.se', '$2y$10$pc7eSaxDz7agAhOmBvBYROBYmtr3TuDnquF7y0JTUN.xCFO6rlcEm', NULL, NULL),
-(6, 'Holly Andersson', 'Holly', 'holly@herrandersson.se', '$2y$10$gMFyub4hvJ3bc/bgMrv7MuFpr3lFlEiuCAojeQKxZ0DQTnXuIjy42', 'My name is Holly and I\'m new to Linkify.', NULL);
+(6, 'Holly Andersson', 'Holly', 'holly@herrandersson.se', '$2y$10$gMFyub4hvJ3bc/bgMrv7MuFpr3lFlEiuCAojeQKxZ0DQTnXuIjy42', 'My name is Holly and I\'m new to Linkify.', NULL),
+(7, 'Maria Eriksson', 'Maria', 'maria@eriksson.com', '$2y$10$X5otisQHWUqcbK2Sg1N5m.NlTLs993o5v6tlnXrYvU6GTdsFSqJGS', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -174,19 +183,23 @@ INSERT INTO `votes` (`id`, `post_id`, `user_id`, `vote`) VALUES
 -- Index för tabell `comments`
 --
 ALTER TABLE `comments`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `post_id` (`post_id`);
 
 --
 -- Index för tabell `cookies`
 --
 ALTER TABLE `cookies`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Index för tabell `posts`
 --
 ALTER TABLE `posts`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Index för tabell `users`
@@ -198,7 +211,9 @@ ALTER TABLE `users`
 -- Index för tabell `votes`
 --
 ALTER TABLE `votes`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `post_id` (`post_id`);
 
 --
 -- AUTO_INCREMENT för dumpade tabeller
@@ -208,27 +223,57 @@ ALTER TABLE `votes`
 -- AUTO_INCREMENT för tabell `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=360;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=377;
 --
 -- AUTO_INCREMENT för tabell `cookies`
 --
 ALTER TABLE `cookies`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=254;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=261;
 --
 -- AUTO_INCREMENT för tabell `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=270;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=271;
 --
 -- AUTO_INCREMENT för tabell `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT för tabell `votes`
 --
 ALTER TABLE `votes`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+--
+-- Restriktioner för dumpade tabeller
+--
+
+--
+-- Restriktioner för tabell `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`);
+
+--
+-- Restriktioner för tabell `cookies`
+--
+ALTER TABLE `cookies`
+  ADD CONSTRAINT `cookies_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Restriktioner för tabell `posts`
+--
+ALTER TABLE `posts`
+  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Restriktioner för tabell `votes`
+--
+ALTER TABLE `votes`
+  ADD CONSTRAINT `votes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `votes_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
