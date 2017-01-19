@@ -78,8 +78,8 @@
 		<?php if (checkLogin($db)) { ?>
 		<form action="app/posts/comments.php" method="post" class="commentForm">
 			<div class="inputComment">
-				<input type="hidden" name="postId" value="<?=$post["id"]?>">
-				<input type="text" name="comment" placeholder="Say something about this...">
+				<input type="hidden" name="postId" class="postId" value="<?=$post["id"]?>">
+				<input type="text" name="comment" class="commentInputField" placeholder="Say something about this...">
 				<input type="submit" name="commentPost" value="Submit" class="commentPost">
 			</div>
 			<!-- user only able to edit or delete own posts -->

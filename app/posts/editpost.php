@@ -16,7 +16,6 @@ function deletePost($db) {
 	prepareAndExecute($db, $deletePostsVotesInDb, [
 		":postId" => $_POST["postId"],
 	]);
-
 }
 
 function editPost($db) {

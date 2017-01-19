@@ -15,7 +15,6 @@ function handleReply(saveReplyButton) {
 	let postId = saveReplyButton.parentElement.parentElement.querySelector(".postIdReply").value;
 	let comment = saveReplyButton.parentElement.parentElement.querySelector(".replyFields input[name=comment]").value;
 	let errorMessage = document.querySelector(".jsMessage");
-
 	if (comment == "") {
 		errorMessage.innerHTML = "Write a comment before posting.";
 		errorMessage.classList.add("showError");

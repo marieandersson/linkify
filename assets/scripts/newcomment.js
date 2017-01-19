@@ -12,7 +12,7 @@ if (commentPostButtons) {
 
 function handleCommentPost(commentButton) {
 	let comment = commentButton.parentElement.querySelector(".inputComment input[name=comment]").value;
-	let postId = commentButton.parentElement.querySelector(".inputComment input[name=postId]").value;
+	let postId = commentButton.parentElement.querySelector(".postId").value;
 	let errorMessage = document.querySelector(".jsMessage");
 
 	if (comment == "") {

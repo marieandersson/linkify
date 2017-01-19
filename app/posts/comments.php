@@ -58,7 +58,7 @@ function handleSubmits($db) {
 		WHERE comments.id = '{$commentId}' AND comments.post_id = '{$_POST["postId"]}'";
 		$getNewCommentStatement = queryToDb($db, $getNewCommentQuery);
 		$comment = $getNewCommentStatement->fetch(PDO::FETCH_ASSOC);
-
+		$post["id"] = $_POST["postId"];
 		include(__DIR__."/../../views/partials/comment.block.php");
 		http_response_code(200);
 	}
