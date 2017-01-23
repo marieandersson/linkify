@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		// update username
 		if(!empty($_POST["editUsername"]) && $userInfo["username"] !== $_POST["editUsername"]) {
 			updateUser($db, $userInfo["id"], $_POST["editUsername"], "username");
+			$_SESSION["login"]["username"] = $_POST["editUsername"];
 		}
 		//update email
 		if(!empty($_POST["editEmail"]) && $userInfo["email"] !== $_POST["editEmail"]) {
