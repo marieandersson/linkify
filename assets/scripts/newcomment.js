@@ -11,6 +11,7 @@ if (commentPostButtons) {
 }
 
 function handleCommentPost(commentButton) {
+	commentButton.setAttribute("disabled", "true");
 	let comment = commentButton.parentElement.querySelector(".inputComment input[name=comment]").value;
 	let postId = commentButton.parentElement.querySelector(".postId").value;
 	let errorMessage = document.querySelector(".jsMessage");
@@ -18,6 +19,7 @@ function handleCommentPost(commentButton) {
 	if (comment == "") {
 		errorMessage.innerHTML = "Write a comment before posting.";
 		errorMessage.classList.add("showError");
+		commentButton.removeAttribute("disabled");
 	} else {
 		// put form input in object
 		let postData = new FormData();
@@ -33,6 +35,7 @@ function handleCommentPost(commentButton) {
 		})
 		// response when php script have been executed
 		.then(function(response) {
+			commentButton.removeAttribute("disabled");
 			// if error
 			if (!response.ok) {
 				return response.text().then(function (error) {

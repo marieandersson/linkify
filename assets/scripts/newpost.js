@@ -5,11 +5,12 @@ const submitLinkButton = document.querySelector(".postLink");
 if (submitLinkButton) {
 	submitLinkButton.addEventListener("click", function(event) {
 		event.preventDefault();
-		handleNewPost();
+		handleNewPost(submitLinkButton);
 	});
 }
 
-function handleNewPost() {
+function handleNewPost(submitLinkButton) {
+	submitLinkButton.setAttribute("disabled", "true");
 	let subject = document.querySelector(".newPostFields input[name=subject]").value;
 	let url = document.querySelector(".newPostFields input[name=url]").value;
 	let description = document.querySelector(".newPostFields input[name=description]").value;
@@ -18,6 +19,7 @@ function handleNewPost() {
 	if (subject == "" || url == "" || description == "") {
 		errorMessage.innerHTML = "Please fill out all fields.";
 		errorMessage.classList.add("showError");
+		submitLinkButton.removeAttribute("disabled");
 	} else {
 		// put form input in object
 		let postData = new FormData();
@@ -34,6 +36,7 @@ function handleNewPost() {
 		})
 		// response after php script have been executed
 		.then(function(response) {
+			submitLinkButton.removeAttribute("disabled");
 			// if error
 			if (!response.ok) {
 				return response.text().then(function (error) {

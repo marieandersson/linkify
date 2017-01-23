@@ -11,6 +11,7 @@ if (saveReplyButtons) {
 }
 
 function handleReply(saveReplyButton) {
+	saveReplyButton.setAttribute("disabled", "true");
 	let commentId = saveReplyButton.parentElement.parentElement.querySelector(".commentIdReply").value;
 	let postId = saveReplyButton.parentElement.parentElement.querySelector(".postIdReply").value;
 	let comment = saveReplyButton.parentElement.parentElement.querySelector(".replyFields input[name=comment]").value;
@@ -18,6 +19,7 @@ function handleReply(saveReplyButton) {
 	if (comment == "") {
 		errorMessage.innerHTML = "Write a comment before posting.";
 		errorMessage.classList.add("showError");
+		saveReplyButton.removeAttribute("disabled");
 	} else {
 		// put form input in object
 		let postData = new FormData();
@@ -34,6 +36,7 @@ function handleReply(saveReplyButton) {
 		})
 		// response when php script has been executed
 		.then(function(response) {
+			saveReplyButton.removeAttribute("disabled");
 			// if error
 			if (!response.ok) {
 				return response.text().then(function (error) {
