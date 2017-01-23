@@ -67,7 +67,7 @@ function handleVote(voteButton, vote, number) {
 		postData.append("postUserIdForVote", postUserId);
 		postData.append(vote, "vote");
 		// fetch php script handling votes
-		fetch("app/posts/votes.php",
+		fetch("/app/posts/votes.php",
 		{
 			method: "POST",
 			body: postData,
