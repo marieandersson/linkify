@@ -1,3 +1,4 @@
+[![StyleCI](https://styleci.io/repos/75820864/shield?branch=master)](https://styleci.io/repos/75820864)
 # Linkify
 ##### School Assignment @ Yrgo
 Linkify is a Reddit clone where you can share links, comment on shared links and vote other users links up or down. You can also reply to comments. To be able to share, comment and vote you have to register an account. You can edit and delete your posts and comments, update your account settings and upload a profile picture.
