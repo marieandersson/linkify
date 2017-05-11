@@ -8,18 +8,21 @@
 			<input type="hidden" name="postUserIdForVote" class="postUserIdForVote" value="<?=$post["user_id"]?>">
 			<input type="hidden" name="loggedInUser" class="loggedInUser" value="<?=checkLogin($db) ? $_SESSION['login']['id'] : 'noLoggedInUser'?>">
 			<input type="submit" class="up<?=(!checkLogin($db)) ? " notLoggedIn" : ""; ?>" name="up" value="">
-			<span class="votes<?=(!checkLogin($db)) ? " notLoggedInVotes" : ""; ?>"><?= (!$votes["sum_votes"] == NULL) ? $votes["sum_votes"] : 0 ?></span>
+			<span class="votes<?=(!checkLogin($db)) ? " notLoggedInVotes" : ""; ?>"><?= (!$votes["sum_votes"] == null) ? $votes["sum_votes"] : 0 ?></span>
 			<input type="submit" class="down<?=(!checkLogin($db)) ? " notLoggedIn" : ""; ?>" name="down" value="">
 		</form>
 	</div>
 
 	<div class="postWrap">
-		<div class="editMessage"><?php if(isset($editMessage)) echo $editMessage; ?></div>
+		<div class="editMessage"><?php if (isset($editMessage)) {
+    echo $editMessage;
+} ?></div>
 		<div class="postHeadingWrap">
 			<h4><a href="<?=$post["url"]?>" target="_blank"><?=$post["subject"]?></a></h4>
 			<!-- edit, delete  -->
 			<div class="postButtons">
-				<?php if (checkLogin($db) && $post["user_id"] == $_SESSION["login"]["id"]) { ?>
+				<?php if (checkLogin($db) && $post["user_id"] == $_SESSION["login"]["id"]) {
+    ?>
 				<form action="app/posts/editpost.php" method="post">
 					<button class="showPostSettings"><img src="/assets/images/settingswheel.png" alt="settings"/></button>
 					<div class="postSettingsButtons">
@@ -28,7 +31,8 @@
 						<input type="submit" name="deletePost" value="Delete" class="deleteButton">
 					</div>
 				</form>
-				<?php } ?>
+				<?php 
+} ?>
 			</div>
 		</div>
 		<div class="postDiv">
@@ -38,21 +42,28 @@
 				<div class="postUser">
 					<p>Posted by
 					<?php // name only link if user is logged in
-					if (checkLogin($db)) { ?>
+                    if (checkLogin($db)) {
+                        ?>
 						<a href="/profile/<?=$post["username"]?>">
-					<?php }
-					echo ucfirst($post["username"]);
-					if (checkLogin($db)) { ?>
+					<?php 
+                    }
+                    echo ucfirst($post["username"]);
+                    if (checkLogin($db)) {
+                        ?>
 						</a>
-						<?php } ?>
+						<?php 
+                    } ?>
 						on <?=date('jS \of M H:i', strtotime($post["published"]));
-						if ($post["edited"]) { ?> (has been edited)<?php } ?>.
+                        if ($post["edited"]) {
+                            ?> (has been edited)<?php 
+                        } ?>.
 					</p>
 				</div>
 			</div>
 
 			<!-- edit form shown on button click, only to logged in user on own posts -->
-			<?php if (checkLogin($db) && $post["user_id"] == $_SESSION["login"]["id"]) { ?>
+			<?php if (checkLogin($db) && $post["user_id"] == $_SESSION["login"]["id"]) {
+                            ?>
 			<div class="editPostForm">
 				<form action="app/posts/editpost.php" method="post">
 					<input type="hidden" name="postIdForEdit" class="postIdForEdit" value="<?=$post["id"]?>">
@@ -71,11 +82,13 @@
 					<input type="submit" name="saveEdit" value="Save" class="saveEdit">
 				</form>
 			</div>
-			<?php } ?>
+			<?php 
+                        } ?>
 		</div>
 
 		<!-- comment -->
-		<?php if (checkLogin($db)) { ?>
+		<?php if (checkLogin($db)) {
+                            ?>
 		<form action="app/posts/comments.php" method="post" class="commentForm">
 			<div class="inputComment">
 				<input type="hidden" name="postId" class="postId" value="<?=$post["id"]?>">
@@ -84,32 +97,45 @@
 			</div>
 			<!-- user only able to edit or delete own posts -->
 		</form>
-		<?php }
-		// check if post has comments
-		$comments = getComments($db, $post["id"]); ?>
+		<?php 
+                        }
+        // check if post has comments
+        $comments = getComments($db, $post["id"]); ?>
 		<div class="commentLink">
-		<?php if ($comments) { ?>
+		<?php if ($comments) {
+            ?>
 			<h5><span class='readOrClose'>Read</span> comments</h5>
-		<?php } ?>
+		<?php 
+        } ?>
 		</div>
-		<?php if ($comments) { ?>
+		<?php if ($comments) {
+            ?>
 		<div class="comments">
 			<?php foreach ($comments as $comment) {
-			if ($comment["reply_to"] == NULL) { ?>
+                if ($comment["reply_to"] == null) {
+                    ?>
 			<div class="commentWrap">
 				<?php require __DIR__."/../partials/comment.block.php"; ?>
 				<div class="replies">
 				<?php foreach ($comments as $reply) {
-				if ($reply["reply_to"] == $comment["id"]) { ?>
+                        if ($reply["reply_to"] == $comment["id"]) {
+                            ?>
 					<div class="replyWrap">
 					<?php require __DIR__."/../partials/reply.block.php"; ?>
 					</div>
-				<?php }} ?>
+				<?php 
+                        }
+                    } ?>
 				</div>
 			</div>
-			<?php	}} ?>
-			<?php if (!checkLogin($db)) {?> <h5 class="joinAndDiscuss">Log in and join the discussion!</h5> <?php } ?>
+			<?php	
+                }
+            } ?>
+			<?php if (!checkLogin($db)) {
+                ?> <h5 class="joinAndDiscuss">Log in and join the discussion!</h5> <?php 
+            } ?>
 		</div>
-		<?php } ?>
+		<?php 
+        } ?>
 	</div>
 </div>

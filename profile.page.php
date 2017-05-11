@@ -1,7 +1,7 @@
 <?php
 require __DIR__."/autoload.php";
 if (!checkLogin($db)) {
-	header("Location: /");
+    header("Location: /");
 }
 $pageTitle = "Linkify - Profile";
 $profile = getProfileInfo($db, $_GET["user"]);
@@ -10,24 +10,28 @@ $postsToShowProfile = 10;
 $posts = getPosts($db, "published", 0, $postsToShowProfile+1, $profileId);
 $lastPost = checkIfLastPost($posts, $postsToShowProfile+1);
 if (!$lastPost) {
-	array_pop($posts);
+    array_pop($posts);
 }
 require __DIR__."/views/partials/header.php";
 ?>
 <div class="content">
-	<?php if ($profile["id"] == $_SESSION["login"]["id"]) { ?>
+	<?php if ($profile["id"] == $_SESSION["login"]["id"]) {
+    ?>
 	<h4 class="clickToShowNewPostForm">Share a link +</h4>
-	<?php	}	?>
+	<?php	
+}    ?>
 	<!-- client side validation error message -->
 	<div class="jsMessage">
 	</div>
 	<?php
-	// server side validation error message
-	if ($message) { ?>
+    // server side validation error message
+    if ($message) {
+        ?>
 	<div class="message">
 		<?= $message; ?>
 	</div>
-	<?php unset($_SESSION["message"]); } ?>
+	<?php unset($_SESSION["message"]);
+    } ?>
 
 	<div class="profileWrap">
 	<!-- write new post, show on click -->
@@ -35,11 +39,15 @@ require __DIR__."/views/partials/header.php";
 
 		<div class="displayUserProfile displayUserProfilePage">
 			<figure>
-			<?php if ($profile["avatar"] !== NULL) {  ?>
+			<?php if ($profile["avatar"] !== null) {
+        ?>
 				<img src="/assets/images/users/<?=$profile["id"]?>/<?=$profile["avatar"]?>" alt="users profile avatar"/>
-			<?php } else { ?>
+			<?php 
+    } else {
+        ?>
 				<img src="/assets/images/profileicon.png" alt="users profile avatar" />
-			<?php } ?>
+			<?php 
+    } ?>
 			</figure>
 			<h4><?=$profile["name"]?></h4>
 			<h5>@<?=$profile["username"]?></h5>
@@ -51,27 +59,38 @@ require __DIR__."/views/partials/header.php";
 			<div class="displayPosts">
 			<!-- check if any posts exists -->
 			<?php if ($posts) {
-				foreach ($posts as $post) { ?>
+        foreach ($posts as $post) {
+            ?>
 				<div class="post">
 					<?php require __DIR__."/views/partials/post.block.php"; ?>
 				</div>
-				<?php }} else { ?>
+				<?php 
+        }
+    } else {
+        ?>
 				<div class="noPosts">
 					<h2>No links to show</h2>
-					<?php if ($profile["id"] == $_SESSION["login"]["id"]) { ?>
+					<?php if ($profile["id"] == $_SESSION["login"]["id"]) {
+            ?>
 					<p>You haven't shared any links yet. When you have, you'll see all of them here.</p>
-					<?php } else { ?>
+					<?php 
+        } else {
+            ?>
 					<p><?=$profile["username"]?> hasn't shared anything quite yet.</p>
-					<?php } ?>
+					<?php 
+        } ?>
 				</div>
-				<?php } ?>
+				<?php 
+    } ?>
 			</div>
-			<?php if (!$lastPost) { ?>
+			<?php if (!$lastPost) {
+        ?>
 			<div class="showMoreDiv">
 				<button class="showMore showMoreProfile">Show more links...</button>
 				<input type="hidden" class="profileId" value="<?=$profile['id']?>">
 			</div>
-			<?php } ?>
+			<?php 
+    } ?>
 
 		</div>
 	</div>

@@ -6,17 +6,25 @@
 				Posted by
 				<span class="commentAuthor">
 				<?php // username only a link if user is logged in
-				if (checkLogin($db)) { ?>
+                if (checkLogin($db)) {
+                    ?>
 					<a href="/profile/<?=$comment['username']?>">
-				<?php }
-				echo ucfirst($comment["username"]);
-				if (checkLogin($db)) { ?>
+				<?php 
+                }
+                echo ucfirst($comment["username"]);
+                if (checkLogin($db)) {
+                    ?>
 					</a>
-					<?php } ?>
+					<?php 
+                } ?>
 				</span>
-				on <?=date('jS \of M H:i', strtotime($comment["published"])); if ($comment["edited"]) { ?> (has been edited)<?php } ?>.
+				on <?=date('jS \of M H:i', strtotime($comment["published"])); if ($comment["edited"]) {
+                    ?> (has been edited)<?php 
+                } ?>.
 			</p>
-			<?php if (checkLogin($db)) { ?><p class="replyButton">Reply to this.</p><?php } ?>
+			<?php if (checkLogin($db)) {
+                    ?><p class="replyButton">Reply to this.</p><?php 
+                } ?>
 		</div>
 	</div>
 	<!-- edit comment form shown on click -->
@@ -27,9 +35,11 @@
 			<input type="submit" name="saveEditComment" value="Save" class="saveEditComment">
 		</form>
 	</div>
-	<?php if (checkLogin($db) && $comment["user_id"] == $_SESSION["login"]["id"]) { ?>
+	<?php if (checkLogin($db) && $comment["user_id"] == $_SESSION["login"]["id"]) {
+                    ?>
 	<form action="app/posts/comments.php" method="post" class="commentSettings">
-		<button class="showPostSettings"><img src="/assets/images/settingswheel.png" alt="settings"/></button><?php } ?>
+		<button class="showPostSettings"><img src="/assets/images/settingswheel.png" alt="settings"/></button><?php 
+                } ?>
 		<div class="postSettingsButtons commentSettingsButtons">
 			<input type="hidden" name="commentId" class="commentId" value="<?=$comment["id"]?>">
 			<button class="editCommentButton">Edit</button>
@@ -37,7 +47,8 @@
 		</div>
 	</form>
 </div>
-<?php if (checkLogin($db)) { ?>
+<?php if (checkLogin($db)) {
+                    ?>
 <div class="replyForm">
 	<form action="app/posts/comments.php" method="post">
 		<input type="hidden" name="commentId" class="commentIdReply" value="<?=$comment["id"]?>">
@@ -47,4 +58,5 @@
 			<input type="submit" name="replySubmit" class="replySubmit" value="Submit">
 		</div>
 	</form>
-</div><?php } ?>
+</div><?php 
+                } ?>

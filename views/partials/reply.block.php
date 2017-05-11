@@ -6,15 +6,21 @@
 				Posted by
 				<span class="commentAuthor">
 				<?php // name only link if user is logged in
-				if (checkLogin($db)) { ?>
+                if (checkLogin($db)) {
+                    ?>
 					<a href="/profile/<?=$reply['username']?>">
-					<?php }
-					echo ucfirst($reply["username"]);
-					if (checkLogin($db)) { ?>
+					<?php 
+                }
+                    echo ucfirst($reply["username"]);
+                    if (checkLogin($db)) {
+                        ?>
 					</a>
-				<?php } ?>
+				<?php 
+                    } ?>
 				</span>
-				on <?=date('jS \of M H:i', strtotime($reply["published"]));  if ($reply["edited"]) { ?> (has been edited)<?php } ?>.
+				on <?=date('jS \of M H:i', strtotime($reply["published"]));  if ($reply["edited"]) {
+                        ?> (has been edited)<?php 
+                    } ?>.
 			</p>
 		</div>
 	</div>
@@ -26,7 +32,8 @@
 		</form>
 	</div>
 
-	<?php if (checkLogin($db) && $reply["user_id"] == $_SESSION["login"]["id"]) { ?>
+	<?php if (checkLogin($db) && $reply["user_id"] == $_SESSION["login"]["id"]) {
+                        ?>
 	<form action="app/posts/comments.php" method="post" class="commentSettings">
 		<button class="showPostSettings"><img src="/assets/images/settingswheel.png" alt="settings" /></button>
 		<div class="postSettingsButtons commentSettingsButtons">
@@ -35,5 +42,6 @@
 			<input type="submit" name="deleteComment" class="deleteComment" value="Delete">
 		</div>
 	</form>
-	<?php } ?>
+	<?php 
+                    } ?>
 </div>

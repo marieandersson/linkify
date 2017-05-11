@@ -10,23 +10,30 @@ require __DIR__."/partials/header.php";
 		<main class="authMain">
 			<div class="displayPosts">
 				<?php if ($posts) {
-				foreach ($posts as $post) { ?>
+    foreach ($posts as $post) {
+        ?>
 				<div class="post">
 					<?php require __DIR__."/partials/post.block.php" ?>
 				</div>
-				<?php }} else { ?>
+				<?php 
+    }
+} else {
+    ?>
 				<div class="noPosts">
 					<h2>Welcome to Linkify!</h2>
 					<p>Join our community to share and discuss interesting things you find on the web.</p>
 					<button class="joinLinkify">Let's join!</button>
 				</div>
-				<?php } ?>
+				<?php 
+} ?>
 			</div>
-			<?php if (!$lastPost) { ?>
+			<?php if (!$lastPost) {
+    ?>
 			<div class="showMoreDiv">
 				<button class="showMore">Show more links...</button>
 			</div>
-			<?php } ?>
+			<?php 
+} ?>
 
 		</main>
 	</div>
@@ -42,11 +49,13 @@ require __DIR__."/partials/header.php";
 		<div class="loginWrap">
 			<h3>Log in</h3>
 			<form action="app/auth/login.php" method="post" class="login">
-			<?php if ($error) { ?>
+			<?php if ($error) {
+    ?>
 				<div class="error loginError">
 					<?= $error; ?>
 				</div>
-				<?php unset($_SESSION["error"]); } ?>
+				<?php unset($_SESSION["error"]);
+} ?>
 				<input type="text" name="username" placeholder="Email or username" value="<?=isset($_POST["username"]) ? $_POST["username"] : ''; ?>">
 				<input type="password" name="password" placeholder="Password">
 				<div>
@@ -59,11 +68,13 @@ require __DIR__."/partials/header.php";
 		<div class="registerWrap">
 			<h3>Register</h3>
 			<form action="app/auth/register.php" method="post" class="register">
-				<?php if ($error) { ?>
+				<?php if ($error) {
+    ?>
 				<div class="error">
 					<?= $error; ?>
 				</div>
-				<?php unset($_SESSION["error"]); } ?>
+				<?php unset($_SESSION["error"]);
+} ?>
 				<input type="text" name="fullName" placeholder="Full name" value="<?=isset($_POST["fullName"]) ? $_POST["fullName"] : ''; ?>">
 	      <input type="text" name="usernameReg" placeholder="Username" value="<?=isset($_POST["usernameReg"]) ? $_POST["usernameReg"] : ''; ?>">
 				<input type="email" name="emailReg" placeholder="Email" value="<?=isset($_POST["emailReg"]) ? $_POST["emailReg"] : ''; ?>">

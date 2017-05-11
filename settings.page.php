@@ -1,10 +1,10 @@
 <?php
 require __DIR__."/autoload.php";
 if (!checkLogin($db)) {
-	header("Location: /");
+    header("Location: /");
 }
 $pageTitle = "Linkify - Settings";
-$posts = NULL;
+$posts = null;
 require __DIR__."/views/partials/header.php";
 ?>
 
@@ -12,11 +12,15 @@ require __DIR__."/views/partials/header.php";
 		<div class="settingsWrap">
 			<div class="displayUserProfile displayUserSettings">
 				<figure>
-				<?php if ($user["avatar"] !== NULL) {  ?>
+				<?php if ($user["avatar"] !== null) {
+    ?>
 					<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" alt="users profile avatar" />
-				<?php } else { ?>
+				<?php 
+} else {
+    ?>
 					<img src="/assets/images/profileicon.png" alt="users profile avatar" />
-				<?php } ?>
+				<?php 
+} ?>
 				</figure>
 				<h4><?=$user["name"]?></h4>
 				<h5>@<?=$user["username"]?></h5>
@@ -26,11 +30,13 @@ require __DIR__."/views/partials/header.php";
 				<h2 class="settingsHeading">Account settings</h2>
 
 				<form action="app/settings.php" method="post" class="settingsForm" enctype="multipart/form-data">
-					<?php if ($error) { ?>
+					<?php if ($error) {
+    ?>
 					<div class="settingsError">
 						<?= $error; ?>
 					</div>
-					<?php unset($_SESSION["error"]); } ?>
+					<?php unset($_SESSION["error"]);
+} ?>
 					<div class="change">
 						<h3>Change username:</h3>
 						<input type="text" name="editUsername" value="<?=$user['username']?>">
@@ -61,11 +67,15 @@ require __DIR__."/views/partials/header.php";
 						<h3>Upload profile picture:</h3>
 						<input type="file" name="avatar" accept="image/png, image/jpeg">
 						<div class="placeholderAvatar">
-						<?php if ($user["avatar"] !== NULL) {  ?>
+						<?php if ($user["avatar"] !== null) {
+    ?>
 							<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" alt="users current profile avatar" />
-						<?php } else { ?>
+						<?php 
+} else {
+    ?>
 							<img src="/assets/images/profileicon.png" alt="avatar placeholder" />
-						<?php } ?>
+						<?php 
+} ?>
 						</div>
 					</div>
 
