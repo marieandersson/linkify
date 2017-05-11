@@ -1,6 +1,6 @@
 <?php
-require __DIR__."/../app/posts/sortposts.php";
-require __DIR__."/partials/header.php";
+require __DIR__.'/../app/posts/sortposts.php';
+require __DIR__.'/partials/header.php';
 ?>
 
 	<div class="content">
@@ -13,7 +13,7 @@ require __DIR__."/partials/header.php";
     foreach ($posts as $post) {
         ?>
 				<div class="post">
-					<?php require __DIR__."/partials/post.block.php" ?>
+					<?php require __DIR__.'/partials/post.block.php' ?>
 				</div>
 				<?php 
     }
@@ -54,9 +54,9 @@ require __DIR__."/partials/header.php";
 				<div class="error loginError">
 					<?= $error; ?>
 				</div>
-				<?php unset($_SESSION["error"]);
+				<?php unset($_SESSION['error']);
 } ?>
-				<input type="text" name="username" placeholder="Email or username" value="<?=isset($_POST["username"]) ? $_POST["username"] : ''; ?>">
+				<input type="text" name="username" placeholder="Email or username" value="<?=isset($_POST['username']) ? $_POST['username'] : ''; ?>">
 				<input type="password" name="password" placeholder="Password">
 				<div>
 					<input type="checkbox" name="remember" checked><label for="remember">Remember me</label>
@@ -73,11 +73,11 @@ require __DIR__."/partials/header.php";
 				<div class="error">
 					<?= $error; ?>
 				</div>
-				<?php unset($_SESSION["error"]);
+				<?php unset($_SESSION['error']);
 } ?>
-				<input type="text" name="fullName" placeholder="Full name" value="<?=isset($_POST["fullName"]) ? $_POST["fullName"] : ''; ?>">
-	      <input type="text" name="usernameReg" placeholder="Username" value="<?=isset($_POST["usernameReg"]) ? $_POST["usernameReg"] : ''; ?>">
-				<input type="email" name="emailReg" placeholder="Email" value="<?=isset($_POST["emailReg"]) ? $_POST["emailReg"] : ''; ?>">
+				<input type="text" name="fullName" placeholder="Full name" value="<?=isset($_POST['fullName']) ? $_POST['fullName'] : ''; ?>">
+	      <input type="text" name="usernameReg" placeholder="Username" value="<?=isset($_POST['usernameReg']) ? $_POST['usernameReg'] : ''; ?>">
+				<input type="email" name="emailReg" placeholder="Email" value="<?=isset($_POST['emailReg']) ? $_POST['emailReg'] : ''; ?>">
 				<input type="password" name="passwordReg" placeholder="Password">
 				<div>
 					<input type="checkbox" name="terms"><label for="terms">Accept terms</label>
@@ -91,4 +91,4 @@ require __DIR__."/partials/header.php";
 </div>
 
 
-<?php require __DIR__."/partials/footer.php"; ?>
+<?php require __DIR__.'/partials/footer.php'; ?>

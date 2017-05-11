@@ -5,12 +5,13 @@ function escapeInput($data)
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
+
     return $data;
 }
 
 function validateCookie($db)
 {
-    $values = explode("|", $_COOKIE["linkify"]);
+    $values = explode('|', $_COOKIE['linkify']);
     $userId = $values[1];
     $first = $values[0];
     $second = $values[2];
@@ -23,32 +24,32 @@ function validateCookie($db)
     if ($getCookieStatement->rowCount() > 0) {
         return $userId;
     }
-    return null;
 }
 
 function checkLogin($db)
 {
-    if (!isset($_SESSION["login"])) {
-        if (!isset($_COOKIE["linkify"])) {
+    if (!isset($_SESSION['login'])) {
+        if (!isset($_COOKIE['linkify'])) {
             return false;
         }
         if (!($userId = validateCookie($db))) {
             return false;
         }
-        $_SESSION["login"]["id"] = $userId;
+        $_SESSION['login']['id'] = $userId;
     }
+
     return true;
 }
 
 // validation codes for post input
-define("POST_SUCCESS", "10");
-define("MISSING_POST_INPUT", "11");
-define("INVALID_URL", "12");
+define('POST_SUCCESS', '10');
+define('MISSING_POST_INPUT', '11');
+define('INVALID_URL', '12');
 
 function validateNewPostFields($url)
 {
     // check if all fields has input
-    foreach ($_POST as $input=>$value) {
+    foreach ($_POST as $input => $value) {
         if (empty($_POST[$input])) {
             return MISSING_POST_INPUT;
         }
@@ -56,19 +57,21 @@ function validateNewPostFields($url)
     if (!filter_var($url, FILTER_VALIDATE_URL)) {
         return INVALID_URL;
     }
+
     return POST_SUCCESS;
 }
 
 function getUserInfo($db)
 {
-    $id = $_SESSION["login"]["id"];
+    $id = $_SESSION['login']['id'];
     $getUserInfoQuery = "SELECT * FROM users WHERE id = '{$id}' LIMIT 1";
     $getUserInfoStatement = queryToDb($db, $getUserInfoQuery);
     $userInfo = $getUserInfoStatement->fetch(PDO::FETCH_ASSOC);
+
     return $userInfo;
 }
 
-function getPosts($db, $order, $offset, $limit, $userId = "IS NOT NULL")
+function getPosts($db, $order, $offset, $limit, $userId = 'IS NOT NULL')
 {
     $getPostsQuery = "SELECT posts.id, posts.description, posts.subject, posts.url, posts.published AS published, posts.user_id,
 	posts.edited, users.name, users.username, SUM(votes.vote) AS votes  FROM posts INNER JOIN users ON posts.user_id = users.id
@@ -76,9 +79,10 @@ function getPosts($db, $order, $offset, $limit, $userId = "IS NOT NULL")
     $getPostsStatement = queryToDb($db, $getPostsQuery);
 
     if ($getPostsStatement->rowCount() == 0) {
-        return null;
+        return;
     }
     $posts = $getPostsStatement->fetchAll(PDO::FETCH_ASSOC);
+
     return $posts;
 }
 
@@ -89,6 +93,7 @@ function checkIfLastPost($posts, $limit)
     if ($countPosts == $limit) {
         $lastPost = false;
     }
+
     return $lastPost;
 }
 
@@ -100,9 +105,10 @@ function getComments($db, $postId)
     $getCommentsStatement = queryToDb($db, $getCommentsQuery);
 
     if ($getCommentsStatement->rowCount() == 0) {
-        return null;
+        return;
     }
     $comments = $getCommentsStatement->fetchAll(PDO::FETCH_ASSOC);
+
     return $comments;
 }
 
@@ -112,6 +118,7 @@ function countVotes($db, $postId)
     $countVotesStatement = queryToDb($db, $countVotesQuery);
 
     $votes = $countVotesStatement->fetch(PDO::FETCH_ASSOC);
+
     return $votes;
 }
 // get info for other users profile pages
@@ -120,5 +127,6 @@ function getProfileInfo($db, $profileUsername)
     $getProfileInfoQuery = "SELECT * FROM users WHERE username = '{$profileUsername}' LIMIT 1";
     $getProfileInfoStatement = queryToDb($db, $getProfileInfoQuery);
     $profileInfo = $getProfileInfoStatement->fetch(PDO::FETCH_ASSOC);
+
     return $profileInfo;
 }
