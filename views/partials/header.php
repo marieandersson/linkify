@@ -1,7 +1,7 @@
 <?php
-$pageTitle = (isset($pageTitle)) ? $pageTitle:"Linkify";
-$error = $_SESSION["error"] ?? "";
-$message = $_SESSION["message"] ?? "";
+$pageTitle = (isset($pageTitle)) ? $pageTitle : 'Linkify';
+$error = $_SESSION['error'] ?? '';
+$message = $_SESSION['message'] ?? '';
 if (checkLogin($db)) {
     $user = getUserInfo($db);
 }
@@ -39,8 +39,8 @@ if (checkLogin($db)) {
 			<nav class="authNav">
 				<div class="sortPosts">
 					<form action="/" method="post">
-						<input type="submit" name="byDate" value="New" class="<?=$sortMethod === 'published' ? 'sortMethod':''; ?>" >
-						<input type="submit" name="byPop" value="Popular" class="<?=$sortMethod === 'votes' ? 'sortMethod':''; ?>">
+						<input type="submit" name="byDate" value="New" class="<?=$sortMethod === 'published' ? 'sortMethod' : ''; ?>" >
+						<input type="submit" name="byPop" value="Popular" class="<?=$sortMethod === 'votes' ? 'sortMethod' : ''; ?>">
 					</form>
 				</div>
 				<div class="menuLink">
@@ -52,22 +52,22 @@ if (checkLogin($db)) {
     ?>
 			<nav class="menuNav">
 				<?php if ($posts) {
-        if ($pageTitle != "Linkify - Settings" && $pageTitle != "Linkify - Profile") {
+        if ($pageTitle != 'Linkify - Settings' && $pageTitle != 'Linkify - Profile') {
             ?>
 				<div class="sortPosts">
 					<form action="/" method="post">
-						<input type="submit" name="byDate" value="New" class="<?=$sortMethod === 'published' ? 'sortMethod':''; ?>">
-						<input type="submit" name="byPop" value="Popular" class="<?=$sortMethod === 'votes' ? 'sortMethod':''; ?>">
+						<input type="submit" name="byDate" value="New" class="<?=$sortMethod === 'published' ? 'sortMethod' : ''; ?>">
+						<input type="submit" name="byPop" value="Popular" class="<?=$sortMethod === 'votes' ? 'sortMethod' : ''; ?>">
 					</form>
 				</div>
 				<?php 
         }
     } ?>
 				<div class="profileLink">
-					<a href="/profile/<?=$_SESSION["login"]["username"]?>">
-						<?php if ($user["avatar"] !== null) {
+					<a href="/profile/<?=$_SESSION['login']['username']?>">
+						<?php if ($user['avatar'] !== null) {
         ?>
-						<img src="/assets/images/users/<?=$user["id"]?>/<?=$user["avatar"]?>" alt="profile" />
+						<img src="/assets/images/users/<?=$user['id']?>/<?=$user['avatar']?>" alt="profile" />
 						<?php 
     } else {
         ?>
@@ -81,5 +81,5 @@ if (checkLogin($db)) {
 				</div>
 			</nav>
 			<?php 
-}; ?>
+} ?>
 		</header>

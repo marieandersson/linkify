@@ -1,6 +1,6 @@
 <?php
-require __DIR__."/../app/posts/sortposts.php";
-require __DIR__."/partials/header.php";
+require __DIR__.'/../app/posts/sortposts.php';
+require __DIR__.'/partials/header.php';
 ?>
 
 	<div class="content">
@@ -15,12 +15,12 @@ require __DIR__."/partials/header.php";
 		<div class="message">
 			<?= $message; ?>
 		</div>
-		<?php unset($_SESSION["message"]);
+		<?php unset($_SESSION['message']);
         } ?>
 
 		<main class="homeMain">
 			<!-- write new post -->
-			<?php require __DIR__."/partials/newpost.block.php";    ?>
+			<?php require __DIR__.'/partials/newpost.block.php'; ?>
 
 			<!-- display existing posts -->
 			<div class="posts">
@@ -30,7 +30,7 @@ require __DIR__."/partials/header.php";
             foreach ($posts as $post) {
                 ?>
 					<div class="post">
-					<?php require __DIR__."/partials/post.block.php"; ?>
+					<?php require __DIR__.'/partials/post.block.php'; ?>
 					</div>
 					<?php 
             }
@@ -57,6 +57,6 @@ require __DIR__."/partials/header.php";
 
 </div> <!-- end page -->
 
-<?php require __DIR__."/partials/navigation.php"; ?>
+<?php require __DIR__.'/partials/navigation.php'; ?>
 
-<?php require __DIR__."/partials/footer.php"; ?>
+<?php require __DIR__.'/partials/footer.php'; ?>

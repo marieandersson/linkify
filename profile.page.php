@@ -1,21 +1,21 @@
 <?php
-require __DIR__."/autoload.php";
+require __DIR__.'/autoload.php';
 if (!checkLogin($db)) {
-    header("Location: /");
+    header('Location: /');
 }
-$pageTitle = "Linkify - Profile";
-$profile = getProfileInfo($db, $_GET["user"]);
-$profileId = "= " . $profile["id"];
+$pageTitle = 'Linkify - Profile';
+$profile = getProfileInfo($db, $_GET['user']);
+$profileId = '= '.$profile['id'];
 $postsToShowProfile = 10;
-$posts = getPosts($db, "published", 0, $postsToShowProfile+1, $profileId);
-$lastPost = checkIfLastPost($posts, $postsToShowProfile+1);
+$posts = getPosts($db, 'published', 0, $postsToShowProfile + 1, $profileId);
+$lastPost = checkIfLastPost($posts, $postsToShowProfile + 1);
 if (!$lastPost) {
     array_pop($posts);
 }
-require __DIR__."/views/partials/header.php";
+require __DIR__.'/views/partials/header.php';
 ?>
 <div class="content">
-	<?php if ($profile["id"] == $_SESSION["login"]["id"]) {
+	<?php if ($profile['id'] == $_SESSION['login']['id']) {
     ?>
 	<h4 class="clickToShowNewPostForm">Share a link +</h4>
 	<?php	
@@ -30,18 +30,18 @@ require __DIR__."/views/partials/header.php";
 	<div class="message">
 		<?= $message; ?>
 	</div>
-	<?php unset($_SESSION["message"]);
+	<?php unset($_SESSION['message']);
     } ?>
 
 	<div class="profileWrap">
 	<!-- write new post, show on click -->
-	<?php require __DIR__."/views/partials/newpost.block.php"; ?>
+	<?php require __DIR__.'/views/partials/newpost.block.php'; ?>
 
 		<div class="displayUserProfile displayUserProfilePage">
 			<figure>
-			<?php if ($profile["avatar"] !== null) {
+			<?php if ($profile['avatar'] !== null) {
         ?>
-				<img src="/assets/images/users/<?=$profile["id"]?>/<?=$profile["avatar"]?>" alt="users profile avatar"/>
+				<img src="/assets/images/users/<?=$profile['id']?>/<?=$profile['avatar']?>" alt="users profile avatar"/>
 			<?php 
     } else {
         ?>
@@ -49,9 +49,9 @@ require __DIR__."/views/partials/header.php";
 			<?php 
     } ?>
 			</figure>
-			<h4><?=$profile["name"]?></h4>
-			<h5>@<?=$profile["username"]?></h5>
-			<p><?=$profile["about"]?></p>
+			<h4><?=$profile['name']?></h4>
+			<h5>@<?=$profile['username']?></h5>
+			<p><?=$profile['about']?></p>
 		</div>
 
 		<div class="postsOnProfile">
@@ -62,7 +62,7 @@ require __DIR__."/views/partials/header.php";
         foreach ($posts as $post) {
             ?>
 				<div class="post">
-					<?php require __DIR__."/views/partials/post.block.php"; ?>
+					<?php require __DIR__.'/views/partials/post.block.php'; ?>
 				</div>
 				<?php 
         }
@@ -70,13 +70,13 @@ require __DIR__."/views/partials/header.php";
         ?>
 				<div class="noPosts">
 					<h2>No links to show</h2>
-					<?php if ($profile["id"] == $_SESSION["login"]["id"]) {
+					<?php if ($profile['id'] == $_SESSION['login']['id']) {
             ?>
 					<p>You haven't shared any links yet. When you have, you'll see all of them here.</p>
 					<?php 
         } else {
             ?>
-					<p><?=$profile["username"]?> hasn't shared anything quite yet.</p>
+					<p><?=$profile['username']?> hasn't shared anything quite yet.</p>
 					<?php 
         } ?>
 				</div>
@@ -99,6 +99,6 @@ require __DIR__."/views/partials/header.php";
 </div> <!-- end page -->
 
 <?php
-require __DIR__."/views/partials/navigation.php";
-require __DIR__."/views/partials/footer.php";
+require __DIR__.'/views/partials/navigation.php';
+require __DIR__.'/views/partials/footer.php';
 ?>
